@@ -42,5 +42,5 @@ df_selection = df.query(
     "Catagory == @Catagory & Name ==@Name"
 )
 
-
+st.dataframe(df)
 
