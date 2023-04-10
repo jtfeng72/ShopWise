@@ -26,4 +26,18 @@ if text_search:
     st.write(df_search)
 
 
-AgGrid(df)
+# ---- SIDEBAR ----
+st.sidebar.header("Please Filter Here:")
+Catagory = st.sidebar.multiselect(
+    "Select the Catagory:",
+    options=df["Catagory"].unique(),
+    default=df["Catagory"].unique()
+)
+
+Name = st.sidebar.multiselect(
+    "Select the Name:",
+    options=df["Name"].unique(),
+    default=df["Name"].unique(),
+)
+
+
