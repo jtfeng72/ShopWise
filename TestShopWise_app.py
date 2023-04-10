@@ -40,4 +40,9 @@ Name = st.sidebar.multiselect(
     default=df["Name"].unique(),
 )
 
+df_selection = df.query(
+    "Catagory == @Catagory & Name ==@Name"
+)
+
+
 
