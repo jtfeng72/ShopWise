@@ -2,6 +2,8 @@
 # Import libraries
 import streamlit as st
 import pandas as pd
+from st_aggrid import AgGrid, JsCode
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # Page setup
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
@@ -22,3 +24,6 @@ df_search = df[m1 | m2]
 
 if text_search:
     st.write(df_search)
+
+
+AgGrid(df)
