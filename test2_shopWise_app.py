@@ -141,25 +141,6 @@ st.table(res)
 st.subheader("Visualize Inventory")
 st.bar_chart(data=res, x = 'Type', y = 'Price')
 
-# Function
-@st.experimental_memodef 
-convert_df(df): 
-```Converts the data to a CSV format```
-  return df.to_csv(index=False).encode('utf-8')
-
-st.subheader("Store Inventory")
-col1,col2 = st.columns(2)
-# https://docs.streamlit.io/knowledge-base/using-streamlit/how-download-pandas-dataframe-csv
-csv = convert_df(response['data'])
-col1.write("Save in Local Machine?")
-col1.download_button(
-   "Press to Download 🗳️",
-   csv,
-   "file.csv",
-   "text/csv",
-   key='download-csv'
-)
-
 # Importing the necessary Library
 from google.oauth2 import service_account
 import gspread 
