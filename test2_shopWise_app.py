@@ -10,7 +10,6 @@
 # ----- Entire code below  ------- #
 
 # Importing the dependencies
-pip install streamlit-aggrid
 
 import streamlit as st 
 import pandas as pd
