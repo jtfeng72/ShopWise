@@ -1,6 +1,7 @@
 # ShopWise.py
 # --- Import libraries ---
-pip install streamlit pandas streamlit-aggrid gspread
+!pip install streamlit pandas streamlit-aggrid gspread
+
 import streamlit as st 
 import pandas as pd
 from st_aggrid import AgGrid, JsCode
