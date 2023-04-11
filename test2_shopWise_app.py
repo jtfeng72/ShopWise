@@ -10,10 +10,12 @@
 # ----- Entire code below  ------- #
 
 # Importing the dependencies
+pip install streamlit-aggrid
 
 import streamlit as st 
 import pandas as pd
-from st_aggrid import AgGrid, JsCode
+from st_aggrid import AgGrid
+from st_aggrid.shared import JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # Creates a Streamlit header and an Expander 
