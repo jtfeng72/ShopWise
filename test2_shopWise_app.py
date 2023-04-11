@@ -24,6 +24,5 @@ df_search = df[m1 | m2]
 
 if text_search:
     st.write(df_search)
-  
 
- AgGrid(df)
+AgGrid(df)
