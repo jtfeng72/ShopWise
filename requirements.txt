@@ -1,4 +1,2 @@
 openpyxl
 streamlit-aggrid
-AgGrid
-JsCode
