@@ -13,51 +13,41 @@
 
 import streamlit as st 
 import pandas as pd
-import streamlit as st 
-import pandas as pd
-from st_aggrid.shared import AgGrid
-from st_aggrid.shared import JsCode
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
-# Creates a Streamlit header and an Expander 
-# to provide some context for the app.
+# --- Page setup --- 
+st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
+st.title('Welcome to ShopWise')
 
-st.header("AgGrid Demo `Part 3`")
-with st.expander('🤩 What I plan to demonstrate today ? ', expanded=False):
-    st.markdown('''
-                
-                ◻ 1. Implementing `button` within AgGrid table
-                
-                ◻ 2. Display any `update` made from the user-end
-                
-                ◻ 3. `Download` the AgGrid table
-                
-                ◻ 4. `Connect` to Database
-                ''')
+# --- Connect to the Google Sheet --- 
+sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+sheet_name = "Food_List_Master"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+df = pd.read_csv(url, dtype=str).fillna("")
+ 
+# --- Build a user interface and search functionality --- 
+text_search = st.text_input("Search items by item description", value="")
 
-# Create an AgGrid table from a pandas DataFrame
-d = {'Type':['Notebook', 'DVDs'] ,'Quantity': [1, 2],'Price': [400, 200]}
-df = pd.DataFrame(data = d)
-# Display the Dataframe in AgGrid
-AgGrid(df)
+m1 = df["Name"].str.contains(text_search)
+m2 = df["Catagory"].str.contains(text_search)
+df_search = df[m1 | m2]
 
-# JavaScript function to add a new row to the AgGrid table
-js_add_row = JsCode("""
+if text_search:
+    st.write(df_search)
+
+
+#  --- JavaScript function to add a new row to the AgGrid table --- 
+js_add_row = JsCode ('''
 function(e) {
-    let api = e.api;
-    let rowPos = e.rowIndex + 1; 
-    api.applyTransaction({addIndex: rowPos, add: [{}]})    
+ let api = e.api;
+ let rowPos = e.rowIndex + 1; 
+ api.applyTransaction({addIndex: rowPos, add: [{}]}) 
 };
-"""     
+'''
 )
 
-# Cell renderer for the '🔧' column to render a button
-
-# Resources to refer:
-# https://blog.ag-grid.com/cell-renderers-in-ag-grid-every-different-flavour/
-# https://www.w3schools.com/css/css3_buttons.asp
-
+#  --- Cell renderer for the '🔧' column to render a button --- 
 cellRenderer_addButton = JsCode('''
     class BtnCellRenderer {
         init(params) {
@@ -92,7 +82,7 @@ cellRenderer_addButton = JsCode('''
     };
     ''')
 
-# Create a GridOptionsBuilder object from our DataFrame
+#  --- Create a GridOptionsBuilder object from our DataFrame --- 
 gd = GridOptionsBuilder.from_dataframe(df)
 
 # Configure the default column to be editable
@@ -103,11 +93,13 @@ gd.configure_default_column(editable=True)
 # and onCellClicked function
 gd.configure_column( field = '🔧', 
                      onCellClicked = js_add_row,
-                     cellRenderer = cellRenderer_addButton
-                    )
+                     cellRenderer = cellRenderer_addButton,
+                     lockPosition='left')
+
 gridoptions = gd.build()
 
-# AgGrid Table with Button Feature
+
+#  --- AgGrid Table with Button Feature --- 
 # Streamlit Form helps from rerunning on every widget-click
 # Also helps in providing layout
 
@@ -135,17 +127,21 @@ with st.form('Inventory') as f:
     st.write(" *Note: Don't forget to hit enter ↩ on new entry.*")
     st.form_submit_button("Confirm item(s) 🔒", type="primary")
 
-# Visualize the AgGrid when submit button triggered           
+
+#  --- Visualize the AgGrid when submit button triggered ---            
 st.subheader("Updated Inventory")
 # Fetch the data from the AgGrid Table
 res = response['data']
-st.table(res)
+st.table(res) 
+
 
 # Plotting the data
 st.subheader("Visualize Inventory")
-st.bar_chart(data=res, x = 'Type', y = 'Price')
+st.bar_chart(data=res, x = 'Name', y = 'Days_in_Pantry')
 
-# Importing the necessary Library
+
+
+#  --- Updating to the cloud in real-time --- 
 from google.oauth2 import service_account
 import gspread 
 
