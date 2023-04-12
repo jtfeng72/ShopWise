@@ -13,24 +13,12 @@
 
 import streamlit as st 
 import pandas as pd
-
-
-import sys
-from streamlit.config import on_config_parsed
-from streamlit.web.cli import main
-
-def register_options_menu():
-    import streamlit_option_menu
-
-on_config_parsed(register_options_menu)
-
-sys.argv.extend(["run", "path/to/homepage.py"])
-main(prog_name="streamlit")
-    
-    #from st_aggrid import AgGrid, ColumnsAutoSizeMode, GridOptionsBuilder, JsCode
-    #from st_aggrid.grid_options_builder import GridOptionsBuilder
-
-
+import streamlit as st 
+import pandas as pd
+from st_aggrid.shared import AgGrid
+from st_aggrid.shared import JsCode
+from st_aggrid import AgGrid, JsCode
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # Creates a Streamlit header and an Expander 
 # to provide some context for the app.
