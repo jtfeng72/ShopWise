@@ -13,7 +13,6 @@
 
 import streamlit as st 
 import pandas as pd
-from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 
 import sys
@@ -29,6 +28,7 @@ def heavy_imports() -> None:
     import extra_streamlit_components as stx
     import streamlit_option_menu
     from st_aggrid import AgGrid, ColumnsAutoSizeMode, GridOptionsBuilder, JsCode
+    from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 
 def main() -> None:
