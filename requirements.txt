@@ -1,5 +1,5 @@
 openpyxl
-st_aggrid
+st_aggrid.share
 requests
 bs4
 BeautifulSoup
