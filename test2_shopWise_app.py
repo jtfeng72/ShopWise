@@ -35,5 +35,5 @@ content = read_file(bucket_name, file_path)
 # Print results.
 for line in content.strip().split("\n"):
     Product_ID, Name, CO2eq_per_Kg, Catagory, Days_in_Pantry, Days_in_Fridge, Days_in_Freezer = line.split(",")
-    st.write(f"{name} has a :{pet}:")
+    st.write(f"{Product_ID} has a :{Name}:")
 
