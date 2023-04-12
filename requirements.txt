@@ -6,3 +6,9 @@ BeautifulSoup
 pandas
 geopy
 numpy
+scipy
+matplotlib
+numpy
+pandas
+streamlit
+openpyxl
