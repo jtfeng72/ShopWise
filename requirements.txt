@@ -1,14 +1,3 @@
 openpyxl
-st_aggrid.share
-requests
-bs4
-BeautifulSoup
-pandas
-geopy
-numpy
-scipy
-matplotlib
-numpy
-pandas
-streamlit
-openpyxl
+AgGrid
+JsCode
