@@ -1,8 +1,8 @@
-openpyxl-dev
-st_aggrid-dev
-requests-dev
-bs4-dev
-BeautifulSoup-dev
-pandas-dev
-geopy-dev
-numpy-dev
+openpyxl
+st_aggrid
+requests
+bs4
+BeautifulSoup
+pandas
+geopy
+numpy
