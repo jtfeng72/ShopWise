@@ -16,37 +16,21 @@ import pandas as pd
 
 
 import sys
-from pathlib import Path
-
 from streamlit.config import on_config_parsed
-from streamlit.web import cli
+from streamlit.web.cli import main
 
-def heavy_imports() -> None:
-    """For an explanation, please refer to this thread -
-    https://discuss.streamlit.io/t/any-ideas-on-your-app-is-having-trouble-loading-the-
-    st-aggrid-aggrid-component/10176/19?u=vovavili"""
-    import extra_streamlit_components as stx
+def register_options_menu():
     import streamlit_option_menu
-    from st_aggrid import AgGrid, ColumnsAutoSizeMode, GridOptionsBuilder, JsCode
-    from st_aggrid.grid_options_builder import GridOptionsBuilder
 
+on_config_parsed(register_options_menu)
 
-def main() -> None:
-    on_config_parsed(heavy_imports)
-    sys.argv.extend(
-        [
-            "run",
-            str(Path(__file__).resolve().parent / "app.py"),
-            "--server.port=8080",
-            "--server.address=0.0.0.0",
-        ]
-    )
-    cli.main(prog_name="streamlit")
-
-
-if __name__ == "__main__":
-    main()
+sys.argv.extend(["run", "path/to/homepage.py"])
+main(prog_name="streamlit")
     
+    #from st_aggrid import AgGrid, ColumnsAutoSizeMode, GridOptionsBuilder, JsCode
+    #from st_aggrid.grid_options_builder import GridOptionsBuilder
+
+
 
 # Creates a Streamlit header and an Expander 
 # to provide some context for the app.
