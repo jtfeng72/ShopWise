@@ -37,17 +37,6 @@ df = read_file(bucket_name, file_path)
 
 
 
-# --- Build a user interface and search functionality --- 
-#text_search = st.text_input("Search items by item description", value="")
-
-#m1 = df["Name"].str.contains(text_search)
-#m2 = df["Catagory"].str.contains(text_search)
-#df_search = df[m1 | m2]
-
-#if text_search:
-    #st.write(df_search)
-
-
 #  --- JavaScript function to add a new row to the AgGrid table --- 
 js_add_row = JsCode ('''
 function(e) {
