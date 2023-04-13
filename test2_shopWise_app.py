@@ -37,6 +37,8 @@ file_path = "Food_List.csv"
 
 content = read_file(bucket_name, file_path)
 
-df = pd.DataFrame([x.split(';') for x in content.split('\n')], dtype="string")
+df = pd.read_csv(content, dtype=str).fillna("")
 
-AgGrid(df)
+
+#df = pd.DataFrame([x.split(',') for x in content.split('\n')], dtype="string")
+
