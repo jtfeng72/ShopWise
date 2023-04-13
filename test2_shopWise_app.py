@@ -37,8 +37,7 @@ file_path = "Food_List.csv"
 
 content = read_file(bucket_name, file_path)
 
-df = pd.read_csv(content, dtype=str).fillna("")
-
+df = content.strip().split("\n")
 
 #df = pd.DataFrame([x.split(',') for x in content.split('\n')], dtype="string")
 
