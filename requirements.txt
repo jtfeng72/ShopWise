@@ -3,4 +3,3 @@ requests
 streamlit-aggrid
 google-cloud-storage==2.8.0
 fsspec
-fs-gcsfs==1.5.1
