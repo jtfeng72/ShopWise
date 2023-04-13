@@ -35,9 +35,11 @@ def read_file(bucket_name, file_path):
 bucket_name = "shopwise-bucket"
 file_path = "Food_List.csv"
 
-content = read_file(bucket_name, file_path)
+#content = read_file(bucket_name, file_path)
 
-df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
+df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
+
+#df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
 
 AgGrid(df)
 
