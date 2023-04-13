@@ -39,5 +39,5 @@ content = read_file(bucket_name, file_path)
 
 df = content.strip().split("\n")
 
-#df = pd.DataFrame([x.split(',') for x in content.split('\n')], dtype="string")
+AgGrid(df)
 
