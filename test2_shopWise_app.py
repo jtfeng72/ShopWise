@@ -38,5 +38,5 @@ file_path = "Food_List.csv"
 df = read_file(bucket_name, file_path)
 
 
-#AgGrid(df)
+AgGrid(df)
 
