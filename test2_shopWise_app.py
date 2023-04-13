@@ -42,4 +42,4 @@ df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
 #df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
 
 #AgGrid(df)
-
+ 
