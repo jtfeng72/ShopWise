@@ -29,7 +29,7 @@ client = storage.Client(credentials=credentials)
 @st.cache_data(ttl=600)
 def read_file(bucket_name, file_path):
     bucket = client.bucket(bucket_name)
-    content = bucket.blob(file_path).download_as_string().decode("utf-8")
+    df = bucket.blob(file_path).download_as_string().decode("utf-8")
     return df
 
 bucket_name = "shopwise-bucket"
