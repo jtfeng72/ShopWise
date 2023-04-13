@@ -37,6 +37,4 @@ file_path = "Food_List.csv"
 
 content = read_file(bucket_name, file_path)
 
-df = pd.read_csv(content, dtype=str).fillna("")
-
-AgGrid(df)
+df = pd.read_csv(content, sep=",")
