@@ -29,17 +29,16 @@ client = storage.Client(credentials=credentials)
 @st.cache_data(ttl=600)
 def read_file(bucket_name, file_path):
     bucket = client.bucket(bucket_name)
-    content = bucket.blob(file_path).download_as_string().decode("utf-8")
-    return content
+    df = bucket.blob(file_path).download_as_string().decode("utf-8")
+    return df
 
 bucket_name = "shopwise-bucket"
 file_path = "Food_List.csv"
 
-#content = read_file(bucket_name, file_path)
+df = read_file(bucket_name, file_path)
 
-df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
-
+#df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
 #df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
-
 #AgGrid(df)
- 
+
+
