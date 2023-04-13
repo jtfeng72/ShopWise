@@ -36,3 +36,5 @@ file_path = "Food_List.csv"
 #df = read_file(bucket_name, file_path)
 
 df = pd.read_csv('gs://shopwise-bucket/Food_List.csv', dtype=str).fillna("")
+
+AgGrid(df)
