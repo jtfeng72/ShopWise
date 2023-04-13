@@ -37,7 +37,7 @@ file_path = "Food_List.csv"
 
 content = read_file(bucket_name, file_path)
 
-df = pd.DataFrame([x.split(';') for x in content.split('\n')], columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
+df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
 
 AgGrid(df)
 
