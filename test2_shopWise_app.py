@@ -37,7 +37,10 @@ file_path = "Food_List.csv"
 
 content = read_file(bucket_name, file_path)
 
-df = content.strip().split("\n")
 
-AgGrid(df)
+for line in content.strip().split("\n"):
+    Product_ID, Name, CO2eq_per_Kg, Catagory, Days_in_Pantry, Days_in_Fridge, Days_in_Freezer = line.split(",")
+    st.dataframe(data=content, width=None, height=None, *, use_container_width=False)
+
+#AgGrid(df)
 
