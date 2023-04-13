@@ -33,6 +33,6 @@ def read_file(bucket_name, file_path):
 bucket_name = "shopwise-bucket"
 file_path = "Food_List.csv"
 
-df = read_file(bucket_name, file_path)
+#df = read_file(bucket_name, file_path)
 
-aggrid(df)
+df = pd.DataFrame('gs://shopwise-bucket/Food_List.csv')
