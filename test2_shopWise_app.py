@@ -34,7 +34,7 @@ scope = ['https://spreadsheets.google.com/feeds',
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
 client = Client(scope=scope,creds=credentials)
-spreadsheetname = "Food_List_Master"
+spreadsheetname = "ShopWise Food List"
 spread = Spread(spreadsheetname,client = client)
 
 
