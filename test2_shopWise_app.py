@@ -14,7 +14,7 @@ from google.oauth2 import service_account
 from google.cloud import storage
 import gcsfs
 import pandas as pd
-from pd import StringIO
+from io import StringIO 
 import requests
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
