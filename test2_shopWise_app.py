@@ -20,7 +20,7 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"]
+    st.secrets["gcp_service_account"], scopes=["https://www.googleapis.com/auth/cloud-platform"]
 )
 client = storage.Client(credentials=credentials)
 
