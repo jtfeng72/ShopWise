@@ -35,7 +35,7 @@ def read_file(bucket_name, file_path):
 bucket_name = "shopwise-bucket"
 file_path = "Food_List.csv"
 
-#AgGrid(content) = read_file(bucket_name, file_path)
+content = read_file(bucket_name, file_path)
 
 
 #data = pd.read_csv(file_path,
