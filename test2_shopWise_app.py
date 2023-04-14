@@ -38,6 +38,10 @@ file_path = "Food_List.csv"
 df = read_file(bucket_name, file_path)
 
 
+data = pd.read_csv(df)
+st.write(data)
+
+
 # Print results.
 for line in df.strip().split("\n"):
     Product_ID, Name , CO2eq_per_Kg , Catagory , Days_in_Pantry , Days_in_Fridge , Days_in_Freezer = line.split(",")
