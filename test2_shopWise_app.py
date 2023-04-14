@@ -47,17 +47,17 @@ content = read_file(bucket_name, file_path)
 # Print results.
 #st.write(content)
 
-d = {'Product_ID': [], 'Name': [], 'CO2eq_per_Kg': [],  'Catagory': [],  'Days_in_Pantry': [],  'Days_in_Fridge': [],  'Days_in_Freezer': []}
+#d = {'Product_ID': [], 'Name': [], 'CO2eq_per_Kg': [],  'Catagory': [],  'Days_in_Pantry': [],  'Days_in_Fridge': [],  'Days_in_Freezer': []}
 
-for line in content: # go through file line by line
-    if line != '\n': # skip new line characters
-        line = line.replace('\n', '') # get rid of '\n' in all fields
-        key, val = line.split(',', 2) # take the first 2 tokens from the split statement
-        d[key].append(val)
+#for line in content: # go through file line by line
+    #if line != '\n': # skip new line characters
+       # line = line.replace('\n', '') # get rid of '\n' in all fields
+     #   key, val = line.split(',', 1) # take the first 2 tokens from the split statement
+      #  d[key].append(val)
 
-df = pd.DataFrame(d)
+#df = pd.DataFrame(d)
 
-st.write(df)
+st.write(content)
 
     
 #for line in content.strip().split("\n"):
