@@ -25,7 +25,9 @@ from datetime import datetime
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
 st.title('Welcome to ShopWise')
 
-
+# Disable certificate verification (Not necessary always)
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 # --- Create a Google Authentication connection objectt --- #
 scope = ['https://spreadsheets.google.com/feeds',
@@ -34,7 +36,7 @@ scope = ['https://spreadsheets.google.com/feeds',
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
 client = Client(scope=scope,creds=credentials)
-spreadsheetname = "ShopWise Food List"
+spreadsheetname = "Food_List_Master"
 spread = Spread(spreadsheetname,client = client)
 
 
