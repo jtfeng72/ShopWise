@@ -28,7 +28,7 @@ client = storage.Client(credentials=credentials)
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 
 
-df = read_file("shopwise-bucket","Food_List.csv")
+df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
 
 st.write(df)
 
