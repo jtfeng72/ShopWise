@@ -38,7 +38,7 @@ file_path = "Food_List.csv"
 content = read_file(bucket_name, file_path)
 
 
-data = pd.read_csv(path,
+data = pd.read_csv(file_path,
                     storage_options={'token' : credentials},
                     low_memory=False,
                     index_col=0)
