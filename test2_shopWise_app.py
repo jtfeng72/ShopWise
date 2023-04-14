@@ -26,11 +26,18 @@ client = storage.Client(credentials=credentials)
 
 # Retrieve file contents.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
+@st.cache_data(ttl=600)
+def read_file(bucket_name, file_path):
+    bucket = client.bucket(bucket_name)
+    content = bucket.blob(file_path).download_as_string().decode("utf-8")
+    return content
+
+bucket_name = "shopwise-bucket"
+file_path = "Food_List.csv"
+
+content = read_file(bucket_name, file_path)
 
 
-df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
-
-st.write(df)
 
 
 # Print results.
