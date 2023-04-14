@@ -1,11 +1,6 @@
 # ShopWise.py
 # ----- Quick note --------#
-# Refer to YouTube video explaination - https://youtu.be/sOFM334iILs
-# This gist was created for the purpose of embedding over the blog post.
-# It is based on the original source code here - 
-# https://github.com/avrabyt/YouTube-Tutorials/blob/main/Streamlit-Python/Streamlit-AgGrid-Usage/pages/aggrid-button-app.py
-# An app is live based on the above repo , please refer to the live demo app here for testing - 
-# https://avra-youtube-aggrid.streamlit.app/aggrid-button-app
+
 
 # ----- Entire code below  ------- #
 
@@ -18,6 +13,11 @@ from io import StringIO
 import requests
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
+
+
+# ----- Page setup ----- #
+st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
+st.title('Welcome to ShopWise')
 
 # ----- Create API client ----- #
 credentials = service_account.Credentials.from_service_account_info(
