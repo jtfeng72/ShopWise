@@ -40,7 +40,7 @@ scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_name('coursera-362720-52b6aa46e070.json', scope)
 client = gspread.authorize(creds)
  
-sh = client.open('ShopWise Food List').worksheet('Food_List_Master')  
+sh = client.open('Food_List_Master').worksheet('ShopWise Food List')  
 row = [Product_ID,Name,CO2eq_per_Kg,Catagory,Days_in_Pantry,Days_in_Fridge,Days_in_Freezer]
 sh.append_row(row)
 
