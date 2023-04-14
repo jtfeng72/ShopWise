@@ -2,13 +2,10 @@
 
 # ---- Import libraries ----
 
-import streamlit as st
-import gcsfs
+import streamlit as st 
 import pandas as pd
-import requests
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
-
 
 # ---- Page setup ---- 
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
