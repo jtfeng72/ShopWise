@@ -52,7 +52,7 @@ d = {'Product_ID': [], 'Name': [], 'CO2eq_per_Kg': [],  'Catagory': [],  'Days_i
 for line in content: # go through file line by line
     if line != '\n': # skip new line characters
         line = line.replace('\n', '') # get rid of '\n' in all fields
-        key, val = line.split(',', 1) # take the first 2 tokens from the split statement
+        key, val = line.split(',', 2) # take the first 2 tokens from the split statement
         d[key].append(val)
 
 df = pd.DataFrame(d)
