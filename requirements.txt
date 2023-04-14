@@ -6,3 +6,6 @@ fsspec
 gcsfs
 gspread
 oauth2client
+gspread_pandas
+pysmiles 
+datetime 
