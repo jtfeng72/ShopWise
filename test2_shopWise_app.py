@@ -19,13 +19,13 @@ import requests
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
-# Create API client.
+# ----- Create API client ----- #
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
 )
 client = storage.Client(credentials=credentials)
 
-# Retrieve file contents.
+#  ----- Retrieve file contents  ----- #
 
 bucket_name = "shopwise-bucket"
 file_path = "Food_List.csv"
@@ -45,58 +45,9 @@ def read_csv_from_gcs(bucket_name, file_path):
   dataframe = pd.read_csv(StringIO(csv_data))
   return dataframe
 
-
-# Read the CSV file and load it into a DataFrame
+# ----- Read the CSV file and load it into a DataFrame ----- #
 df = read_csv_from_gcs(bucket_name, file_path)
 
 AgGrid(df)
-
-
-
-
-
-
-# Uses st.cache_data to only rerun when the query changes or after 10 min.
-#@st.cache_data(ttl=600)
-#def read_file(bucket_name, file_path):
-#    bucket = client.bucket(bucket_name)
- #   content = bucket.blob(file_path).download_as_string().decode("utf-8")
-  #  return content
-
-#bucket_name = "shopwise-bucket"
-#file_path = "Food_List.csv"
-
-#content = read_file(bucket_name, file_path)
-
-#AgGrid(content)
-
-#data = pd.read_csv(file_path,
-                    #storage_options={'token' : credentials},
-                    #low_memory=False,
-                   # index_col=0)
-
-# Print results.
-#st.write(content)
-
-#d = {'Product_ID': [], 'Name': [], 'CO2eq_per_Kg': [],  'Catagory': [],  'Days_in_Pantry': [],  'Days_in_Fridge': [],  'Days_in_Freezer': []}
-
-#for line in content: # go through file line by line
-   # if line != '\n': # skip new line characters
-      #  line = line.replace('\n', '') # get rid of '\n' in all fields
-    #    key, val = line.split(',', 1) # take the first 2 tokens from the split statement
-     #   d[key].append(val)
-
-#df = pd.DataFrame(d)
-
-#st.write(content)
-
-    
-#for line in content.strip().split("\n"):
- #  Product_ID, Name , CO2eq_per_Kg , Catagory , Days_in_Pantry , Days_in_Fridge , Days_in_Freezer = line.split(",")
-  # st.write(content)
-
-#df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
-#df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
-#AgGrid(df)
 
 
