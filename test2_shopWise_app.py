@@ -27,14 +27,14 @@ client = storage.Client(credentials=credentials)
 # Retrieve file contents.
 
 bucket_name = "shopwise-bucket"
-file_path = "Food_List.csv"
+file_path = "shopwise-bucket/Food_List.csv"
 
 def read_csv_from_gcs(bucket_name, file_path):
   # Create a GCS client
-  storage_client = storage.Client()
+  client = storage.Client()
 
   # Get the bucket and blob objects
-  bucket = storage_client.get_bucket(bucket_name)
+  bucket = client.get_bucket(bucket_name)
   blob = bucket.blob(file_path)
 
   # Download the contents of the blob as a string
