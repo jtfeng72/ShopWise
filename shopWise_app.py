@@ -33,8 +33,22 @@ with st.sidebar:
         menu_icon="cast",
         #orientation = "horizontal" # Optional delete to have the menu to show on the side
 )
+  
+   #---Shopping List---#
+if nav_menu_select == "Shopping List":
+    st. header(nav_menu_select)
+    #col1, col2 = st.columns([4,4], gap= "medium")
+    
+    with text_search = st.text_input("Search items by item description", value="")
+    m1 = df["Name"].str.contains(text_search)
+    m2 = df["Catagory"].str.contains(text_search)
+    df_search = df[m1 | m2]
+
+  if text_search:
+    st.write(df_search)
+        
  
- 
+# -----------------------------------------------------------------------------------------------------------
  
 # --- Build a user interface and search functionality --- #
 text_search = st.text_input("Search items by item description", value="")
