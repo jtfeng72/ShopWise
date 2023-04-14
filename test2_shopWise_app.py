@@ -25,6 +25,8 @@ from datetime import datetime
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
 st.title('Welcome to ShopWise')
 
+
+
 # --- Create a Google Authentication connection objectt --- #
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
@@ -36,5 +38,5 @@ spreadsheetname = "Food_List_Master"
 spread = Spread(spreadsheetname,client = client)
 
 
-
+st.write(spread.url)
 
