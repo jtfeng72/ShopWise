@@ -37,7 +37,7 @@ file_path = "Food_List.csv"
 
 content = read_file(bucket_name, file_path)
 
-AgGrid(content)
+#AgGrid(content)
 
 #data = pd.read_csv(file_path,
                     #storage_options={'token' : credentials},
@@ -45,9 +45,11 @@ AgGrid(content)
                    # index_col=0)
 
 # Print results.
+st.write(content)
+    
 #for line in content.strip().split("\n"):
-    #Product_ID, Name , CO2eq_per_Kg , Catagory , Days_in_Pantry , Days_in_Fridge , Days_in_Freezer = line.split(",")
-    #st.write(f"{Name} has a :{CO2eq_per_Kg}:")
+   # Product_ID, Name , CO2eq_per_Kg , Catagory , Days_in_Pantry , Days_in_Fridge , Days_in_Freezer = line.split(",")
+   # st.write(f"{Name} has a :{CO2eq_per_Kg}:")
     
 #df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
 #df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
