@@ -22,32 +22,6 @@ sheet_name = "Food_List_Master"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str).fillna("")
  
- 
-#---Option Menu---#
-#for more cions: https://icons.getbootstrap.com/
-with st.sidebar:
-    nav_menu_select = option_menu(
-        menu_title = "Main Menu",
-        options = ["Shopping List", "Shopping Suggestions", "Dashboard","XXX"],
-        icons=["list-task", "shop", "bar-chart", "cup-stra"],
-        menu_icon="cast",
-        #orientation = "horizontal" # Optional delete to have the menu to show on the side
-)
-  
-   #---Shopping List---#
-if nav_menu_select == "Shopping List":
-    st. header(nav_menu_select)
-    #col1, col2 = st.columns([4,4], gap= "medium")
-    
-    with text_search = st.text_input("Search items by item description", value="")
-    m1 = df["Name"].str.contains(text_search)
-    m2 = df["Catagory"].str.contains(text_search)
-    df_search = df[m1 | m2]
-
-  if text_search:
-    st.write(df_search)
-        
- 
 # -----------------------------------------------------------------------------------------------------------
  
 # --- Build a user interface and search functionality --- #
