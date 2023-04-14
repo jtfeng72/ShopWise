@@ -13,7 +13,7 @@ from io import StringIO
 import requests
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
-
+import gspread 
 
 # ----- Page setup ----- #
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
@@ -147,4 +147,67 @@ with st.form('Inventory') as f:
                     fit_columns_on_grid_load = True)
     st.write(" *Note: Don't forget to hit enter ↩ on new entry.*")
     st.form_submit_button("Confirm item(s) 🔒", type="primary")
+    
+#  --- Visualize the AgGrid when submit button triggered ---            
+st.subheader("Updated Inventory")
+# Fetch the data from the AgGrid Table
+res = response['data']
+st.table(res) 
+
+
+def send_to_database(res):
+    # Create a list of scope values to pass to the credentials object
+    scope = ['https://spreadsheets.google.com/feeds',
+            'https://www.googleapis.com/auth/drive']
+
+    # Create a credentials object using the service account info and scope values
+    credentials = service_account.Credentials.from_service_account_info(
+                st.secrets["gcp_service_account"], scopes = scope)
+    
+    # Authorize the connection to Google Sheets using the credentials object
+    gc = gspread.authorize(credentials)
+    
+    # Open the Google Sheets document with the specified name
+    sh = gc.open("AgGrid-Database")
+    
+    # Access the worksheet within the document with the specified name
+    worksheet = sh.worksheet("Sheet1") 
+    
+    # Set up a progress bar
+    my_bar = st.progress(0)
+    
+    # Iterate through the rows of the data frame
+    for ind in res.index:
+        # Calculate the percentage complete
+        percent_complete = (ind+1)/len(res) 
+        # Update the progress bar
+        my_bar.progress(percent_complete)
+        
+        # Get the values in the first column of the worksheet
+        values_list = worksheet.col_values(1)
+        # Calculate the next empty row in the worksheet
+        length_row = len(values_list)
+        
+        # Update the cells in the worksheet with the data from the data frame
+        worksheet.update_cell(length_row+1, 1, res['Type'][ind])
+        worksheet.update_cell(length_row+1, 2, str(res['Quantity'][ind]))
+        worksheet.update_cell(length_row+1, 3, str(res['Price'][ind]))
+       
+    # Return a success message
+    return st.success("Updated to Database ", icon="✅")\
+
+# If the "Send to Database" button is clicked, execute the send_to_database() function
+col2.write("Save in Shared Cloud?")
+if col2.button("Send to Database"):
+    send_to_database(res)
+
+
+
+
+
+
+
+
+
+
 
