@@ -31,6 +31,24 @@ sheet_name = "Food_List_Master"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str).fillna("")
 
+
+
+
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+
+creds = ServiceAccountCredentials.from_json_keyfile_name('coursera-362720-52b6aa46e070.json', scope)
+client = gspread.authorize(creds)
+ 
+sh = client.open('ShopWise Food List').worksheet('Food_List_Master')  
+row = [Product_ID,Name,CO2eq_per_Kg,Catagory,Days_in_Pantry,Days_in_Fridge,Days_in_Freezer]
+sh.append_row(row)
+
+
+
+
+
+
+
 #  ----- Build a user interface and search functionality ----- #
 text_search = st.text_input("Search items by item description", value="")
 
