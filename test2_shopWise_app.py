@@ -196,12 +196,6 @@ def send_to_database(res):
     # Return a success message
     return st.success("Updated to Database ", icon="✅")\
 
-# If the "Send to Database" button is clicked, execute the send_to_database() function
-col2.write("Save in Shared Cloud?")
-if col2.button("Send to Database"):
-    send_to_database(res)
-
-
 
 
 
