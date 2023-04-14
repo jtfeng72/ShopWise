@@ -1,6 +1,11 @@
-openpyxl
-requests
-streamlit-aggrid
+streamlit-aggrid==0.2.3
+altair
+pandas
+streamlit
+streamlit_option_menu==0.3.2
+deta
 google-cloud-storage==2.8.0
 fsspec
 gcsfs
+requests
+openpyxl
