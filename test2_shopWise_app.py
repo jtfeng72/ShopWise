@@ -25,17 +25,47 @@ credentials = service_account.Credentials.from_service_account_info(
 client = storage.Client(credentials=credentials)
 
 # Retrieve file contents.
-# Uses st.cache_data to only rerun when the query changes or after 10 min.
-@st.cache_data(ttl=600)
-def read_file(bucket_name, file_path):
-    bucket = client.bucket(bucket_name)
-    content = bucket.blob(file_path).download_as_string().decode("utf-8")
-    return content
 
 bucket_name = "shopwise-bucket"
 file_path = "Food_List.csv"
 
-content = read_file(bucket_name, file_path)
+def read_csv_from_gcs(bucket_name, file_path):
+  # Create a GCS client
+  storage_client = storage.Client()
+
+  # Get the bucket and blob objects
+  bucket = storage_client.get_bucket(bucket_name)
+  blob = bucket.blob(file_path)
+
+  # Download the contents of the blob as a string
+  csv_data = blob.download_as_text()
+
+  # Read the CSV data into a Pandas DataFrame
+  dataframe = pd.read_csv(pd.StringIO(csv_data))
+  return dataframe
+
+
+# Read the CSV file and load it into a DataFrame
+df = read_csv_from_gcs(bucket_name, file_path)
+
+st.write(df)
+
+
+
+
+
+
+# Uses st.cache_data to only rerun when the query changes or after 10 min.
+#@st.cache_data(ttl=600)
+#def read_file(bucket_name, file_path):
+#    bucket = client.bucket(bucket_name)
+ #   content = bucket.blob(file_path).download_as_string().decode("utf-8")
+  #  return content
+
+#bucket_name = "shopwise-bucket"
+#file_path = "Food_List.csv"
+
+#content = read_file(bucket_name, file_path)
 
 #AgGrid(content)
 
@@ -50,20 +80,20 @@ content = read_file(bucket_name, file_path)
 #d = {'Product_ID': [], 'Name': [], 'CO2eq_per_Kg': [],  'Catagory': [],  'Days_in_Pantry': [],  'Days_in_Fridge': [],  'Days_in_Freezer': []}
 
 #for line in content: # go through file line by line
-    #if line != '\n': # skip new line characters
-       # line = line.replace('\n', '') # get rid of '\n' in all fields
-     #   key, val = line.split(',', 1) # take the first 2 tokens from the split statement
-      #  d[key].append(val)
+   # if line != '\n': # skip new line characters
+      #  line = line.replace('\n', '') # get rid of '\n' in all fields
+    #    key, val = line.split(',', 1) # take the first 2 tokens from the split statement
+     #   d[key].append(val)
 
 #df = pd.DataFrame(d)
 
-st.write(content)
+#st.write(content)
 
     
 #for line in content.strip().split("\n"):
-   # Product_ID, Name , CO2eq_per_Kg , Catagory , Days_in_Pantry , Days_in_Fridge , Days_in_Freezer = line.split(",")
-   # st.write(f"{Name} has a :{CO2eq_per_Kg}:")
-    
+ #  Product_ID, Name , CO2eq_per_Kg , Catagory , Days_in_Pantry , Days_in_Fridge , Days_in_Freezer = line.split(",")
+  # st.write(content)
+
 #df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
 #df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
 #AgGrid(df)
