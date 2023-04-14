@@ -45,7 +45,17 @@ function(e) {
 '''
 )
 
-#  --- Cell renderer for the '🔧' column to render a button --- #
+#  --- JavaScript function to add a new row to the AgGrid table --- 
+js_add_row = JsCode ('''
+function(e) {
+ let api = e.api;
+ let rowPos = e.rowIndex + 1; 
+ api.applyTransaction({addIndex: rowPos, add: [{}]}) 
+};
+'''
+)
+
+#  --- Cell renderer for the '🔧' column to render a button --- 
 cellRenderer_addButton = JsCode('''
     class BtnCellRenderer {
         init(params) {
@@ -136,5 +146,4 @@ st.table(res)
 # Plotting the data
 st.subheader("Visualize Inventory")
 st.bar_chart(data=res, x = 'Name', y = 'Days_in_Pantry')
-
 
