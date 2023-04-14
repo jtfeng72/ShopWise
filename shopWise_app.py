@@ -1,21 +1,35 @@
 # ShopWise.py
-# Import libraries
+#---Import libraries---#
 import streamlit as st
 import pandas as pd
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
-# Page setup
+#---Page setup---#
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
 st.title('Welcome to ShopWise')
 
-# Connect to the Google Sheet
+#---Connect to the Google Sheet---#
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 sheet_name = "Food_List_Master"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str).fillna("")
  
-# Build a user interface and search functionality
+ 
+#---Option Menu---#
+#for more cions: https://icons.getbootstrap.com/
+with st.sidebar:
+    nav_menu_select = option_menu(
+        menu_title = "Main Menu",
+        options = ["Shopping List", "Shopping Suggestions", "Dashboard","XXX"],
+        icons=["list-task", "shop", "bar-chart", "cup-stra"],
+        menu_icon="cast",
+        #orientation = "horizontal" # Optional delete to have the menu to show on the side
+)
+ 
+ 
+ 
+# --- Build a user interface and search functionality --- #
 text_search = st.text_input("Search items by item description", value="")
 
 m1 = df["Name"].str.contains(text_search)
@@ -36,7 +50,7 @@ function(e) {
 '''
 )
 
-#  --- Cell renderer for the '🔧' column to render a button --- 
+#  --- Cell renderer for the '🔧' column to render a button --- #
 cellRenderer_addButton = JsCode('''
     class BtnCellRenderer {
         init(params) {
