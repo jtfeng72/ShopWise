@@ -41,7 +41,7 @@ df = read_file(bucket_name, file_path)
 # Print results.
 for line in df.strip().split("\n"):
     Product_ID, Name , CO2eq_per_Kg , Catagory , Days_in_Pantry , Days_in_Fridge , Days_in_Freezer = line.split(",")
-    st.write(f"{Name} has a :{CO2eq_per_Kg}:")]
+    st.write(f"{Name} has a :{CO2eq_per_Kg}:")
     
 #df = pd.read_csv('gs://shopwise-bucket/Food_List.csv')
 #df = pd.DataFrame(content, columns = ['Product_ID','Name','CO2eq_per_Kg','Catagory','Days_in_Pantry','Days_in_Fridge','Days_in_Freezer'])
