@@ -25,12 +25,6 @@ from datetime import datetime
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
 st.title('Welcome to ShopWise')
 
-# ----- Create API client ----- #
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"]
-)
-client = storage.Client(credentials=credentials)
-
 # --- Create a Google Authentication connection objectt --- #
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
