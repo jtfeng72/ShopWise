@@ -27,7 +27,7 @@ client = storage.Client(credentials=credentials)
 # Retrieve file contents.
 
 bucket_name = "shopwise-bucket"
-file_path = "shopwise-bucket/Food_List.csv"
+file_path = "https://storage.cloud.google.com/shopwise-bucket/Food_List.csv"
 
 def read_csv_from_gcs(bucket_name, file_path):
   # Create a GCS client
