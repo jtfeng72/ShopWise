@@ -25,27 +25,11 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 client = storage.Client(credentials=credentials)
 
-#  ----- Retrieve file contents into a DataFrame ----- #
-
-bucket_name = "shopwise-bucket"
-file_path = "Food_List.csv"
-
-def read_csv_from_gcs(bucket_name, file_path):
-  # Create a GCS client
-  client = storage.Client(credentials=credentials)
-
-  # Get the bucket and blob objects
-  bucket = client.get_bucket(bucket_name)
-  blob = bucket.blob(file_path)
-
-  # Download the contents of the blob as a string
-  csv_data = blob.download_as_text()
-
-  # Read the CSV data into a Pandas DataFrame
-  dataframe = pd.read_csv(StringIO(csv_data))
-  return dataframe
-
-df = read_csv_from_gcs(bucket_name, file_path)
+# --- Connect to the Google Sheet --- 
+sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+sheet_name = "Food_List_Master"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+df = pd.read_csv(url, dtype=str).fillna("")
 
 #  ----- Build a user interface and search functionality ----- #
 text_search = st.text_input("Search items by item description", value="")
