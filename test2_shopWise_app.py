@@ -148,13 +148,35 @@ with st.form('Inventory') as f:
     st.write(" *Note: Don't forget to hit enter ↩ on new entry.*")
     st.form_submit_button("Confirm item(s) 🔒", type="primary")
     
-#  --- Visualize the AgGrid when submit button triggered ---            
+#  --- Visualize the AgGrid when submit button triggered ---#            
 st.subheader("Updated Inventory")
 # Fetch the data from the AgGrid Table
 res = response['data']
 st.table(res) 
 
+#  --- Saving AgGrid data locally ---# 
+# Function
+@st.experimental_memodef 
+convert_df(df): 
+```Converts the data to a CSV format```
+  return df.to_csv(index=False).encode(‘utf-8’)
 
+
+st.subheader("Store Inventory")
+col1,col2 = st.columns(2)
+# https://docs.streamlit.io/knowledge-base/using-streamlit/how-download-pandas-dataframe-csv
+csv = convert_df(response['data'])
+col1.write("Save in Local Machine?")
+col1.download_button(
+   "Press to Download 🗳️",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)
+
+
+#  --- Saving AgGrid data in the cloud ---# 
 def send_to_database(res):
     # Create a list of scope values to pass to the credentials object
     scope = ['https://spreadsheets.google.com/feeds',
@@ -196,7 +218,10 @@ def send_to_database(res):
     # Return a success message
     return st.success("Updated to Database ", icon="✅")\
 
-
+# If the "Send to Database" button is clicked, execute the send_to_database() function
+col2.write("Save in Shared Cloud?")
+if col2.button("Send to Database"):
+    send_to_database(res)
 
 
 
