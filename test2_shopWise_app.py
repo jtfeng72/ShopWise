@@ -49,7 +49,7 @@ def read_csv_from_gcs(bucket_name, file_path):
 # Read the CSV file and load it into a DataFrame
 df = read_csv_from_gcs(bucket_name, file_path)
 
-st.write(df)
+AgGrid(df)
 
 
 
