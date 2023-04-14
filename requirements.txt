@@ -10,3 +10,5 @@ gspread_pandas
 pysmiles 
 datetime 
 pubchempy 
+networkx 
+matplotlib
