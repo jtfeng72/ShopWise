@@ -62,58 +62,29 @@ def load_the_spreadsheet(spreadsheetname):
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Product_ID','Name','CO2eq_per_Kg', 'Catagory', 'Days_in_Pantry','Days_in_Fridge','Days_in_Freezer']
+    col = ['Name','Time_stamp']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
 
 st.header('Food Inventory')
 
-# Check whether the sheets exists
-what_sheets = worksheet_names()
-#st.sidebar.write(what_sheets)
-ws_choice = st.sidebar.radio('Available worksheets',what_sheets)
+# Check whether the sheets exists and throw the sheets to the users
+
+
+# Throw the CIDS to the users to that they can access
+
 
 # Load data from worksheets
-df = load_the_spreadsheet(ws_choice)
-# Show the availibility as selection
-select_CID = st.sidebar.selectbox('Food_List_Master',list(df['Food_List_Master']))
+what_sheets = worksheet_names()
+#st.sidebar.write(what_sheets)
+ws.choice = st.sidebar.radio('Available worksheets',what_sheets)
 
 # Now we can use the pubchempy module to dump information
-comp = pcp.Compound.from_cid(select_CID)
-comp_dict = comp.to_dict() # Converting to a dictinoary
+
 # What Information look for ?
-options = ['CO2eq_per_Kg', 'Catagory', 'Days_in_Pantry','Days_in_Fridge','Days_in_Freezer']
-show_me = st.radio('What you want to see?',options)
 
-st.info(comp_dict[show_me])
-name = comp_dict['iupac_name']
-st.markdown(name)
 
-plot = st.checkbox('Canonical Smiles Plot')
-
-if plot:
-    sm = comp_dict['canonical_smiles']
-    mol = read_smiles(comp_dict['canonical_smiles']) 
-    elements = nx.get_node_attributes(mol, name = "element")
-    nx.draw(mol, with_labels=True, labels = elements, pos=nx.spring_layout(mol))
-    fig , ax = plt.subplots()
-    nx.draw(mol, with_labels=True, labels = elements, pos = nx.spring_layout(mol))
-    st.pyplot(fig)
-
-add = st.sidebar.checkbox('Add CID')
-if add :  
-    cid_entry = st.sidebar.text_input('New CID')
-    confirm_input = st.sidebar.button('Confirm')
-    
-    if confirm_input:
-        now = datetime.now()
-        opt = {'Name': [cid_entry],
-              'Time_stamp' :  [now]} 
-        opt_df = DataFrame(opt)
-        df = load_the_spreadsheet('Pantry')
-        new_df = df.append(opt_df,ignore_index=True)
-        update_the_spreadsheet('Pantry',new_df)
 
 
 
