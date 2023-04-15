@@ -62,12 +62,12 @@ def load_the_spreadsheet(spreadsheetname):
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Compound CID','Time_stamp']
+    col = ['Product_ID','Name','CO2eq_per_Kg', 'Catagory', 'Days_in_Pantry','Days_in_Fridge','Days_in_Freezer']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
 
-st.header('Streamlit Chemical Inventory')
+st.header('Food Inventory')
 
 # Check whether the sheets exists
 what_sheets = worksheet_names()
@@ -77,14 +77,13 @@ ws_choice = st.sidebar.radio('Available worksheets',what_sheets)
 # Load data from worksheets
 df = load_the_spreadsheet(ws_choice)
 # Show the availibility as selection
-select_CID = st.sidebar.selectbox('CID',list(df['Compound CID']))
+select_CID = st.sidebar.selectbox('Food_List_Master',list(df['Food_List_Master']))
 
 # Now we can use the pubchempy module to dump information
 comp = pcp.Compound.from_cid(select_CID)
 comp_dict = comp.to_dict() # Converting to a dictinoary
 # What Information look for ?
-options = ['molecular_weight' ,'molecular_formula',
-           'charge','atoms','elements','bonds']
+options = ['CO2eq_per_Kg', 'Catagory', 'Days_in_Pantry','Days_in_Fridge','Days_in_Freezer']
 show_me = st.radio('What you want to see?',options)
 
 st.info(comp_dict[show_me])
