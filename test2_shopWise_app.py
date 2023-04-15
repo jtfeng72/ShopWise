@@ -88,11 +88,19 @@ df = load_the_spreadsheet(ws_choice)
 select_Name = st.sidebar.selectbox('Food_List_Master',list(df['Name']))
 
 # Now we can use the pubchempy module to dump information
+comp = pcp.Compound.from_cid(select_CID)
+comp_dict = comp.to_dict() # Converting to a dictinoary
+# What Information look for ?
+options = ['CO2eq_per_Kg' ,'Catagory',
+           'Days_in_Pantry','Days_in_Fridge','Days_in_Freezer']
+show_me = st.radio('What you want to see?',options)
 
 
 # What Information look for ?
-
-
+st.info(comp_dict[show_me])
+name = comp_dict['Name']
+st.markdown(name)
+plot = st.checkbox('Canonical Smiles Plot')
 
 
 
