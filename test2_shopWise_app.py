@@ -80,7 +80,14 @@ what_sheets = worksheet_names()
 #st.sidebar.write(what_sheets)
 ws_choice = st.sidebar.radio('Available worksheets',what_sheets)
 
+# Create a select box 
+df = load_the_spreadsheet(ws_choice)
+
+# Show the availibility as selection
+select_Name = st.sidebar.selectbox('Food_List_Master',list(df['Name']))
+
 # Now we can use the pubchempy module to dump information
+
 
 # What Information look for ?
 
