@@ -194,7 +194,7 @@ with st.form('Inventory') as f:
 # which ensures that the columns of the table are resized to fit 
 # the width of the table when it is first displayed
 
-    response = AgGrid(df,
+    response = AgGrid(Pantry_df,
                     gridOptions = gridoptions, 
                     editable=True,
                     allow_unsafe_jscode = True, 
@@ -205,3 +205,8 @@ with st.form('Inventory') as f:
     st.form_submit_button("Confirm item(s) 🔒", type="primary")
 
 
+#  --- Visualize the AgGrid when submit button triggered ---            
+st.subheader("Updated Inventory")
+# Fetch the data from the AgGrid Table
+res = response['data']
+st.table(res) 
