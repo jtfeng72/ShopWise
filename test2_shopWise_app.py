@@ -20,6 +20,7 @@ from pysmiles import read_smiles
 import networkx as nx
 import matplotlib.pyplot as plt
 from datetime import datetime
+from pandas import DataFrame
 
 # ----- Page setup ----- #
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
