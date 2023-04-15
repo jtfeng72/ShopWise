@@ -109,6 +109,26 @@ if add :
         update_the_spreadsheet('Pantry',new_df)
 
 
+         
+
+#  --- Create a GridOptionsBuilder object from our DataFrame --- 
+gd = GridOptionsBuilder.from_dataframe(Pantry_df)
+
+# Configure the default column to be editable
+# sets the editable option to True for all columns
+gd.configure_default_column(editable=True)
+
+# Configure the '🔧' column to use our the cell renderer 
+# and onCellClicked function
+gd.configure_column( field = '🔧', 
+                     onCellClicked = js_add_row,
+                     cellRenderer = cellRenderer_addButton,
+                     lockPosition='left')
+
+gridoptions = gd.build()
+         
+         
+
 AgGrid(Pantry_df,
                     gridOptions = gridoptions, 
                     editable=True,
