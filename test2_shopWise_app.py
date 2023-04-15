@@ -46,6 +46,12 @@ spread = Spread(spreadsheetname,client = client)
 sh = client.open(spreadsheetname)
 worksheet_list = sh.worksheets()
 
+sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+sheet_name = "Pantry"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+Pantry_df = pd.read_csv(url, dtype=str).fillna("")
+
+
 # Functions 
 @st.cache()
 # Get our worksheet names
@@ -103,6 +109,9 @@ if add :
         update_the_spreadsheet('Pantry',new_df)
 
 
-
+st.subheader("Updated Inventory")
+# Fetch the data from the AgGrid Table
+res = response['data']
+st.table(res) 
 
 
