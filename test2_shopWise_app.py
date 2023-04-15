@@ -109,9 +109,17 @@ if add :
         update_the_spreadsheet('Pantry',new_df)
 
 
+AgGrid(Pantry_df,
+                    gridOptions = gridoptions, 
+                    editable=True,
+                    allow_unsafe_jscode = True, 
+                    theme = 'balham',
+                    height = 200,
+                    fit_columns_on_grid_load = True)
+
 st.subheader("Updated Pantry")
 # Fetch the data from the AgGrid Table
-res = response['Pantry_df']
+res = response['data']
 st.table(res) 
 
 
