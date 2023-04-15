@@ -76,11 +76,6 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
 
 st.header('Food Inventory')
 
-# Check whether the sheets exists and throw the sheets to the users
-
-
-# Throw the CIDS to the users to that they can access
-
 
 # Load data from worksheets
 what_sheets = worksheet_names()
@@ -109,7 +104,60 @@ if add :
         update_the_spreadsheet('Pantry',new_df)
 
 
-         
+#  --- JavaScript function to add a new row to the AgGrid table --- 
+js_add_row = JsCode ('''
+function(e) {
+ let api = e.api;
+ let rowPos = e.rowIndex + 1; 
+ api.applyTransaction({addIndex: rowPos, add: [{}]}) 
+};
+'''
+)
+
+#  --- JavaScript function to add a new row to the AgGrid table --- 
+js_add_row = JsCode ('''
+function(e) {
+ let api = e.api;
+ let rowPos = e.rowIndex + 1; 
+ api.applyTransaction({addIndex: rowPos, add: [{}]}) 
+};
+'''
+)
+
+#  --- Cell renderer for the '🔧' column to render a button --- 
+cellRenderer_addButton = JsCode('''
+    class BtnCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                <style>
+                .btn_add {
+                    background-color: #71DC87;
+                    border: 2px solid black;
+                    color: #D05732;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: bold;
+                    height: 2em;
+                    width: 10em;
+                    border-radius: 12px;
+                    padding: 0px;
+                }
+                </style>
+                <button id='click-button' 
+                    class="btn_add" 
+                    >&#x2193; Add</button>
+            </span>
+        `;
+        }
+        getGui() {
+            return this.eGui;
+        }
+    };
+    ''')         
 
 #  --- Create a GridOptionsBuilder object from our DataFrame --- 
 gd = GridOptionsBuilder.from_dataframe(Pantry_df)
