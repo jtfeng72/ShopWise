@@ -39,7 +39,7 @@ client = Client(scope=scope,creds=credentials)
 spreadsheetname = "ShopWise Food List"
 spread = Spread(spreadsheetname,client = client)
 
-st.write(spread.url)
+#st.write(spread.url)
 
 # --- Call the spreadshet --- #
 sh = client.open(spreadsheetname)
@@ -89,6 +89,7 @@ show_me = st.radio('What you want to see?',options)
 st.info(comp_dict[show_me])
 name = comp_dict['iupac_name']
 st.markdown(name)
+
 plot = st.checkbox('Canonical Smiles Plot')
 
 if plot:
@@ -107,12 +108,12 @@ if add :
     
     if confirm_input:
         now = datetime.now()
-        opt = {'Compound CID': [cid_entry],
+        opt = {'Name': [cid_entry],
               'Time_stamp' :  [now]} 
         opt_df = DataFrame(opt)
-        df = load_the_spreadsheet('Pending CID')
+        df = load_the_spreadsheet('Pantry')
         new_df = df.append(opt_df,ignore_index=True)
-        update_the_spreadsheet('Pending CID',new_df)
+        update_the_spreadsheet('Pantry',new_df)
 
 
 
