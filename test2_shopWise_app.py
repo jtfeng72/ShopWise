@@ -90,7 +90,7 @@ select_Name = st.sidebar.selectbox('Food_List_Master',list(df['Name']))
 
 add = st.sidebar.checkbox('Add New Item')
 if add :  
-    name_entry = st.sidebar.text_input('New CID')
+    name_entry = st.sidebar.text_input('New Item')
     confirm_input = st.sidebar.button('Confirm')
     
     if confirm_input:
@@ -100,7 +100,7 @@ if add :
         opt_df = DataFrame(opt)
         df = load_the_spreadsheet('Pantry')
         new_df = df.append(opt_df,ignore_index=True)
-        update_the_spreadsheet('PPantry',new_df)
+        update_the_spreadsheet('Pantry',new_df)
 
 
 
