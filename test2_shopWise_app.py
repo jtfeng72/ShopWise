@@ -109,9 +109,9 @@ if add :
         update_the_spreadsheet('Pantry',new_df)
 
 
-st.subheader("Updated Inventory")
+st.subheader("Updated Pantry")
 # Fetch the data from the AgGrid Table
-res = response['data']
+res = response['Pantry_df']
 st.table(res) 
 
 
