@@ -78,7 +78,7 @@ st.header('Food Inventory')
 # Load data from worksheets
 what_sheets = worksheet_names()
 #st.sidebar.write(what_sheets)
-ws.choice = st.sidebar.radio('Available worksheets',what_sheets)
+ws_choice = st.sidebar.radio('Available worksheets',what_sheets)
 
 # Now we can use the pubchempy module to dump information
 
