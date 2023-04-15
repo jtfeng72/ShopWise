@@ -176,18 +176,32 @@ gd.configure_column( field = '🔧',
 gridoptions = gd.build()
          
          
+#  --- AgGrid Table with Button Feature --- 
+# Streamlit Form helps from rerunning on every widget-click
+# Also helps in providing layout
 
-AgGrid(Pantry_df,
+with st.form('Inventory') as f:
+    st.header('Inventory List 🔖')
+    
+# Inside the form, we are displaying an AgGrid table using the AgGrid function. 
+# The allow_unsafe_jscode parameter is set to True, 
+# which allows us to use JavaScript code in the AgGrid configuration
+# The theme parameter is set to 'balham', 
+# which applies the Balham theme to the table
+# The height parameter is set to 200, 
+# which specifies the height of the table in pixels.
+# The fit_columns_on_grid_load parameter is set to True, 
+# which ensures that the columns of the table are resized to fit 
+# the width of the table when it is first displayed
+
+    response = AgGrid(df,
                     gridOptions = gridoptions, 
                     editable=True,
                     allow_unsafe_jscode = True, 
                     theme = 'balham',
                     height = 200,
                     fit_columns_on_grid_load = True)
-
-st.subheader("Updated Pantry")
-# Fetch the data from the AgGrid Table
-res = response['data']
-st.table(res) 
+    st.write(" *Note: Don't forget to hit enter ↩ on new entry.*")
+    st.form_submit_button("Confirm item(s) 🔒", type="primary")
 
 
