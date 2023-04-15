@@ -87,20 +87,21 @@ df = load_the_spreadsheet(ws_choice)
 # Show the availibility as selection
 select_Name = st.sidebar.selectbox('Food_List_Master',list(df['Name']))
 
-# Now we can use the pubchempy module to dump information
-comp = pcp.Compound.from_Food_List_Master(select_Name)
-comp_dict = comp.to_dict() # Converting to a dictinoary
-# What Information look for ?
-options = ['CO2eq_per_Kg' ,'Catagory',
-           'Days_in_Pantry','Days_in_Fridge','Days_in_Freezer']
-show_me = st.radio('What you want to see?',options)
 
+add = st.sidebar.checkbox('Add New Item')
+if add :  
+    name_entry = st.sidebar.text_input('New CID')
+    confirm_input = st.sidebar.button('Confirm')
+    
+    if confirm_input:
+        now = datetime.now()
+        opt = {'Name': [name_entry],
+              'Time_stamp' :  [now]} 
+        opt_df = DataFrame(opt)
+        df = load_the_spreadsheet('Pantry')
+        new_df = df.append(opt_df,ignore_index=True)
+        update_the_spreadsheet('PPantry',new_df)
 
-# What Information look for ?
-st.info(comp_dict[show_me])
-name = comp_dict['Name']
-st.markdown(name)
-plot = st.checkbox('Canonical Smiles Plot')
 
 
 
