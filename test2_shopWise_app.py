@@ -88,7 +88,7 @@ df = load_the_spreadsheet(ws_choice)
 select_Name = st.sidebar.selectbox('Food_List_Master',list(df['Name']))
 
 # Now we can use the pubchempy module to dump information
-comp = pcp.Compound.from_cid(select_Name)
+comp = pcp.Compound.from_Food_List_Master(select_Name)
 comp_dict = comp.to_dict() # Converting to a dictinoary
 # What Information look for ?
 options = ['CO2eq_per_Kg' ,'Catagory',
