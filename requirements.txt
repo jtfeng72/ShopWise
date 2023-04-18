@@ -7,5 +7,12 @@ deta
 google-cloud-storage==2.8.0
 fsspec
 gcsfs
-requests
 openpyxl
+requests
+gspread
+oauth2client
+gspread_pandas
+pysmiles 
+datetime 
+networkx 
+matplotlib
