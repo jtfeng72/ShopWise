@@ -6,7 +6,6 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
-from deta import Deta
 from PIL import Image
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
