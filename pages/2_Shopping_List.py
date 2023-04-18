@@ -66,3 +66,29 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
+# Load data from worksheets
+what_sheets = worksheet_names()
+#st.sidebar.write(what_sheets)
+ws_choice = st.sidebar.radio('Available worksheets',what_sheets)
+
+# Create a select box 
+df = load_the_spreadsheet(ws_choice)
+
+# Show the availibility as selection
+select_Name = st.sidebar.selectbox('Food_List_Master',list(df['Name']))
+
+
+add = st.sidebar.checkbox('Add New Item')
+if add :  
+    name_entry = st.sidebar.text_input('New Item')
+    confirm_input = st.sidebar.button('Confirm')
+    
+    if confirm_input:
+        now = datetime.now()
+        opt = {'Name': [name_entry],
+              'Time_stamp' :  [now]} 
+        opt_df = DataFrame(opt)
+        df = load_the_spreadsheet('Pantry')
+        new_df = df.append(opt_df,ignore_index=True)
+        update_the_spreadsheet('Pantry',new_df)
+
