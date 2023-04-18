@@ -14,3 +14,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from datetime import datetime
 from pandas import DataFrame
+
+st.set_page_config(page_title = "ShopWise app",
+                   page_icon= "list-task")
+st.title('Shopping list')
