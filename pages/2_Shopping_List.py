@@ -15,6 +15,20 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
 st.title('Shopping List')
 
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
+# --- Create a Google Authentication connection objectt --- #
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+
+credentials = service_account.Credentials.from_service_account_info(
+                st.secrets["gcp_service_account"], scopes = scope)
+client = Client(scope=scope,creds=credentials)
+spreadsheetname = "ShopWise Food List"
+spread = Spread(spreadsheetname,client = client)
+
+
 #---Connect to the Google Sheet---#
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 sheet_name = "Shopping_List2"
