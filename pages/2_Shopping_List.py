@@ -37,12 +37,6 @@ gd = GridOptionsBuilder.from_dataframe(df)
 # sets the editable option to True for all columns
 gd.configure_default_column(editable=True)
 
-# Configure the '🔧' column to use our the cell renderer 
-# and onCellClicked function
-gd.configure_column( field = '🔧', 
-                     onCellClicked = js_add_row,
-                     cellRenderer = cellRenderer_addButton,
-                     lockPosition='left')
 
 gridoptions = gd.build()
 
