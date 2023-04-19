@@ -50,7 +50,7 @@ def load_the_spreadsheet(spreadsheetname):
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['purchase_dt','Item','Weight']
+    col = ['Purchase_dt','Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
@@ -63,7 +63,7 @@ with st.form("form"):
     submitted = st.form_submit_button("Add Item")
     
     if submitted:
-        opt = { "purchase_dt": [purchase_dt], "item": [Item], "Weight": [weight]}
+        opt = { "Purchase_dt": [purchase_dt], "Item": [item], "Weight": [weight]}
         opt_df = pd.DataFrame(opt)
         df2 = load_the_spreadsheet(sheet_name)
         new_df = df2.append(opt_df,ignore_index=True)
