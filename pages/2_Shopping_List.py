@@ -23,11 +23,31 @@ df = pd.read_csv(url, dtype=str).fillna("")
 url= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
 food_Item_dd = pd.read_csv(url)
 
+# Get the sheet as dataframe
+def load_the_spreadsheet(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    df = DataFrame(worksheet.get_all_records())
+    return df
+
+# Update to Sheet
+def update_the_spreadsheet(spreadsheetname,dataframe):
+    col = ['Name','Time_stamp']
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    st.sidebar.info('Updated to GoogleSheet')
+
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
     item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
     weight = st.number_input("Weight(g)")
     submitted = st.form_submit_button("Add Item")
+    
+    if submitted:
+        opt = { "purchase_dt": purchase_dt, "item": item , "weight": weight}
+        opt_df = DataFrame(opt)
+        new_df = df.append(opt_df,ignore_index=True)
+        update_the_spreadsheet('Shopping_List2',new_df)
+        
+        
 
     
 #  --- Create a GridOptionsBuilder object from our DataFrame --- 
