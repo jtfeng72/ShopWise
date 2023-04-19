@@ -44,7 +44,7 @@ with st.form("form"):
     submitted = st.form_submit_button("Add Item")
     
     if submitted:
-        opt = { "purchase_dt": purchase_dt, "item": item , "weight": weight}
+        opt = { "purchase_dt": [purchase_dt], "item": [item], "weight": [weight]}
         opt_df = pd.DataFrame(opt)
         df2 = load_the_spreadsheet('Pantry')
         new_df = df2.append(opt_df,ignore_index=True)
