@@ -45,7 +45,7 @@ food_Item_dd = pd.read_csv(url2)
 # Get the sheet as dataframe
 def load_the_spreadsheet(spreadsheetname):
     worksheet = sh.worksheet(spreadsheetname)
-    df = DataFrame(worksheet.get_all_records())
+    df = pd.DataFrame(worksheet.get_all_records())
     return df
 
 # Update to Sheet
