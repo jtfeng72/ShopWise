@@ -2,6 +2,7 @@
 #---Import libraries---#
 from collections import namedtuple
 from google.oauth2 import service_account
+from gspread_pandas import Spread,Client
 from streamlit_option_menu import option_menu
 import altair as alt
 import math
