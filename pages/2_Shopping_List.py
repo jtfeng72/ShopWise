@@ -20,10 +20,12 @@ sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 sheet_name = "Shopping_List2"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str).fillna("")
+url= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
+food_Item_dd = pd.read_csv(url)
 
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
-    item = st.selectbox('Food_List_Master',list(df['Name'])) 
+    item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
     weight = st.number_input("Weight(g)")
     submitted = st.form_submit_button("Add Item")
 
