@@ -22,12 +22,8 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 df = pd.read_csv(url, dtype=str).fillna("")
 
 with st.form("form"):
-    #with col1:
     purchase_dt = st.date_input("Date of Purchase")
-    #with col2:
     item = st.selectbox('Food_List_Master',list(df['Name'])) 
-    #with col3:
     weight = st.number_input("Weight(g)")
-    #with col4:
     submitted = st.form_submit_button("Add Item")
 
