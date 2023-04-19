@@ -21,6 +21,8 @@ sheet_name = "Shopping_List2"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str).fillna("")
 url= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
+
+st.write(df)
 food_Item_dd = pd.read_csv(url)
 
 # Get the sheet as dataframe
