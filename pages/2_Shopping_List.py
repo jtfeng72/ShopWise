@@ -28,38 +28,3 @@ with st.form("form"):
     item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
     weight = st.number_input("Weight(g)")
     submitted = st.form_submit_button("Add Item")
-
-#  --- Create a GridOptionsBuilder object from our DataFrame --- 
-gd = GridOptionsBuilder.from_dataframe(df)
-
-# Configure the default column to be editable
-# sets the editable option to True for all columns
-gd.configure_default_column(editable=True)
-
-# Configure the '🔧' column to use our the cell renderer 
-# and onCellClicked function
-gd.configure_column( field = '🔧', 
-                     onCellClicked = js_add_row,
-                     cellRenderer = cellRenderer_addButton,
-                     lockPosition='left')
-
-gridoptions = gd.build()
-
-
-#  --- AgGrid Table with Button Feature --- 
-# Streamlit Form helps from rerunning on every widget-click
-# Also helps in providing layout
-
-with st.form('Shopping List') as f:
-    st.header('Shopping List 🔖')
-    
-
-    response = AgGrid(df,
-                    gridOptions = gridoptions, 
-                    editable=True,
-                    allow_unsafe_jscode = True, 
-                    theme = 'balham',
-                    height = 200,
-                    fit_columns_on_grid_load = True)
-    st.write(" *Note: Don't forget to hit enter ↩ on new entry.*")
-    st.form_submit_button("Confirm item(s) 🔒", type="primary")
