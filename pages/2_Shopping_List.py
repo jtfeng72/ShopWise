@@ -13,10 +13,7 @@ from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 
-#---Page setup---#
-st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
-st.title('Shopping List')
-
+# Disable certificate verification (Not necessary always)
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -30,17 +27,20 @@ client = Client(scope=scope,creds=credentials)
 spreadsheetname = "ShopWise Food List"
 spread = Spread(spreadsheetname,client = client)
 
+#st.write(spread.url)
 
-#---Connect to the Google Sheet---#
+# --- Call the spreadshet --- #
+sh = client.open(spreadsheetname)
+worksheet_list = sh.worksheets()
+
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 sheet_name = "Shopping_List2"
-sh = client.open(sheet_name)
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-df = pd.read_csv(url, dtype=str).fillna("")
-url= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
+url2= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
+sl_df = pd.read_csv(url, dtype=str).fillna("")
 
-st.write(df)
-food_Item_dd = pd.read_csv(url)
+st.write(sl_df)
+food_Item_dd = pd.read_csv(url2)
 
 # Get the sheet as dataframe
 def load_the_spreadsheet(spreadsheetname):
@@ -53,6 +53,8 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     col = ['Name','Time_stamp']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
+
+df = load_the_spreadsheet(sheet_name)
 
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
