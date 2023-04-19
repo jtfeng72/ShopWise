@@ -17,21 +17,18 @@ st.title('Welcome to ShopWise')
 
 #---Connect to the Google Sheet---#
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-sheet_name = "Food_List_Master"
+sheet_name = "Shopping_List2"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str).fillna("")
  
 # -----------------------------------------------------------------------------------------------------------
  
 # --- Build a user interface and search functionality --- #
-text_search = st.text_input("Search items by item description", value="")
-
-m1 = df["Name"].str.contains(text_search)
-m2 = df["Catagory"].str.contains(text_search)
-df_search = df[m1 | m2]
-
-if text_search:
-    st.write(df_search)
+with st.form("form"):
+  purchase_dt = st.date_input("Date of Purchase")
+  item = st.selectbox('Food_List_Master',list(df['Name'])) 
+  weight = st.number_input("Weight(g)")
+  submitted = st.form_submit_button("Add Item")
 
  
 #  --- JavaScript function to add a new row to the AgGrid table --- 
