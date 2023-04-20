@@ -40,9 +40,10 @@ s = gc.open("ShopWise Food List")
 # and worksheet
 w = s.worksheet("DropBox")
 
-values_list = w.col_values(3)
+values_list_Pantry_Loc = w.col_values(3)
+values_list_Pantry_Loc_ID = w.col_values(4)
 
-option = st.selectbox('Which pantry would you like to access?', (values_list))
+option = st.selectbox('Which pantry would you like to access?', (values_list_Pantry_Loc))
 st.write('You selected:', option)
 
 
@@ -65,10 +66,10 @@ if text_search:
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
-Pantry_ID = st.sidebar.multiselect(
-    "Select the Pantry_ID:",
-    options=values_list,
-    default=values_list
+Pantry_Loc = st.sidebar.multiselect(
+    "Select the Pantry Location:",
+    options=values_list_Pantry_Loc,
+    default=values_list_Pantry_Loc
 )
 
 Storage = st.sidebar.multiselect(
@@ -77,8 +78,15 @@ Storage = st.sidebar.multiselect(
     default=df["Storage"].unique(),
 )
 
+Pantry_Loc_ID = st.sidebar.multiselect(
+    "Select the Storage:",
+    options=values_list_Pantry_Loc_ID,
+    default=values_list_Pantry_Loc_ID,
+)
+
+
 df_selection = df.query(
-    "Pantry_ID == @Pantry_ID & Storage ==@Storage"
+    "Pantry_ID == @Pantry_Loc_ID & Storage ==@Storage"
 )
 
 st.dataframe(df_selection)
