@@ -75,8 +75,8 @@ with st.form("form"):
 js_del_row = JsCode ('''
 function(e) {
  let api = e.api;
- let rowPos = e.rowIndex + 1; 
- api.applyTransaction({addIndex: rowPos, delete: [{}]}) 
+ let sel = api.getSelectedRows(); 
+ api.applyTransaction({remove: sel}) 
 };
 '''
 )
