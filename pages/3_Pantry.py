@@ -41,7 +41,7 @@ gc = gspread.authorize(credentials)
 # open your spreadsheet
 s = gc.open('ShopWise Food List') 
 # and worksheet
-w = gs.get_worksheet(0)
+w = gs.get_worksheet('Dashbaord')
 # Finally get your value
 v = worksheet.cell(1, 2).value
 st.write(v)
