@@ -84,7 +84,18 @@ st.write('You selected:', pantry_option)
 
 
 
+# Update to Pantry cell
+def update_the_pantry_cell():
+    wks.update('D22', Pantry_option)
+    st.sidebar.info('Updated to GoogleSheet')
 
+with st.form("my_form"):
+    Pantry_values_list = w.col_values(1)
+    Pantry_option = st.selectbox('Which shopping list would you like to access?', (Pantry_values_list))
+    submitted = st.form_submit_button("Confirm")
+    
+    if submitted:
+        update_the_pantry_cell()
 
 
 
