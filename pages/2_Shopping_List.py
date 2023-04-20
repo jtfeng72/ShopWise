@@ -4,8 +4,6 @@ from collections import namedtuple
 from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
 from streamlit_option_menu import option_menu
-import altair as alt
-import math
 import pandas as pd
 import streamlit as st
 from st_aggrid import AgGrid, JsCode
@@ -79,6 +77,8 @@ function(e) {
 };
 '''
 )
+     const sel = gridOptions.api.getSelectedRows();
+     gridOptions.api.applyTransaction({remove: sel});
 
 #  --- Cell renderer for the '🔧' column to render a button --- 
 cellRenderer_addButton = JsCode('''
