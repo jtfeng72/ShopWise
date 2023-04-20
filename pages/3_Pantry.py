@@ -34,13 +34,12 @@ credentials = service_account.Credentials.from_service_account_info(
 
 gc = gspread.authorize(credentials)
 
+# --- Get List Value and make drop down --- #
 # open your spreadsheet
 s = gc.open("ShopWise Food List") 
 # and worksheet
 w = s.worksheet("DropBox")
 
-
-# --- Get List Value and make drop down --- #
 values_list = w.col_values(3)
 
 option = st.selectbox('Which pantry would you like to access?', (values_list))
