@@ -118,6 +118,10 @@ cellRenderer_addButton = JsCode('''
     
 gd.configure_selection(selection_mode= 'single')
 gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
+gd.configure_column( field = '🔧', 
+                     onCellClicked = js_del_row,
+                     cellRenderer = cellRenderer_addButton,
+                     lockPosition='left')
 gridOptions = gd.build()
 
 
@@ -134,5 +138,4 @@ grid_table = AgGrid(df,
           allow_unsafe_jscode=True,
           )
 st.info("Total Rows :" + str(len(grid_table['data'])))
-
 
