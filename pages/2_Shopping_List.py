@@ -6,7 +6,7 @@ from gspread_pandas import Spread,Client
 from streamlit_option_menu import option_menu
 import pandas as pd
 import streamlit as st
-from st_aggrid import AgGrid, JsCode
+from st_aggrid import AgGrid, GridUpdateMode, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.title('Shopping List')
@@ -134,3 +134,5 @@ grid_table = AgGrid(df,
           allow_unsafe_jscode=True,
           )
 st.info("Total Rows :" + str(len(grid_table['data'])))
+
+
