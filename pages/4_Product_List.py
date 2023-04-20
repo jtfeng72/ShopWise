@@ -21,7 +21,7 @@ df = pd.read_csv(url, dtype=str).fillna("")
 text_search = st.text_input("Search items by item description", value="")
 
 m1 = df["Name"].str.contains(text_search)
-m2 = df["Catagory"].str.contains(text_search)
+m2 = df["Category"].str.contains(text_search)
 df_search = df[m1 | m2]
 
 if text_search:
@@ -30,9 +30,9 @@ if text_search:
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
 Catagory = st.sidebar.multiselect(
-    "Select the Catagory:",
-    options=df["Catagory"].unique(),
-    default=df["Catagory"].unique()
+    "Select the Category:",
+    options=df["Category"].unique(),
+    default=df["Category"].unique()
 )
 
 Name = st.sidebar.multiselect(
@@ -42,7 +42,7 @@ Name = st.sidebar.multiselect(
 )
 
 df_selection = df.query(
-    "Catagory == @Catagory & Name ==@Name"
+    "Category == @Catagory & Name ==@Name"
 )
 
 st.dataframe(df_selection)
