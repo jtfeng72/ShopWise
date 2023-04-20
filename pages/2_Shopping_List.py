@@ -67,6 +67,9 @@ with st.form("form"):
         new_df = df2.append(opt_df,ignore_index=True)
         update_the_spreadsheet('Shopping_List2',new_df)
         
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=True,groupable=True)
 
 #  --- JavaScript function to add a new row to the AgGrid table ---         
 js_del_row = JsCode ('''
@@ -113,36 +116,21 @@ cellRenderer_addButton = JsCode('''
     };
     ''')         
     
-#  --- Create a GridOptionsBuilder object from our DataFrame --- 
-gd = GridOptionsBuilder.from_dataframe(df)
-
+gd.configure_selection(selection_mode= 'single')
 gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
-
-# Configure the '🔧' column to use our the cell renderer 
-# and onCellClicked function
-
-gd.configure_column( field = '🔧', 
-                     onCellClicked = js_del_row,
-                     cellRenderer = cellRenderer_addButton,
-                     lockPosition='left')
-
-gridoptions = gd.build()
-
-
-#  --- AgGrid Table with Button Feature --- 
-# Streamlit Form helps from rerunning on every widget-click
-# Also helps in providing layout
+gridOptions = gd.build()
 
 with st.form('Shopping List') as f:
     st.header('Shopping List 🔖')
-    
-
-    response = AgGrid(df,
-                    gridOptions = gridoptions, 
-                    editable=True,
-                    allow_unsafe_jscode = True, 
-                    theme = 'balham',
-                    height = 200,
-                    fit_columns_on_grid_load = True)
-    st.write(" *Note: Don't forget to hit enter ↩ on new entry.*")
-    st.form_submit_button("Confirm item(s) 🔒", type="primary")
+         grid_table = AgGrid(df, 
+                  gridOptions = gridOptions, 
+                  enable_enterprise_modules = True,
+                  fit_columns_on_grid_load = True,
+                  height=500,
+                  width='100%',
+                  # theme = "streamlit",
+                  update_mode = GridUpdateMode.SELECTION_CHANGED,
+                  reload_data = True,
+                  allow_unsafe_jscode=True,
+                  )
+st.info("Total Rows :" + str(len(grid_table['data'])))
