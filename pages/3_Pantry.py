@@ -15,7 +15,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from datetime import datetime
 from pandas import DataFrame
-from pprint import pprint
 from googleapiclient import discovery
 
 # ----- Page setup ----- #
