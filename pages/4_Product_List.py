@@ -29,7 +29,7 @@ if text_search:
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
-Catagory = st.sidebar.multiselect(
+Category = st.sidebar.multiselect(
     "Select the Category:",
     options=df["Category"].unique(),
     default=df["Category"].unique()
@@ -42,7 +42,7 @@ Name = st.sidebar.multiselect(
 )
 
 df_selection = df.query(
-    "Category == @Catagory & Name ==@Name"
+    "Category == @Category & Name ==@Name"
 )
 
 st.dataframe(df_selection)
