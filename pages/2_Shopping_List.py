@@ -39,7 +39,6 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 url2= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
 sl_df = pd.read_csv(url, dtype=str).fillna("")
 
-st.write(sl_df)
 food_Item_dd = pd.read_csv(url2)
 
 # Get the sheet as dataframe
@@ -73,7 +72,7 @@ with st.form("form"):
 
     
 #  --- Create a GridOptionsBuilder object from our DataFrame --- 
-gd = GridOptionsBuilder.from_dataframe(df)
+gd = GridOptionsBuilder.from_dataframe(new_df)
 
 # Configure the default column to be editable
 # sets the editable option to True for all columns
