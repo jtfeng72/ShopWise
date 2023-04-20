@@ -1,9 +1,9 @@
 #ShopWise.py
 #---Import libraries---#
-from collections import namedtuple
+#from collections import namedtuple
 from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
-from streamlit_option_menu import option_menu
+#from streamlit_option_menu import option_menu
 import pandas as pd
 import streamlit as st
 from st_aggrid import AgGrid, GridUpdateMode, JsCode
@@ -52,6 +52,7 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
+#Display the latest update
 df = load_the_spreadsheet(sheet_name)
 
 with st.form("form"):
