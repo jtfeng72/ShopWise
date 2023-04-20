@@ -65,13 +65,13 @@ if text_search:
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
-Catagory = st.sidebar.multiselect(
+Pantry_ID = st.sidebar.multiselect(
     "Select the Pantry_ID:",
     options=df["Pantry_ID"].unique(),
     default=df["Pantry_ID"].unique()
 )
 
-Name = st.sidebar.multiselect(
+Storage = st.sidebar.multiselect(
     "Select the Storage:",
     options=df["Storage"].unique(),
     default=df["Storage"].unique(),
