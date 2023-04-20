@@ -51,6 +51,12 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 db_df = pd.read_csv(url, dtype=str).fillna("")
 
 
+gc = gspread.authorize(credentials)
+wks = gc.open('ShopWise Food List').Dashboard
+
+
+
+
 # Functions 
 @st.cache()
 # Get our worksheet names
@@ -73,5 +79,6 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     st.sidebar.info('Updated to GoogleSheet')
 
 
-st.header('Food Inventory')
+
+
 
