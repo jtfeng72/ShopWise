@@ -61,10 +61,6 @@ s = gc.open("ShopWise Food List")
 w = s.worksheet("DropBox")
 
 
-#Shopping
-shopping_values_list = w.col_values(1)
-shopping_option = st.selectbox('Which shopping list would you like to access?', (shopping_values_list))
-
 # Update to Shopping cell
 def update_the_shopping_cell():
     wks.update('D7', shopping_option)
@@ -72,24 +68,19 @@ def update_the_shopping_cell():
 
 with st.form("form"):
     shopping_values_list = w.col_values(1)
-    shopping_option = st.selectbox('Which pantry would you like to access?', (shopping_values_list))
+    shopping_option = st.selectbox('Which shopping list would you like to access?', (shopping_values_list))
     submitted = st.form_submit_button("Confirm")
     
     if submitted:
         update_the_shopping_cell()
 
 
-
+"""
 #Pantry
 pantry_values_list = w.col_values(3)
 pantry_option = st.selectbox('Which pantry would you like to access?', (pantry_values_list))
 st.write('You selected:', pantry_option)
-
-
-
-
-
-
+"""
 
 
 
