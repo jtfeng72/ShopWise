@@ -38,7 +38,7 @@ credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
 
 gc = gspread.authorize(credentials)
-wks = gc.open("ShopWise Food List").Dashboard
+wks = gc.open("ShopWise Food List").sheet1
 
 
 # Functions 
