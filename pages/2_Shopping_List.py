@@ -12,6 +12,8 @@ from PIL import Image
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
+st.title('Shopping List')
+st.text('Add items below')
 
 # Disable certificate verification (Not necessary always)
 import ssl
