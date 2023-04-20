@@ -32,7 +32,6 @@ scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
-
 gc = gspread.authorize(credentials)
 
 # --- Get List Value and make drop down --- #
@@ -46,4 +45,41 @@ values_list = w.col_values(3)
 option = st.selectbox('Which pantry would you like to access?', (values_list))
 st.write('You selected:', option)
 
+
+# ----  Connect to the Google Sheet ---- 
+sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+sheet_name = "Pantry_Loc_Line"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+df = pd.read_csv(url, dtype=str).fillna("")
+
+
+# --- Build a user interface and search functionality --- #
+text_search = st.text_input("Search items by item description", value="")
+
+m1 = df["Pantry_ID"].str.contains(text_search)
+m2 = df["Storage"].str.contains(text_search)
+df_search = df[m1 | m2]
+
+if text_search:
+    st.write(df_search)
+
+# ---- SIDEBAR ----
+st.sidebar.header("Please Filter Here:")
+Catagory = st.sidebar.multiselect(
+    "Select the Pantry_ID:",
+    options=df["Pantry_ID"].unique(),
+    default=df["Pantry_ID"].unique()
+)
+
+Name = st.sidebar.multiselect(
+    "Select the Storage:",
+    options=df["Storage"].unique(),
+    default=df["Storage"].unique(),
+)
+
+df_selection = df.query(
+    "Pantry_ID == @Pantry_ID & Storage ==@Storage"
+)
+
+st.dataframe(df_selection)
 
