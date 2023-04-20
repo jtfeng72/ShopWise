@@ -8,12 +8,11 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
-from PIL import Image
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.title('Shopping List')
-st.text('Add items below')
+st.header('Add items below')
 
 # Disable certificate verification (Not necessary always)
 import ssl
