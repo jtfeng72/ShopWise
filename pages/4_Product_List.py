@@ -42,7 +42,7 @@ Name = st.sidebar.multiselect(
 )
 
 df_selection = df.query(
-    "Category == @Category & Name ==@Name"
+    "Category == @Catagory & Name ==@Name"
 )
 
 st.dataframe(df_selection)
