@@ -30,30 +30,15 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # --- Create a Google Authentication connection objectt --- #
+
+---------------------------------------------------------
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
-
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
-client = Client(scope=scope,creds=credentials)
-spreadsheetname = "ShopWise Food List"
-spread = Spread(spreadsheetname,client = client)
 
-#st.write(spread.url)
-
-# --- Call the spreadshet --- #
-sh = client.open(spreadsheetname)
-worksheet_list = sh.worksheets()
-
-sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-sheet_name = "Dashboard"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-db_df = pd.read_csv(url, dtype=str).fillna("")
-
-
-wks = spread.open('ShopWise Food List').sheet_name
-
-
+gc = gspread.authorize(credentials)
+wks = gc.open('ShopWise Food List').Dashboard
 
 
 # Functions 
