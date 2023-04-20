@@ -41,6 +41,38 @@ gc = gspread.authorize(credentials)
 wks = gc.open("ShopWise Food List").sheet1
 wks.update('C5', "Andy Sun")
 
+
+
+# Update to Sheet
+def update_the_cell():
+    wks.update('C5', "Andy Sun")
+    st.sidebar.info('Updated to GoogleSheet')
+
+with st.form("form"):
+    username = st.text_input("Please enter your user name.")
+    submitted = st.form_submit_button("Confirm")
+    
+    if submitted:
+        update_the_cell()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Functions 
 @st.cache()
 # Get our worksheet names
