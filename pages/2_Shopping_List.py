@@ -72,7 +72,7 @@ with st.form("form"):
 
     
 #  --- Create a GridOptionsBuilder object from our DataFrame --- 
-gd = GridOptionsBuilder.from_dataframe(new_df)
+gd = GridOptionsBuilder.from_dataframe(df)
 
 # Configure the default column to be editable
 # sets the editable option to True for all columns
