@@ -118,8 +118,11 @@ cellRenderer_addButton = JsCode('''
 #  --- Create a GridOptionsBuilder object from our DataFrame --- 
 gd = GridOptionsBuilder.from_dataframe(df)
 
+gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
+
 # Configure the '🔧' column to use our the cell renderer 
 # and onCellClicked function
+
 gd.configure_column( field = '🔧', 
                      onCellClicked = js_del_row,
                      cellRenderer = cellRenderer_addButton,
