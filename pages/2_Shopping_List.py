@@ -77,8 +77,6 @@ function(e) {
 };
 '''
 )
-     const sel = gridOptions.api.getSelectedRows();
-     gridOptions.api.applyTransaction({remove: sel});
 
 #  --- Cell renderer for the '🔧' column to render a button --- 
 cellRenderer_addButton = JsCode('''
