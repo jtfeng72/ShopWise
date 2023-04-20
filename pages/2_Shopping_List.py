@@ -128,7 +128,7 @@ gridOptions = gd.build()
 
 
 st.header('Shopping List 🔖')
-grid_table = AgGrid(new_df, 
+grid_table = AgGrid(df, 
           gridOptions = gridOptions, 
           enable_enterprise_modules = True,
           fit_columns_on_grid_load = True,
