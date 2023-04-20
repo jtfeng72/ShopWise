@@ -43,5 +43,5 @@ s = gc.open("ShopWise Food List")
 # and worksheet
 w = s.worksheet("DropBox")
 # Finally get your value
-v = worksheet.cell(1, 2).value
-st.write(v)
+values_list = worksheet.col_values(1)
+st.write(values_list)
