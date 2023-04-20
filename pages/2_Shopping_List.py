@@ -66,6 +66,9 @@ with st.form("form"):
         df2 = load_the_spreadsheet(sheet_name)
         new_df = df2.append(opt_df,ignore_index=True)
         update_the_spreadsheet('Shopping_List2',new_df)
+
+
+df = load_the_spreadsheet(sheet_name)
         
 gd = GridOptionsBuilder.from_dataframe(df)
 gd.configure_pagination(enabled=True)
