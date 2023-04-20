@@ -117,9 +117,11 @@ cellRenderer_addButton = JsCode('''
     ''')         
     
 gd.configure_selection(selection_mode= 'single')
-gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
+#gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
 gd.configure_column( field = '🔧', 
                      onCellClicked = js_del_row,
+                     onRowSelected = js_del_row,
+                     pre_selected_rows=[],
                      cellRenderer = cellRenderer_addButton,
                      lockPosition='left')
 gridOptions = gd.build()
