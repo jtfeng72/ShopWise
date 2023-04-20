@@ -39,13 +39,11 @@ credentials = service_account.Credentials.from_service_account_info(
 
 gc = gspread.authorize(credentials)
 wks = gc.open("ShopWise Food List").sheet1
-wks.update('C5', "Andy Sun")
-
 
 
 # Update to Sheet
 def update_the_cell():
-    wks.update('C5', "Andy Sun")
+    wks.update('C5', username)
     st.sidebar.info('Updated to GoogleSheet')
 
 with st.form("form"):
