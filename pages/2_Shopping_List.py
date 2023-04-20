@@ -89,9 +89,9 @@ cellRenderer_addButton = JsCode('''
             <span>
                 <style>
                 .btn_add {
-                    background-color: #71DC87;
+                    background-color: red;
                     border: 2px solid black;
-                    color: #D05732;
+                    color: white;
                     text-align: center;
                     display: inline-block;
                     font-size: 12px;
