@@ -63,8 +63,7 @@ w = s.worksheet("DropBox")
 
 #Shopping
 shopping_values_list = w.col_values(1)
-shopping_option = st.selectbox('Which pantry would you like to access?', (shopping_values_list))
-st.write('You selected:', pantry_option)
+shopping_option = st.selectbox('Which shopping list would you like to access?', (shopping_values_list))
 
 # Update to Shopping cell
 def update_the_shopping_cell():
