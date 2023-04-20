@@ -118,10 +118,6 @@ cellRenderer_addButton = JsCode('''
 #  --- Create a GridOptionsBuilder object from our DataFrame --- 
 gd = GridOptionsBuilder.from_dataframe(df)
 
-# Configure the default column to be editable
-# sets the editable option to True for all columns
-gd.configure_default_column(editable=True)
-
 # Configure the '🔧' column to use our the cell renderer 
 # and onCellClicked function
 gd.configure_column( field = '🔧', 
