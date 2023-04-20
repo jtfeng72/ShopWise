@@ -68,8 +68,51 @@ with st.form("form"):
         new_df = df2.append(opt_df,ignore_index=True)
         update_the_spreadsheet('Shopping_List2',new_df)
         
-        
 
+#  --- JavaScript function to add a new row to the AgGrid table ---         
+js_del_row = JsCode ('''
+function(e) {
+ let api = e.api;
+ let rowPos = e.rowIndex + 1; 
+ api.applyTransaction({addIndex: rowPos, delete: [{}]}) 
+};
+'''
+)
+
+#  --- Cell renderer for the '🔧' column to render a button --- 
+cellRenderer_addButton = JsCode('''
+    class BtnCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                <style>
+                .btn_add {
+                    background-color: #71DC87;
+                    border: 2px solid black;
+                    color: #D05732;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: bold;
+                    height: 2em;
+                    width: 10em;
+                    border-radius: 12px;
+                    padding: 0px;
+                }
+                </style>
+                <button id='click-button' 
+                    class="btn_add" 
+                    >&#x2193; Add</button>
+            </span>
+        `;
+        }
+        getGui() {
+            return this.eGui;
+        }
+    };
+    ''')         
     
 #  --- Create a GridOptionsBuilder object from our DataFrame --- 
 gd = GridOptionsBuilder.from_dataframe(df)
@@ -78,6 +121,12 @@ gd = GridOptionsBuilder.from_dataframe(df)
 # sets the editable option to True for all columns
 gd.configure_default_column(editable=True)
 
+# Configure the '🔧' column to use our the cell renderer 
+# and onCellClicked function
+gd.configure_column( field = '🔧', 
+                     onCellClicked = js_del_row,
+                     cellRenderer = cellRenderer_addButton,
+                     lockPosition='left')
 
 gridoptions = gd.build()
 
