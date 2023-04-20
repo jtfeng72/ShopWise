@@ -51,8 +51,7 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sh
 db_df = pd.read_csv(url, dtype=str).fillna("")
 
 
-gc = gspread.authorize(credentials)
-wks = gc.open('ShopWise Food List').Dashboard
+wks = spread.open('ShopWise Food List').sheet_name
 
 
 
