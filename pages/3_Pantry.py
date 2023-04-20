@@ -21,3 +21,5 @@ from pandas import DataFrame
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
 st.title('Welcome to Pantry')
 
+option = st.selectbox('How would you like to be contacted?', ('Email', 'Home phone', 'Mobile phone'))
+st.write('You selected:', option)
