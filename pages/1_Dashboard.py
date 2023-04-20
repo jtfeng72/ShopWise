@@ -31,7 +31,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 # --- Create a Google Authentication connection objectt --- #
 
----------------------------------------------------------
+#---------------------------------------------------------
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 credentials = service_account.Credentials.from_service_account_info(
