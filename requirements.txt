@@ -15,3 +15,5 @@ datetime
 networkx 
 matplotlib
 streamlit_option_menu
+pprint
+googleapiclient
