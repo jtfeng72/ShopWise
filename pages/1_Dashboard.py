@@ -82,7 +82,7 @@ def update_the_pantry_cell():
 
 with st.form("my_form_1"):
     Pantry_values_list = w.col_values(3)
-    Pantry_option = st.selectbox('Which shopping list would you like to access?', (Pantry_values_list))
+    Pantry_option = st.selectbox('Which pantry location would you like to access?', (Pantry_values_list))
     submitted = st.form_submit_button("Confirm")
     
     if submitted:
