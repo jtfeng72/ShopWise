@@ -41,8 +41,8 @@ gc = gspread.authorize(credentials)
 wks = gc.open("ShopWise Food List").sheet1
 
 
-# Update to Sheet
-def update_the_cell():
+# Update to user cell
+def update_the_user_cell():
     wks.update('C5', username)
     st.sidebar.info('Updated to GoogleSheet')
 
@@ -51,11 +51,40 @@ with st.form("form"):
     submitted = st.form_submit_button("Confirm")
     
     if submitted:
-        update_the_cell()
+        update_the_user_cell()
+
+
+# --- Get List Value and make drop down --- #
+# open your spreadsheet
+s = gc.open("ShopWise Food List") 
+# and worksheet
+w = s.worksheet("DropBox")
+
+
+#Shopping
+shopping_values_list = w.col_values(1)
+shopping_option = st.selectbox('Which pantry would you like to access?', (shopping_values_list))
+st.write('You selected:', pantry_option)
+
+# Update to Shopping cell
+def update_the_shopping_cell():
+    wks.update('D7', shopping_option)
+    st.sidebar.info('Updated to GoogleSheet')
+
+with st.form("form"):
+    shopping_values_list = w.col_values(1)
+    shopping_option = st.selectbox('Which pantry would you like to access?', (shopping_values_list))
+    submitted = st.form_submit_button("Confirm")
+    
+    if submitted:
+        update_the_shopping_cell()
 
 
 
-
+#Pantry
+pantry_values_list = w.col_values(3)
+pantry_option = st.selectbox('Which pantry would you like to access?', (pantry_values_list))
+st.write('You selected:', pantry_option)
 
 
 
