@@ -21,10 +21,6 @@ from pandas import DataFrame
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
 st.title('Welcome to Pantry')
 
-option = st.selectbox('Which pantry would you like to access?', ('Email', 'Home phone', 'Mobile phone'))
-st.write('You selected:', option)
-
-
 # ----- Disable certificate verification (Not necessary always) ----- #
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -42,6 +38,10 @@ gc = gspread.authorize(credentials)
 s = gc.open("ShopWise Food List") 
 # and worksheet
 w = s.worksheet("DropBox")
-# Finally get your value
-values_list = w.col_values(1)
-st.write(values_list)
+
+
+# --- Get List Value and make drop down --- #
+values_list = w.col_values(3)
+
+option = st.selectbox('Which pantry would you like to access?', (values_list))
+st.write('You selected:', option)
