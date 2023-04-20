@@ -37,25 +37,7 @@ credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
 
 gc = gspread.authorize(credentials)
-wks = gc.open("ShopWise Food List").sheet1
+wks = gc.open("ShopWise Food List").sheet11
 
-
-
-service = discovery.build('sheets', 'v4', credentials=credentials)
-
-# The ID of the spreadsheet to retrieve data from.
-spreadsheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"  # TODO: Update placeholder value.
-
-# The A1 notation of the values to retrieve.
-range_ = 'C2:C23'  # TODO: Update placeholder value.
-
-# How values should be represented in the output.
-# The default render option is ValueRenderOption.FORMATTED_VALUE.
-value_render_option = ''  # TODO: Update placeholder value.
-
-
-request = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_, valueRenderOption=value_render_option)
-response = request.execute()
-
-# TODO: Change code below to process the `response` dict:
-st.write(response)
+v = worksheet.cell(1, 2).value
+st.write(v)
