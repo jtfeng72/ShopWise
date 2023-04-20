@@ -37,7 +37,11 @@ credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
 
 gc = gspread.authorize(credentials)
-wks = gc.open("ShopWise Food List").sheet11
 
+# open your spreadsheet
+s = gc.open('ShopWise Food List') 
+# and worksheet
+w = gs.get_worksheet(11)
+# Finally get your value
 v = worksheet.cell(1, 2).value
 st.write(v)
