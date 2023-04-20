@@ -39,10 +39,9 @@ credentials = service_account.Credentials.from_service_account_info(
 gc = gspread.authorize(credentials)
 
 # open your spreadsheet
-s = gc.open('ShopWise Food List') 
+s = gc.open("ShopWise Food List") 
 # and worksheet
-
-w = gs.worksheet("DropBox")
+w = s.worksheet("DropBox")
 # Finally get your value
 v = worksheet.cell(1, 2).value
 st.write(v)
