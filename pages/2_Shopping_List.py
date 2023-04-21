@@ -65,20 +65,20 @@ if text_search:
     st.write(df_search) #
 
 # ---- SIDEBAR ----
-st.sidebar.header("Please Filter Here:")
+st.sidebar.header("Please Filter Here:") #fillter table grocery store list name
 s_list = st.sidebar.multiselect(
     "Select the List:",
     options=sl_name,
     default=sl_name
 )
 
-prod = st.sidebar.multiselect(
+prod = st.sidebar.multiselect( #fillter table on proeduct ID
     "Select Product:",
     options=df["Product_ID"].unique(),
     default=df["Product_ID"].unique(),
 )
 
-s_list_ID = st.sidebar.multiselect(
+s_list_ID = st.sidebar.multiselect( #fillter table grocery store list ID
     "Select List:",
     options=sl_ID,
     default=sl_ID,
