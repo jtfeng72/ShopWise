@@ -86,7 +86,7 @@ s_list_ID = st.sidebar.multiselect(
 
 
 df_selection = df.query(
-    "sl_ID == @s_list_ID & Product_ID ==@prod"
+    "List_ID == @s_list_ID & Product_ID ==@prod"
 )
 
 st.dataframe(df_selection)
