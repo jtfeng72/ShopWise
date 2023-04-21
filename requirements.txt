@@ -10,7 +10,6 @@ requests
 gspread
 oauth2client
 gspread_pandas
-pysmiles 
 datetime 
 networkx 
 matplotlib
