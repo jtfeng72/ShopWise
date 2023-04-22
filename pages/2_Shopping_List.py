@@ -49,10 +49,13 @@ st.write('You selected:', option)
 
 # ----  Connect to the Google Sheet ---- 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-sheet_name = "Shopping_List_Line"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-df = pd.read_csv(url, dtype=str).fillna("")
 
+#connection to the Shopping list table
+sl_line_sheet = "Shopping_List_Line"
+sl_line_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sl_line_sheet}"
+sl_line_df = pd.read_csv(sl_line_url, dtype=str).fillna("")
+
+#get all avaliable food items from master list for drop down features
 fd_list_sheet = "Food_List_Master"
 fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
 fd_list_df = pd.read_csv(fd_list_url, dtype=str).fillna("")
@@ -61,9 +64,9 @@ fd_list_df = pd.read_csv(fd_list_url, dtype=str).fillna("")
 # --- Build a user interface and search functionality --- #
 text_search = st.text_input("Search items by item description", value="")
 
-m1 = df["List_ID"].str.contains(text_search)
-m2 = df["Product_ID"].str.contains(text_search)
-df_search = df[m1 | m2] # filter column to have only List_ID and Product_ID
+m1 = sl_line_df["List_ID"].str.contains(text_search)
+m2 = sl_line_df["Product_ID"].str.contains(text_search)
+df_search = sl_line_df[m1 | m2] # filter column to have only List_ID and Product_ID
 
 if text_search:
     st.write(df_search) #
@@ -85,8 +88,8 @@ s_list = st.sidebar.multiselect(
 
 prod = st.sidebar.multiselect( #fillter table on proeduct ID
     "Select Product:",
-    options=df["Product_ID"].unique(),
-    default=df["Product_ID"].unique(),
+    options=sl_line_df["Product_ID"].unique(),
+    default=sl_line_df["Product_ID"].unique(),
 )
 
 s_list_ID = st.sidebar.multiselect( #fillter table grocery store list ID
@@ -96,7 +99,7 @@ s_list_ID = st.sidebar.multiselect( #fillter table grocery store list ID
 )
 
 
-df_selection = df.query(
+df_selection = sl_line_df.query(
     "List_ID == @s_list_ID & Product_ID ==@prod"
 )
 
