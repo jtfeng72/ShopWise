@@ -126,7 +126,7 @@ gd.configure_column( field = '🔧',
 gridOptions = gd.build()
 
 
-with st.form(key='form'):
+with st.form('Shopping List') as f:
          st.header('Shopping List 🔖')
          grid_table = AgGrid(df, 
                    gridOptions = gridOptions, 
@@ -136,7 +136,7 @@ with st.form(key='form'):
                    )
          st.info("Total Rows :" + str(len(grid_table['data'])))
          
-         submitted = st.form_submit_button("Confirm Shopping List")
+         st.form_submit_button("Confirm item(s) 🔒", type="primary")
     
 if submitted:
          update_the_spreadsheet('Shopping_List2',grid_table["data"]) # update google sheet
