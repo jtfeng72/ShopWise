@@ -70,7 +70,7 @@ if text_search:
 
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
-    item = st.selectbox((fd_list_df['Name'])) 
+    item = st.selectbox(('Food Items', fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
     submitted = st.form_submit_button("Add Item")
     
