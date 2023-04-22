@@ -77,7 +77,7 @@ with st.form("form"):
     weight = st.number_input("Weight(g)")
     submitted = st.form_submit_button("Add Item")
 
-user_input = pd.DataFrame()     
+user_input = pd.DataFrame(columns = ['purchase_dt', 'item', 'weight'])     
 if submitted:
          user_input.append({"purchase_dt": purchase_dt, "item": item, "weight": weight},ignore_index=True)#ignore_idex is to ellimiate error appending dictionary to df
          
