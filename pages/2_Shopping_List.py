@@ -76,6 +76,12 @@ with st.form("form"):
     item = st.selectbox('Food Items', list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
     submitted = st.form_submit_button("Add Item")
+
+user_input = {}     
+if submitted:
+         user_input.put({"purchase_dt": name, "item": item, "weight": weight})
+         
+st.write(user_input)
     
 
 # ---- SIDEBAR ----
