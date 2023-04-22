@@ -126,7 +126,7 @@ gd.configure_column( field = '🔧',
 gridOptions = gd.build()
 
 
-with st.form("form"):
+with st.form(key='form'):
          st.header('Shopping List 🔖')
          grid_table = AgGrid(df, 
                    gridOptions = gridOptions, 
