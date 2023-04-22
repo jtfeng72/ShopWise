@@ -64,6 +64,13 @@ df_search = df[m1 | m2] # filter column to have only List_ID and Product_ID
 if text_search:
     st.write(df_search) #
 
+with st.form("form"):
+    purchase_dt = st.date_input("Date of Purchase")
+    item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
+    weight = st.number_input("Weight(g)")
+    submitted = st.form_submit_button("Add Item")
+    
+
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:") #fillter table grocery store list name
 s_list = st.sidebar.multiselect(
