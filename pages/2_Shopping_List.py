@@ -129,13 +129,8 @@ gridOptions = gd.build()
 st.header('Shopping List 🔖')
 grid_table = AgGrid(df, 
           gridOptions = gridOptions, 
-          #enable_enterprise_modules = True,
           fit_columns_on_grid_load = True,
-          #height=500,
-          #width='100%',
-          # theme = "streamlit",
-          update_mode = GridUpdateMode.SELECTION_CHANGED,
-          #reload_data = True,
+          theme = "streamlit",
           allow_unsafe_jscode=True,
           )
 st.info("Total Rows :" + str(len(grid_table['data'])))
