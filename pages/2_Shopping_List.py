@@ -79,8 +79,7 @@ with st.form("form"):
 
 user_input = pd.DataFrame(columns = ['purchase_dt', 'item', 'weight'])     
 if submitted:
-         user_input.append({"purchase_dt": purchase_dt, "item": item, "weight": weight},ignore_index=True)#ignore_idex is to ellimiate error appending dictionary to df
-         
+         user_input.loc[len(user_input.index)] = [purchase_dt, item, weight] 
 st.write(user_input)
     
 
