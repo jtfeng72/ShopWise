@@ -79,7 +79,7 @@ with st.form("form"):
 
 user_input = pd.DataFrame()     
 if submitted:
-         user_input.append({"purchase_dt": purchase_dt, "item": item, "weight": weight})
+         user_input.append({"purchase_dt": purchase_dt, "item": item, "weight": weight},ignore_index=True)#ignore_idex is to ellimiate error appending dictionary to df
          
 st.write(user_input)
     
