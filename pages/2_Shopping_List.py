@@ -53,6 +53,10 @@ sheet_name = "Shopping_List_Line"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str).fillna("")
 
+fd_list_sheet = "Food_List_Master"
+fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
+fd_list_df = pd.read_csv(fd_list_url, dtype=str).fillna("")
+
 
 # --- Build a user interface and search functionality --- #
 text_search = st.text_input("Search items by item description", value="")
@@ -66,7 +70,7 @@ if text_search:
 
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
-    item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
+    item = st.selectbox((fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
     submitted = st.form_submit_button("Add Item")
     
