@@ -119,10 +119,9 @@ cellRenderer_addButton = JsCode('''
 gd.configure_selection(selection_mode= 'single')
 #gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
 gd.configure_column( field = '🔧', 
-                     onCellClicked = js_del_row,
-                     #onRowSelected = js_del_row,
+                     onCellClicked = js_del_row,      #adding delete function into the button
                      pre_selected_rows=[],
-                     cellRenderer = cellRenderer_addButton,
+                     cellRenderer = cellRenderer_addButton, #adding the button desgin
                      lockPosition='left')
 gridOptions = gd.build()
 
@@ -130,13 +129,13 @@ gridOptions = gd.build()
 st.header('Shopping List 🔖')
 grid_table = AgGrid(df, 
           gridOptions = gridOptions, 
-          enable_enterprise_modules = True,
+          #enable_enterprise_modules = True,
           fit_columns_on_grid_load = True,
-          height=500,
-          width='100%',
+          #height=500,
+          #width='100%',
           # theme = "streamlit",
           update_mode = GridUpdateMode.SELECTION_CHANGED,
-          reload_data = True,
+          #reload_data = True,
           allow_unsafe_jscode=True,
           )
 st.info("Total Rows :" + str(len(grid_table['data'])))
