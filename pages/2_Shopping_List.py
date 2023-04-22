@@ -77,9 +77,9 @@ with st.form("form"):
     weight = st.number_input("Weight(g)")
     submitted = st.form_submit_button("Add Item")
 
-user_input = {}     
+user_input = pd.DataFrame()     
 if submitted:
-         user_input.put({"purchase_dt": name, "item": item, "weight": weight})
+         user_input.append({"purchase_dt": name, "item": item, "weight": weight})
          
 st.write(user_input)
     
