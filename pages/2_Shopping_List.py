@@ -126,11 +126,17 @@ gd.configure_column( field = '🔧',
 gridOptions = gd.build()
 
 
-st.header('Shopping List 🔖')
-grid_table = AgGrid(df, 
-          gridOptions = gridOptions, 
-          fit_columns_on_grid_load = True,
-          theme = "streamlit",
-          allow_unsafe_jscode=True,
-          )
-st.info("Total Rows :" + str(len(grid_table['data'])))
+with st.form("form"):
+         st.header('Shopping List 🔖')
+         grid_table = AgGrid(df, 
+                   gridOptions = gridOptions, 
+                   fit_columns_on_grid_load = True,
+                   theme = "streamlit",
+                   allow_unsafe_jscode=True,
+                   )
+         st.info("Total Rows :" + str(len(grid_table['data'])))
+         
+         st.form_submit_button("Confirm Shopping List")
+    
+if submitted:
+         update_the_spreadsheet('Shopping_List2',grid_table["data"]) # update google sheet
