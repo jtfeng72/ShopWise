@@ -103,8 +103,7 @@ gridoptions = gd.build()
 grid_table = AgGrid(df_selection, gridOptions = gridoptions,
                    update_mode = GridUpdateMode.SELECTION_CHANGED,
                    height = 500,
-                   allow_unsafe_jscode = True,
-                   theme = 'light')
+                   allow_unsafe_jscode = True)
 
 sel_row = grid_table["selected_rows"]
 st.write(sel_row)
