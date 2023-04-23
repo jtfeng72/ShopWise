@@ -23,5 +23,4 @@ with st.form("form"):
             w.update_cell(length_row+1, 1, user_input_df['purchase_dt'][ind])
             w.update_cell(length_row+1, 2, str(user_input_df['item'][ind]))
             w.update_cell(length_row+1, 3, str(user_input_df['weight'][ind]))
-
-         st.success("Updated to Database ", icon="✅")      
+      
