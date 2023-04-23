@@ -146,6 +146,8 @@ with st.form('Shopping List') as f:
          
          submitted = st.form_submit_button("Confirm item(s) 🔒")
          
-         df_final= pd.DataFrame(grid_table["data"])
+         df_final = grid_table["data"].to_dict('dict')
+         st.write(df_final)
+         
          if submitted:
                   update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
