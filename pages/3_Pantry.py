@@ -6,7 +6,7 @@ import gcsfs
 import pandas as pd
 from io import StringIO 
 import requests
-from st_aggrid import AgGrid, JsCode
+from st_aggrid import AgGrid, JsCode, GridUpdateMode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import gspread 
 from gspread_pandas import Spread,Client
@@ -100,8 +100,13 @@ gd.configure_default_column(editable =True, groupable = True)
 sel_mode = st.radio('Selection Type', options = ['Single', 'Multiple'])
 gd.configure_selection(selection_mode = sel_mode, use_checkbox = True)
 gridoptions = gd.build()
-AgGrid(df_selection, gridOptions = gridoptions)
+grid_table = AgGrid(df_selection, gridOptions = gridoptions,
+                   update_mode = GridUpdateMode.SELECTION_CHANGED,
+                   height = 500,
+                   allow_unsafe_jscode = True,
+                   theme = 'Fresh')
 
-
+sel_row = grid_table["selected_rows"]
+st.write(sel_row)
 
  
