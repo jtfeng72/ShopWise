@@ -4,7 +4,7 @@ import gspread
 
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
-    item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
+    item = st.text_input("Food Items") 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
