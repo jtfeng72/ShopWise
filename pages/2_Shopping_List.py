@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 import streamlit as st
 from google.oauth2 import service_account
 import gspread
@@ -21,6 +22,7 @@ with st.form("form"):
     if add_submitted:
         user_input = { "Purchase_dt": json.dumps(purchase_dt, default = str), "Item": [item], "Weight": [weight]} # User input dataframe
         user_input_df = pd.DataFrame(user_input)
+        user_input_df['Purchase_dt']=datetime.datetime.strptime(user_input_df['Purchase_dt'], "%Y-%m-%d").strftime("%d-%m-%Y")
 
         for ind in user_input_df.index:
             values_list = w.col_values(1)
