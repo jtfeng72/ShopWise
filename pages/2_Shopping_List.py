@@ -59,12 +59,18 @@ with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
     item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
     weight = st.number_input("Weight(g)")
-    submitted = st.form_submit_button("Add Item")
+    add_submitted = st.form_submit_button("Add Item")
     
-    if submitted:
-        user_input = [purchase_dt, item, weight] # User input dataframe
-        df.loc[len(df.index)] = user_input # insert usert input
-        update_the_spreadsheet('Shopping_List2',df) # update google sheet
+    if add_ubmitted:
+        if len(df) == 0:
+         user_input = { "Purchase_dt": [purchase_dt], "Item": [item], "Weight": [weight]} # User input dataframe
+         user_input_df = pd.DataFrame(user_input)
+         update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
+         
+        else:
+         user_input = [purchase_dt, item, weight] # User input dataframe
+         df.loc[len(df.index)] = user_input # insert usert input
+         update_the_spreadsheet('Shopping_List2',df) # update google sheet
 
 
 df = load_the_spreadsheet(sheet_name) #refresh google sheet
