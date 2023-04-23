@@ -99,7 +99,7 @@ gd.configure_default_column(editable =True, groupable = True)
 
 sel_mode = st.radio('Selection Type', options = ['Single', 'Multiple'])
 gd.configure_selection(selection_mode = sel_mode, use_checkbox = True)
-gridoptions = ggd.build()
+gridoptions = gd.build()
 AgGrid(df_selection, gridOptions = gridoptions)
 
 
