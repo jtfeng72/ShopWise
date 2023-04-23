@@ -20,9 +20,9 @@ with st.form("form"):
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
-        user_input = { "Purchase_dt": json.dumps(purchase_dt, default = str), "Item": [item], "Weight": [weight]} # User input dataframe
-        user_input_df = pd.DataFrame(user_input)
-        user_input_df['Purchase_dt']=datetime.strptime(user_input_df['Purchase_dt'], "%Y-%m-%d").strftime("%d-%m-%Y")
+        user_input_df=pd.DataFrame(columns = ['Purchase_dt', 'Items', 'Weight'])
+        user_input = [purchase_dt,item, weight]
+        user_input_df.loc[len(user_input_df.index)] = user_input # insert usert input
 
         for ind in user_input_df.index:
             values_list = w.col_values(1)
