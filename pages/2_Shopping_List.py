@@ -17,10 +17,11 @@ with st.form("form"):
         gc = gspread.authorize(credentials)
         s = gc.open("ShopWise Food List") 
         w = s.worksheet("Shopping_List2") #get data from dropbox tab
-        for ind in res.index:
+        for ind in user_input_df.index:
+            values_list = worksheet.col_values(1)
             length_row = len(values_list)
             w.update_cell(length_row+1, 1, user_input_df['purchase_dt'][ind])
             w.update_cell(length_row+1, 2, str(user_input_df['item'][ind]))
             w.update_cell(length_row+1, 3, str(user_input_df['weight'][ind]))
 
-         return st.success("Updated to Database ", icon="✅")      
+         st.success("Updated to Database ", icon="✅")      
