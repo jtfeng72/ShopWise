@@ -144,7 +144,7 @@ with st.form('Shopping List') as f:
                    )
          st.info("Total Rows :" + str(len(grid_table['data'])))
          
-         submitted = st.form_submit_button("Confirm item(s) 🔒", type="primary")
+         submitted = st.form_submit_button("Confirm item(s) 🔒")
          
          df_final= pd.DataFrame(grid_table["data"])
          if submitted:
