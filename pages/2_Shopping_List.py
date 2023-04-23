@@ -78,16 +78,16 @@ with st.form("form"):
     submitted = st.form_submit_button("Add Item")
 
     if add_submitted:
-    user_input_df=pd.DataFrame(columns = ['Purchase_dt', 'Items', 'Weight'])
-    user_input = [purchase_dt,item, weight]
-    user_input_df.loc[len(user_input_df.index)] = user_input # insert usert input
+         user_input_df=pd.DataFrame(columns = ['Purchase_dt', 'Items', 'Weight'])
+         user_input = [purchase_dt,item, weight]
+         user_input_df.loc[len(user_input_df.index)] = user_input # insert usert input
 
-    for ind in user_input_df.index:
-        values_list = w.col_values(1)
-        length_row = len(values_list)
-        w.update_cell(length_row+1, 1, user_input_df['Purchase_dt'][ind])
-        w.update_cell(length_row+1, 2, str(user_input_df['Item'][ind]))
-        w.update_cell(length_row+1, 3, str(user_input_df['Weight'][ind]))
+         for ind in user_input_df.index:
+                  values_list = w.col_values(1)
+                  length_row = len(values_list)
+                  w.update_cell(length_row+1, 1, user_input_df['Purchase_dt'][ind])
+                  w.update_cell(length_row+1, 2, str(user_input_df['Item'][ind]))
+                  w.update_cell(length_row+1, 3, str(user_input_df['Weight'][ind]))
     
 
 # ---- SIDEBAR ----
