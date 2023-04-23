@@ -1,118 +1,154 @@
-# ----- Entire code below  ------- #
-import streamlit as st
+#ShopWise.py
+#---Import libraries---#
 from google.oauth2 import service_account
-from google.cloud import storage
-import gcsfs
-import pandas as pd
-from io import StringIO 
-import requests
-from st_aggrid import AgGrid, JsCode
-from st_aggrid.grid_options_builder import GridOptionsBuilder
-import gspread 
 from gspread_pandas import Spread,Client
-from pysmiles import read_smiles
-import networkx as nx
-import matplotlib.pyplot as plt
-from datetime import datetime
-from pandas import DataFrame
+import pandas as pd
+import streamlit as st
+from st_aggrid import AgGrid, GridUpdateMode, JsCode
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 
-
-# ----- Page setup ----- #
 st.title('Shopping List')
 st.header('Add items below')
 
-
-# ----- Disable certificate verification (Not necessary always) ----- #
+# Disable certificate verification (Not necessary always)
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
-
 
 # --- Create a Google Authentication connection objectt --- #
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
+
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
-gc = gspread.authorize(credentials)
+client = Client(scope=scope,creds=credentials)
+spreadsheetname = "ShopWise Food List"
+spread = Spread(spreadsheetname,client = client)
 
-# --- Get List Value and make drop down --- #
-# open your spreadsheet
-s = gc.open("ShopWise Food List") 
-# and worksheet
-w = s.worksheet("DropBox") #get data from dropbox tab
+#st.write(spread.url)
 
-sl_name = w.col_values(1) #get data from dropbox 1st column (Shopping list)
-sl_ID = w.col_values(2) #get data from dropbox 2st column (Shopping list ID)
+# --- Call the spreadshet --- #
+sh = client.open(spreadsheetname)
+worksheet_list = sh.worksheets()
 
-option = st.selectbox('Which pantry would you like to access?', (sl_name))
-st.write('You selected:', option)
-
-
-# ----  Connect to the Google Sheet ---- 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+sheet_name = "Shopping_List2"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+url2= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
+sl_df = pd.read_csv(url, dtype=str).fillna("")
 
-#connection to the Shopping list table
-sl_line_sheet = "Shopping_List_Line"
-sl_line_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sl_line_sheet}"
-sl_line_df = pd.read_csv(sl_line_url, dtype=str).fillna("")
+food_Item_dd = pd.read_csv(url2)
 
-#get all avaliable food items from master list for drop down features
-fd_list_sheet = "Food_List_Master"
-fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
-fd_list_df = pd.read_csv(fd_list_url, dtype=str).fillna("")
+# Get the sheet as dataframe
+def load_the_spreadsheet(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    df = pd.DataFrame(worksheet.get_all_records())
+    return df
 
+# Update to Sheet
+def update_the_spreadsheet(spreadsheetname,dataframe):
+    col = ['Purchase_dt','Item','Weight']
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    st.sidebar.info('Updated to GoogleSheet')
 
-# --- Build a user interface and search functionality --- #
-text_search = st.text_input("Search items by item description", value="")
+#Display the latest update
+df = load_the_spreadsheet(sheet_name)
 
-m1 = sl_line_df["List_ID"].str.contains(text_search)
-m2 = sl_line_df["Product_ID"].str.contains(text_search)
-df_search = sl_line_df[m1 | m2] # filter column to have only List_ID and Product_ID
-
-if text_search:
-    st.write(df_search) #
+st.write(df)
 
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
-    item = st.selectbox('Food Items', list(fd_list_df['Name'])) 
+    item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
     weight = st.number_input("Weight(g)")
-    submitted = st.form_submit_button("Add Item")
-
-    if add_submitted:
-         user_input_df=pd.DataFrame(columns = ['Purchase_dt', 'Items', 'Weight'])
-         user_input = [purchase_dt,item, weight]
-         user_input_df.loc[len(user_input_df.index)] = user_input # insert usert input
-
-         for ind in user_input_df.index:
-                  values_list = w.col_values(1)
-                  length_row = len(values_list)
-                  w.update_cell(length_row+1, 1, user_input_df['Purchase_dt'][ind])
-                  w.update_cell(length_row+1, 2, str(user_input_df['Item'][ind]))
-                  w.update_cell(length_row+1, 3, str(user_input_df['Weight'][ind]))
+    add_submitted = st.form_submit_button("Add Item")
     
+    if add_submitted:
+        if len(df) == 0:
+         user_input = { "Purchase_dt": [purchase_dt], "Item": [item], "Weight": [weight]} # User input dataframe
+         user_input_df = pd.DataFrame(user_input)
+         update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
+         
+        else:
+         user_input = [purchase_dt, item, weight] # User input dataframe
+         df.loc[len(df.index)] = user_input # insert usert input
+         update_the_spreadsheet('Shopping_List2',df) # update google sheet
 
-# ---- SIDEBAR ----
-st.sidebar.header("Please Filter Here:") #fillter table grocery store list name
-s_list = st.sidebar.multiselect(
-    "Select the List:",
-    options=sl_name,
-    default=sl_name
+st.write(user_input)
+
+df = load_the_spreadsheet(sheet_name) #refresh google sheet
+        
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=True,groupable=True)
+
+#  --- JavaScript function to add a new row to the AgGrid table ---         
+js_del_row = JsCode ('''
+function(e) {
+ let api = e.api;
+ let sel = api.getSelectedRows(); 
+ api.applyTransaction({remove: sel}) 
+};
+'''
 )
 
-prod = st.sidebar.multiselect( #fillter table on proeduct ID
-    "Select Product:",
-    options=sl_line_df["Product_ID"].unique(),
-    default=sl_line_df["Product_ID"].unique(),
-)
+#  --- Cell renderer for the '🔧' column to render a button --- 
+cellRenderer_addButton = JsCode('''
+    class BtnCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                <style>
+                .btn_add {
+                    background-color: red;
+                    border: 2px solid black;
+                    color: white;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: bold;
+                    height: 2em;
+                    width: 10em;
+                    border-radius: 12px;
+                    padding: 0px;
+                }
+                </style>
+                <button id='click-button' 
+                    class="btn_add" 
+                    > Remove</button>
+            </span>
+        `;
+        }
+        getGui() {
+            return this.eGui;
+        }
+    };
+    ''')         
+    
+gd.configure_selection(selection_mode= 'single')
+#gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
+gd.configure_column( field = '🔧', 
+                     onCellClicked = js_del_row,      #adding delete function into the button
+                     pre_selected_rows=[],
+                     cellRenderer = cellRenderer_addButton, #adding the button desgin
+                     lockPosition='left')
+gridOptions = gd.build()
 
-s_list_ID = st.sidebar.multiselect( #fillter table grocery store list ID
-    "Select List:",
-    options=sl_ID,
-    default=sl_ID,
-)
 
-
-df_selection = sl_line_df.query(
-    "List_ID == @s_list_ID & Product_ID ==@prod"
-)
-
-st.dataframe(df_selection)
+with st.form('Shopping List') as f:
+         st.header('Shopping List 🔖')
+         grid_table = AgGrid(df, 
+                   gridOptions = gridOptions, 
+                   fit_columns_on_grid_load = True,
+                   theme = "streamlit",
+                   allow_unsafe_jscode=True,
+                   )
+         st.info("Total Rows :" + str(len(grid_table['data'])))
+         
+         submitted = st.form_submit_button("Confirm item(s) 🔒")
+         
+         df_final = grid_table["data"].columns[1:]
+         df_final
+         
+         if submitted:
+                  update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
