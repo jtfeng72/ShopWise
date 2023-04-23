@@ -1,3 +1,4 @@
+import json
 import streamlit as st
 from google.oauth2 import service_account
 import gspread
@@ -18,7 +19,7 @@ with st.form("form"):
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
-        user_input = { "Purchase_dt": [purchase_dt], "Item": [item], "Weight": [weight]} # User input dataframe
+        user_input = { "Purchase_dt": json.dumps(purchase_dt, default = str), "Item": [item], "Weight": [weight]} # User input dataframe
         user_input_df = pd.DataFrame(user_input)
 
         for ind in user_input_df.index:
