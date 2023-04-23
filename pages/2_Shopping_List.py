@@ -3,6 +3,14 @@ from google.oauth2 import service_account
 import gspread
 import pandas as pd
 
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+credentials = service_account.Credentials.from_service_account_info(
+         st.secrets["gcp_service_account"], scopes = scope)
+gc = gspread.authorize(credentials)
+s = gc.open("ShopWise Food List") 
+w = s.worksheet("Shopping_List2") #get data from dropbox tab
+
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
     item = st.text_input("Food Items") 
@@ -13,14 +21,6 @@ with st.form("form"):
         user_input = { "Purchase_dt": [purchase_dt], "Item": [item], "Weight": [weight]} # User input dataframe
         user_input_df = pd.DataFrame(user_input)
 
-        scope = ['https://spreadsheets.google.com/feeds',
-                 'https://www.googleapis.com/auth/drive']
-        credentials = service_account.Credentials.from_service_account_info(
-                        st.secrets["gcp_service_account"], scopes = scope)
-
-        gc = gspread.authorize(credentials)
-        s = gc.open("ShopWise Food List") 
-        w = s.worksheet("Shopping_List2") #get data from dropbox tab
         for ind in user_input_df.index:
             values_list = w.col_values(1)
             length_row = len(values_list)
