@@ -61,7 +61,7 @@ with st.form("form"):
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
-    if add_ubmitted:
+    if add_submitted:
         if len(df) == 0:
          user_input = { "Purchase_dt": [purchase_dt], "Item": [item], "Weight": [weight]} # User input dataframe
          user_input_df = pd.DataFrame(user_input)
