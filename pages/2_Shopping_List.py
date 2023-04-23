@@ -24,7 +24,7 @@ with st.form("form"):
         for ind in user_input_df.index:
             values_list = w.col_values(1)
             length_row = len(values_list)
-            w.update_cell(length_row+1, 1, user_input_df['purchase_dt'][ind])
-            w.update_cell(length_row+1, 2, str(user_input_df['item'][ind]))
-            w.update_cell(length_row+1, 3, str(user_input_df['weight'][ind]))
+            w.update_cell(length_row+1, 1, user_input_df['Purchase_dt'][ind])
+            w.update_cell(length_row+1, 2, str(user_input_df['Item'][ind]))
+            w.update_cell(length_row+1, 3, str(user_input_df['Weight'][ind]))
       
