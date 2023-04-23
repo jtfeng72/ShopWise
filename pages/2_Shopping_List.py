@@ -137,6 +137,8 @@ with st.form('Shopping List') as f:
          st.info("Total Rows :" + str(len(grid_table['data'])))
          
          sl_submitted = st.form_submit_button("Confirm item(s) 🔒", type="primary")
+
+grid_table["data"]
     
 if sl_submitted:
          update_the_spreadsheet('Shopping_List2',grid_table["data"]) # update google sheet
