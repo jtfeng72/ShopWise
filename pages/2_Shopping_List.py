@@ -22,7 +22,7 @@ with st.form("form"):
         s = gc.open("ShopWise Food List") 
         w = s.worksheet("Shopping_List2") #get data from dropbox tab
         for ind in user_input_df.index:
-            values_list = worksheet.col_values(1)
+            values_list = w.col_values(1)
             length_row = len(values_list)
             w.update_cell(length_row+1, 1, user_input_df['purchase_dt'][ind])
             w.update_cell(length_row+1, 2, str(user_input_df['item'][ind]))
