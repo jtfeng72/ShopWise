@@ -64,7 +64,7 @@ df_search = df[m1 | m2]
 if text_search:
     st.write(df_search)
 
-# ----- SIDEBAR ----
+# ----- SIDEBAR ----- #
 st.sidebar.header("Please Filter Here:")
 Pantry_Loc = st.sidebar.multiselect(
     "Select the Pantry Location:",
@@ -88,6 +88,17 @@ Pantry_Loc_ID = st.sidebar.multiselect(
 df_selection = df.query(
     "Pantry_ID == @Pantry_Loc_ID & Storage ==@Storage"
 )
+
+
+# ----- Creating an interactive table ----- #
+
+gd = GridOptionsBuilder.from_dataframe(df_selection)
+gd.configure_pagination(enabled = True)
+gd.configure_default_column(editable =True, groupable = True)
+
+
+sel_mode = st.radio('Selection Type', options = ['Single', 'Multiple'])
+gd.configure_selection(selection_mode = sel_mode, use_checkbox = True)
 
 AgGrid(df_selection)
 
