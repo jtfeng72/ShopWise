@@ -72,6 +72,7 @@ with st.form("form"):
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Shopping_List2',df) # update google sheet
 
+st.write(user_input)
 
 df = load_the_spreadsheet(sheet_name) #refresh google sheet
         
