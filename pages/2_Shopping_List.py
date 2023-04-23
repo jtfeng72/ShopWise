@@ -53,6 +53,8 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
 #Display the latest update
 df = load_the_spreadsheet(sheet_name)
 
+st.write(df)
+
 with st.form("form"):
     purchase_dt = st.date_input("Date of Purchase")
     item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
