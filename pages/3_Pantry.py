@@ -133,7 +133,7 @@ def load_the_spreadsheet(spreadsheetname):
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Name','Time_stamp']
+    col = ['Product_ID','Quantity','Purchase_Date']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
@@ -147,7 +147,7 @@ with st.form("form"):
                   now = datetime.now()
                   opt = {'Product_ID': [item],
                          'Quantity': [Quantity],
-                         'Purchase_Date' :  [now]} 
+                         'Purchase_Date' : [now]} 
                   opt_df = DataFrame(opt)
                   df = load_the_spreadsheet('Pantry_Loc_Line')
                   new_df = df.append(opt_df,ignore_index=True)
