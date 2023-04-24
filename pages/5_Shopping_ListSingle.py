@@ -160,7 +160,7 @@ with st.form('Shopping List') as f:
          if submitted:
                   df_final = grid_table["data"]
 
-                  for ind in user_input_df.index:
+                  for ind in df_final.index:
                            values_list = w.col_values(1)
                            length_row = len(values_list)
                            w.update_cell(length_row+1, 1, df_final ['Item'][ind])
