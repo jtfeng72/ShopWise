@@ -14,5 +14,4 @@ datetime
 networkx 
 matplotlib
 streamlit_option_menu
-snowflake-connector-python
 snowflake-snowpark-python
