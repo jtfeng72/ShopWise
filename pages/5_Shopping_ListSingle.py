@@ -4,40 +4,39 @@ from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
 import pandas as pd
 import streamlit as st
-import gspread 
 from st_aggrid import AgGrid, GridUpdateMode, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.title('Shopping List')
+st.header('Add items below')
 
+# Disable certificate verification (Not necessary always)
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
-
 
 # --- Create a Google Authentication connection objectt --- #
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
+
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
-gc = gspread.authorize(credentials)
+client = Client(scope=scope,creds=credentials)
+spreadsheetname = "ShopWise Food List"
+spread = Spread(spreadsheetname,client = client)
 
-# --- Get List Value and make drop down --- #
-# open your spreadsheet
-sh = gc.open("ShopWise Food List") 
-# and worksheet
-w = sh.worksheet("Shopping_List2") #get data from dropbox tab
+#st.write(spread.url)
+
+# --- Call the spreadshet --- #
+sh = client.open(spreadsheetname)
+worksheet_list = sh.worksheets()
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+sheet_name = "Shopping_List2"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+url2= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
+sl_df = pd.read_csv(url, dtype=str).fillna("")
 
-#connection to the Shopping list table
-sl_line_sheet = "Shopping_List2"
-sl_line_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sl_line_sheet}"
-sl_line_df = pd.read_csv(sl_line_url, dtype=str).fillna("")
-
-#get all avaliable food items from master list for drop down features
-fd_list_sheet = "Food_List_Master"
-fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
-fd_list_df = pd.read_csv(fd_list_url, dtype=str).fillna("")
+food_Item_dd = pd.read_csv(url2)
 
 # Get the sheet as dataframe
 def load_the_spreadsheet(spreadsheetname):
@@ -47,33 +46,35 @@ def load_the_spreadsheet(spreadsheetname):
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Item','Weight']
-    w.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    col = ['Purchase_dt','Item','Weight']
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
 #Display the latest update
-df = load_the_spreadsheet(sl_line_sheet)
+df = load_the_spreadsheet(sheet_name)
 
+st.write(df)
 
 with st.form("form"):
-    st. header("Add items below")
-    #purchase_dt = st.date_input("Date of Purchase")
-    item = st.selectbox('Food_List_Master',list(fd_list_df['Name'])) 
+    purchase_dt = st.date_input("Date of Purchase")
+    item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
         if len(df) == 0:
-         user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
+         user_input = { "Purchase_dt": [purchase_dt], "Item": [item], "Weight": [weight]} # User input dataframe
          user_input_df = pd.DataFrame(user_input)
          update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
          
         else:
-         user_input = [item, weight] # User input dataframe
+         user_input = [purchase_dt, item, weight] # User input dataframe
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Shopping_List2',df) # update google sheet
 
-df = load_the_spreadsheet(sl_line_sheet) #refresh google sheet
+st.write(user_input)
+
+df = load_the_spreadsheet(sheet_name) #refresh google sheet
         
 gd = GridOptionsBuilder.from_dataframe(df)
 gd.configure_pagination(enabled=True)
@@ -146,12 +147,8 @@ with st.form('Shopping List') as f:
          
          submitted = st.form_submit_button("Confirm item(s) 🔒")
          
-         df_final = grid_table["data"]
+         df_final = grid_table["data"].columns[1:]
+         df_final
          
          if submitted:
-                  for ind in user_input_df.index:
-                           values_list = w.col_values(1)
-                           length_row = len(values_list)
-                           w.update_cell(length_row+1, 1, user_input_df['Purchase_dt'][ind])
-                           w.update_cell(length_row+1, 2, str(user_input_df['Item'][ind]))
-                           w.update_cell(length_row+1, 3, str(user_input_df['Weight'][ind]))
+                  update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
