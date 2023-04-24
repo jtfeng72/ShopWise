@@ -4,6 +4,7 @@ from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
 import pandas as pd
 import streamlit as st
+import gspread 
 from st_aggrid import AgGrid, GridUpdateMode, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
@@ -27,7 +28,7 @@ spread = Spread(spreadsheetname,client = client)
 
 # --- Call the spreadshet --- #
 sh = client.open(spreadsheetname)
-worksheet_list = sh.worksheets()
+w = sh.worksheets("Shopping_List2")
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 
@@ -151,4 +152,9 @@ with st.form('Shopping List') as f:
          df_final = grid_table["data"]
          
          if submitted:
-                  update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
+                  for ind in user_input_df.index:
+                           values_list = w.col_values(1)
+                           length_row = len(values_list)
+                           w.update_cell(length_row+1, 1, user_input_df['Purchase_dt'][ind])
+                           w.update_cell(length_row+1, 2, str(user_input_df['Item'][ind]))
+                           w.update_cell(length_row+1, 3, str(user_input_df['Weight'][ind]))
