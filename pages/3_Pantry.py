@@ -121,7 +121,7 @@ AgGrid(food_Item_df)
 
 # ----- Add items to the table ----- #
 
-
+"""
 # Functions 
 @st.cache()
 # Get our worksheet names
@@ -159,3 +159,4 @@ with st.form("form"):
                   new_df = df.append(opt_df,ignore_index=True)
                   update_the_spreadsheet('Pantry_Loc_Line',new_df)
    
+"""
