@@ -108,4 +108,20 @@ grid_table = AgGrid(df_selection, gridOptions = gridoptions,
 sel_row = grid_table["selected_rows"]
 st.write(sel_row)
 
- 
+
+# ----- Add items to the table ----- #
+with st.form("form"):
+    item = st.selectbox('Food_List_Master',list(food_Item_dd['Product_ID']))
+    Quantity = st.number_input("Weight(g)")
+    add_submitted = st.form_submit_button("Add Item")
+
+    if add_submitted :  
+                  now = datetime.now()
+                  opt = {'Product_ID': [item],
+                         'Quantity': [Quantity],
+                         'Purchase_Date' :  [now]} 
+                  opt_df = DataFrame(opt)
+                  df = load_the_spreadsheet('Pantry_Loc_Line')
+                  new_df = df.append(opt_df,ignore_index=True)
+                  update_the_spreadsheet('Pantry_Loc_Line',new_df)
+   
