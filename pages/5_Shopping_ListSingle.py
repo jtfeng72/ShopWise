@@ -10,25 +10,22 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.title('Shopping List')
 
-# Disable certificate verification (Not necessary always)
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
+
 
 # --- Create a Google Authentication connection objectt --- #
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
-
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
-client = Client(scope=scope,creds=credentials)
-spreadsheetname = "ShopWise Food List"
-spread = Spread(spreadsheetname,client = client)
+gc = gspread.authorize(credentials)
 
-#st.write(spread.url)
-
-# --- Call the spreadshet --- #
-sh = client.open(spreadsheetname)
-w = sh.worksheets("Shopping_List2")
+# --- Get List Value and make drop down --- #
+# open your spreadsheet
+s = gc.open("ShopWise Food List") 
+# and worksheet
+w = s.worksheet("Shopping_List2") #get data from dropbox tab
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 
