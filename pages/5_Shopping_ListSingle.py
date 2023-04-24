@@ -153,15 +153,16 @@ with st.form('Shopping List') as f:
                    )
          st.info("Total Rows :" + str(len(grid_table['data'])))
          
-         submitted = st.form_submit_button("Confirm item(s) 🔒")
+         st.form_submit_button("Confirm item(s) 🔒")
          
          df_final = grid_table["data"]
+         st.write(df_final)
          
-         if submitted:
-                  df_final = grid_table["data"]
+         #if submitted:
+                  #df_final = grid_table["data"]
 
-                  for ind in df_final.index:
-                           values_list = w.col_values(1)
-                           length_row = len(values_list)
-                           w.update_cell(length_row+1, 1, str(df_final ['Item'][ind]))
-                           w.update_cell(length_row+1, 2, str(df_final ['Weight'][ind]))
+                  #for ind in df_final.index:
+                           #values_list = w.col_values(1)
+                           #length_row = len(values_list)
+                           #w.update_cell(length_row+1, 1, str(df_final ['Item'][ind]))
+                           #w.update_cell(length_row+1, 2, str(df_final ['Weight'][ind]))
