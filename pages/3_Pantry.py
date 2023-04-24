@@ -48,6 +48,9 @@ st.write('You selected:', option)
 
 
 # ----- Connect to the Google Sheet ---- 
+sh = client.open(spreadsheetname)
+worksheet_list = sh.worksheets()
+
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 sheet_name = "Pantry_Loc_Line"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
