@@ -114,6 +114,30 @@ st.write(sel_row)
 AgGrid(food_Item_df)
 
 # ----- Add items to the table ----- #
+
+
+# Functions 
+@st.cache()
+# Get our worksheet names
+def worksheet_names():
+    sheet_names = []   
+    for sheet in worksheet_list:
+        sheet_names.append(sheet.title)  
+    return sheet_names
+
+# Get the sheet as dataframe
+def load_the_spreadsheet(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    df = DataFrame(worksheet.get_all_records())
+    return df
+
+# Update to Sheet
+def update_the_spreadsheet(spreadsheetname,dataframe):
+    col = ['Name','Time_stamp']
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    st.sidebar.info('Updated to GoogleSheet')
+
+
 with st.form("form"):
     item = st.selectbox('Food_List_Master',list(food_Item_df['Product_ID']))
     Quantity = st.number_input("Weight(g)")
