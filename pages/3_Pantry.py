@@ -10,7 +10,6 @@ from st_aggrid import AgGrid, JsCode, GridUpdateMode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import gspread 
 from gspread_pandas import Spread,Client
-from pysmiles import read_smiles
 import networkx as nx
 import matplotlib.pyplot as plt
 from datetime import datetime
