@@ -119,7 +119,7 @@ st.write(sel_row)
 
 # ----- Add items to the table ----- #
 
-edited_df = st.experimental_data_editor(df)
+edited_df = st.experimental_data_editor(df, num_rows="dynamic")
 
 """
 # Functions 
