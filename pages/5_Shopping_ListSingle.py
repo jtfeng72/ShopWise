@@ -155,9 +155,12 @@ with st.form('Shopping List') as f:
          
          st.form_submit_button("Confirm item(s) 🔒")
          
-         df_final = grid_table["data"]
-         st.write(df_final)
-         update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
+         submitted = st.form_submit_button("Confirm item(s) 🔒")
+         
+         if submitted:
+                  df_final = grid_table["data"]
+                  st.write (df_final)
+                  update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
          
          #if submitted:
                   #df_final = grid_table["data"]
