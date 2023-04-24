@@ -48,7 +48,7 @@ def load_the_spreadsheet(spreadsheetname):
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight']
-    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    w.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
 #Display the latest update
