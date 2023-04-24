@@ -1,4 +1,5 @@
 streamlit-aggrid
+streamlit_aggrid 
 altair
 pandas
 streamlit
