@@ -25,7 +25,7 @@ gc = gspread.authorize(credentials)
 
 client = Client(scope=scope,creds=credentials)
 spreadsheetname = "ShopWise Food List"
-sh = gc.open(spreadsheetname) 
+spread = gc.open(spreadsheetname) 
 worksheet_list = spread.worksheet() #get data from dropbox tab
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
