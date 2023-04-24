@@ -58,7 +58,7 @@ df = load_the_spreadsheet(sl_line_sheet)
 with st.form("form"):
     st.header('Add items below')
     #purchase_dt = st.date_input("Date of Purchase")
-    item = st.selectbox('Food_List_Master',list(fd_list_df['Name'])) 
+    item = st.selectbox('Food_Item',list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
