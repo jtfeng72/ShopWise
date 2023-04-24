@@ -55,7 +55,7 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     st.sidebar.info('Updated to GoogleSheet')
 
 #Display the latest update
-df = load_the_spreadsheet(sheet_name)
+df = load_the_spreadsheet(sl_line_sheet)
 
 
 with st.form("form"):
