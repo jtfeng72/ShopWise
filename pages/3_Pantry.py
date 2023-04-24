@@ -120,7 +120,7 @@ st.write(sel_row)
 
 # ----- Add items to the table ----- #
 
-grid_result= st_ag.grid(df)
+grid_result= AgGrid(df)
 
 with st.form("form"):
     item = st.selectbox('Food_List_Master',list(food_Item_df['Product_ID']))
