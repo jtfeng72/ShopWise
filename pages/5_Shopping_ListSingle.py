@@ -152,9 +152,6 @@ with st.form('Shopping List') as f:
                    allow_unsafe_jscode=True,
                    )
          st.info("Total Rows :" + str(len(grid_table['data'])))
-         
-         st.form_submit_button("Confirm item(s) 🔒")
-         
          submitted = st.form_submit_button("Confirm item(s) 🔒")
          
          if submitted:
