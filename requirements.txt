@@ -15,4 +15,5 @@ networkx
 matplotlib
 streamlit_option_menu
 Session
-snowflake
+json
+time
