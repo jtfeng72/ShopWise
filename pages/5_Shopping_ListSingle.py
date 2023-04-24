@@ -4,6 +4,7 @@ from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
 import pandas as pd
 import streamlit as st
+import gspread 
 from st_aggrid import AgGrid, GridUpdateMode, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
@@ -19,15 +20,13 @@ scope = ['https://spreadsheets.google.com/feeds',
 
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
+
+gc = gspread.authorize(credentials)
+
 client = Client(scope=scope,creds=credentials)
 spreadsheetname = "ShopWise Food List"
-spread = Spread(spreadsheetname,client = client)
-
-#st.write(spread.url)
-
-# --- Call the spreadshet --- #
-sh = client.open(spreadsheetname)
-worksheet_list = sh.worksheets()
+sh = gc.open(spreadsheetname) 
+worksheet_list = spread.worksheet() #get data from dropbox tab
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 #connection to the Shopping list table
