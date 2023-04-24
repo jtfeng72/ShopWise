@@ -111,7 +111,7 @@ grid_table = AgGrid(df_selection, gridOptions = gridoptions,
 sel_row = grid_table["selected_rows"]
 st.write(sel_row)
 
-aggrid (food_Item_df)
+AgGrid(food_Item_df)
 
 # ----- Add items to the table ----- #
 with st.form("form"):
