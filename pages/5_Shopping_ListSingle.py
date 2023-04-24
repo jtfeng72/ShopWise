@@ -25,7 +25,7 @@ gc = gspread.authorize(credentials)
 # open your spreadsheet
 sh = gc.open("ShopWise Food List") 
 # and worksheet
-w = s.worksheet("Shopping_List2") #get data from dropbox tab
+w = sh.worksheet("Shopping_List2") #get data from dropbox tab
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 
