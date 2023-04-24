@@ -30,12 +30,15 @@ sh = client.open(spreadsheetname)
 worksheet_list = sh.worksheets()
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-sheet_name = "Shopping_List2"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-url2= "https://raw.githubusercontent.com/jtfeng72/ShopWise/master/Data/ShopWise%20Food%20List.csv"
-sl_df = pd.read_csv(url, dtype=str).fillna("")
+#connection to the Shopping list table
+sl_line_sheet = "Shopping_List2"#"Shopping_List_Line"
+sl_line_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sl_line_sheet}"
+sl_line_df = pd.read_csv(sl_line_url, dtype=str).fillna("")
 
-food_Item_dd = pd.read_csv(url2)
+#get all avaliable food items from master list for drop down features
+fd_list_sheet = "Food_List_Master"
+fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
+fd_list_df = pd.read_csv(fd_list_url, dtype=str).fillna("")
 
 # Get the sheet as dataframe
 def load_the_spreadsheet(spreadsheetname):
@@ -45,7 +48,7 @@ def load_the_spreadsheet(spreadsheetname):
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Purchase_dt','Item','Weight']
+    col = ['Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.sidebar.info('Updated to GoogleSheet')
 
@@ -57,18 +60,18 @@ st.write(df)
 with st.form("form"):
     st.header('Add items below')
     purchase_dt = st.date_input("Date of Purchase")
-    item = st.selectbox('Food_List_Master',list(food_Item_dd['Name'])) 
+    item = st.selectbox('Food_List_Master',list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
         if len(df) == 0:
-         user_input = { "Purchase_dt": [purchase_dt], "Item": [item], "Weight": [weight]} # User input dataframe
+         user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
          user_input_df = pd.DataFrame(user_input)
          update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
          
         else:
-         user_input = [purchase_dt, item, weight] # User input dataframe
+         user_input = [item, weight] # User input dataframe
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Shopping_List2',df) # update google sheet
 
@@ -145,8 +148,7 @@ with st.form('Shopping List') as f:
          
          submitted = st.form_submit_button("Confirm item(s) 🔒")
          
-         df_final = grid_table["data"].columns[1:]
-         df_final
+         df_final = grid_table["data"]
          
          if submitted:
                   update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
