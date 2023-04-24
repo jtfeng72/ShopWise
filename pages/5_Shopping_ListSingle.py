@@ -163,5 +163,5 @@ with st.form('Shopping List') as f:
                   for ind in df_final.index:
                            values_list = w.col_values(1)
                            length_row = len(values_list)
-                           w.update_cell(length_row+1, 1, df_final ['Item'][ind])
-                           w.update_cell(length_row+1, 2, df_final ['Weight'][ind])
+                           w.update_cell(length_row+1, 1, str(df_final ['Item'][ind]))
+                           w.update_cell(length_row+1, 2, str(df_final ['Weight'][ind]))
