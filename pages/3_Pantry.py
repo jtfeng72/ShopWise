@@ -39,6 +39,7 @@ gc = gspread.authorize(credentials)
 s = gc.open("ShopWise Food List") 
 # and worksheet
 w = s.worksheet("DropBox")
+food_Item_df = s.worksheet("Food_List_Master")
 
 values_list_Pantry_Loc = w.col_values(3)
 values_list_Pantry_Loc_ID = w.col_values(4)
@@ -111,7 +112,7 @@ st.write(sel_row)
 
 # ----- Add items to the table ----- #
 with st.form("form"):
-    item = st.selectbox('Food_List_Master',list(food_Item_dd['Product_ID']))
+    item = st.selectbox('Food_List_Master',list(food_Item_df['Product_ID']))
     Quantity = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
 
