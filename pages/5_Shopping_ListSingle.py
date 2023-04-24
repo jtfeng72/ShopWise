@@ -23,7 +23,7 @@ gc = gspread.authorize(credentials)
 
 # --- Get List Value and make drop down --- #
 # open your spreadsheet
-s = gc.open("ShopWise Food List") 
+sh = gc.open("ShopWise Food List") 
 # and worksheet
 w = s.worksheet("Shopping_List2") #get data from dropbox tab
 
