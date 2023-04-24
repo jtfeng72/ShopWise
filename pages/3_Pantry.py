@@ -48,6 +48,8 @@ st.write('You selected:', option)
 
 
 # ----- Connect to the Google Sheet ---- 
+client = Client(scope=scope,creds=credentials)
+spreadsheetname = "ShopWise Food List"
 sh = client.open(spreadsheetname)
 worksheet_list = sh.worksheets()
 
