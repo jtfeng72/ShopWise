@@ -8,7 +8,6 @@ from st_aggrid import AgGrid, GridUpdateMode, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.title('Shopping List')
-st.header('Add items below')
 
 # Disable certificate verification (Not necessary always)
 import ssl
@@ -75,8 +74,6 @@ with st.form("form"):
          user_input = [item, weight] # User input dataframe
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Shopping_List2',df) # update google sheet
-
-st.write(user_input)
 
 df = load_the_spreadsheet(sheet_name) #refresh google sheet
         
