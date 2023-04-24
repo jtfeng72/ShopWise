@@ -53,7 +53,7 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     st.sidebar.info('Updated to GoogleSheet')
 
 #Display the latest update
-df = load_the_spreadsheet(sheet_name)
+df = load_the_spreadsheet(sl_line_sheet)
 
 st.write(df)
 
@@ -75,7 +75,7 @@ with st.form("form"):
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Shopping_List2',df) # update google sheet
 
-df = load_the_spreadsheet(sheet_name) #refresh google sheet
+df = load_the_spreadsheet(sl_line_sheet) #refresh google sheet
         
 gd = GridOptionsBuilder.from_dataframe(df)
 gd.configure_pagination(enabled=True)
