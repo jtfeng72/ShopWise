@@ -15,7 +15,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from datetime import datetime
 from pandas import DataFrame
-import streamlit_aggrid as st_ag
+import streamlit-aggrid as st_ag
 
 
 # ----- Page setup ----- #
