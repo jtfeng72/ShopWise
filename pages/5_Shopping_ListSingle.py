@@ -25,7 +25,14 @@ client = Client(scope=scope,creds=credentials)
 spreadsheetname = "ShopWise Food List"
 spread = Spread(spreadsheetname,client = client)
 
-#st.write(spread.url)
+#---gc update---#
+gc = gspread.authorize(credentials)
+
+# --- Get List Value and make drop down --- #
+# open your spreadsheet
+s = gc.open("ShopWise Food List") 
+# and worksheet
+w = s.worksheet("Shopping_List2") #get data from dropbox tab
 
 # --- Call the spreadshet --- #
 sh = client.open(spreadsheetname)
@@ -151,4 +158,10 @@ with st.form('Shopping List') as f:
          df_final = grid_table["data"]
          
          if submitted:
-                  update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
+                  df_final = grid_table["data"]
+
+         for ind in user_input_df.index:
+                  values_list = w.col_values(1)
+                  length_row = len(values_list)
+                  w.update_cell(length_row+1, 1, user_input_df['Item'][ind])
+                  w.update_cell(length_row+1, 2, str(user_input_df['Weight'][ind]))
