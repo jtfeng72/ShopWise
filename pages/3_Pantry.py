@@ -120,7 +120,8 @@ st.write(sel_row)
 # ----- Add items to the table ----- #
 
 edited_df = st.experimental_data_editor(df)
-
+favorite_command = edited_df.loc[edited_df["rating"].idxmax()]["command"]
+st.markdown(f"Your favorite command is **{favorite_command}** 🎈")
 
 
 """
