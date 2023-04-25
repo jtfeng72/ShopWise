@@ -153,7 +153,7 @@ with st.form('Shopping List') as f:
          if submitted:
                   df_final = grid_table["data"]
                   st.write (df_final)
-                  spread.clear_sheet(sheet = spreadsheetname)
+                  #spread.clear_sheet(sheet = spreadsheetname)
                   update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
          
          #if submitted:
