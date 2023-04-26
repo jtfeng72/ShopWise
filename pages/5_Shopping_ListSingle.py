@@ -35,9 +35,9 @@ worksheet_list = sh.worksheets()
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 #connection to the Shopping list table
-sl_line_sheet = "Shopping_List2"#"Shopping_List_Line"
-sl_line_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sl_line_sheet}"
-sl_line_df = pd.read_csv(sl_line_url, dtype=str).fillna("")
+#sl_line_sheet = "Shopping_List2"#"Shopping_List_Line"
+#sl_line_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sl_line_sheet}"
+#sl_line_df = pd.read_csv(sl_line_url, dtype=str).fillna("")
 
 #get all avaliable food items from master list for drop down features
 fd_list_sheet = "Food_List_Master"
@@ -153,7 +153,7 @@ with st.form('Shopping List') as f:
          if submitted:
                   df_final = grid_table["data"]
                   st.write (df_final)
-                  w.sh.values_clear("Shopping_List2!A1:B10000")
+                  spread.clear_sheet(sheet = spreadsheetname)
                   update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
          
          #if submitted:
