@@ -1,14 +1,14 @@
 #ShopWise.py
 #---Import libraries---#
-from google.oauth2 import service_account
-from gspread_pandas import Spread,Client
-import pandas as pd
-import streamlit as st
-import gspread 
-from st_aggrid import AgGrid, GridUpdateMode, JsCode
+from google.oauth2 import service_account                      #pip install google-auth
+from gspread_pandas import Spread,Client                       #pip install gspread_pandas
+import pandas as pd                                            #pip install pandas
+import streamlit as st                                         #pip install streamlit
+import gspread                                                 #pip install gspread
+from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install streamlit-aggrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
-st.title('Shopping List')
+st.title('Shopping List') #Page Title
 
 # Disable certificate verification (Not necessary always)
 import ssl
@@ -61,7 +61,7 @@ df = load_the_spreadsheet(sl_line_sheet)
 
 with st.form("form"):
     st.header('Add items below')
-    #purchase_dt = st.date_input("Date of Purchase")
+    #food_item_cat = st.st.selectbox('Food Categories',list(fd_list_df['Category'])) 
     item = st.selectbox('Food_Item',list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
@@ -155,12 +155,3 @@ with st.form('Shopping List') as f:
                   st.write (df_final)
                   spread.clear_sheet(sheet = 'Shopping_List2')
                   update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
-         
-         #if submitted:
-                  #df_final = grid_table["data"]
-
-                  #for ind in df_final.index:
-                           #values_list = w.col_values(1)
-                           #length_row = len(values_list)
-                           #w.update_cell(length_row+1, 1, str(df_final ['Item'][ind]))
-                           #w.update_cell(length_row+1, 2, str(df_final ['Weight'][ind]))
