@@ -62,11 +62,9 @@ df = load_the_spreadsheet(sl_line_sheet)
 with st.form("form"):
     st.header('Add items below')
     food_item_cat = st.selectbox('Food Categories',set(list(fd_list_df['Category'])))
-    if food_item_cat:
-         filt_fd_list_df = (fd_list_df['Category'] == food_item_cat)
-         item = st.selectbox('Food_Item',list(filt_fd_list_df['Name'])) 
-    else:
-         item = st.selectbox('Food_Item',list(fd_list_df['Name'])) 
+    filt_fd_list_df = (fd_list_df['Category'] == food_item_cat)
+    item = st.selectbox('Food_Item',list(filt_fd_list_df['Name'])) 
+    #item = st.selectbox('Food_Item',list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
