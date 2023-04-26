@@ -61,8 +61,12 @@ df = load_the_spreadsheet(sl_line_sheet)
 
 with st.form("form"):
     st.header('Add items below')
-    #food_item_cat = st.st.selectbox('Food Categories',list(fd_list_df['Category'])) 
-    item = st.selectbox('Food_Item',list(fd_list_df['Name'])) 
+    food_item_cat = st.st.selectbox('Food Categories',list(fd_list_df['Category']))
+    if food_item_cat:
+         filt_fd_list_df = fd_list_df['Category'] == food_item_cat
+         item = st.selectbox('Food_Item',list(filt_fd_list_df['Name'])) 
+    else:
+         item = st.selectbox('Food_Item',list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
@@ -152,6 +156,5 @@ with st.form('Shopping List') as f:
          
          if submitted:
                   df_final = grid_table["data"]
-                  st.write (df_final)
                   spread.clear_sheet(sheet = 'Shopping_List2')
                   update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
