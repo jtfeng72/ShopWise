@@ -20,7 +20,7 @@ st.title('Welcome to ShopWise')
 image = Image.open('Shopwise_Logo.png')
 st.image(image, caption='Shop Wisely')
 # ----- END ----- #
-
+st.write("Welcome to ShopWise, your one-stop-shop for all things green and sustainable! Our app is designed to make eco-friendly shopping easier and more accessible than ever before. We understand that it can be overwhelming to navigate the world of green shopping, which is why we've curated a selection of products that meet our high standards for sustainability. From clothing and home goods to food and personal care items, we've got you covered. With ShopWise, you can trust that every purchase you make is making a positive impact on the environment. We believe that small choices can make a big difference, and we're excited to help you make those choices every day. So join us in our mission to create a healthier planet, one shopping trip at a time. Download ShopWise today and start shopping with purpose!")
 
 #------Start- OF video-----#
 video_file = open('Shopwise.mp4', 'rb')
