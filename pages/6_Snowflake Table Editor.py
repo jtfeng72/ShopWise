@@ -24,7 +24,7 @@ st.title("Snowflake Table Editor ❄️")
 st.caption("This is a demo of the `st.experimental_data_editor`.")
 
 def get_dataset():
-    # load messages df
+     # load messages df
     df = session.table("ESG_SCORES_DEMO")
 
     return df
