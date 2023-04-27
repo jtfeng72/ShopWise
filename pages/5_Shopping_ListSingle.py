@@ -21,17 +21,18 @@ credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
 
 client = Client(scope=scope,creds=credentials)
-spreadsheetname = "ShopWise Food List"
-spread = Spread(spreadsheetname,client = client)
+spreadsheetname = "ShopWise Food List"                #spreadsheet name
+spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List google sheet
 
 #---gc update---#
 gc = gspread.authorize(credentials)
-s = gc.open("ShopWise Food List") # open your spreadsheet
-w = s.worksheet("Shopping_List2") # get data from "Shopping_List2" tab
+s = gc.open("ShopWise Food List")                     # load ShopWise Food List google sheet
+w = s.worksheet("Shopping_List2")                     # get data from "Shopping_List2" tab
 
 # --- Call the spreadshet --- #
-sh = client.open(spreadsheetname)
-worksheet_list = sh.worksheets()
+sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
+worksheet_list = sh.worksheets()                      # list of worksheet in the google sheet
+st.write(worksheet_list)
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 #connection to the Shopping list table
