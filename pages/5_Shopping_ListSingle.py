@@ -27,13 +27,11 @@ spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List g
 #---gc update---#
 gc = gspread.authorize(credentials)
 s = gc.open("ShopWise Food List")                     # load ShopWise Food List google sheet
-w = s.worksheet("Shopping_List2")                     # get data from "Shopping_List2" tab
-
-st.table(w)
+w = s.worksheet("Shopping_List2")                     # get data from "Shopping_List2" tab <Worksheet 'Shopping_List2' id:986753546>
 
 # --- Call the spreadshet --- #
 sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
-#worksheet_list = sh.worksheets()                      # list of worksheet in the google sheet
+#worksheet_list = sh.worksheets()                      # list of ALL worksheets in the google sheet <Worksheet 'Shopping_List2' id:986753546>...
 
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
