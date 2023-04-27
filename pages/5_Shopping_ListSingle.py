@@ -29,10 +29,12 @@ gc = gspread.authorize(credentials)
 s = gc.open("ShopWise Food List")                     # load ShopWise Food List google sheet
 w = s.worksheet("Shopping_List2")                     # get data from "Shopping_List2" tab
 
+st.table(w)
+
 # --- Call the spreadshet --- #
 sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
-worksheet_list = sh.worksheets()                      # list of worksheet in the google sheet
-st.write(worksheet_list)
+#worksheet_list = sh.worksheets()                      # list of worksheet in the google sheet
+
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 #connection to the Shopping list table
