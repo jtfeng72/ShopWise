@@ -30,6 +30,7 @@ def get_dataset():
 
     return df
 
+
 dataset = get_dataset()
 
 with st.form("data_editor_form"):
