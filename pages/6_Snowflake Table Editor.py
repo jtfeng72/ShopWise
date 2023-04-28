@@ -19,6 +19,7 @@ if 'snowflake_connection' not in st.session_state:
 else:
     session = st.session_state.snowflake_connection
 
+ 
 st.set_page_config(layout="centered", page_title="Data Editor", page_icon="🧮")
 st.title("Snowflake Table Editor ❄️")
 st.caption("This is a demo of the `st.experimental_data_editor`.")
