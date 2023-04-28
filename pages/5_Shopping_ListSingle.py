@@ -60,6 +60,16 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
 #Display the latest update
 df = load_the_spreadsheet(sl_line_sheet)
 
+# ----- Option Menu ----- #
+#for more cions: https://icons.getbootstrap.com/
+nav_menu_select = option_menu(
+    menu_title = "Main Menu",
+    options = ["Shopping List", "Pantry"],
+    icons=["list-task", "shop",],
+    menu_icon="cast",
+    orientation = "horizontal" # Optional delete to have the menu to show on the side
+)
+
 with st.form("form"):
     st.header('Add items below')
     food_item_cat = st.selectbox('Food Categories',set(list(fd_list_df['Category'])))
