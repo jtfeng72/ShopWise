@@ -138,10 +138,11 @@ gridOptions = gd.build()
 
 
 st.experimental_data_editor(df)
-add_submitted = st.form_submit_button("Add Item")
+add_submitted = st.button("Add Item")
 if add_submitted:
          update_the_spreadsheet('Pantry',df) # update google sheet
-
+else:
+     st.write('Incorrect')
         
 df = load_the_spreadsheet(sheet_name) #refresh google sheet
         
