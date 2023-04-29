@@ -132,7 +132,29 @@ gd.configure_column( field = 'Click to Remove',
 gridOptions = gd.build()
 
     
-edited_df = st.experimental_data_editor(df)  
+
+ 
+# ----- 
+
+with st.experimental_data_editor(df) :
+    st.header('Add items below')
+    add_submitted = st.form_submit_button("Add Item")
+    
+    if add_submitted:
+         update_the_spreadsheet('Pantry',df) # update google sheet
+         
+
+df = load_the_spreadsheet(sheet_name) #refresh google sheet
+        
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=True,groupable=True)
+
+
+
+
+
+
     
 """
 # ----- Creating an interactive table ----- #
