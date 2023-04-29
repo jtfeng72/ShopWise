@@ -59,7 +59,7 @@ def load_the_spreadsheet(spreadsheetname):
 
 ## Update add to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Item','Weight']
+    col = ['Item','Weight','Consumed','Wasted','Storage','Expiration','Purchase_Date','Expiration_Date']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
 
