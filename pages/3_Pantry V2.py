@@ -51,18 +51,18 @@ fd_list_df = pd.read_csv(url, dtype=str).fillna("")
 
 
 # ----- Creating functions ----- #
+## Update to Sheet
 def load_the_spreadsheet(spreadsheetname):
     worksheet = sh.worksheet(spreadsheetname)
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 
-# Update to Sheet
+## Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
-
-
+    
 # ----- User add items to pantry ----- #
 df = load_the_spreadsheet(sheet_name)
 
@@ -137,10 +137,10 @@ gridOptions = gd.build()
 # ----- 
 
 
-st.experimental_data_editor(df)
+annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Add Item")
 if add_submitted:
-         update_the_spreadsheet('Pantry',df) # update google sheet
+         update_the_spreadsheet('Pantry',annotated) # update google sheet
 else:
      st.write('Incorrect')
         
