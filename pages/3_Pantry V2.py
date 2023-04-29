@@ -57,11 +57,18 @@ def load_the_spreadsheet(spreadsheetname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 
-## Update to Sheet
+## Update add to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
+
+## Update annotated Sheet
+def update_annotated_spreadsheet(spreadsheetname,dataframe):
+    col = ['Item','Weight','Consumed','Wasted','Storage','Purchase_Date','']
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    st.success('Updated')
+    
     
 # ----- User add items to pantry ----- #
 df = load_the_spreadsheet(sheet_name)
@@ -138,9 +145,9 @@ gridOptions = gd.build()
 
 
 annotated = st.experimental_data_editor(df)
-add_submitted = st.button("Add Item")
+add_submitted = st.button("Confirm Edit")
 if add_submitted:
-         update_the_spreadsheet('Pantry',annotated) # update google sheet
+         update_annotated_spreadsheet('Pantry',annotated) # update google sheet
 else:
      st.write('Incorrect')
         
