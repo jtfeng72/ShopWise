@@ -54,8 +54,8 @@ fd_list_df = pd.read_csv(url, dtype=str).fillna("")
 ## Get the sheet as dataframe
 def load_the_spreadsheet(spreadsheetname):
     worksheet = sh.worksheet(spreadsheetname)
-    load_df = pd.DataFrame(worksheet.get_all_records())
-    return load_df
+    df = pd.DataFrame(worksheet.get_all_records())
+    return df
 
 ## Update add to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
