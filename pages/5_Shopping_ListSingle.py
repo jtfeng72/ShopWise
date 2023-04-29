@@ -106,20 +106,6 @@ cellRenderer_addButton = JsCode('''
             this.eGui = document.createElement('div');
             this.eGui.innerHTML = `
             <span>
-                <style>
-                .btn_add {
-                    background-color: red;
-                    border: 2px solid black;
-                    color: white;
-                    text-align: center;
-                    display: inline-block;
-                    font-size: 12px;
-                    font-weight: bold;
-                    height: 2em;
-                    width: 10em;
-                    border-radius: 12px;
-                    padding: 0px;
-                }
                 </style>
                 <button id='click-button'
                     class="btn-danger"
