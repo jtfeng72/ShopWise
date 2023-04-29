@@ -27,79 +27,46 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-# ----- Create a Google Authentication connection objectt --- #
+# ----- Create a Google Authentication connection objectt ----- #
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
-gc = gspread.authorize(credentials)
-
-# ----- Get List Value and make drop down --- #
-# open your spreadsheet
-s = gc.open("ShopWise Food List") 
-# and worksheet
-w = s.worksheet("DropBox")
-
-values_list_Pantry_Loc = w.col_values(3)
-values_list_Pantry_Loc_ID = w.col_values(4)
-
-option = st.selectbox('Which pantry would you like to access?', (values_list_Pantry_Loc))
-st.write('You selected:', option)
-
-
-# ----- Connect to the Google Sheet ---- 
 client = Client(scope=scope,creds=credentials)
-spreadsheetname = "ShopWise Food List"
 spread = Spread(spreadsheetname,client = client)
+
+
+# ----- Connect to the Google Shee ----- #
+spreadsheetname = "ShopWise Food List"
 sh = client.open(spreadsheetname)
-worksheet_list = sh.worksheets()
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-sheet_name = "Pantry_Loc_Line"
+sheet_name = "Pantry"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-df = pd.read_csv(url, dtype=str).fillna("")
+p_df = pd.read_csv(url, dtype=str).fillna("")
 
 sheet_name2 = "Food_List_Master"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name2}"
-food_Item_df = pd.read_csv(url, dtype=str).fillna("")
-
-"""
-# ----- Build a user interface and search functionality --- #
-text_search = st.text_input("Search items by item description", value="")
-
-m1 = df["Pantry_ID"].str.contains(text_search)
-m2 = df["Storage"].str.contains(text_search)
-df_search = df[m1 | m2]
-
-if text_search:
-    st.write(df_search)
-
-# ----- SIDEBAR ----- #
-st.sidebar.header("Please Filter Here:")
-Pantry_Loc = st.sidebar.multiselect(
-    "Select the Pantry Location:",
-    options=values_list_Pantry_Loc,
-    default=values_list_Pantry_Loc
-)
-
-Storage = st.sidebar.multiselect(
-    "Select the Storage:",
-    options=df["Storage"].unique(),
-    default=df["Storage"].unique(),
-)
-
-Pantry_Loc_ID = st.sidebar.multiselect(
-    "Select the Storage:",
-    options=values_list_Pantry_Loc_ID,
-    default=values_list_Pantry_Loc_ID,
-)
+fd_list_df = pd.read_csv(url, dtype=str).fillna("")
 
 
-df_selection = df.query(
-    "Pantry_ID == @Pantry_Loc_ID & Storage ==@Storage"
-)
+# ----- Creating functions ----- #
+def load_the_spreadsheet(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    df = pd.DataFrame(worksheet.get_all_records())
+    return df
 
-"""
+# Update to Sheet
+def update_the_spreadsheet(spreadsheetname,dataframe):
+    col = ['Item','Weight']
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    st.success('Updated')
+
+
+
+
+
+
 
 # ----- Creating an interactive table ----- #
 
