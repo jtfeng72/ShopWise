@@ -69,7 +69,7 @@ with st.form("form"):
     food_item_cat = st.selectbox('Food Categories',set(list(fd_list_df['Category'])))
     fd_list_filt = (fd_list_df['Category'] == food_item_cat)
     #item = st.selectbox('Food Item (Type to search/use the dropdown->)',list(filt_fd_list_df['Name'])) 
-    item = st.selectbox('Food Item',list(fd_list_df[fd_list_filt,'Name'])) 
+    item = st.selectbox('Food Item',list(fd_list_df.loc[fd_list_filt,'Name'])) 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
