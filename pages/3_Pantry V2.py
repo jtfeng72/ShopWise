@@ -62,13 +62,13 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
-
+"""
 ## Update annotated Sheet
 def update_annotated_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight','Consumed','Wasted','Storage','Purchase_Date','Expiration_Date']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
-    
+"""    
     
 # ----- User add items to pantry ----- #
 
