@@ -90,6 +90,45 @@ gd.configure_pagination(enabled=True)
 gd.configure_default_column(editable=True,groupable=True)
 
 
+#  --- JavaScript function to add a new row to the AgGrid table ---         
+js_del_row = JsCode ('''
+function(e) {
+ let api = e.api;
+ let sel = api.getSelectedRows(); 
+ api.applyTransaction({remove: sel}) 
+};
+'''
+)
+
+#  --- Cell renderer for the '🔧' column to render a button --- 
+cellRenderer_addButton = JsCode('''
+    class BtnCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                </style>
+                <button id='click-button'
+                    class="btn-danger"
+                    > X </button>
+            </span>
+        `;
+        }
+        getGui() {
+            return this.eGui;
+        }
+    };
+    ''')         
+    
+gd.configure_selection(selection_mode= 'single')
+#gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
+gd.configure_column( field = 'Click to Remove', 
+                     onCellClicked = js_del_row,      #adding delete function into the button
+                     pre_selected_rows=[],
+                     cellRenderer = cellRenderer_addButton, #adding the button desgin
+                     lockPosition='left')
+gridOptions = gd.build()
 
     
     
