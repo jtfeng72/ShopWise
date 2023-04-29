@@ -15,6 +15,14 @@ import streamlit as st
 #---Page setup---#
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
 st.title('Welcome to ShopWise')
+#---------------#
+
+st.write("ShopWise")
+col1, mid, col2 = st.beta_columns([1,1,20])
+with col1:
+    st.image('Shopwise_logo2.png', width=60)
+with col2:
+    st.write('Text Here')
 
 # Display the Logo- Start---- -
 image = Image.open('Shopwise_logo2.png')
