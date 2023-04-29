@@ -62,13 +62,13 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
-"""
+
 ## Update annotated Sheet
 def update_annotated_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight','Consumed','Wasted','Storage','Purchase_Date','Expiration_Date']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
-"""    
+ 
     
 # ----- User add items to pantry ----- #
 
@@ -107,67 +107,3 @@ load_df =  load_the_spreadsheet(Pantry)
 
 
 
-
-    
-"""
-# ----- Creating an interactive table ----- #
-
-gd = GridOptionsBuilder.from_dataframe(df_selection)
-gd.configure_pagination(enabled = True)
-gd.configure_default_column(editable =True, groupable = True)
-
-
-sel_mode = st.radio('Selection Type', options = ['Single', 'Multiple'])
-gd.configure_selection(selection_mode = sel_mode, use_checkbox = True)
-gridoptions = gd.build()
-grid_table = AgGrid(df_selection, gridOptions = gridoptions,
-                   update_mode = GridUpdateMode.SELECTION_CHANGED,
-                   height = 500,
-                   allow_unsafe_jscode = True)
-
-sel_row = grid_table["selected_rows"]
-st.write(sel_row)
-
-# ----- Add items to the table ----- #
-
-edited_df = st.experimental_data_editor(df, num_rows="dynamic")
-
-
-# Functions 
-@st.cache()
-# Get our worksheet names
-def worksheet_names():
-    sheet_names = []   
-    for sheet in worksheet_list:
-        sheet_names.append(sheet.title)  
-    return sheet_names
-
-# Get the sheet as dataframe
-def load_the_spreadsheet(spreadsheetname):
-    worksheet = sh.worksheet(spreadsheetname)
-    df = DataFrame(worksheet.get_all_records())
-    return df
-
-# Update to Sheet
-def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Product_ID','Quantity','Purchase_Date']
-    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
-    st.sidebar.info('Updated to GoogleSheet')
-
-
-with st.form("form"):
-    item = st.selectbox('Food_List_Master',list(food_Item_df['Product_ID']))
-    Quantity = st.number_input("Weight(g)")
-    add_submitted = st.form_submit_button("Add Item")
-
-    if add_submitted :  
-                  now = datetime.now()
-                  opt = {'Product_ID': [item],
-                         'Quantity': [Quantity],
-                         'Purchase_Date' : [now]} 
-                  opt_df = DataFrame(opt)
-                  df = load_the_spreadsheet('Pantry_Loc_Line')
-                  new_df = df.append(opt_df,ignore_index=True)
-                  update_the_spreadsheet('Pantry_Loc_Line',new_df)
-   
-"""
