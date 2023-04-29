@@ -67,7 +67,10 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
 
 
 
-
+    
+    
+    
+"""
 # ----- Creating an interactive table ----- #
 
 gd = GridOptionsBuilder.from_dataframe(df_selection)
@@ -90,7 +93,7 @@ st.write(sel_row)
 
 edited_df = st.experimental_data_editor(df, num_rows="dynamic")
 
-"""
+
 # Functions 
 @st.cache()
 # Get our worksheet names
