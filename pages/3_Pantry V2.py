@@ -92,7 +92,7 @@ with st.form("form"):
          update_the_spreadsheet('Pantry',df) # update google sheet
         
 
-
+df = load_the_spreadsheet(sheet_name)
 
 # ----- User add annotation to pantry ----- #
 annotated = st.experimental_data_editor(df)
@@ -103,6 +103,9 @@ else:
      st.write('Incorrect')
 
 df = load_the_spreadsheet(sheet_name)
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=True,groupable=True)
 
 
 
