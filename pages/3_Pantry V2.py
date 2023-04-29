@@ -51,12 +51,6 @@ fd_list_df = pd.read_csv(url, dtype=str).fillna("")
 
 
 # ----- Creating functions ----- #
-## Update to Sheet
-def load_the_spreadsheet(spreadsheetname):
-    worksheet = sh.worksheet(spreadsheetname)
-    df = pd.DataFrame(worksheet.get_all_records())
-    return df
-
 ## Update add to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight']
@@ -71,7 +65,8 @@ def update_annotated_spreadsheet(spreadsheetname,dataframe):
     
     
 # ----- User add items to pantry ----- #
-df = load_the_spreadsheet(sheet_name)
+
+df = p_df
 
 with st.form("form"):
     st.header('Add items below')
