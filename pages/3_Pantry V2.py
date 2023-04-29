@@ -63,7 +63,31 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     st.success('Updated')
 
 
+# ----- User add items to pantry ----- #
 
+with st.form("form"):
+    st.header('Add items below')
+    item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list_df['Name'])) 
+    weight = st.number_input("Weight(g)")
+    add_submitted = st.form_submit_button("Add Item")
+    
+    if add_submitted:
+        if len(df) == 0:
+         user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
+         user_input_df = pd.DataFrame(user_input)
+         update_the_spreadsheet('Pantry',user_input_df) # update google sheet
+         
+        else:
+         user_input = [item, weight] # User input dataframe
+         df.loc[len(df.index)] = user_input # insert usert input
+         update_the_spreadsheet('Pantry',df) # update google sheet
+         
+
+df = load_the_spreadsheet(sheet_name) #refresh google sheet
+        
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=True,groupable=True)
 
 
 
