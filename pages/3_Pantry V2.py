@@ -151,11 +151,7 @@ if add_submitted:
 else:
      st.write('Incorrect')
         
-df = load_the_spreadsheet(sheet_name) #refresh google sheet
-        
-gd = GridOptionsBuilder.from_dataframe(df)
-gd.configure_pagination(enabled=True)
-gd.configure_default_column(editable=True,groupable=True)
+
 
 
 
