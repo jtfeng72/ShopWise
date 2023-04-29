@@ -60,7 +60,6 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
 
 #Display the latest update
 df = load_the_spreadsheet(sl_line_sheet)
-)
 
 with st.form("form"):
     st.header('Add items below')
