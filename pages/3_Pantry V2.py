@@ -84,14 +84,7 @@ with st.form("form"):
          user_input = [item, weight] # User input dataframe
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Pantry',df) # update google sheet
-         
-
-df = load_the_spreadsheet(sheet_name) #refresh google sheet
         
-gd = GridOptionsBuilder.from_dataframe(df)
-gd.configure_pagination(enabled=True)
-gd.configure_default_column(editable=True,groupable=True)
-
 
 #  --- JavaScript function to add a new row to the AgGrid table ---         
 js_del_row = JsCode ('''
