@@ -33,11 +33,11 @@ scope = ['https://spreadsheets.google.com/feeds',
 credentials = service_account.Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"], scopes = scope)
 client = Client(scope=scope,creds=credentials)
-spread = Spread(spreadsheetname,client = client)
 
 
 # ----- Connect to the Google Shee ----- #
 spreadsheetname = "ShopWise Food List"
+spread = Spread(spreadsheetname,client = client)
 sh = client.open(spreadsheetname)
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
