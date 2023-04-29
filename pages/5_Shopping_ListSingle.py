@@ -67,9 +67,9 @@ df = load_the_spreadsheet(sl_line_sheet)
 with st.form("form"):
     st.header('Add items below')
     food_item_cat = st.selectbox('Food Categories',set(list(fd_list_df['Category'])))
-    filt_fd_list_df = (fd_list_df['Category'] == food_item_cat)
+    fd_list_filt = (fd_list_df['Category'] == food_item_cat)
     #item = st.selectbox('Food Item (Type to search/use the dropdown->)',list(filt_fd_list_df['Name'])) 
-    item = st.selectbox('Food Item',list(fd_list_df['Name'])) 
+    item = st.selectbox('Food Item',list(fd_list_df[fd_list_filt,'Name'])) 
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
@@ -136,7 +136,7 @@ gridOptions = gd.build()
 
 with st.form('Shopping List') as f:
          st.header('Shopping List 🔖')
-         '''Click "Confirm 🔒" to finalize the list below')'''
+         '''Click "Confirm 🔒" to finalize the list below'''
          grid_table = AgGrid(df, 
                    gridOptions = gridOptions, 
                    fit_columns_on_grid_load = True,
