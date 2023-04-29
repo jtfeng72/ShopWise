@@ -132,7 +132,7 @@ gd.configure_column( field = 'Click to Remove',
 gridOptions = gd.build()
 
     
-    
+edited_df = st.experimental_data_editor(df)  
     
 """
 # ----- Creating an interactive table ----- #
