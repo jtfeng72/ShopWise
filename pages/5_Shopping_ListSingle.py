@@ -26,9 +26,9 @@ spreadsheetname = "ShopWise Food List"                #spreadsheet name
 spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List google sheet
 
 #---gc update---#
-gc = gspread.authorize(credentials)
-s = gc.open("ShopWise Food List")                     # load ShopWise Food List google sheet
-w = s.worksheet("Shopping_List2")                     # get data from "Shopping_List2" tab <Worksheet 'Shopping_List2' id:986753546>
+#gc = gspread.authorize(credentials)
+#s = gc.open("ShopWise Food List")                     # load ShopWise Food List google sheet
+#w = s.worksheet("Shopping_List2")                     # get data from "Shopping_List2" tab <Worksheet 'Shopping_List2' id:986753546>
 
 # --- Call the spreadshet --- #
 sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
@@ -60,6 +60,9 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
 
 #Display the latest update
 df = load_the_spreadsheet(sl_line_sheet)
+
+
+#---User input to add items--#
 
 with st.form("form"):
     st.header('Add items below')
@@ -129,9 +132,11 @@ gd.configure_column( field = 'Click to Remove',
 gridOptions = gd.build()
 
 
+#---AG grid Remove item--#
+
 with st.form('Shopping List') as f:
          st.header('Shopping List 🔖')
-         st.text('Click "Confirm 🔒" to finalize the list below')
+         '''Click "Confirm 🔒" to finalize the list below')'''
          grid_table = AgGrid(df, 
                    gridOptions = gridOptions, 
                    fit_columns_on_grid_load = True,
