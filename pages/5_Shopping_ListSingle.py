@@ -130,7 +130,7 @@ gridOptions = gd.build()
 
 
 with st.form('Shopping List') as f:
-         st.header('Shopping List 🔖')
+         st.header('Shopping List 🔖 (Click "Confirm 🔒" to finalize the list below)')
          grid_table = AgGrid(df, 
                    gridOptions = gridOptions, 
                    fit_columns_on_grid_load = True,
@@ -138,7 +138,7 @@ with st.form('Shopping List') as f:
                    allow_unsafe_jscode=True,
                    )
          st.info("Total Rows :" + str(len(grid_table['data'])))
-         submitted = st.form_submit_button("Click to confirm shopping list(s) 🔒")
+         submitted = st.form_submit_button("Confirm 🔒")
          
          if submitted:
                   df_final = grid_table["data"]
