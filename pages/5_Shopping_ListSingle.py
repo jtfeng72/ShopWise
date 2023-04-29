@@ -122,7 +122,7 @@ cellRenderer_addButton = JsCode('''
                 }
                 </style>
                 <button id='click-button'
-                    class="btn-primary" 
+                    class="btn-danger"
                     > X </button>
             </span>
         `;
@@ -152,7 +152,7 @@ with st.form('Shopping List') as f:
                    allow_unsafe_jscode=True,
                    )
          st.info("Total Rows :" + str(len(grid_table['data'])))
-         submitted = st.form_submit_button("Confirm item(s) 🔒")
+         submitted = st.form_submit_button("Click to confirm shopping list(s) 🔒")
          
          if submitted:
                   df_final = grid_table["data"]
