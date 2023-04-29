@@ -64,6 +64,7 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
 
 
 # ----- User add items to pantry ----- #
+df = load_the_spreadsheet(sheet_name)
 
 with st.form("form"):
     st.header('Add items below')
