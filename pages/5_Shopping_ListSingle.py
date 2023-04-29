@@ -131,7 +131,7 @@ gridOptions = gd.build()
 
 with st.form('Shopping List') as f:
          st.header('Shopping List 🔖')
-         st.subheader(Click "Confirm 🔒" to finalize the list below)
+         st.subheader('Click "Confirm 🔒" to finalize the list below')
          grid_table = AgGrid(df, 
                    gridOptions = gridOptions, 
                    fit_columns_on_grid_load = True,
