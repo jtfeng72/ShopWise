@@ -51,6 +51,12 @@ fd_list_df = pd.read_csv(url, dtype=str).fillna("")
 
 
 # ----- Creating functions ----- #
+## Get the sheet as dataframe
+def load_the_spreadsheet(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    load_df = pd.DataFrame(worksheet.get_all_records())
+    return load_df
+
 ## Update add to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight']
@@ -59,14 +65,14 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
 
 ## Update annotated Sheet
 def update_annotated_spreadsheet(spreadsheetname,dataframe):
-    col = ['Item','Weight','Consumed','Storage','Purchase_Date']
+    col = ['Item','Weight','Consumed','Wasted','Storage','Purchase_Date','Expiration_Date']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
     
     
 # ----- User add items to pantry ----- #
 
-df = p_df
+df =  load_the_spreadsheet(Pantry)
 
 with st.form("form"):
     st.header('Add items below')
@@ -86,54 +92,17 @@ with st.form("form"):
          update_the_spreadsheet('Pantry',df) # update google sheet
         
 
-#  --- JavaScript function to add a new row to the AgGrid table ---         
-js_del_row = JsCode ('''
-function(e) {
- let api = e.api;
- let sel = api.getSelectedRows(); 
- api.applyTransaction({remove: sel}) 
-};
-'''
-)
-
-#  --- Cell renderer for the '🔧' column to render a button --- 
-cellRenderer_addButton = JsCode('''
-    class BtnCellRenderer {
-        init(params) {
-            this.params = params;
-            this.eGui = document.createElement('div');
-            this.eGui.innerHTML = `
-            <span>
-                </style>
-                <button id='click-button'
-                    class="btn-danger"
-                    > X </button>
-            </span>
-        `;
-        }
-        getGui() {
-            return this.eGui;
-        }
-    };
-    ''')         
-    
 
 
-    
-
- 
-# ----- 
-
-
+# ----- User add annotation to pantry ----- #
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
 if add_submitted:
          update_annotated_spreadsheet('Pantry',annotated) # update google sheet
 else:
      st.write('Incorrect')
-        
 
-
+df =  load_the_spreadsheet(Pantry)
 
 
 
