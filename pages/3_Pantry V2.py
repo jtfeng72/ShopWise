@@ -72,7 +72,7 @@ def update_annotated_spreadsheet(spreadsheetname,dataframe):
     
 # ----- User add items to pantry ----- #
 
-load_df = load_the_spreadsheet(Pantry)
+load_df = load_the_spreadsheet(sheet_name)
 
 with st.form("form"):
     st.header('Add items below')
@@ -102,7 +102,7 @@ if add_submitted:
 else:
      st.write('Incorrect')
 
-load_df = load_the_spreadsheet(Pantry)
+load_df = load_the_spreadsheet(sheet_name)
 
 
 
