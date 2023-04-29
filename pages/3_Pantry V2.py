@@ -117,14 +117,7 @@ cellRenderer_addButton = JsCode('''
     };
     ''')         
     
-gd.configure_selection(selection_mode= 'single')
-#gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
-gd.configure_column( field = 'Click to Remove', 
-                     onCellClicked = js_del_row,      #adding delete function into the button
-                     pre_selected_rows=[],
-                     cellRenderer = cellRenderer_addButton, #adding the button desgin
-                     lockPosition='left')
-gridOptions = gd.build()
+
 
     
 
