@@ -1,16 +1,16 @@
+#ShopWise Pantry.py
 # ----- Entire code below  ------- #  
+
+# ----- Import libraries  ------- #  
 import streamlit as st
 from google.oauth2 import service_account
 from google.cloud import storage
 import gcsfs
 import pandas as pd
-from io import StringIO 
-import requests
 from st_aggrid import AgGrid, JsCode, GridUpdateMode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import gspread 
 from gspread_pandas import Spread,Client
-import networkx as nx
 import matplotlib.pyplot as plt
 from datetime import datetime
 from pandas import DataFrame
@@ -63,6 +63,7 @@ sheet_name2 = "Food_List_Master"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name2}"
 food_Item_df = pd.read_csv(url, dtype=str).fillna("")
 
+"""
 # ----- Build a user interface and search functionality --- #
 text_search = st.text_input("Search items by item description", value="")
 
@@ -98,6 +99,7 @@ df_selection = df.query(
     "Pantry_ID == @Pantry_Loc_ID & Storage ==@Storage"
 )
 
+"""
 
 # ----- Creating an interactive table ----- #
 
