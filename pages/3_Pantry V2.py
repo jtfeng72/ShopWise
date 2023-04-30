@@ -84,7 +84,7 @@ with st.form("form"):
                             value = datetime.date(2000, 6, 12),
                             min_value = datetime.date(2000, 1, 12),
                             max_value = datetime.date(2999, 1, 12)
-                            )
+                            ),
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
