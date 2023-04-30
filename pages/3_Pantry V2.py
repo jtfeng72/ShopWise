@@ -101,6 +101,22 @@ with st.form("form"):
 df = load_the_spreadsheet(sheet_name)
 
 # ----- User add annotation to pantry ----- #
+
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_selection(selection_mode='multiple', use_checkbox=True)
+gridoptions = gd.build()
+
+grid_table = AgGrid(df, height=250, gridOptions=gridoptions,
+                    update_mode=GridUpdateMode.SELECTION_CHANGED)
+
+st.write('## Selected')
+selected_row = grid_table["selected_rows"]
+st.dataframe(selected_row)
+
+
+
+
+
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
 
