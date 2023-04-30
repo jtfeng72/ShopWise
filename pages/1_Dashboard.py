@@ -67,5 +67,5 @@ with st.form("form"):
     if submitted:
         update_the_status_cell()
 
-aggrid(dashp)
+AgGrid(dashp)
 
