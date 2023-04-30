@@ -68,8 +68,16 @@ def update_annotated_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight','Storage','Purchase_Date','Consumed','Done']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
-
     
+## Get data and pdate data type
+def get_data(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    df = pd.DataFrame(worksheet.get_all_records())
+    df.Done = df.Done.astype("category")
+    df.Storage = df.Storage.astype("category")
+    return df
+   
+   
 # ----- User add items to pantry ----- #
 df = load_the_spreadsheet(sheet_name)
 
@@ -95,15 +103,6 @@ with st.form("form"):
          user_input = [item, weight,storage,purchase,Consumed,Done,"","",""] # User input dataframe
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Pantry',df) # update google sheet
-
-
-# ----- User add annotation to pantry ----- #
-
-def get_data(spreadsheetname):
-    worksheet = sh.worksheet(spreadsheetname)
-    df = pd.DataFrame(worksheet.get_all_records())
-    df.Done = df.Done.astype("category")
-    return df
    
 
 # ----- User add annotation to pantry ----- #
@@ -119,22 +118,3 @@ elif add_Refreshd:
          df = load_the_spreadsheet(sheet_name) 
 else:
      st.write('')
-  
-  
-# ----- Select pantry ----- #
-df = load_the_spreadsheet(sheet_name)
-gd = GridOptionsBuilder.from_dataframe(df)
-gd.configure_pagination(enabled=True)
-gd.configure_default_column(editable=True,groupable=True)
-
-
-gd = GridOptionsBuilder.from_dataframe(df)
-gd.configure_selection(selection_mode='multiple', use_checkbox=True)
-gridoptions = gd.build()
-
-grid_table = AgGrid(df, height=250, gridOptions=gridoptions,
-                    update_mode=GridUpdateMode.SELECTION_CHANGED)
-
-st.write('## Selected')
-selected_row = grid_table["selected_rows"]
-st.dataframe(selected_row)
