@@ -82,17 +82,18 @@ with st.form("form"):
     all_pantry = ["Pantry","Fridge","Freezer"]
     storage = st.selectbox("Select Storage Type",all_pantry) 
     purchase = st.date_input("Select purchase date")
+    Consumed = st.number_input("Consumed(g)")
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
         if len(df) == 0:
          user_input = {"Item": [item], "Weight": [weight], "Storage": [storage]
-                      , "Purchase_Date": [purchase], "Consumed":"0"} # User input dataframe
+                      , "Purchase_Date": [purchase], "Consumed": [Consumed]} # User input dataframe
          user_input_df = pd.DataFrame(user_input)
          update_the_spreadsheet('Pantry',user_input_df) # update google sheet
          
         else:
-         user_input = [item, weight,"","","","","","",] # User input dataframe
+         user_input = [item, weight,storage,purchase,Consumed,"","","",""] # User input dataframe
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Pantry',df) # update google sheet
         
