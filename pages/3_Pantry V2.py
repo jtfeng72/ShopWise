@@ -83,7 +83,7 @@ with st.form("form"):
     storage = st.selectbox("Select Storage Type",all_pantry) 
     purchase = st.date_input("Select Purchase Date")
     Consumed = st.number_input("Consumed(g)")
-    Done = st.checkbox()
+    Done = [False]
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
