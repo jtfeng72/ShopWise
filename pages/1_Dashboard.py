@@ -55,6 +55,8 @@ def update_the_status_cell():
     dashboard.update('I4', selstatus)
     st.sidebar.info('Updated to GoogleSheet')
 
+         
+# ----- Creating Pantry Dashboard ----- #
 with st.form("form"):
     selstatus = st.radio('Select Status:',['In Progress','Completed'])
     submitted = st.form_submit_button("Confirm")
@@ -62,63 +64,5 @@ with st.form("form"):
     if submitted:
         update_the_status_cell()
 
-"""
-# --- Get List Value and make drop down --- #
-# open your spreadsheet
-s = spread.open("ShopWise Food List") 
-# and worksheet
-w = s.worksheet("DropBox")
+aggrid(dashboard_pantry)
 
-
-# Update to Shopping cell
-def update_the_shopping_cell():
-    wks.update('D7', shopping_option)
-    st.sidebar.info('Updated to GoogleSheet')
-
-with st.form("my_form"):
-    shopping_values_list = w.col_values(1)
-    shopping_option = st.selectbox('Which shopping list would you like to access?', (shopping_values_list))
-    submitted = st.form_submit_button("Confirm")
-    
-    if submitted:
-        update_the_shopping_cell()
-
-
-# Update to Pantry cell
-def update_the_pantry_cell():
-    wks.update('D22', Pantry_option)
-    st.sidebar.info('Updated to GoogleSheet')
-
-with st.form("my_form_1"):
-    Pantry_values_list = w.col_values(3)
-    Pantry_option = st.selectbox('Which pantry location would you like to access?', (Pantry_values_list))
-    submitted = st.form_submit_button("Confirm")
-    
-    if submitted:
-        update_the_pantry_cell()
-
-
-
-# Functions 
-@st.cache()
-
-
-# Get the sheet as dataframe
-def load_the_spreadsheet(spreadsheetname):
-    worksheet = sh.worksheet(spreadsheetname)
-    df = DataFrame(worksheet.get_all_records())
-    return df
-
-
-
-
-
-
-with st.form("form"):
-    username = st.text_input("Please enter your user name.")
-    submitted = st.form_submit_button("Confirm")
-    
-    if submitted:
-        update_the_user_cell()
-
-"""
