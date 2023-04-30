@@ -39,29 +39,30 @@ spreadsheetname = "ShopWise Food List"
 spread = Spread(spreadsheetname,client = client)
 sh = client.open(spreadsheetname)
 
-sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-sheet_name = "Pantry"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-p_df = pd.read_csv(url, dtype=str).fillna("")
-
-sheet_name2 = "Food_List_Master"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name2}"
-fd_list_df = pd.read_csv(url, dtype=str).fillna("")
+dashboard = sh.worksheet("Dashboard V2")
+dashboard_pantry = sh.worksheet("Dashboard Pantry")
+dropbox = sh.worksheet("DropBox")
 
 
 # ----- Creating functions ----- #
-def update_the_user_cell():
-    sh.update('C5', username)
+## Get the sheet as dataframe
+def load_the_spreadsheet(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    df = DataFrame(worksheet.get_all_records())
+    return df
+
+def update_the_status_cell():
+    dashboard.update('I4', selstatus)
     st.sidebar.info('Updated to GoogleSheet')
 
 with st.form("form"):
-    username = st.text_input("Please enter your user name.")
+    selstatus = st.radio('Select Status:',['In Progress','Completed'])
     submitted = st.form_submit_button("Confirm")
     
     if submitted:
-        update_the_user_cell()
+        update_the_status_cell()
 
-
+"""
 # --- Get List Value and make drop down --- #
 # open your spreadsheet
 s = spread.open("ShopWise Food List") 
@@ -100,12 +101,7 @@ with st.form("my_form_1"):
 
 # Functions 
 @st.cache()
-# Get our worksheet names
-def worksheet_names():
-    sheet_names = []   
-    for sheet in worksheet_list:
-        sheet_names.append(sheet.title)  
-    return sheet_names
+
 
 # Get the sheet as dataframe
 def load_the_spreadsheet(spreadsheetname):
@@ -113,13 +109,16 @@ def load_the_spreadsheet(spreadsheetname):
     df = DataFrame(worksheet.get_all_records())
     return df
 
-# Update to Sheet
-def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Name','Time_stamp']
-    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
-    st.sidebar.info('Updated to GoogleSheet')
 
 
 
+
+
+with st.form("form"):
+    username = st.text_input("Please enter your user name.")
+    submitted = st.form_submit_button("Confirm")
+    
+    if submitted:
+        update_the_user_cell()
 
 
