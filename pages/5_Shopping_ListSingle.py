@@ -138,7 +138,7 @@ gridOptions = gd.build()
 
 with st.form('Shopping List') as f:
          st.header('Shopping List 🔖')
-         '''Click "Confirm 🔒" to finalize the list below'''
+         '''If items are removed, Click "Confirm 🔒" to finalize the list below'''
          grid_table = AgGrid(df, 
                    gridOptions = gridOptions, 
                    fit_columns_on_grid_load = True,
