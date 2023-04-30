@@ -150,5 +150,9 @@ with st.form('Shopping List') as f:
          
          if submitted:
                   df_final = grid_table["data"]
-                  spread.clear_sheet(sheet = 'Shopping_List2')
-                  update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
+                  if df_final.empty:
+                           df_final = pd.DataFrame(columns=['Item','Weight'])
+                           update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
+                  else:
+                           spread.clear_sheet(sheet = 'Shopping_List2')
+                           update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
