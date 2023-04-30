@@ -99,22 +99,15 @@ with st.form("form"):
 
 # ----- User add annotation to pantry ----- #
 
-def get_data() -> pd.DataFrame:
-    df = pd.DataFrame(
-        {
-            "age": [12, 32, 45, 90, 89],
-            "gender": ["male", "male", "other", "female", "male"],
-            "active": [False, True, True, False, False],
-        },
-    )
-
-    df.age = df.age.astype("uint64")
-    df.gender = df.gender.astype("category")
+def get_data(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    df = pd.DataFrame(worksheet.get_all_records())
+    df.Done = df.age.Done("category")
     return df
+   
 
-
-
-df = load_the_spreadsheet(sheet_name)
+# ----- User add annotation to pantry ----- #
+df = get_data(sheet_name)
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
 add_Refreshd = st.button("Refresh")
@@ -125,7 +118,7 @@ if add_submitted:
 elif add_Refreshd:
          df = load_the_spreadsheet(sheet_name) 
 else:
-     st.write('Incorrect')
+     st.write('')
   
   
 # ----- Select pantry ----- #
