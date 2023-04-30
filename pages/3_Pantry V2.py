@@ -68,6 +68,7 @@ def update_annotated_spreadsheet(spreadsheetname,dataframe):
     col = ['Item','Weight','Consumed','Wasted','Storage','Expiration','Purchase_Date','Expiration_Date']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
+
  
     
 # ----- User add items to pantry ----- #
@@ -97,16 +98,20 @@ df = load_the_spreadsheet(sheet_name)
 # ----- User add annotation to pantry ----- #
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
+
+if add_submitted:
+ worksheet.update_cells(annotated, value_input_option="USER_ENTERED") 
+
+"""
 if add_submitted:
          update_annotated_spreadsheet('Pantry',annotated) # update google sheet
 else:
      st.write('Incorrect')
+"""
 
 df = load_the_spreadsheet(sheet_name)
 gd = GridOptionsBuilder.from_dataframe(df)
 gd.configure_pagination(enabled=True)
 gd.configure_default_column(editable=True,groupable=True)
-
-
 
 
