@@ -54,7 +54,6 @@ def load_the_spreadsheet(spreadsheetname):
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    st.spinner('Processing...')
     col = ['Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
@@ -75,16 +74,18 @@ with st.form("form"):
     weight = st.number_input("Weight(g)")
     add_submitted = st.form_submit_button("Add Item")
     
-    if add_submitted:
-        if len(df) == 0:
-         user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
-         user_input_df = pd.DataFrame(user_input)
-         update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
-         
-        else:
-         user_input = [item, weight] # User input dataframe
-         df.loc[len(df.index)] = user_input # insert usert input
-         update_the_spreadsheet('Shopping_List2',df) # update google sheet
+    with st.spinner('Processing...'):
+             if add_submitted:
+                 with st.spinner('Processing...'):
+                 if len(df) == 0:
+                  user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
+                  user_input_df = pd.DataFrame(user_input)
+                  update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
+
+                 else:
+                  user_input = [item, weight] # User input dataframe
+                  df.loc[len(df.index)] = user_input # insert usert input
+                  update_the_spreadsheet('Shopping_List2',df) # update google sheet
          
 
 df = load_the_spreadsheet(sl_line_sheet) #refresh google sheet
