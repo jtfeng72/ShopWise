@@ -102,7 +102,7 @@ with st.form("form"):
 def get_data(spreadsheetname):
     worksheet = sh.worksheet(spreadsheetname)
     df = pd.DataFrame(worksheet.get_all_records())
-    df.Done = df.age.Done("category")
+    df.Done = df.Done.astype("category")
     return df
    
 
