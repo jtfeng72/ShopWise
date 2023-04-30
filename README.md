@@ -1,6 +1,6 @@
 # ShopWise
 
-Streamlit App Link: https://jtfeng72-shopwise-shopwise-home-ixje56.streamlit.app/Shopping_List
+Streamlit App Link: https://jtfeng72-shopwise-shopwise-home-ixje56.streamlit.app/
 
 Curretly this version has 
   ## 1. Item Search Box - Search items by item description
