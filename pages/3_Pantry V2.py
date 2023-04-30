@@ -101,7 +101,6 @@ add_submitted = st.button("Confirm Edit")
 
 if add_submitted:
          update_annotated_spreadsheet('Pantry',annotated) # update google sheet
-         load_the_spreadsheet(sheet_name)
 else:
      st.write('Incorrect')
 
