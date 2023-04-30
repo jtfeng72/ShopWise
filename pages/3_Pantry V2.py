@@ -115,6 +115,7 @@ if add_submitted:
          update_annotated_spreadsheet('Pantry',annotated) # update google sheet
          df = load_the_spreadsheet(sheet_name) 
 elif add_Refreshd:
+         update_annotated_spreadsheet('Pantry',annotated) # update google sheet
          df = load_the_spreadsheet(sheet_name) 
 else:
      st.write('')
