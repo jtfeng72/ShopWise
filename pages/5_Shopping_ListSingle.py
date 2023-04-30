@@ -150,7 +150,7 @@ with st.form('Shopping List') as f:
          
          if submitted:
                   df_final = grid_table["data"]
-                  if df_final.empty:
+                  if df_final.empty:                                    #incase the ag-grid is cleared completely
                            spread.clear_sheet(sheet = 'Shopping_List2')
                            df_final = pd.DataFrame(columns=['Item','Weight'])
                            update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
