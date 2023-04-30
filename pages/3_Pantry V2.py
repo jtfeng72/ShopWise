@@ -101,9 +101,6 @@ with st.form("form"):
 df = load_the_spreadsheet(sheet_name)
 
 # ----- User add annotation to pantry ----- #
-df.Storage = df.Storage.astype("category")
-df.Storage = df.Storage.cat.add_categories("Pantry","Fridge","Freezer")
-
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
 
