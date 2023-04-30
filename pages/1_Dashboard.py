@@ -67,5 +67,7 @@ with st.form("form"):
     if submitted:
         update_the_status_cell()
 
+dashp=load_the_spreadsheet(dashboard_pantry)
+
 AgGrid(dashp)
 
