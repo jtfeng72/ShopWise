@@ -46,6 +46,11 @@ dashboard_pantry = "Dashboard_Pantry"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={dashboard_pantry}"
 dashp = pd.read_csv(url, dtype=str).fillna("")
 
+sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+sl_line_sheet = "Shopping_List2"#"Shopping_List_Line"
+sl_line_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sl_line_sheet}"
+sl_line_df = pd.read_csv(sl_line_url, dtype=str).fillna("")
+
 
 # ----- Creating functions ----- #
 ## Get the sheet as dataframe
@@ -58,8 +63,11 @@ def update_the_status_cell():
     dashboard.update('I4', selstatus)
     st.sidebar.info('Updated to GoogleSheet')
 
-         
-# ----- Creating Pantry Dashboard ----- #
+# ----- Pantry Dashboard ----- #
+AgGrid(sl_line_df)
+
+
+# ----- Pantry Dashboard ----- #
 with st.form("form"):
     selstatus = st.radio('Select Status:',['In Progress','Completed'])
     submitted = st.form_submit_button("Confirm")
