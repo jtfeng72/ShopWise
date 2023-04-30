@@ -40,8 +40,11 @@ spread = Spread(spreadsheetname,client = client)
 sh = client.open(spreadsheetname)
 
 dashboard = sh.worksheet("Dashboard V2")
-dashboard_pantry = sh.worksheet("Dashboard Pantry")
-dropbox = sh.worksheet("DropBox")
+
+sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+dashboard_pantry = "Dashboard Pantry"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+dashp = pd.read_csv(url, dtype=str).fillna("")
 
 
 # ----- Creating functions ----- #
@@ -64,5 +67,5 @@ with st.form("form"):
     if submitted:
         update_the_status_cell()
 
-aggrid(dashboard_pantry)
+aggrid(dashp)
 
