@@ -98,6 +98,22 @@ with st.form("form"):
 
 
 # ----- User add annotation to pantry ----- #
+
+def get_data() -> pd.DataFrame:
+    df = pd.DataFrame(
+        {
+            "age": [12, 32, 45, 90, 89],
+            "gender": ["male", "male", "other", "female", "male"],
+            "active": [False, True, True, False, False],
+        },
+    )
+
+    df.age = df.age.astype("uint64")
+    df.gender = df.gender.astype("category")
+    return df
+
+
+
 df = load_the_spreadsheet(sheet_name)
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
