@@ -148,12 +148,13 @@ with st.form('Shopping List') as f:
          st.info("Total Rows :" + str(len(grid_table['data'])))
          submitted = st.form_submit_button("Confirm 🔒")
          
-         if submitted:
-                  df_final = grid_table["data"]
-                  if df_final.empty:                                    #incase the ag-grid is cleared completely
-                           spread.clear_sheet(sheet = 'Shopping_List2')
-                           df_final = pd.DataFrame(columns=['Item','Weight'])
-                           update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
-                  else:
-                           spread.clear_sheet(sheet = 'Shopping_List2')
-                           update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
+         with st.spinner('Processing...'):
+                  if submitted:
+                           df_final = grid_table["data"]
+                           if df_final.empty:                                    #incase the ag-grid is cleared completely
+                                    spread.clear_sheet(sheet = 'Shopping_List2')
+                                    df_final = pd.DataFrame(columns=['Item','Weight'])
+                                    update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
+                           else:
+                                    spread.clear_sheet(sheet = 'Shopping_List2')
+                                    update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
