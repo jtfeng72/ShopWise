@@ -59,13 +59,13 @@ def load_the_spreadsheet(spreadsheetname):
 
 ## Update add to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Item','Weight','Storage','Purchase_Date','Done','Consumed']
+    col = ['Item','Weight','Storage','Purchase_Date','Consumed','Done']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
 
 ## Update annotated Sheet
 def update_annotated_spreadsheet(spreadsheetname,dataframe):
-    col = ['Item','Weight','Storage','Purchase_Date','Done','Consumed']
+    col = ['Item','Weight','Storage','Purchase_Date','Consumed','Done']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
 
