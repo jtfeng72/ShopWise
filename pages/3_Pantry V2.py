@@ -81,7 +81,7 @@ with st.form("form"):
     weight = st.number_input("Weight(g)")
     all_pantry = ["Pantry","Fridge","Freezer"]
     storage = st.selectbox("Select Storage Type",all_pantry) 
-    purchase = st.date_input("Select purchase date",())
+    purchase = st.date_input("Select purchase date")
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
