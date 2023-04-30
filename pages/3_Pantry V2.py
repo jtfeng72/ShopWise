@@ -96,20 +96,14 @@ with st.form("form"):
 df = load_the_spreadsheet(sheet_name)
 
 # ----- User add annotation to pantry ----- #
-worksheet = load_the_spreadsheet(sheet_name)
-
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
 
 if add_submitted:
- worksheet.update_cells(annotated, value_input_option="USER_ENTERED") 
-
-"""
-if add_submitted:
          update_annotated_spreadsheet('Pantry',annotated) # update google sheet
 else:
      st.write('Incorrect')
-"""
+
 
 df = load_the_spreadsheet(sheet_name)
 gd = GridOptionsBuilder.from_dataframe(df)
