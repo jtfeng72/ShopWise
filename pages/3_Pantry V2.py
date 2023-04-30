@@ -81,7 +81,7 @@ with st.form("form"):
     weight = st.number_input("Weight(g)")
     all_pantry = ["Pantry","Fridge","Freezer"]
     storage = st.selectbox("Select Storage Type",all_pantry) 
-    purchase = st.date_input("Select purchase date")
+    purchase = st.date_input("Select Purchase Date")
     Consumed = st.number_input("Consumed(g)")
     add_submitted = st.form_submit_button("Add Item")
     
@@ -101,6 +101,9 @@ with st.form("form"):
 df = load_the_spreadsheet(sheet_name)
 
 # ----- User add annotation to pantry ----- #
+df.Storage = df.Storage.astype("category")
+df.Storage = df.Storage.cat.add_categories(("Pantry","Fridge","Freezer"))
+
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
 
