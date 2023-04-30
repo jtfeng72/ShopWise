@@ -43,7 +43,7 @@ dashboard = sh.worksheet("Dashboard V2")
 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 dashboard_pantry = "Dashboard Pantry"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={dashboard_pantry}"
 dashp = pd.read_csv(url, dtype=str).fillna("")
 
 
