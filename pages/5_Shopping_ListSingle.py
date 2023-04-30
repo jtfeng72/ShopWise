@@ -9,7 +9,7 @@ import gspread                                                 #pip install gspr
 from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install streamlit-aggrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
-st.title('Shopping List') #Page Title
+st.title('Welcome to your shopping list') #Page Title
 
 # Disable certificate verification (Not necessary always)
 import ssl
@@ -59,6 +59,7 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     st.success('Updated')
 
 #Display the latest update
+@st.cache(allow_output_mutation=True)
 df = load_the_spreadsheet(sl_line_sheet)
 
 
