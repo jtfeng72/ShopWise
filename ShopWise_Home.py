@@ -18,7 +18,7 @@ st.title('Welcome to ShopWise')
 #---------------#
 
 st.write("Made by Group 4")
-col1, mid, col2, = st.beta_columns([1,1,10], gap="large")
+col1, mid, col2, = st.beta_columns([1,1,8], gap="large")
 with col1:
     st.image('Shopwise_logo2.png', width=300)
 with col2:
