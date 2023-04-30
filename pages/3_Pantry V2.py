@@ -91,7 +91,7 @@ with st.form("form"):
          update_the_spreadsheet('Pantry',user_input_df) # update google sheet
          
         else:
-         user_input = [item, weight,storage,purchase,Consumed,Done,"","",""] # User input dataframe
+         user_input = [item, weight,storage,purchase,Consumed,"","","",""] # User input dataframe
          df.loc[len(df.index)] = user_input # insert usert input
          update_the_spreadsheet('Pantry',df) # update google sheet
 
