@@ -59,13 +59,13 @@ def load_the_spreadsheet(spreadsheetname):
 
 ## Update add to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    col = ['Item','Weight','Storage','Purchase_Date','Consumed','Done']
+    col = ['Item','Weight','Storage','Purchase_Date','Consumed']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
 
 ## Update annotated Sheet
 def update_annotated_spreadsheet(spreadsheetname,dataframe):
-    col = ['Item','Weight','Storage','Purchase_Date','Consumed','Done']
+    col = ['Item','Weight','Storage','Purchase_Date','Consumed']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
 
@@ -79,11 +79,18 @@ with st.form("form"):
     st.header('Add items below')
     item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)")
+    storage = st.selectbox("Pantry","Fridge","Freezer") 
+    purchase = st.date_input("Select purchase date",
+                            value = datetime.date(2000, 6, 12),
+                            min_value = datetime.date(2000, 1, 12),
+                            max_value = datetime.date(2999, 1, 12)
+                            )
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
         if len(df) == 0:
-         user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
+         user_input = {"Item": [item], "Weight": [weight], "Storage": [storage]
+                      , "Purchase_Date": [purchase], "Consumed":"0"} # User input dataframe
          user_input_df = pd.DataFrame(user_input)
          update_the_spreadsheet('Pantry',user_input_df) # update google sheet
          
