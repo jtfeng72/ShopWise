@@ -63,11 +63,14 @@ def update_the_status_cell():
     dashboard.update('I4', selstatus)
     st.sidebar.info('Updated to GoogleSheet')
 
-# ----- Pantry Dashboard ----- #
+# ----- Shopping List Dashboard ----- #
+st.markdown('Shopping List')
 AgGrid(sl_line_df)
 
 
 # ----- Pantry Dashboard ----- #
+st.markdown('Pantry')
+
 with st.form("form"):
     selstatus = st.radio('Select Status:',['In Progress','Completed'])
     submitted = st.form_submit_button("Confirm")
@@ -78,4 +81,7 @@ with st.form("form"):
 dashp=load_the_spreadsheet(dashboard_pantry)
 
 AgGrid(dashp)
+
+
+
 
