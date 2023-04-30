@@ -96,6 +96,8 @@ with st.form("form"):
 df = load_the_spreadsheet(sheet_name)
 
 # ----- User add annotation to pantry ----- #
+worksheet = load_the_spreadsheet(sheet_name)
+
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
 
