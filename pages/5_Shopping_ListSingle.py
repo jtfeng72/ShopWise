@@ -76,7 +76,6 @@ with st.form("form"):
     
     with st.spinner('Processing...'):
              if add_submitted:
-                 with st.spinner('Processing...'):
                  if len(df) == 0:
                   user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
                   user_input_df = pd.DataFrame(user_input)
