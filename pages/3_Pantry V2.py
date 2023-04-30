@@ -81,11 +81,7 @@ with st.form("form"):
     weight = st.number_input("Weight(g)")
     all_pantry = ["Pantry","Fridge","Freezer"]
     storage = st.selectbox("Select Storage Type",all_pantry) 
-    purchase = st.date_input("Select purchase date",
-                            value = datetime.date(2000, 6, 12),
-                            min_value = datetime.date(2000, 1, 12),
-                            max_value = datetime.date(2999, 1, 12)
-                            )
+    purchase = st.date_input("Select purchase date",())
     add_submitted = st.form_submit_button("Add Item")
     
     if add_submitted:
