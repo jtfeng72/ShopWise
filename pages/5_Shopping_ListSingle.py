@@ -47,6 +47,7 @@ fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=ou
 fd_list_df = pd.read_csv(fd_list_url, dtype=str).fillna("")
 
 # Get the sheet as dataframe
+@st.cache(allow_output_mutation=True)
 def load_the_spreadsheet(spreadsheetname):
     worksheet = sh.worksheet(spreadsheetname)
     df = pd.DataFrame(worksheet.get_all_records())
@@ -59,7 +60,6 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     st.success('Updated')
 
 #Display the latest update
-@st.cache(allow_output_mutation=True)
 df = load_the_spreadsheet(sl_line_sheet)
 
 
