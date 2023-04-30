@@ -89,7 +89,7 @@ with st.form("form"):
     if add_submitted:
         if len(df) == 0:
          user_input = {"Item": [item], "Weight": [weight], "Storage": [storage]
-                      , "Purchase_Date": [purchase], "Consumed": [Consumed],, "Done": [Done]} # User input dataframe
+                      , "Purchase_Date": [purchase], "Consumed": [Consumed], "Done": [Done]} # User input dataframe
          user_input_df = pd.DataFrame(user_input)
          update_the_spreadsheet('Pantry',user_input_df) # update google sheet
          
