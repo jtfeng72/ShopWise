@@ -11,7 +11,7 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.title('Welcome to your shopping list') #Page Title
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
 def load_the_spreadsheet(tabname):
     # --- Create a Google Authentication connection objectt --- #
     scope = ['https://spreadsheets.google.com/feeds',
