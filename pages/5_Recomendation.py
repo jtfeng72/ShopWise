@@ -11,7 +11,7 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.title('Welcome to your shopping list') #Page Title
 
-def load_the_spreadsheet(spreadsheetname):
+def load_the_spreadsheet(tabname):
     # --- Create a Google Authentication connection objectt --- #
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
@@ -24,7 +24,7 @@ def load_the_spreadsheet(spreadsheetname):
     # --- Call the spreadshet --- #
     sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
     #worksheet_list = sh.worksheets()                      # list of ALL worksheets in the google sheet <Worksheet 'Shopping_List2' id:986753546>...
-    worksheet = sh.worksheet(spreadsheetname)
+    worksheet = sh.worksheet(tabname)
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 
