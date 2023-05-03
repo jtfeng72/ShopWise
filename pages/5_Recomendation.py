@@ -40,7 +40,7 @@ Status = st.sidebar.multiselect(
 )
 
 df_selection = df.query(
-    "Status == @status"
+    "Status == @Status"
 )
 
 st.dataframe(df)
