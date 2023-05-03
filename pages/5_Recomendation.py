@@ -43,4 +43,4 @@ df_selection = df.query(
     "Status == @status"
 )
 
-st.dataframe(df)
+st.dataframe(df_selection)
