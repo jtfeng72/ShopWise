@@ -30,7 +30,17 @@ def load_the_spreadsheet(tabname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 df=load_the_spreadsheet("Pantry")
-filter=
-df[()]
+
+# ---- SIDEBAR ----
+st.sidebar.header("Please Filter Here:")
+Status = st.sidebar.multiselect(
+    "Select the Category:",
+    options=df["Status"].unique(),
+    default=df["Status"].unique()               #prepopulate all status
+)
+
+df_selection = df.query(
+    "Category == @Status
+)
 
 st.dataframe(df)
