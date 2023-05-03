@@ -33,14 +33,14 @@ df=load_the_spreadsheet("Pantry")
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
-Status = st.sidebar.multiselect(
+status = st.sidebar.multiselect(
     "Select your grocery status:",
     options=df["Status"].unique(),
     default=df["Status"].unique()               #prepopulate all status
 )
 
 df_selection = df.query(
-    "Status == @Status"
+    "Status == @status"
 )
 
 st.dataframe(df)
