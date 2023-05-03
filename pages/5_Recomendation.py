@@ -8,7 +8,7 @@ from streamlit_option_menu import option_menu
 import gspread                                                 #pip install gspread
 from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install streamlit-aggrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
-import plotly.experess as px
+import plotly.express as px                                     #pip install plotly-express
 
 st.title('Here are your grocery satats') #Page Title
 
