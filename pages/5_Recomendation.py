@@ -35,7 +35,7 @@ fd_list=load_the_spreadsheet("Food_List_Master")
 
 #Merging df
 df_c2= df_c.merge(fd_list,
-                  left_on= 'Item"',
+                  left_on= 'Item',
                   right_on= 'Name',
                   how = 'left')
 df_3 = df_c2['Item', 'Weight', 'Storage', 'Purchase_Date','Consumed','Wasted','CO2_Per_g','Expiration','Expiration_Date']
