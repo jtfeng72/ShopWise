@@ -33,7 +33,7 @@ df=load_the_spreadsheet("Pantry")
 df=df.query('Status == "Completed"')
 
 #st.write(df.dtypes) #to check data type
-df["Purchase_Date"] = pd.to_date(df["Purchase_Date"])               #change to datetime
+df["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])               #change to datetime
 df["P_Month"] = df["Purchase_Date"].dt.month                            #new column to extract month
 df["p_Year"] = df["Purchase_Date"].dt.year                           #new column to extract month
 
