@@ -63,7 +63,7 @@ status = st.sidebar.multiselect(
     default=df_c3["Status"].unique()               #prepopulate all status
 )
 
-df_selection = df.query(
+df_selection = df_c3.query(
     "Status == @status"
 )
 
@@ -74,11 +74,12 @@ st.dataframe(df_selection)
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
 total_waste = int(df_selection['Wasted'].sum())
+total_waste = int(df_selection['emission'].sum())
 left_column, right_column = st.columns(2)
 
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} g")
-#with right_column:
-#    st.subheader(f"Total Waste: {total_emission:,} g")
+with right_column:
+    st.subheader(f"Total Waste: {total_emission:,} g")
 
 
