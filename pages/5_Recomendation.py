@@ -34,7 +34,7 @@ df_c=df.query('Status == "Completed"')
 fd_list=load_the_spreadsheet("Food_List_Master")
 
 #Merging df
-df_c2= df_c.merge(Food_List_Master,
+df_c2= df_c.merge(fd_list,
                   left_on= 'Item"',
                   right_on= 'Name',
                   how = 'left')
