@@ -9,7 +9,7 @@ import gspread                                                 #pip install gspr
 from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install streamlit-aggrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import plotly.express as px                                     #pip install plotly-express
-from datetime import datetime, date
+#from datetime import datetime, date
 
 
 @st.cache_data()
@@ -30,6 +30,7 @@ def load_the_spreadsheet(tabname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 df=load_the_spreadsheet("Pantry")
+df["P_Month"] = df["Purchase_Date"].dt.month
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
@@ -44,9 +45,6 @@ df_selection = df.query(
 )
 
 #adding new columns
-#df_selection["Year"] =
-df_selection["P_Month"] = df_selection["Purchase_Date"].dt.month
-#df_selection["Week"] =
 st.dataframe(df_selection)
 
 
