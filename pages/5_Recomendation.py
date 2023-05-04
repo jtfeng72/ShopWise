@@ -9,7 +9,7 @@ import gspread                                                 #pip install gspr
 from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install streamlit-aggrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import plotly.express as px                                     #pip install plotly-express
-#from datetime import datetime, date
+from datetime import datetime, date
 
 
 @st.cache_data()
@@ -30,7 +30,7 @@ def load_the_spreadsheet(tabname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 df=load_the_spreadsheet("Pantry")
-st.write(df.info())
+st.write(df.dtypes)
 #datetime.datedf["Purchase_Date"]
 #df["P_Month"] = df["Purchase_Date"].dt.month
 
