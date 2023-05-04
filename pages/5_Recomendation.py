@@ -10,7 +10,6 @@ from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install stre
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import plotly.express as px                                     #pip install plotly-express
 
-st.title('Here are your grocery satats') #Page Title
 
 @st.cache_data()
 def load_the_spreadsheet(tabname):
@@ -43,4 +42,9 @@ df_selection = df.query(
     "Status == @status"
 )
 
-st.dataframe(df_selection)
+
+st.title(':bar_chart: Here are your grocery stats') #Page Title
+st.markdown(##)
+
+total_waste= int(df_selection['Wasted'].sum())
+    st.subheader(f"your total waste is {total_waste:,} g")
