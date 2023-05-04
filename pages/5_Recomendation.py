@@ -40,6 +40,8 @@ df["p_Year"] = df["Purchase_Date"].dt.year                           #new column
 #year to date parameter
 ytd_start_date = date(date.today().year, 1, 1)
 ytd_end_date = date.today()
+st.write(ytd_start_date
+        ytd_end_date)
 #ytd_flit=(df['Purchase_Date'] > ytd_start_date) & (df['Purchase_Date'] <= ytd_end_date)
 
 # ---- SIDEBAR ----
