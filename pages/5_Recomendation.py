@@ -40,7 +40,7 @@ df_c2= df_c.merge(fd_list,
                   how = 'left')
 df_c3 = df_c2[["Item", "Category", "Weight", "Storage", "Purchase_Date","Consumed","Wasted","CO2_Per_g","Expiration","Expiration_Date"]]
  
-df_c3['emission']= df_c3['Waste'] * df_c3['CO2_Per_g']
+df_c3['emission']= df_c3['Wasted'] * df_c3['CO2_Per_g']
 
 
 #st.write(df.dtypes) #to check data type
