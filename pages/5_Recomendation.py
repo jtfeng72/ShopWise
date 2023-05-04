@@ -30,6 +30,7 @@ def load_the_spreadsheet(tabname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 df=load_the_spreadsheet("Pantry")
+df=df.query('Status == "Complete"')
 #st.write(df.dtypes) #to check data type
 df["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])               #change to datetime
 df["P_Month"] = df["Purchase_Date"].dt.month                            #new column to extract month
