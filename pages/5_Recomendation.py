@@ -47,4 +47,4 @@ st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown(##)
 
 total_waste= int(df_selection['Wasted'].sum())
-st.subheader(f"your total waste is {total_waste:,} g")
+st.header(f"your total waste is {total_waste:,} g")
