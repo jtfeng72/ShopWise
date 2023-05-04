@@ -53,31 +53,6 @@ ytd_start_date = pd.to_datetime(date(date.today().year, 1, 1))
 ytd_end_date = pd.to_datetime(date.today())
 ytd_flit=(df['Purchase_Date'] > ytd_start_date) & (df['Purchase_Date'] <= ytd_end_date)
 
-# ---- SIDEBAR ----
-st.sidebar.header("Please Filter Here:")
-status = st.sidebar.multiselect(
-    "Select your grocery status:",
-    options=df_c3["Status"].unique(),
-    default=df_c3["Status"].unique()               #prepopulate all status
-)
-
-df_selection = df.query(
-    "Status == @status"
-)
-
-#adding new columns
-st.dataframe(df_selection)
-
-
-st.title(':bar_chart: Here are your grocery stats') #Page Title
-st.markdown("##")
-total_waste = int(df_selection['Wasted'].sum())
-left_column, right_column = st.columns(2)
-
-with left_column:
-    st.subheader(f"Total Waste: {total_waste:,} g")
-#with right_column:
-#    st.subheader(f"Total Waste: {total_emission:,} g")
-
+st.dataframe(df_c3)
 
 
