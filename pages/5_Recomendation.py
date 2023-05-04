@@ -30,7 +30,9 @@ def load_the_spreadsheet(tabname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 df=load_the_spreadsheet("Pantry")
-df["P_Month"] = df["Purchase_Date"].dt.month
+st.write(df.info())
+#datetime.datedf["Purchase_Date"]
+#df["P_Month"] = df["Purchase_Date"].dt.month
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
