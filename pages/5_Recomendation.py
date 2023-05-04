@@ -63,7 +63,7 @@ status = st.sidebar.multiselect(
 )
 
 df_selection = df.query(
-    "Status == @status
+    "Status == @status"
 )
 
 #adding new columns
