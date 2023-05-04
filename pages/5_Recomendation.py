@@ -44,9 +44,9 @@ df_selection = df.query(
 
 
 st.title(':bar_chart: Here are your grocery stats') #Page Title
-#st.markdown(##)
+st.markdown("##")
 total_waste = int(df_selection['Wasted'].sum())
 left_column, right_column = st.columns(2)
 
 with left_column:
-    st.subheader(f"your total waste is {total_waste:,} g")
+    st.subheader(f"Total Waste: {total_waste:,} g")
