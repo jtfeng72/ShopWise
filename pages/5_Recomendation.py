@@ -45,7 +45,7 @@ df_selection = df.query(
 
 #adding new columns
 #df_selection["Year"] =
-df_selection["P_Month"] = df_selection["Purchase_Date"].month
+df_selection["P_Month"] = df_selection["Purchase_Date"].dt.month
 #df_selection["Week"] =
 st.dataframe(df_selection)
 
@@ -58,16 +58,4 @@ left_column, right_column = st.columns(2)
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} g")
 
-# SALES BY PRODUCT LINE [BAR CHART]
-sales_by_product_line = (
-    df_selection.groupby(by=["Product line"]).sum()[["Total"]].sort_values(by="Total")
-)
-fig_product_sales = px.bar(
-    sales_by_product_line,
-    x="Total",
-    y=sales_by_product_line.index,
-    orientation="h",
-    title="<b>Sales by Product Line</b>",
-    color_discrete_sequence=["#0083B8"] * len(sales_by_product_line),
-    template="plotly_white",
-)
+
