@@ -30,7 +30,19 @@ def load_the_spreadsheet(tabname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 df=load_the_spreadsheet("Pantry")
-df=df.query('Status == "Completed"')
+df_c=df.query('Status == "Completed"')
+fd_list=load_the_spreadsheet("Food_List_Master")
+
+#Merging df
+df_c2= df_c.merge(Food_List_Master,
+                  left_on= 'Item"',
+                  right_on= 'Name',
+                  how = 'left')
+df_3 = df_c2['Item', 'Weight', 'Storage', 'Purchase_Date','Consumed','Wasted','CO2_Per_g','Expiration','Expiration_Date']
+
+st.dataframe[df_3]
+
+
 
 #st.write(df.dtypes) #to check data type
 df["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])               #change to datetime
@@ -51,7 +63,7 @@ status = st.sidebar.multiselect(
 )
 
 df_selection = df.query(
-    "Status == @status"
+    "Status == @status,
 )
 
 #adding new columns
@@ -65,5 +77,7 @@ left_column, right_column = st.columns(2)
 
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} g")
+with right_column:
+#    st.subheader(f"Total Waste: {total_emission:,} g")
 
 
