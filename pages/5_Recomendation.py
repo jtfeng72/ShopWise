@@ -38,9 +38,9 @@ df_c2= df_c.merge(fd_list,
                   left_on= 'Item',
                   right_on= 'Name',
                   how = 'left')
-df_3 = df_c2[["Item", "Weight", "Storage", "Purchase_Date'","Consumed","Wasted","CO2_Per_g","Expiration","Expiration_Date"]]
+#df_3 = df_c2[["Item", "Weight", "Storage", "Purchase_Date'","Consumed","Wasted","CO2_Per_g","Expiration","Expiration_Date"]]
 
-st.dataframe[df_3]
+st.dataframe[df_2]
 
 
 
