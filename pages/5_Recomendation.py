@@ -31,8 +31,8 @@ def load_the_spreadsheet(tabname):
     return df
 df=load_the_spreadsheet("Pantry")
 st.write(df.dtypes)
-#datetime.datedf["Purchase_Date"]
-#df["P_Month"] = df["Purchase_Date"].dt.month
+df["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])
+df["P_Month"] = df["Purchase_Date"].dt.month
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
