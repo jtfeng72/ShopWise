@@ -74,7 +74,7 @@ st.dataframe(df_selection)
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
 total_waste = int(df_selection['Wasted'].sum())
-total_waste = int(df_selection['emission'].sum())
+total_emission = int(df_selection['emission'].sum())
 left_column, right_column = st.columns(2)
 
 with left_column:
