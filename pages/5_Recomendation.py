@@ -78,7 +78,7 @@ left_column, right_column = st.columns(2)
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} g")
 with right_column:
-    st.subheader(f"Total Waste Emissions: {total_emission:,} g")
+    st.subheader(f"Total Waste Emissions: {total_emission:,} gCO2eq")
     
 st.dataframe(df_selection)
 
