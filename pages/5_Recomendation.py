@@ -12,7 +12,7 @@ import plotly.express as px                                     #pip install plo
 from datetime import datetime, date
 
 
-#@st.cache_data()
+@st.cache_data()
 def load_the_spreadsheet(tabname):
     # --- Create a Google Authentication connection objectt --- #
     scope = ['https://spreadsheets.google.com/feeds',
