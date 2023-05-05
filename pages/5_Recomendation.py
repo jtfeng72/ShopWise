@@ -49,8 +49,8 @@ df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                     # Ca
 
 #st.write(df.dtypes) #to check data type
 #df_c2["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])               #change to datetime
-df_c2["P_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.month                            #new column to extract month
-df_c2["p_Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                           #new column to extract month
+df_c2["p_yr_month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m')                           #new column to extract month
+#df_c2["p_Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                           #new column to extract month
 
 #year to date parameter
 ytd_start_date = date(date.today().year, 1, 1)
@@ -109,7 +109,7 @@ fig_emis_by_cat.update_layout(
 
 # emission by month
 emis_by_mth = (
-    df_selection.groupby(by=["P_Month"]).sum()[["Emission"]].sort_values(by="Emission")
+    df_selection.groupby(by=["p_yr_month"]).sum()[["Emission"]].sort_values(by="Emission")
 )
 fig_emis_by_mth = px.bar(
     emis_by_mth,
