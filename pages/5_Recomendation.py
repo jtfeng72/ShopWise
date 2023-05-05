@@ -102,5 +102,8 @@ fig_emis_by_cat.update_layout(
     plot_bgcolor="rgba(0,0,0,0)",
     xaxis=(dict(showgrid=False))
 )
+left_column, right_column = st.columns(2)
+left_column.plotly_chart(fig_emis_by_cat, use_container_width=True)
+#right_column.plotly_chart(fig_product_sales, use_container_width=True)
 
 
