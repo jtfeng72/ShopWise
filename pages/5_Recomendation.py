@@ -91,7 +91,7 @@ emis_by_cat = (
 )
 fig_emis_by_cat = px.bar(
     emis_by_cat,
-    x="Total",
+    x="Emission",
     y=emis_by_cat.index,
     orientation="h",
     title="<b>Waste Emission by Category</b>",
