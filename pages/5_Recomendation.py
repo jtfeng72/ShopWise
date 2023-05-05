@@ -50,7 +50,7 @@ df_c3["p_Year"] = df_c3["Purchase_Date"].dt.year                           #new 
 
 #year to date parameter
 ytd_start_date = date(date.today().year, 1, 1)
-ytd_end_date = =date.today()
+ytd_end_date = date.today()
 #ytd_flit=(df['Purchase_Date'] > ytd_start_date) & (df['Purchase_Date'] <= ytd_end_date)
 
 
