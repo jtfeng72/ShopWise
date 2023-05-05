@@ -55,7 +55,7 @@ def update_the_spreadsheet(spreadsheetname,dataframe):
     st.success('Updated')
 
 #Display the latest update
-df = load_the_spreadsheet(sl_line_sheet)
+df = load_the_spreadsheet("Shopping_List2")
 
 
 #---User input to add items--#
