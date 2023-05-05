@@ -87,12 +87,12 @@ st.markdown("""---""")
 emis_by_cat = (df_selection.groupby(by=["Category"]).sum()[["emission"]].sort_values(by="emission"))
 
 fig_emis_by_cat = px.bar(
-    sales_by_product_line,
+    emis_by_cat,
     x="gCO2eq",
     y=emis_by_cat.index,
     orientation="h",
     title="<b>Waste Emission by Category</b>",
-    color_discrete_sequence=["#0083B8"] * len(sales_by_product_line),
+    color_discrete_sequence=["#0083B8"] * len(emis_by_cat),
     template="plotly_white",
 )
 fig_emis_by_cat.update_layout(
