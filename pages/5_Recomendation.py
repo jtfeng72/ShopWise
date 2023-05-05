@@ -48,8 +48,8 @@ df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                     # Ca
 
 
 #st.write(df.dtypes) #to check data type
-#df_c2["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])               #change to datetime
-df_c2["p_yr_month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m')                           #new column to extract month
+df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                #change to datetime
+df_c2["p_yr_month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                           #new column to extract month
 #df_c2["p_Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                           #new column to extract month
 
 #year to date parameter
