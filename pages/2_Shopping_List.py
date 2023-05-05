@@ -34,10 +34,8 @@ spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List g
 sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
 #worksheet_list = sh.worksheets()                      # list of ALL worksheets in the google sheet <Worksheet 'Shopping_List2' id:986753546>...
 
-
-sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-
 #get all avaliable food items from master list for drop down features
+sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 fd_list_sheet = "Food_List_Master"
 fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
 fd_list = pd.read_csv(fd_list_url, usecols = ['Name'])
