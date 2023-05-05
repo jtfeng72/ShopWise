@@ -12,7 +12,7 @@ import plotly.express as px                                     #pip install plo
 from datetime import datetime, date
 
 
-@st.cache_data()
+#@st.cache_data()
 def load_the_spreadsheet(tabname):
     # --- Create a Google Authentication connection objectt --- #
     scope = ['https://spreadsheets.google.com/feeds',
@@ -77,13 +77,13 @@ df_selection = df_c3.query(
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
 total_waste = int(df_selection['Wasted'].sum())
-total_emission = df_selection['Emission'].sum()
+total_emission = int(df_selection['Emission'].sum())
 left_column, right_column = st.columns(2)
 
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} g")
 with right_column:
-    st.subheader(f"Total Emissions: {total_emission} gCO2eq")
+    st.subheader(f"Total Emissions: {total_emission:,} gCO2eq")
     
 st.markdown("""---""")
 
