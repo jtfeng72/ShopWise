@@ -49,25 +49,20 @@ df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                     # Ca
 
 #st.write(df.dtypes) #to check data type
 df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                #change to datetime
-df_c2["p_yr_month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                           #new column to extract month
-#df_c2["p_Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                           #new column to extract month
-
-#year to date parameter
-ytd_start_date = date(date.today().year, 1, 1)
-ytd_end_date = date.today()
-#ytd_flit=(df['Purchase_Date'] > ytd_start_date) & (df['Purchase_Date'] <= ytd_end_date)
+df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                           #new column to extract month
+df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                           #new column to extract month
 
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
-status = st.sidebar.multiselect(
-    "Select your grocery status:",
-    options=df_c2["Status"].unique(),
-    default=df_c2["Status"].unique()               #prepopulate all status
+year = st.sidebar.multiselect(
+    "Filter by Year :",
+    options=df_c2["Year"].unique(),
+    default=df_c2["Year"].unique()               #prepopulate all status
 )
 
 df_selection = df_c2.query(
-    "Status == @status"
+    "Year == @year"
 )
 
 #adding new columns
@@ -109,7 +104,7 @@ fig_emis_by_cat.update_layout(
 
 # emission by month
 emis_by_mth = (
-    df_selection.groupby(by=["p_yr_month"]).sum()[["Emission"]]
+    df_selection.groupby(by=["Month"]).sum()[["Emission"]]
 )
 fig_emis_by_mth = px.bar(
     emis_by_mth,
