@@ -87,6 +87,15 @@ st.dataframe(df_selection)
  #---visualization---#
 
 emis_by_cat = (df_selection.groupby(by=["Category"]).sum()[["Emission"]].sort_values(by="Emission"))
+fig_emis_by_cat = px.bar(
+    emis_by_cat,
+    x="gCO2eq",
+    y=emis_by_cat.index,
+    orientation="h",
+    title="<b>Waste Emission by Catgory</b>",
+    color_discrete_sequence=["#0083B8"] * len(emis_by_cat),
+    template="plotly_white",
+)
 
 
 
