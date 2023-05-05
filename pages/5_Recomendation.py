@@ -87,7 +87,7 @@ with right_column:
     
 st.markdown("""---""")
 
-st.dataframe(df_selection)
+#st.dataframe(df_selection)
 
 #---visualization---#
 # emission by category
