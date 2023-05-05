@@ -36,7 +36,7 @@ df_c=df.query('Status == "Completed"')
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 fd_list_sheet = "Food_List_Master"
 fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
-fd_list = pd.read_csv(fd_list_url, usecols = ['Category','CO2_Per_g'])
+fd_list = pd.read_csv(fd_list_url, usecols = ['Name','Category','CO2_Per_g'])
 
 #Merging df
 df_c2= df_c.merge(fd_list,
