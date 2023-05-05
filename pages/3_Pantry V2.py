@@ -88,7 +88,7 @@ with st.form("form"):
     all_pantry = ["Pantry","Fridge","Freezer"]
     storage = st.selectbox("Select Storage Type",all_pantry) 
     purchase = st.date_input("Select Purchase Date")
-    Consumed = st.number_input("Consumed(g)", min_value=0))
+    Consumed = st.number_input("Consumed(g)", min_value=0)
     Status = st.radio('Select Status:',['In Progress','Completed'])
     add_submitted = st.form_submit_button("Add Item")
     
