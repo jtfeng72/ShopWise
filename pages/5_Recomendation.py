@@ -104,7 +104,7 @@ fig_emis_by_cat.update_layout(
 )
 #left_column, right_column = st.columns(2)
 #left_column.plotly_chart(fig_emis_by_cat, use_container_width=True)
-plotly_chart(fig_emis_by_cat, use_container_width=True)
+st.plotly_chart(fig_emis_by_cat, use_container_width=True)
 #right_column.plotly_chart(fig_product_sales, use_container_width=True)
 
 
