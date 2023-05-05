@@ -75,14 +75,14 @@ df_selection = df_c2.query(
 
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
-total_waste = int(df_selection['Wasted'].sum())
-total_emission = int(df_selection['Emission'].sum())
+total_waste = round(df_selection['Wasted'].sum()*1000,2)
+total_emission = round(df_selection['Emission'].sum(),2)
 left_column, right_column = st.columns(2)
 
 with left_column:
-    st.subheader(f"Total Waste: {total_waste:,} g")
+    st.subheader(f"Total Waste: {total_waste:,} kg")
 with right_column:
-    st.subheader(f"Total Emissions: {total_emission:,} gCO2eq")
+    st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
     
 st.markdown("""---""")
 
