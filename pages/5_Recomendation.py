@@ -44,13 +44,13 @@ df_c2= df_c.merge(fd_list,
                   right_on= 'Name',
                   how = 'left')
  
-df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']
+df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                     # Calculating Emission
 
 
 #st.write(df.dtypes) #to check data type
 #df_c2["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])               #change to datetime
-#df_c2["P_Month"] = df_c2["Purchase_Date"].dt.month                            #new column to extract month
-#df_c2["p_Year"] = df_c2["Purchase_Date"].dt.year                           #new column to extract month
+df_c2["P_Month"] = df_c2["Purchase_Date"].dt.month                            #new column to extract month
+df_c2["p_Year"] = df_c2["Purchase_Date"].dt.year                           #new column to extract month
 
 #year to date parameter
 ytd_start_date = date(date.today().year, 1, 1)
