@@ -31,12 +31,12 @@ def load_the_spreadsheet(tabname):
     return df
 df=load_the_spreadsheet("Pantry")
 df_c=df.query('Status == "Completed"')
-
+fd_list=load_the_spreadsheet("Food_List_Maste")
 #get all avaliable food items from master list for drop down features
-sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-fd_list_sheet = "Food_List_Master"
-fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
-fd_list = pd.read_csv(fd_list_url, dtype=str).fillna("")
+#sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+#fd_list_sheet = "Food_List_Master"
+#fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
+#fd_list = pd.read_csv(fd_list_url, dtype=str).fillna("")
 
 #Merging df
 df_c2= df_c.merge(fd_list,
@@ -77,7 +77,7 @@ df_selection = df_c3.query(
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
 total_waste = int(df_selection['Wasted'].sum())
-total_emission = int(float(df_selection['Emission'].sum()))
+total_emission = int(df_selection['Emission'].sum())
 left_column, right_column = st.columns(2)
 
 with left_column:
