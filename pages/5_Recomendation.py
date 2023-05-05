@@ -77,7 +77,7 @@ df_selection = df_c3.query(
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
 total_waste = int(df_selection['Wasted'].sum())
-total_emission = int(df_selection['Emission'].sum())
+total_emission = df_selection['Emission'].sum()
 left_column, right_column = st.columns(2)
 
 with left_column:
