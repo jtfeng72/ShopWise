@@ -32,7 +32,7 @@ def load_the_spreadsheet(tabname):
 df=load_the_spreadsheet("Pantry")
 df_c=df.query('Status == "Completed"')
 #fd_list=load_the_spreadsheet("Food_List_Master")
-get all avaliable food items from master list for drop down features
+#get all avaliable food items from master list for drop down features
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 fd_list_sheet = "Food_List_Master"
 fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
