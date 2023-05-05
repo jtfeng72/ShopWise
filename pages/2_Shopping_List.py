@@ -72,13 +72,13 @@ with st.form("form"):
     #item = st.selectbox('Food Item',list(fd_list_df.loc[fd_list_filt,'Name'])) 
     item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)", min_value=0)
-    if weight == 0:
-         st.warning('You have 0 weight for your item', icon="⚠️")
     add_submitted = st.form_submit_button("Add Item")
     
     with st.spinner('Processing...'):
              if add_submitted:
-                 if len(df) == 0:
+                 if weight == 0:
+                           st.warning('You have 0 weight for your item', icon="⚠️")
+                 elif len(df) == 0:
                   user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
                   user_input_df = pd.DataFrame(user_input)
                   update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
