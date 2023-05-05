@@ -147,7 +147,7 @@ with st.form('Shopping List') as f:
                    theme = "streamlit",
                    allow_unsafe_jscode=True,
                    )
-         st.info("Total Rows :" + str(len(grid_table['data'])))
+         st.info(f"You have {len(grid_table['data']} item/items on your shopping list")))
          submitted = st.form_submit_button("Confirm 🔒")
          
          with st.spinner('Processing...'):
