@@ -101,6 +101,6 @@ fig_emis_by_cat.update_layout(
 )
     
     
-    st.dataframe(df_selection)
+st.dataframe(df_selection)
 
 
