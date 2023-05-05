@@ -85,7 +85,7 @@ with st.form("form"):
                   update_the_spreadsheet('Shopping_List2',df) # update google sheet
          
 
-df = load_the_spreadsheet(sl_line_sheet) #refresh google sheet
+df = load_the_spreadsheet("Shopping_List2") #refresh google sheet
         
 gd = GridOptionsBuilder.from_dataframe(df)
 gd.configure_pagination(enabled=True)
