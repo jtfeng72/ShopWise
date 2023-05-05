@@ -88,8 +88,8 @@ st.markdown("""---""")
 
 st.dataframe(df_selection)
 
- #---visualization---#
-
+#---visualization---#
+# emission by category
 emis_by_cat = (
     df_selection.groupby(by=["Category"]).sum()[["Emission"]].sort_values(by="Emission")
 )
@@ -106,9 +106,29 @@ fig_emis_by_cat.update_layout(
     plot_bgcolor="rgba(0,0,0,0)",
     xaxis=(dict(showgrid=False))
 )
+
+# emission by month
+emis_by_mth = (
+    df_selection.groupby(by=["P_Month"]).sum()[["Emission"]].sort_values(by="Emission")
+)
+fig_emis_by_mth = px.bar(
+    emis_by_mth,
+    x="Emission",
+    y=emis_by_mth.index,
+    orientation="h",
+    title="<b>Waste Emission by Month</b>",
+    color_discrete_sequence=["#0083B8"] * len(emis_by_mth),
+    template="plotly_white",
+)
+fig_emis_by_mth.update_layout(
+    plot_bgcolor="rgba(0,0,0,0)",
+    xaxis=(dict(showgrid=False))
+)
+
 #left_column, right_column = st.columns(2)
 #left_column.plotly_chart(fig_emis_by_cat, use_container_width=True)
 st.plotly_chart(fig_emis_by_cat, use_container_width=True)
+st.plotly_chart(fig_emis_by_mth, use_container_width=True)
 #right_column.plotly_chart(fig_product_sales, use_container_width=True)
 
 
