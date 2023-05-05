@@ -72,6 +72,8 @@ with st.form("form"):
     #item = st.selectbox('Food Item',list(fd_list_df.loc[fd_list_filt,'Name'])) 
     item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list_df['Name'])) 
     weight = st.number_input("Weight(g)", min_value=0)
+    if weight == 0:
+         st.warning('You have 0 weight for your item', icon="⚠️")
     add_submitted = st.form_submit_button("Add Item")
     
     with st.spinner('Processing...'):
