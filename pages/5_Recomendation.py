@@ -113,7 +113,7 @@ emis_by_mth = (
 )
 fig_emis_by_mth = px.bar(
     emis_by_mth,
-    x="Month",
+    x="P_Month",
     y="Emission",
     title="<b>Waste Emission by Month</b>",
     color_discrete_sequence=["#0083B8"] * len(emis_by_mth),
