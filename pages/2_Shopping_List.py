@@ -40,7 +40,7 @@ sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 #get all avaliable food items from master list for drop down features
 fd_list_sheet = "Food_List_Master"
 fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
-fd_list_df = pd.read_csv(fd_list_url, dtype=str).fillna("")
+fd_list = pd.read_csv(fd_list_url, usecols = ['Name'])
 
 # Get the sheet as dataframe
 def load_the_spreadsheet(spreadsheetname):
@@ -62,11 +62,11 @@ df = load_the_spreadsheet("Shopping_List2")
 
 with st.form("form"):
     st.header('Add items below')
-    #food_item_cat = st.selectbox('Food Categories',set(list(fd_list_df['Category'])))
-    #fd_list_filt = (fd_list_df['Category'] == food_item_cat)
-    #item = st.selectbox('Food Item (Type to search/use the dropdown->)',list(filt_fd_list_df['Name'])) 
-    #item = st.selectbox('Food Item',list(fd_list_df.loc[fd_list_filt,'Name'])) 
-    item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list_df['Name'])) 
+    #food_item_cat = st.selectbox('Food Categories',set(list(fd_list['Category'])))
+    #fd_list_filt = (fd_list['Category'] == food_item_cat)
+    #item = st.selectbox('Food Item (Type to search/use the dropdown->)',list(filt_fd_list['Name'])) 
+    #item = st.selectbox('Food Item',list(fd_list.loc[fd_list_filt,'Name'])) 
+    item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list)) 
     weight = st.number_input("Weight(g)", min_value=0)
     add_submitted = st.form_submit_button("Add Item")
     
