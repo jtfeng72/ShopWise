@@ -80,6 +80,27 @@ with left_column:
 with right_column:
     st.subheader(f"Total Emissions: {total_emission:,} gCO2eq")
     
-st.dataframe(df_selection)
+st.markdown("""---""")
+    
+#---visualization---#
+
+emis_by_cat = (df_selection.groupby(by=["Category"]).sum()[["emission"]].sort_values(by="emission"))
+
+fig_emis_by_cat = px.bar(
+    sales_by_product_line,
+    x="gCO2eq",
+    y=emis_by_cat.index,
+    orientation="h",
+    title="<b>Waste Emission by Category</b>",
+    color_discrete_sequence=["#0083B8"] * len(sales_by_product_line),
+    template="plotly_white",
+)
+fig_emis_by_cat.update_layout(
+    plot_bgcolor="rgba(0,0,0,0)",
+    xaxis=(dict(showgrid=False))
+)
+    
+    
+    st.dataframe(df_selection)
 
 
