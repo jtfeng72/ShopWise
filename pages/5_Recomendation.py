@@ -61,8 +61,14 @@ year = st.sidebar.multiselect(
     default=df_c2["Year"].unique()               #prepopulate all status
 )
 
+month = st.sidebar.multiselect(
+    "Filter by Month :",
+    options=df_c2["Month"].unique(),
+    default=df_c2["Month"].unique()               #prepopulate all status
+)
+
 df_selection = df_c2.query(
-    "Year == @year"
+    "Year == @year & Month == @month" 
 )
 
 #adding new columns
