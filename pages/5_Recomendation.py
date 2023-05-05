@@ -31,7 +31,7 @@ def load_the_spreadsheet(tabname):
     return df
 df=load_the_spreadsheet("Pantry")
 df_c=df.query('Status == "Completed"')
-fd_list=load_the_spreadsheet("Food_List_Maste")
+fd_list=load_the_spreadsheet("Food_List_Master")
 #get all avaliable food items from master list for drop down features
 #sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 #fd_list_sheet = "Food_List_Master"
