@@ -36,22 +36,21 @@ df_c=df.query('Status == "Completed"')
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 fd_list_sheet = "Food_List_Master"
 fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
-fd_list = pd.read_csv(fd_list_url)
+fd_list = pd.read_csv(fd_list_url, usecols = ['Category','CO2_Per_g'])
 
 #Merging df
 df_c2= df_c.merge(fd_list,
                   left_on= 'Item',
                   right_on= 'Name',
                   how = 'left')
-df_c3 = df_c2[["Item", "Category", "Weight", "Storage", "Purchase_Date","Consumed","Status","Wasted","CO2_Per_g","Expiration","Expiration_Date"]]
  
-df_c3['Emission']= df_c3['Wasted'] * df_c3['CO2_Per_g']
+df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']
 
 
 #st.write(df.dtypes) #to check data type
-#df_c3["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])               #change to datetime
-#df_c3["P_Month"] = df_c3["Purchase_Date"].dt.month                            #new column to extract month
-#df_c3["p_Year"] = df_c3["Purchase_Date"].dt.year                           #new column to extract month
+#df_c2["Purchase_Date"] = pd.to_datetime(df["Purchase_Date"])               #change to datetime
+#df_c2["P_Month"] = df_c2["Purchase_Date"].dt.month                            #new column to extract month
+#df_c2["p_Year"] = df_c2["Purchase_Date"].dt.year                           #new column to extract month
 
 #year to date parameter
 ytd_start_date = date(date.today().year, 1, 1)
@@ -63,11 +62,11 @@ ytd_end_date = date.today()
 st.sidebar.header("Please Filter Here:")
 status = st.sidebar.multiselect(
     "Select your grocery status:",
-    options=df_c3["Status"].unique(),
-    default=df_c3["Status"].unique()               #prepopulate all status
+    options=df_c2["Status"].unique(),
+    default=df_c2["Status"].unique()               #prepopulate all status
 )
 
-df_selection = df_c3.query(
+df_selection = df_c2.query(
     "Status == @status"
 )
 
