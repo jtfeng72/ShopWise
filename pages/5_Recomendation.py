@@ -12,7 +12,7 @@ import plotly.express as px                                     #pip install plo
 from datetime import datetime, date
 
 
-#@st.cache_data()
+@st.cache_data()
 def load_the_spreadsheet(tabname):
     # --- Create a Google Authentication connection objectt --- #
     scope = ['https://spreadsheets.google.com/feeds',
@@ -31,7 +31,7 @@ def load_the_spreadsheet(tabname):
     return df
 df=load_the_spreadsheet("Pantry")
 df_c=df.query('Status == "Completed"')
-#fd_list=load_the_spreadsheet("Food_List_Master")
+
 #get all avaliable food items from master list for drop down features
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 fd_list_sheet = "Food_List_Master"
