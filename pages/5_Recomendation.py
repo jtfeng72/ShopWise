@@ -96,7 +96,7 @@ emis_by_cat = (
 )
 fig_emis_by_cat = px.bar(
     emis_by_cat,
-    x="Emission",
+    x="Emission (kg CO2eq)",
     y=emis_by_cat.index,
     orientation="h",
     title="<b>Waste Emission by Category</b>",
@@ -115,7 +115,7 @@ emis_by_mth = (
 fig_emis_by_mth = px.bar(
     emis_by_mth,
     x=emis_by_mth.index,
-    y="Emission",
+    y="Emission (kg CO2eq)",
     orientation="v",
     title="<b>Waste Emission by Month</b>",
     color_discrete_sequence=["#0083B8"] * len(emis_by_mth),
