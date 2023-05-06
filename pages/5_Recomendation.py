@@ -96,12 +96,15 @@ emis_by_cat = (
 )
 fig_emis_by_cat = px.bar(
     emis_by_cat,
-    x="Emission (kg CO2eq)",
+    x="Emission",
     y=emis_by_cat.index,
     orientation="h",
     title="<b>Waste Emission by Category</b>",
     color_discrete_sequence=["#0083B8"] * len(emis_by_cat),
     template="plotly_white",
+    labels={
+        "Emission": "Emission (kgCO2eq)"
+    },
 )
 fig_emis_by_cat.update_layout(
     plot_bgcolor="rgba(0,0,0,0)",
@@ -120,6 +123,9 @@ fig_emis_by_mth = px.bar(
     title="<b>Waste Emission by Month</b>",
     color_discrete_sequence=["#0083B8"] * len(emis_by_mth),
     template="plotly_white",
+    labels={
+        "Emission": "Emission (kgCO2eq)"
+    },
 )
 fig_emis_by_mth.update_layout(
     plot_bgcolor="rgba(0,0,0,0)",
