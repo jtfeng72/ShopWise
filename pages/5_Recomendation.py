@@ -4,11 +4,34 @@ from google.oauth2 import service_account                      #pip install goog
 from gspread_pandas import Spread,Client                       #pip install gspread_pandas
 import pandas as pd                                            #pip install pandas
 import streamlit as st                                         #pip install streamlit
+from streamlit_option_menu import option_menu
 import gspread                                                 #pip install gspread
-import plotly.express as px                                     #pip install plotly-express
-from datetime import datetime, date
+from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install streamlit-aggrid
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 
+st.title('Welcome to your shopping list') #Page Title
 
+# Disable certificate verification (Not necessary always)
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
+#get all avaliable food items from master list for drop down features
+sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
+fd_list_sheet = "Food_List_Master"
+fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
+fd_list = pd.read_csv(fd_list_url, usecols = ['Name'])
+
+# --- Create a Google Authentication connection objectt --- #
+scope = ['https://spreadsheets.google.com/feeds',
+          'https://www.googleapis.com/auth/drive']
+credentials = service_account.Credentials.from_service_account_info(
+                st.secrets["gcp_service_account"], scopes = scope)
+
+client = Client(scope=scope,creds=credentials)
+spreadsheetname = "ShopWise Food List"                #spreadsheet name
+spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List google sheet
+
+# Get the sheet as dataframe
 @st.cache_data()
 def load_the_spreadsheet(tabname):
     # --- Create a Google Authentication connection objectt --- #
@@ -26,119 +49,113 @@ def load_the_spreadsheet(tabname):
     worksheet = sh.worksheet(tabname)
     df = pd.DataFrame(worksheet.get_all_records())
     return df
-df=load_the_spreadsheet("Pantry")
-df_c=df.query('Status == "Completed"')
 
-#get all avaliable food items from master list for drop down features
-sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
-fd_list_sheet = "Food_List_Master"
-fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
-fd_list = pd.read_csv(fd_list_url, usecols = ['Name','Category','CO2_Per_g'])
+# Update to Sheet
+def update_the_spreadsheet(spreadsheetname,dataframe):
+    col = ['Item','Weight']
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    st.success('Updated')
 
-#Merging df
-df_c2= df_c.merge(fd_list,
-                  left_on= 'Item',
-                  right_on= 'Name',
-                  how = 'left')
- 
-df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                     # Calculating Emission
+#Display the latest update
+df = load_the_spreadsheet("Shopping_List2")
 
 
-#st.write(df.dtypes) #to check data type
-df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                #change to datetime
-df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                           #new column to extract month
-df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                           #new column to extract month
+#---User input to add items--#
 
-
-# ---- SIDEBAR ----
-st.sidebar.header("Please Filter Here:")
-year = st.sidebar.multiselect(
-    "Filter by Year :",
-    options=df_c2["Year"].unique(),
-    default=df_c2["Year"].unique()               #prepopulate all status
-)
-
-month = st.sidebar.multiselect(
-    "Filter by Month :",
-    options=df_c2["Month"].unique(),
-    default=df_c2["Month"].unique()               #prepopulate all status
-)
-
-df_selection = df_c2.query(
-    "Year == @year & Month == @month" 
-)
-
-#adding new columns
-
-
-st.title(':bar_chart: Here are your grocery stats') #Page Title
-st.markdown("##")
-total_waste = round(df_selection['Wasted'].sum()/1000,2)
-total_emission = round(df_selection['Emission'].sum()/1000,2)
-left_column, right_column = st.columns(2)
-
-with left_column:
-    st.subheader(f"Total Waste: {total_waste:,} kg")
-    #current_value=df_selection.groupby(by=["Month"]).sum()[["Emission"]]
-    #past_value=df_selection.groupby(by=["Month"]).sum()[["Emission"]]
-    #change = current_value - past_value
-    #st.metric(label="Emission to Prior Month", value=4, delta=-0.5,
-    #delta_color="inverse")
-with right_column:
-    st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
+with st.form("form"):
+    st.header('Add items below')
+    #food_item_cat = st.selectbox('Food Categories',set(list(fd_list['Category'])))
+    #fd_list_filt = (fd_list['Category'] == food_item_cat)
+    #item = st.selectbox('Food Item (Type to search/use the dropdown->)',list(filt_fd_list['Name'])) 
+    #item = st.selectbox('Food Item',list(fd_list.loc[fd_list_filt,'Name'])) 
+    item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list['Name'])) 
+    weight = st.number_input("Weight(g)", min_value=0)
+    add_submitted = st.form_submit_button("Add Item")
     
-st.markdown("""---""")
-'''The results reflects to the filter to the left'''
+    with st.spinner('Processing...'):
+             if add_submitted:
+                 if weight == 0:
+                           st.warning('You have 0 weight for your item', icon="⚠️")
+                 elif len(df) == 0:
+                  user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
+                  user_input_df = pd.DataFrame(user_input)
+                  df=pd.concat([df,user_input_df], ignore_index=True)
+                  #update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
 
-#st.dataframe(df_selection)
+                 else:
+                  user_input = [item, weight] # User input dataframe
+                  df.loc[len(df.index)] = user_input # insert usert input
+                  #update_the_spreadsheet('Shopping_List2',df) # update google sheet
+         
 
-#---visualization---#
-# emission by category
-emis_by_cat = (
-    df_selection.groupby(by=["Category"]).sum()[["Emission"]].sort_values(by="Emission")
-)
-fig_emis_by_cat = px.bar(
-    emis_by_cat,
-    x="Emission",
-    y=emis_by_cat.index,
-    orientation="h",
-    title="<b>Waste Emission by Category</b>",
-    color_discrete_sequence=["#239B56"] * len(emis_by_cat),
-    template="plotly_white",
-    labels={
-        "Emission": "Emission (kgCO2eq)"
-    },
-)
-fig_emis_by_cat.update_layout(
-    plot_bgcolor="rgba(0,0,0,0)",
-    xaxis=(dict(showgrid=False))
-)
+#df = load_the_spreadsheet("Shopping_List2") #refresh google sheet
+        
+gd = GridOptionsBuilder.from_dataframe(df)
+gd.configure_pagination(enabled=True)
+gd.configure_default_column(editable=True,groupable=True)
 
-# emission by month
-emis_by_mth = (
-    df_selection.groupby(by=["Month"]).sum()[["Emission"]]
-)
-fig_emis_by_mth = px.bar(
-    emis_by_mth,
-    x=emis_by_mth.index,
-    y="Emission",
-    orientation="v",
-    title="<b>Waste Emission by Month</b>",
-    color_discrete_sequence=["#239B56"] * len(emis_by_mth),
-    template="plotly_white",
-    labels={
-        "Emission": "Emission (kgCO2eq)"
-    },
-)
-fig_emis_by_mth.update_layout(
-    plot_bgcolor="rgba(0,0,0,0)",
-    xaxis=(dict(showgrid=False))
+#  --- JavaScript function to add a new row to the AgGrid table ---         
+js_del_row = JsCode ('''
+function(e) {
+ let api = e.api;
+ let sel = api.getSelectedRows(); 
+ api.applyTransaction({remove: sel}) 
+};
+'''
 )
 
-#left_column, right_column = st.columns(2)
-#left_column.plotly_chart(fig_emis_by_cat, use_container_width=True)
-st.plotly_chart(fig_emis_by_cat, use_container_width=True)
-st.plotly_chart(fig_emis_by_mth, use_container_width=True)
-#right_column.plotly_chart(fig_product_sales, use_container_width=True)
+#  --- Cell renderer for the '🔧' column to render a button --- 
+cellRenderer_addButton = JsCode('''
+    class BtnCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                </style>
+                <button id='click-button'
+                    class="btn-danger"
+                    > X </button>
+            </span>
+        `;
+        }
+        getGui() {
+            return this.eGui;
+        }
+    };
+    ''')         
+    
+gd.configure_selection(selection_mode= 'single')
+#gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
+gd.configure_column( field = 'Click to Remove', 
+                     onCellClicked = js_del_row,      #adding delete function into the button
+                     pre_selected_rows=[],
+                     cellRenderer = cellRenderer_addButton, #adding the button desgin
+                     lockPosition='left')
+gridOptions = gd.build()
 
 
+#---AG grid Remove item--#
+
+with st.form('Shopping List') as f:
+         st.header('Shopping List 🔖')
+         '''If items are removed, Click "Confirm 🔒" to finalize the list below'''
+         grid_table = AgGrid(df, 
+                   gridOptions = gridOptions, 
+                   fit_columns_on_grid_load = True,
+                   theme = "streamlit",
+                   allow_unsafe_jscode=True,
+                   )
+         st.info(f"Item/items in your shopping list: {len(grid_table['data'])}")
+         submitted = st.form_submit_button("Confirm 🔒")
+         
+         with st.spinner('Processing...'):
+                  if submitted:
+                           df_final = grid_table["data"]
+                           if df_final.empty:                                    #incase the ag-grid is cleared completely
+                                    spread.clear_sheet(sheet = 'Shopping_List2')
+                                    df_final = pd.DataFrame(columns=['Item','Weight'])
+                                    update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
+                           else:
+                                    spread.clear_sheet(sheet = 'Shopping_List2')
+                                    update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
