@@ -56,8 +56,8 @@ def load_the_spreadsheet(spreadsheetname):
 
 def update_the_status_cell():
     dashboard.update('T4', option)
-    dashboard.update('V4', str_date)
-    dashboard.update('W4', end_date)
+    dashboard.update('V4', str_date, default = str)
+    dashboard.update('W4', end_date, default = str)
     st.sidebar.info('Updated to GoogleSheet')
 
 
