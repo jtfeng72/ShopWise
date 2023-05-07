@@ -42,6 +42,15 @@ def load_the_spreadsheet(tabname):
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
+    # --- Create a Google Authentication connection objectt --- #
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive']
+    credentials = service_account.Credentials.from_service_account_info(
+                    st.secrets["gcp_service_account"], scopes = scope)
+
+    client = Client(scope=scope,creds=credentials)
+    spreadsheetname = "ShopWise Food List"                #spreadsheet name
+    spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List google sheet
     col = ['Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
