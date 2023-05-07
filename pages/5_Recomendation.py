@@ -82,6 +82,11 @@ left_column, right_column = st.columns(2)
 
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} kg")
+    #current_value=df_selection.groupby(by=["Month"]).sum()[["Emission"]]
+    #past_value=df_selection.groupby(by=["Month"]).sum()[["Emission"]]
+    #change = current_value - past_value
+    #st.metric(label="Emission to Prior Month", value=4, delta=-0.5,
+    #delta_color="inverse")
 with right_column:
     st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
     
