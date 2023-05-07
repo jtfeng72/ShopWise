@@ -75,15 +75,16 @@ with st.form("form"):
                  elif len(df) == 0:
                   user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
                   user_input_df = pd.DataFrame(user_input)
-                  update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
+                  df=pd.concat([df,user_input_df], ignore_index=True)
+                  #update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
 
                  else:
                   user_input = [item, weight] # User input dataframe
                   df.loc[len(df.index)] = user_input # insert usert input
-                  update_the_spreadsheet('Shopping_List2',df) # update google sheet
+                  #update_the_spreadsheet('Shopping_List2',df) # update google sheet
          
 
-df = load_the_spreadsheet("Shopping_List2") #refresh google sheet
+#df = load_the_spreadsheet("Shopping_List2") #refresh google sheet
         
 gd = GridOptionsBuilder.from_dataframe(df)
 gd.configure_pagination(enabled=True)
