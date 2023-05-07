@@ -15,6 +15,25 @@ st.title('Welcome to your shopping list') #Page Title
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
+# --- Create a Google Authentication connection objectt --- #
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+credentials = service_account.Credentials.from_service_account_info(
+                st.secrets["gcp_service_account"], scopes = scope)
+
+client = Client(scope=scope,creds=credentials)
+spreadsheetname = "ShopWise Food List"                #spreadsheet name
+spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List google sheet
+
+#---gc update---#
+#gc = gspread.authorize(credentials)
+#s = gc.open("ShopWise Food List")                     # load ShopWise Food List google sheet
+#w = s.worksheet("Shopping_List2")                     # get data from "Shopping_List2" tab <Worksheet 'Shopping_List2' id:986753546>
+
+# --- Call the spreadshet --- #
+sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
+#worksheet_list = sh.worksheets()                      # list of ALL worksheets in the google sheet <Worksheet 'Shopping_List2' id:986753546>...
+
 #get all avaliable food items from master list for drop down features
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
 fd_list_sheet = "Food_List_Master"
@@ -22,35 +41,13 @@ fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=ou
 fd_list = pd.read_csv(fd_list_url, usecols = ['Name'])
 
 # Get the sheet as dataframe
-@st.cache_data()
-def load_the_spreadsheet(tabname):
-    # --- Create a Google Authentication connection objectt --- #
-    scope = ['https://spreadsheets.google.com/feeds',
-             'https://www.googleapis.com/auth/drive']
-    credentials = service_account.Credentials.from_service_account_info(
-                    st.secrets["gcp_service_account"], scopes = scope)
-
-    client = Client(scope=scope,creds=credentials)
-    spreadsheetname = "ShopWise Food List"                #spreadsheet name
-    #spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List google sheet
-    # --- Call the spreadshet --- #
-    sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
-    #worksheet_list = sh.worksheets()                      # list of ALL worksheets in the google sheet <Worksheet 'Shopping_List2' id:986753546>...
-    worksheet = sh.worksheet(tabname)
+def load_the_spreadsheet(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 
 # Update to Sheet
 def update_the_spreadsheet(spreadsheetname,dataframe):
-    # --- Create a Google Authentication connection objectt --- #
-    scope = ['https://spreadsheets.google.com/feeds',
-             'https://www.googleapis.com/auth/drive']
-    credentials = service_account.Credentials.from_service_account_info(
-                    st.secrets["gcp_service_account"], scopes = scope)
-
-    client = Client(scope=scope,creds=credentials)
-    spreadsheetname = "ShopWise Food List"                #spreadsheet name
-    spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List google sheet
     col = ['Item','Weight']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
     st.success('Updated')
@@ -78,16 +75,15 @@ with st.form("form"):
                  elif len(df) == 0:
                   user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
                   user_input_df = pd.DataFrame(user_input)
-                  df=pd.concat([df,user_input_df], ignore_index=True)
-                  #update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
+                  update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
 
                  else:
                   user_input = [item, weight] # User input dataframe
                   df.loc[len(df.index)] = user_input # insert usert input
-                  #update_the_spreadsheet('Shopping_List2',df) # update google sheet
+                  update_the_spreadsheet('Shopping_List2',df) # update google sheet
          
 
-#df = load_the_spreadsheet("Shopping_List2") #refresh google sheet
+df = load_the_spreadsheet("Shopping_List2") #refresh google sheet
         
 gd = GridOptionsBuilder.from_dataframe(df)
 gd.configure_pagination(enabled=True)
