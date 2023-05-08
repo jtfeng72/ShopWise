@@ -1,4 +1,4 @@
-#ShopWise Recomendation Item.py
+#ShopWise Recommended Items.py
 # ----- Entire code below  ------- #  
 
 # ----- Import libraries  ------- #  
