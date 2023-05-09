@@ -68,11 +68,13 @@ st.markdown('Item Recomendation')
 
 with st.form("form"):
     option = st.selectbox("Item Category?",('Meat', 'Dairy', 'Processed Agricultural Products', 'Non-Processed Agricultural Products', 'Seafood'))
-    str_date = st.date_input("Start Date", default = str)
-    end_date = st.date_input("End Date", default = str)
+    str_date = st.date_input("Start Date")
+    end_date = st.date_input("End Date")
     submitted = st.form_submit_button("Confirm")
     
     if submitted:
+        str_date.astype(str)
+        end_date.astype(str)
         update_the_status_cell()
 
 dashr=load_the_spreadsheet(d_rec)
