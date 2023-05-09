@@ -73,10 +73,11 @@ with st.form("form"):
     submitted = st.form_submit_button("Confirm")
     
     if submitted:
-        #str_date.astype(str)
-        #end_date.astype(str)
         update_the_status_cell()
 
 dashr=load_the_spreadsheet(d_rec)
 
 AgGrid(dashr)
+
+cell = sheet.dashboard('S2').value
+st.markdown(cell)
