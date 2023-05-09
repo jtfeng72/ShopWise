@@ -79,5 +79,5 @@ dashr=load_the_spreadsheet(d_rec)
 
 AgGrid(dashr)
 
-cell = dashboard('S2').value
-st.write(cell.value)
+v = dashboard.cell(19,2).value
+st.write(v)
