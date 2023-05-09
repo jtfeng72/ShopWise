@@ -79,5 +79,5 @@ dashr=load_the_spreadsheet(d_rec)
 
 AgGrid(dashr)
 
-cell = sheet.dashboard('S2').value
+cell = sh.dashboard('S2').value
 st.markdown(cell)
