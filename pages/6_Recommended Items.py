@@ -68,8 +68,8 @@ st.markdown('Item Recomendation')
 
 with st.form("form"):
     option = st.selectbox("Item Category?",('Meat', 'Dairy', 'Processed Agricultural Products', 'Non-Processed Agricultural Products', 'Seafood'))
-    str_date = st.date_input("Start Date")
-    end_date = st.date_input("End Date")
+    str_date = st.date_input("Start Date", default = str)
+    end_date = st.date_input("End Date", default = str)
     submitted = st.form_submit_button("Confirm")
     
     if submitted:
