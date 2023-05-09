@@ -15,6 +15,8 @@ from gspread_pandas import Spread,Client
 import matplotlib.pyplot as plt
 from datetime import datetime
 from pandas import DataFrame
+import datetime
+
 
 # ----- Page setup ----- #
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
@@ -56,18 +58,18 @@ def load_the_spreadsheet(spreadsheetname):
 
 def update_the_status_cell():
     dashboard.update('T4', option)
-    dashboard.update('V4', str_date, default = str)
-    dashboard.update('W4', end_date, default = str)
+    dashboard.update('V4', str_date)
+    dashboard.update('W4', end_date)
     st.sidebar.info('Updated to GoogleSheet')
-
+         #, default = str
 
 # ----- Rec Dashboard ----- #
 st.markdown('Item Recomendation')
 
 with st.form("form"):
     option = st.selectbox("Item Category?",('Meat', 'Dairy', 'Processed Agricultural Products', 'Non-Processed Agricultural Products', 'Seafood'))
-    str_date = st.date_input("Start Date")
-    end_date = st.date_input("End Date")
+    str_date = st.date_input("Start Date",datetime.date())
+    end_date = st.date_input("End Date",datetime.date())
     submitted = st.form_submit_button("Confirm")
     
     if submitted:
