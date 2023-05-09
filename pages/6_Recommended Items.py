@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from pandas import DataFrame
 from datetime import date
-
+import plotly.express as px
 
 # ----- Page setup ----- #
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
@@ -81,3 +81,18 @@ AgGrid(dashr)
 
 val = dashboard.acell('S2').value
 st.write(val)
+
+
+"""
+# ----- Bar Chart ----- #
+fig_item_consumption = px.bar(
+         x = 
+         y = 
+
+""""
+
+
+
+
+
+
