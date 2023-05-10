@@ -89,7 +89,7 @@ fig_item_consumption = px.bar(
          x = 
          y = 
 
-""""
+"""
 
 
 
