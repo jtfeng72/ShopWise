@@ -83,7 +83,7 @@ total_waste = round(df_selection['Wasted'].sum()/1000,2)
 total_emission = round(df_selection['Emission'].sum()/1000,2)
 left_column, right_column = st.columns(2)
 
-em_by_prd_df = round(df_selection.groupby(by=["Category"]).sum()[["Emission"]]/1000,2)
+em_by_prd_df = round(df_selection.groupby(by=["Year_Month"]).sum()[["Emission"]]/1000,2)
 st.dataframe(em_by_prd_df)
 #current_amt= 
 #prior_amt=
