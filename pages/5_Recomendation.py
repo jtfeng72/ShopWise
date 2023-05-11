@@ -85,7 +85,7 @@ left_column, right_column = st.columns(2)
 
 em_by_prd_df = df_selection.groupby(by=["Year_Month"]).sum()[["Emission"]]
 st.write(em_by_prd_df)
-current_em = em_by_prd_df[(em_by_prd_df.index == current_prd), ['Emission']]
+current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)]
 #prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd), ["Emission"]]
 #st.write(current_em,prior_em)
 
