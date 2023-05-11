@@ -71,8 +71,8 @@ df_selection = df_c2.query(
 
 
 #The summary of total Waste and Emission
-current_prd = datetime.today().dt.to_period('M')
-prior_prd= datetime.today().dt.to_period('M') - 1
+current_prd = (datetime.today()).dt.to_period('M')
+prior_prd= (datetime.today()).dt.to_period('M') - 1
 st.write(current_prd, prior_prd)
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
