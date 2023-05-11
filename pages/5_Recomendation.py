@@ -76,13 +76,18 @@ current_prd = today.strftime('%Y-%m')
 first = today.replace(day=1)
 last_month = first - timedelta(days=1)
 prior_prd = last_month.strftime('%Y-%m')
-st.write(current_prd, prior_prd)
 
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
 total_waste = round(df_selection['Wasted'].sum()/1000,2)
 total_emission = round(df_selection['Emission'].sum()/1000,2)
 left_column, right_column = st.columns(2)
+
+em_by_prd_df = round(df_selection.groupby(by=["Category"]).sum()[["Emission"]]/1000,2)
+st.dataframe(em_by_prd_df)
+#current_amt= 
+#prior_amt=
+
 
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} kg")
