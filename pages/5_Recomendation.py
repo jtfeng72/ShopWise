@@ -6,7 +6,7 @@ import pandas as pd                                            #pip install pand
 import streamlit as st                                         #pip install streamlit
 import gspread                                                 #pip install gspread
 import plotly.express as px                                    #pip install plotly-express
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 
 @st.cache_data()
