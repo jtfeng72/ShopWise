@@ -84,8 +84,8 @@ total_emission = round(df_selection['Emission'].sum()/1000,2)
 left_column, right_column = st.columns(2)
 
 em_by_prd_df = round(df_selection.groupby(by=["Year_Month"]).sum()[["Emission"]]/1000,2)
-st.write(em_by_prd_df.dtypes)
-st.dataframe(em_by_prd_df["Year_Month"] == current_prd)
+#st.write(em_by_prd_df.dtypes)
+st.dataframe(em_by_prd_df)
 #current_em = em_by_prd_df[(em_by_prd_df["Year_Month"] == current_prd), ["Emission"]]
 #prior_em = em_by_prd_df[(em_by_prd_df["Year_Month"] == prior_prd), ["Emission"]]
 #st.write(current_em,prior_em)
