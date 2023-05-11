@@ -76,7 +76,6 @@ current_prd = today.strftime('%Y%m')
 first = today.replace(day=1)
 last_month = first - timedelta(days=1)
 prior_prd = last_month.strftime('%Y%m')
-st.write(prior_prd.dtypes)
 
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
