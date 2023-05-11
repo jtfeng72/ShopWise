@@ -73,8 +73,11 @@ df_selection = df_c2.query(
 #The summary of total Waste and Emission
 today = datetime.today()
 current_prd = today.strftime('%Y-%m')
-prior_prd = (today.replace(day=1) - datetime.timedelta(days=1)).strftime('%Y-%m')-1
+first = today.replace(day=1)
+last_month = first - datetime.timedelta(days=1))
+prior_prd = last_month.strftime('%Y-%m')
 st.write(current_prd, prior_prd)
+
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
 total_waste = round(df_selection['Wasted'].sum()/1000,2)
