@@ -84,19 +84,14 @@ total_emission = round(df_selection['Emission'].sum()/1000,2)
 left_column, right_column = st.columns(2)
 
 em_by_prd_df = df_selection.groupby(by=["Year_Month"]).sum()[["Emission"]]
-st.write(em_by_prd_df)
 current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)]
-#prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd), ["Emission"]]
-#st.write(current_em,prior_em)
-
+prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)]
+em_change = current_em - prior_em
 
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} kg")
-    #current_value=df_selection.groupby(by=["Month"]).sum()[["Emission"]]
-    #past_value=df_selection.groupby(by=["Month"]).sum()[["Emission"]]
-    #change = current_value - past_value
-    #st.metric(label="Emission to Prior Month", value=4, delta=-0.5,
-    #delta_color="inverse")
+    st.metric(label="Monthly Emission Change", value = current_em, delta = em_change,
+    delta_color="inverse")
 with right_column:
     st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
     
