@@ -81,18 +81,3 @@ AgGrid(dashr)
 
 val = dashboard.acell('S2').value
 st.write(val)
-
-
-"""
-# ----- Bar Chart ----- #
-fig_item_consumption = px.bar(
-         x = 
-         y = 
-
-"""
-
-
-
-
-
-
