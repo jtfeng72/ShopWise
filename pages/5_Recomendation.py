@@ -90,7 +90,7 @@ em_change = current_em - prior_em
 
 with left_column:
     st.subheader(f"Total Waste: {total_waste:,} kg")
-    st.metric(label="Monthly Emission Change", value = f"{round(current_em/1000,2)} kgCO2eq", f"{delta =round(em_change/prior_em*100,1} %"),
+    st.metric(label="Monthly Emission Change", value = f"{round(current_em/1000,2)} kgCO2eq", f"{delta =round(em_change/prior_em*100,1)} %",
     delta_color="inverse")
 with right_column:
     st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
