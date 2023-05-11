@@ -76,6 +76,7 @@ current_prd = today.strftime('%Y%m')
 first = today.replace(day=1)
 last_month = first - timedelta(days=1)
 prior_prd = last_month.strftime('%Y%m')
+st.write(prior_prd.dtypes)
 
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
@@ -84,6 +85,7 @@ total_emission = round(df_selection['Emission'].sum()/1000,2)
 left_column, right_column = st.columns(2)
 
 em_by_prd_df = round(df_selection.groupby(by=["Year_Month"]).sum()[["Emission"]]/1000,2)
+st.write(em_by_prd_df.dtypes)
 st.dataframe(em_by_prd_df["Year_Month"] == current_prd)
 #current_em = em_by_prd_df[(em_by_prd_df["Year_Month"] == current_prd), ["Emission"]]
 #prior_em = em_by_prd_df[(em_by_prd_df["Year_Month"] == prior_prd), ["Emission"]]
