@@ -74,7 +74,7 @@ df_selection = df_c2.query(
 today = datetime.today()
 current_prd = today.strftime('%Y-%m')
 first = today.replace(day=1)
-last_month = first - datetime.timedelta(days=1)
+last_month = first - timedelta(days=1)
 prior_prd = last_month.strftime('%Y-%m')
 st.write(current_prd, prior_prd)
 
