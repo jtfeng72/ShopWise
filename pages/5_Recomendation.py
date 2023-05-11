@@ -5,7 +5,7 @@ from gspread_pandas import Spread,Client                       #pip install gspr
 import pandas as pd                                            #pip install pandas
 import streamlit as st                                         #pip install streamlit
 import gspread                                                 #pip install gspread
-import plotly.express as px                                     #pip install plotly-express
+import plotly.express as px                                    #pip install plotly-express
 from datetime import datetime, date
 
 
@@ -35,20 +35,20 @@ fd_list_sheet = "Food_List_Master"
 fd_list_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={fd_list_sheet}"
 fd_list = pd.read_csv(fd_list_url, usecols = ['Name','Category','CO2_Per_g'])
 
-#Merging df
+#Crating new dataframe by merging pantry list with food list
 df_c2= df_c.merge(fd_list,
                   left_on= 'Item',
                   right_on= 'Name',
                   how = 'left')
- 
-df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                     # Calculating Emission
-
 
 #st.write(df.dtypes) #to check data type
-df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                #change to datetime
-df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                           #new column to extract month
-df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                           #new column to extract month
-st.dataframe(df_c2)
+#Dataframe modification
+df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                                                # Calculating Emission
+df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                # Change to date type
+df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                              # New column to extract month
+df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                                         # New column to extract year
+df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.to_period('M')                         # New column to extract Year Month
+#st.dataframe(df_c2)
 
 
 # ---- SIDEBAR ----
@@ -69,9 +69,11 @@ df_selection = df_c2.query(
     "Year == @year & Month == @month" 
 )
 
-#adding new columns
 
-
+#The summary of total Waste and Emission
+current_prd = datetime.today().dt.to_period('M')
+prior_prd= datetime.today().dt.to_period('M') - 1
+st.write(current_prd, prior_prd)
 st.title(':bar_chart: Here are your grocery stats') #Page Title
 st.markdown("##")
 total_waste = round(df_selection['Wasted'].sum()/1000,2)
