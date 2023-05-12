@@ -96,7 +96,7 @@ with right_column:
     delta_color="inverse")
     
 st.markdown("""---""")
-st.info("👈 Change the filters modify the results results in this page")
+st.info("👈 Change the filters to modify the results in this page")
 
 
 #st.dataframe(df_selection)
