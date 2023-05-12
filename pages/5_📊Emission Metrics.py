@@ -77,7 +77,7 @@ first = today.replace(day=1)
 last_month = first - timedelta(days=1)
 prior_prd = last_month.strftime('%Y%m')
 
-st.title(':bar_chart: Here are your grocery stats') #Page Title
+st.title('📊Emission Metrics')                                          #Page Title
 st.markdown("##")
 total_waste = round(df_selection['Wasted'].sum()/1000,2)
 total_emission = round(df_selection['Emission'].sum()/1000,2)
@@ -115,7 +115,7 @@ fig_emis_by_cat = px.bar(
     color_discrete_sequence=["#7C9061"] * len(emis_by_cat),
     template="plotly_white",
     labels={
-        "Emission": "Emission (kgCO2eq)"
+        "Emission": "Emission (gCO2eq)"
     },
 )
 fig_emis_by_cat.update_layout(
@@ -136,7 +136,7 @@ fig_emis_by_mth = px.bar(
     color_discrete_sequence=["#7C9061"] * len(emis_by_mth),
     template="plotly_white",
     labels={
-        "Emission": "Emission (kgCO2eq)"
+        "Emission": "Emission (gCO2eq)"
     },
 )
 fig_emis_by_mth.update_layout(
