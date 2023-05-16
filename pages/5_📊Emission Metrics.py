@@ -89,16 +89,16 @@ with left_column:
     st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
 with right_column:
     # streamlit metric wiget variable
-em_by_prd_df = df_c2.groupby(by=["Year_Month"]).sum()[["Emission"]]                 #summarize emission by month
-if len(em_by_prd_df) >1:
-    current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]
-    prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]
-    em_change = current_em - prior_em
-    st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
-    delta_color="inverse")
-else:
-    st.metric(label="Current Month Emission", value = "Pior month is not avliable", delta =  "NA %",
-    delta_color="inverse")
+    em_by_prd_df = df_c2.groupby(by=["Year_Month"]).sum()[["Emission"]]                 #summarize emission by month
+    if len(em_by_prd_df) >1:
+        current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]
+        prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]
+        em_change = current_em - prior_em
+        st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
+        delta_color="inverse")
+    else:
+        st.metric(label="Current Month Emission", value = "Pior month is not avliable", delta =  "NA %",
+        delta_color="inverse")
     
 st.markdown("""---""")
 st.info("👈 Change the filters to modify the results in this page")
