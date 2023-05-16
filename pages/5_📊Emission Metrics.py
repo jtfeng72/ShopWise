@@ -27,11 +27,11 @@ def load_the_spreadsheet(tabname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 df=load_the_spreadsheet("Pantry test")
-df_c=df.query('Status == "Completed"')
+#df_c=df.query('Status == "Completed"')
 
 # if the there is no completed items in the pantry promp error message
-if df_c.empty:
-    st.warning('🙇‍♂️ Sorry, not enough data avaliable.', icon="🙇‍♂️")
+if df.empty:
+    st.warning('🙇‍♂️ Sorry, no data avaliable at this moment.', icon="🙇‍♂️")
 else:
     #get all avaliable food items from master list for drop down features
     sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
