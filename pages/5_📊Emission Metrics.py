@@ -26,7 +26,7 @@ def load_the_spreadsheet(tabname):
     worksheet = sh.worksheet(tabname)
     df = pd.DataFrame(worksheet.get_all_records())
     return df
-df=load_the_spreadsheet("Pantry")
+df=load_the_spreadsheet("Pantry test")
 df_c=df.query('Status == "Completed"')
 
 # if the there is no completed items in the pantry promp error message
