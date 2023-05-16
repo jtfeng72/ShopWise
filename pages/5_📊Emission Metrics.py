@@ -32,7 +32,7 @@ df=load_the_spreadsheet("Pantry")
 if df.empty:
     st.warning('Sorry, no data avaliable at this moment.', icon="🙇‍♂️")
     
-elif ((df.Status.unique() == ['In Progress','Completed')) or (df.Status.unique() == 'In Progress')):
+elif ((df.Status.unique() == ['In Progress','Completed'])) or (df.Status.unique() == 'In Progress')):
     st.warning('Sorry, not enough data avaliable at this moment.', icon="🙇‍♂️")
     
 else:
