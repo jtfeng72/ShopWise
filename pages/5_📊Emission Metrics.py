@@ -27,12 +27,13 @@ def load_the_spreadsheet(tabname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 df=load_the_spreadsheet("Pantry test2")
+st.write()
 
 # if the there is no completed items in the pantry promp error message
 if df.empty:
     st.warning('Sorry, no data avaliable at this moment.', icon="🙇‍♂️")
     
-elif df.query('Status == "Completed"').empty:
+elif df.Status.unique() == 'In Progress':
     st.warning('Sorry, not enough data avaliable at this moment.', icon="🙇‍♂️")
     
 else:
