@@ -32,8 +32,8 @@ df=load_the_spreadsheet("Pantry")
 if df.empty:
     st.warning('Sorry, no data avaliable at this moment.', icon="🙇‍♂️")
     
-elif df.Status.unique() == 'In Progress':
-    st.warning('Sorry, not enough data avaliable at this moment.', icon="🙇‍♂️")
+#elif ((age>= 8) and (df.Status.unique() == 'In Progress')):
+#    st.warning('Sorry, not enough data avaliable at this moment.', icon="🙇‍♂️")
     
 else:
     #get all avaliable food items from master list for drop down features
