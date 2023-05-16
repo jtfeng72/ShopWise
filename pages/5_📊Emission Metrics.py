@@ -90,6 +90,7 @@ with left_column:
 with right_column:
     # streamlit metric wiget variable
     em_by_prd_df = df_c2.groupby(by=["Year_Month"]).sum()[["Emission"]]                 #summarize emission by month
+    st.write(len(em_by_prd_df))
     if len(em_by_prd_df) >1:
         current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]
         prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]
