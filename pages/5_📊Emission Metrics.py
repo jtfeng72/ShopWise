@@ -98,8 +98,7 @@ with right_column:
         st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
         delta_color="inverse")
     else:
-        st.metric(label="Current Month Emission", value = "Pior month is not avliable", delta =  "NA %",
-        delta_color="inverse")
+        st.metric(label="Current Month Emission", value = "Pior month is not avliable")
     
 st.markdown("""---""")
 st.info("👈 Change the filters to modify the results in this page")
