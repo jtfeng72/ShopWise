@@ -115,7 +115,7 @@ elif any(df.Status.unique() == 'Completed'):
     #---visualization---#
     # emission by category
     emis_by_cat = (
-        df_selection.groupby('Category')['Emission'].sum().sort_values(by=["Emission"], ascending=False)
+        df_selection.groupby('Category')['Emission'].sum()#.sort_values(by=["Emission"], ascending=False)
         #df_selection.groupby(by=["Category"]).sum()[["Emission"]].sort_values(by="Emission")
     )
     fig_emis_by_cat = px.bar(
@@ -137,7 +137,7 @@ elif any(df.Status.unique() == 'Completed'):
 
     # emission by month
     emis_by_mth = (
-        df_selection.groupby('Month')['Emission'].sum()
+        df_selection.groupby('Month')['Emission'].sum().sort('Month')
         #df_selection.groupby(by=["Month"]).sum()[["Emission"]]
     )
     fig_emis_by_mth = px.bar(
