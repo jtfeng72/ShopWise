@@ -9,7 +9,7 @@ import plotly.express as px                                    #pip install plot
 from datetime import datetime, date, timedelta
 
 
-@st.cache_data()
+#@st.cache_data()
 def load_the_spreadsheet(tabname):
     # --- Create a Google Authentication connection objectt --- #
     scope = ['https://spreadsheets.google.com/feeds',
@@ -53,7 +53,7 @@ elif any(df.Status.unique() == 'Completed'):
     df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                # Change to date type
     df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                              # New column to extract month
     df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                                         # New column to extract year
-    df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y%m')                  # New column to extract Year Month
+    df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y%m')                   # New column to extract Year Month
     #st.dataframe(df_c2)
 
 
@@ -95,17 +95,17 @@ elif any(df.Status.unique() == 'Completed'):
         st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
     with right_column:
         # streamlit metric wiget variable
-        em_by_prd_df = df_c2.groupby(by=(["Year_Month"]).sum()[["Emission"]]                     #summarize total emission by month
+        em_by_prd_df = df_c2.groupby(by=["Year_Month"]).sum()[["Emission"]]                     #summarize total emission by month
         #st.write(len(em_by_prd_df))
-        #if int(len(em_by_prd_df))>1:                                                                #show metric only if there is 2 or more month of data
-        current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]         #current month emission
-        prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]             #prior month emission
-        em_change = current_em - prior_em                                                   #the difference between current and pror month emission
+        if len(em_by_prd_df) >1:                                                                #show metric only if there is 2 or more month of data
+            current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]         #current month emission
+            prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]             #prior month emission
+            em_change = current_em - prior_em                                                   #the difference between current and pror month emission
             #metric wigget
-        st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
-        delta_color="inverse")
-        #else:
-            #st.metric(label="Current Month Emission", value = "Pior month is not avliable")     #Prompt "not avliable" if there is only 1 month or less of data 
+            st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
+            delta_color="inverse")
+        else:
+            st.metric(label="Current Month Emission", value = "Pior month is not avliable")     #Prompt "not avliable" if there is only 1 month or less of data 
 
     st.markdown("""---""")
     st.info("👈 Change the filters to modify the results in this page")
