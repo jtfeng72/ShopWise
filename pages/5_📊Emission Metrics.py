@@ -96,7 +96,7 @@ elif any(df.Status.unique() == 'Completed'):
     with right_column:
         # streamlit metric wiget variable
         em_by_prd_df = df_c2.groupby('Year_Month')['Emission'].sum()                    #summarize total emission by month
-        st.write(len(em_by_prd_df))
+        st.dataframe(em_by_prd_df)
         if len(em_by_prd_df) >1:                                                                #show metric only if there is 2 or more month of data
             current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]         #current month emission
             prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]             #prior month emission
