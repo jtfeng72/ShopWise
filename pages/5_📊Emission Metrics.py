@@ -142,7 +142,7 @@ elif any(df.Status.unique() == 'Completed'):
     )
     fig_emis_by_mth = px.bar(
         emis_by_mth,
-        x=emis_by_mth['Month'],
+        x="Month",
         #x=emis_by_mth.index,
         y="Emission",
         orientation="v",
