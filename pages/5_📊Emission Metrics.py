@@ -53,7 +53,7 @@ elif any(df.Status.unique() == 'Completed'):
     df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                # Change to date type
     df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                              # New column to extract month
     df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                                         # New column to extract year
-    df_c2["Year_Month"] = int(pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y%m'))                   # New column to extract Year Month
+    df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y%m')                  # New column to extract Year Month
     #st.dataframe(df_c2)
 
 
@@ -95,7 +95,7 @@ elif any(df.Status.unique() == 'Completed'):
         st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
     with right_column:
         # streamlit metric wiget variable
-        em_by_prd_df = df_c2.groupby(by=["Year_Month"]).sum()[["Emission"]]                     #summarize total emission by month
+        em_by_prd_df = df_c2.groupby(by=(int(["Year_Month"])).sum()[["Emission"]]                     #summarize total emission by month
         #st.write(len(em_by_prd_df))
         if len(em_by_prd_df) >1:                                                                #show metric only if there is 2 or more month of data
             current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]         #current month emission
