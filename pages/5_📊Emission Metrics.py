@@ -9,7 +9,7 @@ import plotly.express as px                                    #pip install plot
 from datetime import datetime, date, timedelta
 
 
-#@st.cache_data()
+@st.cache_data()
 def load_the_spreadsheet(tabname):
     # --- Create a Google Authentication connection objectt --- #
     scope = ['https://spreadsheets.google.com/feeds',
