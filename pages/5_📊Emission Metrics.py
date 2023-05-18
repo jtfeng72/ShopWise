@@ -95,7 +95,7 @@ elif any(df.Status.unique() == 'Completed'):
         st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
     with right_column:
         # streamlit metric wiget variable
-        em_by_prd_df = df_c2['Year_Month'].groupby(df_c2['Year_Month]).agg(['Emission'])
+        em_by_prd_df = df_c2['Year_Month'].groupby(df_c2['Year_Month']).agg(['Emission'])
         #df_c2.groupby(by=["Year_Month"]).agg()[["Emission"]]                     #summarize total emission by month
         #st.write(len(em_by_prd_df))
         if len(em_by_prd_df) >1:                                                                #show metric only if there is 2 or more month of data
