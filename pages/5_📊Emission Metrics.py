@@ -98,12 +98,12 @@ elif any(df.Status.unique() == 'Completed'):
         em_by_prd_df = df_c2.groupby(by=(["Year_Month"]).sum()[["Emission"]]                     #summarize total emission by month
         #st.write(len(em_by_prd_df))
         #if int(len(em_by_prd_df))>1:                                                                #show metric only if there is 2 or more month of data
-            current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]         #current month emission
-            prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]             #prior month emission
-            em_change = current_em - prior_em                                                   #the difference between current and pror month emission
+        current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]         #current month emission
+        prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]             #prior month emission
+        em_change = current_em - prior_em                                                   #the difference between current and pror month emission
             #metric wigget
-            st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
-            delta_color="inverse")
+        st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
+        delta_color="inverse")
         #else:
             #st.metric(label="Current Month Emission", value = "Pior month is not avliable")     #Prompt "not avliable" if there is only 1 month or less of data 
 
