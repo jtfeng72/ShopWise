@@ -36,7 +36,7 @@ st.write("Guide for Pantry  [link](https://scribehow.com/shared/Shopwise_Pantry_
 #Product List
 st.write("Guide for Product List  [link](https://scribehow.com/shared/ShopWise_Product_List__E3FiloBgT7uH11ro1qc9cg)")
 #Emission Metrics
-st.write("Guide for Emission Metrics  [link](https://scribehow.com/shared/ShopWise_Emission_Metrics__aJ477AlcSUC2TmONVQWgHQ")
+st.write("Guide for Emission Metrics  [link](https://scribehow.com/shared/ShopWise_Emission_Metrics__aJ477AlcSUC2TmONVQWgHQ)")
 #Item Recommendation
 st.write("Guide for Item Recommendation  [link](https://scribehow.com/shared/ShopWise_Item_Recommendation__-r0GZF_YScOJ8lbwlf3ftA)")
 #------------End of Guides-----------#
