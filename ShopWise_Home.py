@@ -26,3 +26,6 @@ video_bytes = video_file.read()
 
 st.video(video_bytes)
 #-------End-------#
+st.title('Guide on how to use ShopWise')
+
+st.write("Guide for Shopping List  [link](https://scribehow.com/shared/ShopWise_shopping_list__Q-qGouGYQxSeTSAqA_okuA)")
