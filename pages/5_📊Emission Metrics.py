@@ -111,11 +111,11 @@ elif any(df.Status.unique() == 'Completed'):
 
 
     #st.dataframe(df_selection)
-
+    st.write(df_selection.groupby('Category')['Emission'].sum())
     #---visualization---#
     # emission by category
     emis_by_cat = (
-        df_selection.groupby('Category')['Emission'].sum()#.sort_values(by="Emission", ascending=False)
+        df_selection.groupby('Category')['Emission'].sum().sort_values("Emission")
         #df_selection.groupby(by=["Category"]).sum()[["Emission"]].sort_values(by="Emission")
     )
     fig_emis_by_cat = px.bar(
