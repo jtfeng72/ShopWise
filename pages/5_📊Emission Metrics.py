@@ -100,8 +100,8 @@ elif any(df.Status.unique() == 'Completed'):
         st.dataframe(em_by_prd_df)
         st.write(em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0])
         if len(em_by_prd_df) >1:                                                                #show metric only if there is 2 or more month of data
-            current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)]         #current month emission
-            prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)]             #prior month emission
+            current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0]         #current month emission
+            prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0]             #prior month emission
             em_change = current_em - prior_em                                                   #the difference between current and pror month emission
             #metric wigget
             st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
