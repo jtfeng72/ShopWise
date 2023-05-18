@@ -111,7 +111,7 @@ elif any(df.Status.unique() == 'Completed'):
 
 
     #st.dataframe(df_selection)
-    st.write(df_selection.groupby('Category')['Emission'].sum().sort_values('Emission'))
+    #st.write(df_selection.groupby('Category')['Emission'].sum().sort_values('Emission'))
     #---visualization---#
     # emission by category
     emis_by_cat = (
