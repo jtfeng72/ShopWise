@@ -127,7 +127,7 @@ elif any(df.Status.unique() == 'Completed'):
         color_discrete_sequence=["#7C9061"] * len(emis_by_cat),
         template="plotly_white",
         labels={
-            "Emission": "Emission (gCO2eq)"https://github.com/jtfeng72/ShopWise/blob/master/pages/5_%F0%9F%93%8AEmission%20Metrics.py
+            "Emission": "Emission (gCO2eq)"
         },
     )
     fig_emis_by_cat.update_layout(
