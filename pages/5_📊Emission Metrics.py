@@ -136,11 +136,32 @@ elif any(df.Status.unique() == 'Completed'):
     )
 
     # emission by month
+        emis_by_mth = (
+        df_selection.groupby('Month')['Emission'].sum
+        #df_selection.groupby(by=["Month"]).sum()[["Emission"]]
+    )
+    fig_emis_by_mth = px.bar(
+        emis_by_mth,
+        #x=emis_by_mth["Month"],
+        x=emis_by_mth.index,
+        y="Emission",
+        orientation="v",
+        title="<b>Waste Emission by Month</b>",
+        color_discrete_sequence=["#7C9061"] * len(emis_by_mth),
+        template="plotly_white",
+        labels={
+            "Emission": "Emission (gCO2eq)"
+        },
+    )
+    fig_emis_by_mth.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        xaxis=(dict(showgrid=False))
+    )
 
     #left_column, right_column = st.columns(2)
     #left_column.plotly_chart(fig_emis_by_cat, use_container_width=True)
     st.plotly_chart(fig_emis_by_cat, use_container_width=True)
-    #st.plotly_chart(fig_emis_by_mth, use_container_width=True)
+    st.plotly_chart(fig_emis_by_mth, use_container_width=True)
     #right_column.plotly_chart(fig_product_sales, use_container_width=True)
 else:
     st.warning('Sorry, not enough data avaliable at this moment.', icon="🙇‍♂️")
