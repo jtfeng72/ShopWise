@@ -138,7 +138,7 @@ elif any(df.Status.unique() == 'Completed'):
     # emission by month
     emis_by_mth = (
         #df_selection.groupby('Month')['Emission'].sum().sort_values('Month', key = lambda x : pd.Categorical(x, categories=months, ordered=True))
-        df_selection.groupby(by=["Month"])["Emission"].sum()
+        df_selection.groupby(by=["Month"])["Emission"].sum().sort_values('Month', key = lambda x : pd.Categorical(x, categories=months, ordered=True))
     )
     fig_emis_by_mth = px.bar(
         emis_by_mth,
