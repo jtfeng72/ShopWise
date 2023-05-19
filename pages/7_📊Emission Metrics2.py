@@ -49,11 +49,13 @@ elif any(df.Status.unique() == 'Completed'):
 
     #st.write(df.dtypes) #to check data type
     #Dataframe modification
-    df_c2['Emission']= df_c2['Wasted'].astype(float) * df_c2['CO2_Per_g'].astype(float)                                                # Calculating Emission
+    df_c2['Wasted']= df_c2['Wasted'].astype(int)
+    df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                                               # Calculating Emission
     df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                # Change to date type
     df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                              # New column to extract month
     df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                                         # New column to extract year
     df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y%m')                   # New column to extract Year Month
+    
     st.write(df_c2.dtypes)
     st.dataframe(df_c2)
 
