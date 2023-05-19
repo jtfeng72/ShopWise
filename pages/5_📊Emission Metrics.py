@@ -137,7 +137,7 @@ elif any(df.Status.unique() == 'Completed'):
 
     # emission by month
     emis_by_mth = (
-        df_selection.groupby('Month')['Emission'].sum().sort('Month')
+        df_selection.groupby('Month')['Emission'].sum()
         #df_selection.groupby(by=["Month"]).sum()[["Emission"]]
     )
     fig_emis_by_mth = px.bar(
