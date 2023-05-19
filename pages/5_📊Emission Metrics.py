@@ -28,7 +28,7 @@ df=load_the_spreadsheet("Pantry")
 
 # if the there is no completed items in the pantry promp error message
 if df.empty:
-    st.warning('Sorry, no data avaliable at this moment.', icon="🙇‍♂️")
+    st.warning('Sorry, no data available at this moment.', icon="🙇‍♂️")
     
 elif any(df.Status.unique() == 'Completed'):
     #get all avaliable food items from master list for drop down features
@@ -166,4 +166,4 @@ elif any(df.Status.unique() == 'Completed'):
     st.plotly_chart(fig_emis_by_mth, use_container_width=True)
     #right_column.plotly_chart(fig_product_sales, use_container_width=True)
 else:
-    st.warning('Sorry, not enough data avaliable at this moment.', icon="🙇‍♂️")
+    st.warning('Sorry, not enough data available at this moment.', icon="🙇‍♂️")
