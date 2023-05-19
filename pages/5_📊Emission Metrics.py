@@ -53,8 +53,8 @@ elif any(df.Status.unique() == 'Completed'):
     df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%b')                              # New column to extract month
     df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                                         # New column to extract year
     df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%y%m')                   # New column to extract Year Month
-    st.write(df_c2.dtypes)
-    st.dataframe(df_c2)
+    #st.write(df_c2.dtypes)
+    #st.dataframe(df_c2)
 
 
     # ---- SIDEBAR ----
@@ -136,10 +136,10 @@ elif any(df.Status.unique() == 'Completed'):
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     # emission by month
-    st.table(df_selection.groupby('Month')['Emission'].sum().reindex(months, axis=0).dropna())
+    #st.table(df_selection.groupby('Month')['Emission'].sum().reindex(months, axis=0).dropna())
     emis_by_mth = (
         #df_selection.groupby('Month')['Emission'].sum().sort_values('Month', key = lambda x : pd.Categorical(x, categories=months, ordered=True))
-        df_selection.groupby('Month')['Emission'].sum().reindex(months, axis=0)
+        df_selection.groupby('Month')['Emission'].sum().reindex(months, axis=0).dropna()
         #df_selection.groupby(by=["Month"])["Emission"].sum()
     )
     fig_emis_by_mth = px.bar(
