@@ -136,7 +136,7 @@ elif any(df.Status.unique() == 'Completed'):
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     # emission by month
-    st.datafram(df_selection.groupby(by=["Month"]).sum()[["Emission"]])
+    st.datafram(df_selection.groupby(by=["Month"])["Emission"].sum())
     emis_by_mth = (
         #df_selection.groupby('Month')['Emission'].sum().sort_values('Month', key = lambda x : pd.Categorical(x, categories=months, ordered=True))
         df_selection.groupby(by=["Month"])["Emission"].sum()
