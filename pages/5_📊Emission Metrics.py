@@ -136,9 +136,10 @@ elif any(df.Status.unique() == 'Completed'):
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     # emission by month
+    st.datafram(df_selection.groupby(by=["Month"]).sum()[["Emission"]])
     emis_by_mth = (
         #df_selection.groupby('Month')['Emission'].sum().sort_values('Month', key = lambda x : pd.Categorical(x, categories=months, ordered=True))
-        df_selection.groupby(by=["Month"])["Emission"].sort_values(by="Emission").sum()
+        df_selection.groupby(by=["Month"])["Emission"].sum()
         #df_selection.groupby(by=["Month"])["Emission"].sum()
     )
     fig_emis_by_mth = px.bar(
