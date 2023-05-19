@@ -1,5 +1,3 @@
-#ShopWise.py
-#---Import libraries---#
 from google.oauth2 import service_account                      #pip install google-auth
 from gspread_pandas import Spread,Client                       #pip install gspread_pandas
 import pandas as pd                                            #pip install pandas
@@ -26,7 +24,7 @@ def load_the_spreadsheet(tabname):
     worksheet = sh.worksheet(tabname)
     df = pd.DataFrame(worksheet.get_all_records())
     return df
-df=load_the_spreadsheet("Pantry 2")
+df=load_the_spreadsheet("Pantry")
 
 # if the there is no completed items in the pantry promp error message
 if df.empty:
@@ -51,9 +49,9 @@ elif any(df.Status.unique() == 'Completed'):
     #Dataframe modification
     df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']                                                # Calculating Emission
     df_c2["Purchase_Date"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m-%d')                # Change to date type
-    df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%B')                              # New column to extract month
+    df_c2["Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%b')                              # New column to extract month
     df_c2["Year"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.year                                         # New column to extract year
-    df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y%m')                   # New column to extract Year Month
+    df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%Y-%m')                   # New column to extract Year Month
     #st.dataframe(df_c2)
 
 
@@ -78,10 +76,10 @@ elif any(df.Status.unique() == 'Completed'):
 
     #The summary of total Waste and Emission
     today = datetime.today()
-    current_prd = today.strftime('%Y%m')
+    current_prd = today.strftime('%Y-%m')
     first = today.replace(day=1)
     last_month = first - timedelta(days=1)
-    prior_prd = last_month.strftime('%Y%m')
+    prior_prd = last_month.strftime('%Y-%m')
 
     st.title('📊Emission Metrics')                                          #Page Title
     st.markdown("##")
@@ -95,11 +93,10 @@ elif any(df.Status.unique() == 'Completed'):
         st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
     with right_column:
         # streamlit metric wiget variable
-        em_by_prd_df = df_c2.groupby(by=["Year_Month"]).sum()[["Emission"]]                     #summarize total emission by month
-        #st.write(len(em_by_prd_df))
+        em_by_prd_df = df_c2.groupby('Year_Month')['Emission'].sum()                    #summarize total emission by month
         if len(em_by_prd_df) >1:                                                                #show metric only if there is 2 or more month of data
-            current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0][0]         #current month emission
-            prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0][0]             #prior month emission
+            current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0]         #current month emission
+            prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0]             #prior month emission
             em_change = current_em - prior_em                                                   #the difference between current and pror month emission
             #metric wigget
             st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
@@ -112,11 +109,12 @@ elif any(df.Status.unique() == 'Completed'):
 
 
     #st.dataframe(df_selection)
-
+    #st.write(df_selection.groupby('Category')['Emission'].sum().sort_values('Emission'))
     #---visualization---#
     # emission by category
     emis_by_cat = (
-        df_selection.groupby(by=["Category"]).sum()[["Emission"]].sort_values(by="Emission")
+        df_selection.groupby('Category')['Emission'].sum()#.sort_values(by=["Emission"], ascending=False)
+        #df_selection.groupby(by=["Category"]).sum()[["Emission"]].sort_values(by="Emission")
     )
     fig_emis_by_cat = px.bar(
         emis_by_cat,
@@ -134,13 +132,16 @@ elif any(df.Status.unique() == 'Completed'):
         plot_bgcolor="rgba(0,0,0,0)",
         xaxis=(dict(showgrid=False))
     )
-
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     # emission by month
     emis_by_mth = (
-        df_selection.groupby(by=["Month"]).sum()[["Emission"]]
+        df_selection.groupby('Month')['Emission'].sum().sort_values('Month', key = lambda x : pd.Categorical(x, categories=months, ordered=True))
+        #df_selection.groupby(by=["Month"]).sum()[["Emission"]]
     )
     fig_emis_by_mth = px.bar(
         emis_by_mth,
+        #x=emis_by_mth["Month"],
         x=emis_by_mth.index,
         y="Emission",
         orientation="v",
@@ -163,4 +164,3 @@ elif any(df.Status.unique() == 'Completed'):
     #right_column.plotly_chart(fig_product_sales, use_container_width=True)
 else:
     st.warning('Sorry, not enough data avaliable at this moment.', icon="🙇‍♂️")
-
