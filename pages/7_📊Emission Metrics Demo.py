@@ -174,12 +174,12 @@ st.title('Code Explain')
 st.header('Statistics Metrics')
 #Example#
 left_column, right_column = st.columns(2)
-    with left_column:
-        st.subheader("Total Waste: 25.04 kg")
-        st.subheader("Total Emissions: 58.52 kgCO2eq")
-    with right_column:
-        st.metric(label="Current Month Emission", value = "7.88 kgCO2eq", delta =  "-83.3 %",
-                  delta_color="inverse")
+with left_column:
+    st.subheader("Total Waste: 25.04 kg")
+    st.subheader("Total Emissions: 58.52 kgCO2eq")
+with right_column:
+    st.metric(label="Current Month Emission", value = "7.88 kgCO2eq", delta =  "-83.3 %",
+              delta_color="inverse")
     st.markdown("""---""")
     st.info("👈 Change the filters to modify the results in this page")
 
