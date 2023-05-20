@@ -170,7 +170,7 @@ else:
                
                
  ###----Code Explain---###
-
+st.dataframe(df)
 st.code('''if df.empty:
     st.warning('Sorry, no data available at this moment.', icon="🙇‍♂️")
 elif any(df.Status.unique() == 'Completed'):
