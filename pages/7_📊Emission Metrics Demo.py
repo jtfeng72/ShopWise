@@ -177,11 +177,29 @@ left_column, right_column = st.columns(2)
 with left_column:
     st.subheader("Total Waste: 25.04 kg")
     st.subheader("Total Emissions: 58.52 kgCO2eq")
+st.code('''
+df_c2['Wasted']= df_c2['Wasted'].astype(float)
+df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']
+
+#...filter dataframe...#
+
+total_waste = round(df_selection['Wasted'].sum()/1000,2)
+total_emission = round(df_selection['Emission'].sum()/1000,2)
+left_column, right_column = st.columns(2)
+
+with left_column:
+    st.subheader(f"Total Waste: {total_waste:,} kg")
+    st.subheader(f"Total Emissions: {total_emission:,} kgCO2eq")
+    '''
+        , language='python')
+    
+    
 with right_column:
     st.metric(label="Current Month Emission", value = "7.88 kgCO2eq", delta =  "-83.3 %",
               delta_color="inverse")
+
     st.markdown("""---""")
-    st.info("👈 Change the filters to modify the results in this page")
+st.info("👈 Change the filters to modify the results in this page")
 
 
 st.header('Error Prevention')
