@@ -182,3 +182,10 @@ elif any(df.Status.unique() == 'Completed'):
 else:
     st.warning('Sorry, not enough data available at this moment.', icon="🙇‍♂️")'''
         , language='python')
+'''This means that the metrics will only show visualization if there are completed items in the pantry. 
+Otherwise it will show either of the warning messages such as below'''
+st.markdown('When there are no data')
+st.warning('Sorry, no data available at this moment.', icon="🙇‍♂️")
+st.markdown('When there are the all data is "in progress"')
+st.warning('Sorry, not enough data available at this moment.', icon="🙇‍♂️")
+
