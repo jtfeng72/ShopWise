@@ -166,13 +166,14 @@ elif any(df.Status.unique() == 'Completed'):
     st.plotly_chart(fig_emis_by_mth, use_container_width=True)
     #right_column.plotly_chart(fig_product_sales, use_container_width=True)
 else:
-    st.warning('Sorry, not enough data available at this moment.', icon="🙇‍♂️"
+    st.warning('Sorry, not enough data available at this moment.', icon="🙇‍♂️")
+               
                
  ###----Code Explain---###
-code = '''if df.empty:
+
+st.code('''if df.empty:
     st.warning('Sorry, no data available at this moment.', icon="🙇‍♂️")
 elif any(df.Status.unique() == 'Completed'):
 …
 else:
-    st.warning('Sorry, not enough data available at this moment.', icon="🙇‍♂️")'''
-st.code(code, language='python')
+    st.warning('Sorry, not enough data available at this moment.', icon="🙇‍♂️")''', language='python')
