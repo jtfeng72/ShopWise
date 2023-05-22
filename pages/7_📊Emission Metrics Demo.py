@@ -171,8 +171,8 @@ else:
                
  ###----Code Explain---###
 st.title('Code Explain')
-st.header('Filter sidebar')
 st.markdown("""---""")
+st.header('Filter sidebar')
 st.multiselect(
     'Filter by Year :',
     options = ["2023"],
@@ -211,9 +211,8 @@ st.code(
     )'''
     , language='python')
 
-
-st.header('Statistics and Metrics')
 st.markdown("""---""")
+st.header('Statistics and Metrics')
 #Example#
 st.subheader("Total Waste: 25.04 kg")
 st.subheader("Total Emissions: 58.52 kgCO2eq")
@@ -271,9 +270,8 @@ with left_column:
     '''
         , language='python')
 
-
-st.header('Error Prevention')
 st.markdown("""---""")
+st.header('Error Prevention')
 st.markdown('Below is Pantry Data when there is no complete items')
 st.dataframe(df)
 st.code('''
