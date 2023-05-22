@@ -172,6 +172,37 @@ else:
  ###----Code Explain---###
 st.title('Code Explain')
 st.header('Statistics Metrics')
+st.code(
+'''    # ---- SIDEBAR ----#
+    st.sidebar.header("Please Filter Here:")
+    #Year filter
+    year = st.sidebar.multiselect(
+        "Filter by Year :",
+        #Extract all avaliable years from the dataframe as filter
+        options=df_c2["Year"].unique(),
+        
+        #prepopulate all years avaliable in the dataframe
+        default=df_c2["Year"].unique()               
+    )
+    
+    #Month fliter
+    month = st.sidebar.multiselect(
+        "Filter by Month :",
+        #Extract all avaliable month from the dataframe as filter
+        options=df_c2["Month"].unique(),
+        
+        #prepopulate all months avaliable in the dataframe
+        default=df_c2["Month"].unique()              
+    )
+    
+    # new data frame based on the selection from the sidebar
+    df_selection = df_c2.query(
+        "Year == @year & Month == @month" 
+    )'''
+    , language='python')
+
+
+st.header('Statistics Metrics')
 #Example#
 st.subheader("Total Waste: 25.04 kg")
 st.subheader("Total Emissions: 58.52 kgCO2eq")
