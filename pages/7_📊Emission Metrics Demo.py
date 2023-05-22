@@ -216,10 +216,12 @@ st.header('visualization')
 st.code(
 '''
     #---visualization---#
-    # emission by category
+    #Calculate emission by category
     emis_by_cat = (
         df_selection.groupby(by=["Category"]).sum()[["Emission"]].sort_values(by="Emission")
     )
+    
+    #Building Bar chart
     fig_emis_by_cat = px.bar(
         emis_by_cat,
         x="Emission",
@@ -236,18 +238,24 @@ st.code(
         plot_bgcolor="rgba(0,0,0,0)",
         xaxis=(dict(showgrid=False))
     )
+    
+    #Display Bar Chart
     st.plotly_chart(fig_emis_by_cat, use_container_width=True)
 ''', language='python')
 
 st.code(
 '''
+    #Month Order
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    # emission by month
-    #st.table(df_selection.groupby('Month')['Emission'].sum().reindex(months, axis=0).dropna())
+          
+    # Calculate emission by month
     emis_by_mth = (
+        #reorder the month index so emission by month is in correct month order
         df_selection.groupby('Month')['Emission'].sum().reindex(months, axis=0).dropna()
     )
+    
+    #Building Bar Chart
     fig_emis_by_mth = px.bar(
         emis_by_mth,
         #x=emis_by_mth["Month"],
@@ -265,7 +273,8 @@ st.code(
         plot_bgcolor="rgba(0,0,0,0)",
         xaxis=(dict(showgrid=False))
     )
-
+    
+    #Building Bar chart
     st.plotly_chart(fig_emis_by_mth, use_container_width=True)
 ''', language='python')
 st.markdown("""---""")
