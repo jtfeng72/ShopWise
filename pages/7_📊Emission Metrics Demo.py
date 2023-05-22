@@ -171,7 +171,11 @@ else:
                
  ###----Code Explain---###
 st.title('Code Explain')
-st.header('Statistics Metrics')
+st.header('Filter sidebar')
+options = st.multiselect(
+    'Filter by Month :',
+    ["Jan", "Feb", "Mar", "Apr", "May"])
+
 st.code(
 '''    # ---- SIDEBAR ----#
     st.sidebar.header("Please Filter Here:")
