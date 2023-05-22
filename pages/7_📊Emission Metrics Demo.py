@@ -172,7 +172,12 @@ else:
  ###----Code Explain---###
 st.title('Code Explain')
 st.header('Filter sidebar')
-options = st.multiselect(
+st.markdown("""---""")
+st.multiselect(
+    'Filter by Year :',
+    options = ["2023"],
+    default = ["2023"])
+st.multiselect(
     'Filter by Month :',
     options = ["Jan", "Feb", "Mar", "Apr", "May"],
     default = ["Jan", "Feb", "Mar", "Apr", "May"])
@@ -207,7 +212,8 @@ st.code(
     , language='python')
 
 
-st.header('Statistics Metrics')
+st.header('Statistics and Metrics')
+st.markdown("""---""")
 #Example#
 st.subheader("Total Waste: 25.04 kg")
 st.subheader("Total Emissions: 58.52 kgCO2eq")
@@ -267,6 +273,7 @@ with left_column:
 
 
 st.header('Error Prevention')
+st.markdown("""---""")
 st.markdown('Below is Pantry Data when there is no complete items')
 st.dataframe(df)
 st.code('''
