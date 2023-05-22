@@ -173,10 +173,8 @@ else:
 st.title('Code Explain')
 st.header('Statistics Metrics')
 #Example#
-left_column, right_column = st.columns(2)
-with left_column:
-    st.subheader("Total Waste: 25.04 kg")
-    st.subheader("Total Emissions: 58.52 kgCO2eq")
+st.subheader("Total Waste: 25.04 kg")
+st.subheader("Total Emissions: 58.52 kgCO2eq")
 st.code('''
 df_c2['Wasted']= df_c2['Wasted'].astype(float)
 df_c2['Emission']= df_c2['Wasted'] * df_c2['CO2_Per_g']
@@ -194,9 +192,8 @@ with left_column:
         , language='python')
     
     
-with right_column:
-    st.metric(label="Current Month Emission", value = "7.88 kgCO2eq", delta =  "-83.3 %",
-              delta_color="inverse")
+st.metric(label="Current Month Emission", value = "7.88 kgCO2eq", delta =  "-83.3 %",
+          delta_color="inverse")
 st.code('''
 df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%y%m') 
 
