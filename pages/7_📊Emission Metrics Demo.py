@@ -211,6 +211,8 @@ st.code(
     )'''
     , language='python')
 
+st.markdown("""---""")
+st.header('visualization')
 st.code(
 '''
     #---visualization---#
@@ -234,14 +236,17 @@ st.code(
         plot_bgcolor="rgba(0,0,0,0)",
         xaxis=(dict(showgrid=False))
     )
+    st.plotly_chart(fig_emis_by_cat, use_container_width=True)
+''', language='python')
+
+st.code(
+'''
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     # emission by month
     #st.table(df_selection.groupby('Month')['Emission'].sum().reindex(months, axis=0).dropna())
     emis_by_mth = (
-        #df_selection.groupby('Month')['Emission'].sum().sort_values('Month', key = lambda x : pd.Categorical(x, categories=months, ordered=True))
         df_selection.groupby('Month')['Emission'].sum().reindex(months, axis=0).dropna()
-        #df_selection.groupby(by=["Month"])["Emission"].sum()
     )
     fig_emis_by_mth = px.bar(
         emis_by_mth,
@@ -261,10 +266,8 @@ st.code(
         xaxis=(dict(showgrid=False))
     )
 
-    st.plotly_chart(fig_emis_by_cat, use_container_width=True)
     st.plotly_chart(fig_emis_by_mth, use_container_width=True)
 ''', language='python')
-
 st.markdown("""---""")
 st.header('Statistics and Metrics')
 #Example#
