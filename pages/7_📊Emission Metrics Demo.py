@@ -174,7 +174,8 @@ st.title('Code Explain')
 st.header('Filter sidebar')
 options = st.multiselect(
     'Filter by Month :',
-    ["Jan", "Feb", "Mar", "Apr", "May"])
+    options = ["Jan", "Feb", "Mar", "Apr", "May"],
+    default = ["Jan", "Feb", "Mar", "Apr", "May"])
 
 st.code(
 '''    # ---- SIDEBAR ----#
