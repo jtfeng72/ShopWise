@@ -199,26 +199,35 @@ df_c2["Year_Month"] = pd.to_datetime(df_c2["Purchase_Date"]).dt.strftime('%y%m')
 
 #...filter dataframe...#
 
-#The summary of total Waste and Emission
+#add variables to find the current month and prior month to calcuate change
+#Current Month
 today = datetime.today()
 current_prd = today.strftime('%y%m')
+
+#Prior Month
 first = today.replace(day=1)
 last_month = first - timedelta(days=1)
 prior_prd = last_month.strftime('%y%m')
 
+#Streamlit Metric Wigget Construction
 with left_column:
-    em_by_prd_df = df_c2.groupby('Year_Month')['Emission'].sum()                    #summarize total emission by month
-    current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0]         #current month emission
-    prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0]             #prior month emission
-    em_change = current_em - prior_em                                                   #the difference between current and pror month emission
-    #metric wigget
+    #summarize total emission by month
+    em_by_prd_df = df_c2.groupby('Year_Month')['Emission'].sum()
+    
+    #current month emission
+    current_em = em_by_prd_df[(em_by_prd_df.index == current_prd)].values[0]
+    
+    #prior month emission
+    prior_em = em_by_prd_df[(em_by_prd_df.index == prior_prd)].values[0]
+    
+    #the difference between current and pror month emission
+    em_change = current_em - prior_em
+   
+    #Final metric wigget
     st.metric(label="Current Month Emission", value = f"{round(current_em/1000,2)} kgCO2eq", delta =  f"{round(em_change/prior_em*100,1)} %",
     delta_color="inverse")
     '''
         , language='python')
-
-st.markdown("""---""")
-st.info("👈 Change the filters to modify the results in this page")
 
 
 st.header('Error Prevention')
@@ -228,7 +237,9 @@ st.code('''
 if df.empty:
     st.warning('Sorry, no data available at this moment.', icon="🙇‍♂️")
 elif any(df.Status.unique() == 'Completed'):
-…
+
+#...filter dataframe...#
+
 else:
     st.warning('Sorry, not enough data available at this moment.', icon="🙇‍♂️")'''
         , language='python')
