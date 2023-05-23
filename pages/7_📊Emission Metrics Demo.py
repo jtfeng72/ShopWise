@@ -214,9 +214,9 @@ st.code(
 st.markdown("""---""")
 st.header('visualization')
 emis_by_cat = {
-Category: ['Seafood','Non-Processed Agricultural Products','Processed Agricultural Products',
+'Category': ['Seafood','Non-Processed Agricultural Products','Processed Agricultural Products',
            'Dairy', 'Meat'],
-Emission: [24731.57,10981.31,9849.72,8299.58,4659.14],
+'Emission': [24731.57,10981.31,9849.72,8299.58,4659.14],
 }
 #Building Bar chart
 fig_emis_by_cat = px.bar(
