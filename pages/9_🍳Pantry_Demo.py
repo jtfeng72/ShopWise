@@ -19,7 +19,7 @@ import st_aggrid as st_ag
  
 # ----- Page setup ----- #
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
-st.title('Code Explain for Pantry')
+st.title('Code Explanation for Pantry')
 
 
 # ----- Disable certificate verification (Not necessary always) ----- #
