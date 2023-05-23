@@ -107,7 +107,7 @@ with st.form("form"):
 
 # ----- User add annotation to pantry ----- #
 df = get_data(sheet_name)
-annotated = st.experimental_data_editor(df)
+annotated = st.experimental_data_editor(df, use_container_width=True)
 add_submitted = st.button("Confirm Edit")
 add_Refreshd = st.button("Refresh")
 
