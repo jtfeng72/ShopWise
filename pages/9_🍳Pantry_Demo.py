@@ -153,7 +153,7 @@ else:
   
 st.code(
 '''
-#update_annotated_spreadsheet allows user to make changes in Pantry Database
+#st.experimental_data_editor allows user to make changes in Pantry Database
 df = get_data(sheet_name)
 annotated = st.experimental_data_editor(df)
 add_submitted = st.button("Confirm Edit")
