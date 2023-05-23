@@ -9,7 +9,7 @@ import gspread                                                 #pip install gspr
 from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install streamlit-aggrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
-st.title('Welcome to your shopping list') #Page Title
+st.title('Code Explain')
 
 # Disable certificate verification (Not necessary always)
 import ssl
@@ -81,7 +81,44 @@ with st.form("form"):
                   user_input = [item, weight] # User input dataframe
                   df.loc[len(df.index)] = user_input # insert usert input
                   update_the_spreadsheet('Shopping_List2',df) # update google sheet
-         
+st.code(
+'''
+#Starting a form for user input to add items in the shopping list
+with st.form("form"):
+    st.header('Add items below')
+    
+    #Extract Items from food items as a drop down option
+    item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list['Name'])) 
+    
+    #give the usert to input weight
+    weight = st.number_input("Weight(g)", min_value=0)
+    
+    #Confirm Button
+    add_submitted = st.form_submit_button("Add Item")
+    
+    #Add items to the Google Sheet
+    with st.spinner('Processing...'):
+    
+             
+             if add_submitted:
+                 if weight == 0:
+                  # in case the user didn't put an weight, prompt a warnining message to inform the user to add weight
+                  st.warning('You have 0 weight for your item', icon="⚠️")
+                           
+               
+                 elif len(df) == 0:
+                  #add empty dataframe incase the list is blank to start with.
+                  user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
+                  user_input_df = pd.DataFrame(user_input)
+                  update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
+
+                 else:
+                  #if some items are aready in the list append the new item to the google sheet
+                  user_input = [item, weight] # User input dataframe
+                  df.loc[len(df.index)] = user_input # insert usert input
+                  update_the_spreadsheet('Shopping_List2',df) # update google sheet
+ ''', language='python')
+                  
 
 df = load_the_spreadsheet("Shopping_List2") #refresh google sheet
         
@@ -159,39 +196,34 @@ with st.form('Shopping List') as f:
 st.title('Code Explain')
 st.code(
 '''
-#Starting a form for user input to add items in the shopping list
-with st.form("form"):
-    st.header('Add items below')
-    
-    #Extract Items from food items as a drop down option
-    item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list['Name'])) 
-    
-    #give the usert to input weight
-    weight = st.number_input("Weight(g)", min_value=0)
-    
-    #Confirm Button
-    add_submitted = st.form_submit_button("Add Item")
-    
-    #Add items to the Google Sheet
-    with st.spinner('Processing...'):
-    
-             
-             if add_submitted:
-                 if weight == 0:
-                  # in case the user didn't put an weight, prompt a warnining message to inform the user to add weight
-                  st.warning('You have 0 weight for your item', icon="⚠️")
-                           
-               
-                 elif len(df) == 0:
-                  #add empty dataframe incase the list is blank to start with.
-                  user_input = {"Item": [item], "Weight": [weight]} # User input dataframe
-                  user_input_df = pd.DataFrame(user_input)
-                  update_the_spreadsheet('Shopping_List2',user_input_df) # update google sheet
+js_del_row = JsCode (
+function(e) {
+ let api = e.api;
+ let sel = api.getSelectedRows(); 
+ api.applyTransaction({remove: sel}) 
+};
 
-                 else:
-                  #if some items are aready in the list append the new item to the google sheet
-                  user_input = [item, weight] # User input dataframe
-                  df.loc[len(df.index)] = user_input # insert usert input
-                  update_the_spreadsheet('Shopping_List2',df) # update google sheet
+)
+
+#  --- Cell renderer for the '🔧' column to render a button --- 
+cellRenderer_addButton = JsCode(
+    class BtnCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                </style>
+                <button id='click-button'
+                    class="btn-danger"
+                    > X </button>
+            </span>
+        `;
+        }
+        getGui() {
+            return this.eGui;
+        }
+    };
+    )         
  ''', language='python')
                                   
