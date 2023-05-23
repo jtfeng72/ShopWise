@@ -268,6 +268,32 @@ st.code(
     st.plotly_chart(fig_emis_by_cat, use_container_width=True)
 ''', language='python')
 
+emis_by_mth = {
+'Month': ['Jan','Feb','Mar','Apr','May'],
+'Emission': [254.41, 36.99, 224.74, 20872.5, 3342.93]
+}
+
+#Building Bar Chart
+fig_emis_by_mth = px.bar(
+    emis_by_mth,
+    x="Month",
+    y="Emission",
+    orientation="v",
+    title="<b>Waste Emission by Month</b>",
+    color_discrete_sequence=["#7C9061"] * len(emis_by_mth),
+    template="plotly_white",
+    labels={
+        "Emission": "Emission (gCO2eq)"
+    },
+)
+fig_emis_by_mth.update_layout(
+    plot_bgcolor="rgba(0,0,0,0)",
+    xaxis=(dict(showgrid=False))
+)
+    
+#Building Bar chart
+st.plotly_chart(fig_emis_by_mth, use_container_width=True)
+
 st.code(
 '''
     #Month Order
@@ -283,7 +309,6 @@ st.code(
     #Building Bar Chart
     fig_emis_by_mth = px.bar(
         emis_by_mth,
-        #x=emis_by_mth["Month"],
         x=emis_by_mth.index,
         y="Emission",
         orientation="v",
