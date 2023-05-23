@@ -4,7 +4,7 @@
 
 import streamlit as st 
 import pandas as pd
-from st_aggrid import AgGrid, JsCode
+from st_aggrid import AgGrid, JsCode, GridOptionsBuilder, ColumnsAutoSizeMode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # ---- Page setup ---- 
@@ -45,4 +45,4 @@ df_selection = df.query(
     "Category == @Category & Name ==@Name"
 )
 
-st.dataframe(df_selection)
+st.dataframe(df_selection, use_container_width=True)
