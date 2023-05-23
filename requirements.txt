@@ -16,4 +16,3 @@ matplotlib
 streamlit_option_menu
 snowflake-connector-python==2.9.0
 plotly-express
-ColumnsAutoSizeMode
