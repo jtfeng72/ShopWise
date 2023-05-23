@@ -213,6 +213,31 @@ st.code(
 
 st.markdown("""---""")
 st.header('visualization')
+emis_by_cat = {
+Category: ['Seafood','Non-Processed Agricultural Products','Processed Agricultural Products',
+           'Dairy' 'Meat'],
+Emission: [24731.57,10981.31,9849.72,8299.584659.14],
+}
+    #Building Bar chart
+    fig_emis_by_cat = px.bar(
+        emis_by_cat,
+        x="Emission",
+        y="Category",
+        orientation="h",
+        title="<b>Waste Emission by Category</b>",
+        color_discrete_sequence=["#7C9061"] * len(emis_by_cat),
+        template="plotly_white",
+        labels={
+            "Emission": "Emission (gCO2eq)"
+        },
+    )
+    fig_emis_by_cat.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        xaxis=(dict(showgrid=False))
+    )
+    
+    #Display Bar Chart
+    st.plotly_chart(fig_emis_by_cat, use_container_width=True)
 st.code(
 '''
     #---visualization---#
