@@ -64,12 +64,12 @@ def update_the_status_cell():
     st.sidebar.info('Updated to GoogleSheet')
 
 # ----- Shopping List Dashboard ----- #
-st.markdown('Shopping List')
+st.subheader('Shopping List')
 AgGrid(sl_line_df)
 
 
 # ----- Pantry Dashboard ----- #
-st.markdown('Pantry')
+st.subheader('Pantry')
 
 with st.form("form"):
     selstatus = st.radio('Select Status:',['In Progress','Completed'])
