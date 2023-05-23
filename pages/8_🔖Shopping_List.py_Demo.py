@@ -192,10 +192,10 @@ with st.form('Shopping List') as f:
                                     spread.clear_sheet(sheet = 'Shopping_List2')
                                     update_the_spreadsheet('Shopping_List2',df_final) # update google sheet
 
-                                  
-st.title('Code Explain')
+st.markdown('Using JsCode(), I can add buttons using java script')                                  
 st.code(
 '''
+#add the function of the remove button
 js_del_row = JsCode (
 function(e) {
  let api = e.api;
@@ -205,7 +205,7 @@ function(e) {
 
 )
 
-#  --- Cell renderer for the '🔧' column to render a button --- 
+#add the design of the remove button
 cellRenderer_addButton = JsCode(
     class BtnCellRenderer {
         init(params) {
@@ -215,8 +215,8 @@ cellRenderer_addButton = JsCode(
             <span>
                 </style>
                 <button id='click-button'
-                    class="btn-danger"
-                    > X </button>
+                    class="btn-danger"                # modification for the style of the button. Red button to show significance
+                    > X </button>                     # "X" as the main display to indicate it is to remove the row
             </span>
         `;
         }
