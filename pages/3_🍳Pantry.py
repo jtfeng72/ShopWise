@@ -19,7 +19,7 @@ from st_aggrid import AgGrid, GridOptionsBuilder, ColumnsAutoSizeMode
  
 # ----- Page setup ----- #
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
-st.title('Pantry')
+st.title('🍳 Pantry')
 
 
 # ----- Disable certificate verification (Not necessary always) ----- #
