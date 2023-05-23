@@ -9,7 +9,7 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # ---- Page setup ---- 
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
-st.title('Welcome to ShopWise')
+st.title('🔎 Product List')
 
 # ----  Connect to the Google Sheet ---- 
 sheet_id = "1X5ANn3c5UKfpc-P20sMRLJhHggeSaclVfXavdfv-X1c"
