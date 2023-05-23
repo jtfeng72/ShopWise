@@ -8,7 +8,7 @@ from google.cloud import storage
 import gcsfs
 import pandas as pd
 import requests
-from st_aggrid import AgGrid, JsCode
+from st_aggrid import AgGrid, GridOptionsBuilder, ColumnsAutoSizeMode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import gspread 
 from gspread_pandas import Spread,Client
@@ -20,7 +20,7 @@ import plotly.express as px
 
 # ----- Page setup ----- #
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
-st.title('Item Recomendation')
+st.title('👍 Item Recomendation.py')
 
 
 # ----- Disable certificate verification (Not necessary always) ----- #
@@ -64,7 +64,7 @@ def update_the_status_cell():
 
 
 # ----- Rec Dashboard ----- #
-st.markdown('Item Recomendation')
+st.subheader('Item Recomendation')
 
 with st.form("form"):
     option = st.selectbox("Item Category?",('Meat', 'Dairy', 'Processed Agricultural Products', 'Non-Processed Agricultural Products', 'Seafood'))
@@ -77,7 +77,7 @@ with st.form("form"):
 
 dashr=load_the_spreadsheet(d_rec)
 
-AgGrid(dashr)
+AgGrid(dashr, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS)
 
 val = dashboard.acell('S2').value
 st.write(val)
