@@ -66,7 +66,7 @@ def update_the_status_cell():
 
 # ----- Shopping List Dashboard ----- #
 st.subheader('Shopping List')
-AgGrid(sl_line_df)
+AgGrid(sl_line_df, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS)
 
 
 # ----- Pantry Dashboard ----- #
@@ -81,7 +81,7 @@ with st.form("form"):
 
 dashp=load_the_spreadsheet(dashboard_pantry)
 
-AgGrid(dashp)
+AgGrid(dashp, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS)
 
 
 
