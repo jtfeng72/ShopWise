@@ -193,5 +193,5 @@ with st.form("form"):
                   user_input = [item, weight] # User input dataframe
                   df.loc[len(df.index)] = user_input # insert usert input
                   update_the_spreadsheet('Shopping_List2',df) # update google sheet
- ''', format=python)
+ ''', language='python')
                                   
