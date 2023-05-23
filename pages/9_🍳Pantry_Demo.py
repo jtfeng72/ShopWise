@@ -107,7 +107,7 @@ with st.form("form"):
 
 st.code(
 '''
-#st.form("form") let user input items to Pantry
+#st.form("form") allows user to input items to Pantry
 with st.form("form"):
     st.header('Add items below')
     item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list_df['Name'])) 
@@ -149,3 +149,22 @@ elif add_Refreshd:
          df = load_the_spreadsheet(sheet_name) 
 else:
      st.write('')
+
+  
+st.code(
+'''
+#update_annotated_spreadsheet allows user to make changes in Pantry Database
+df = get_data(sheet_name)
+annotated = st.experimental_data_editor(df)
+add_submitted = st.button("Confirm Edit")
+add_Refreshd = st.button("Refresh")
+
+if add_submitted:
+         update_annotated_spreadsheet('Pantry',annotated) # update google sheet
+         df = load_the_spreadsheet(sheet_name) 
+elif add_Refreshd:
+         update_annotated_spreadsheet('Pantry',annotated) # update google sheet
+         df = load_the_spreadsheet(sheet_name) 
+else:
+     st.write('')
+ ''', language='python')
