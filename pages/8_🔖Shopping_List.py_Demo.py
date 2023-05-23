@@ -158,7 +158,6 @@ cellRenderer_addButton = JsCode('''
     ''')         
     
 gd.configure_selection(selection_mode= 'single')
-#gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
 gd.configure_column( field = 'Click to Remove', 
                      onCellClicked = js_del_row,      #adding delete function into the button
                      pre_selected_rows=[],
@@ -227,10 +226,13 @@ cellRenderer_addButton = JsCode(
     )         
  ''', language='python')
 
+st.header('building shopping list using AG-grid ')
 st.code(
 '''
+#Configure the grid selection behavior
 gd.configure_selection(selection_mode= 'single')
 
+#Configures an individual column
 gd.configure_column( field = 'Click to Remove', 
                      #adding Java code function for deleting selected row into the button
                      onCellClicked = js_del_row,      
@@ -240,6 +242,8 @@ gd.configure_column( field = 'Click to Remove',
                      #adding the button desgin
                      cellRenderer = cellRenderer_addButton,
                      lockPosition='left')
+                     
+#Builds the gridOptions dictionary
 gridOptions = gd.build()
 
 
@@ -247,13 +251,18 @@ gridOptions = gd.build()
 with st.form('Shopping List') as f:
          st.header('Shopping List 🔖')
          st.markdown('If items are removed, Click "Confirm 🔒" to finalize the list below')
+         
+         #Render the Grid Component using the ag-Grid JavaScript library and a dataframe.
          grid_table = AgGrid(df, 
                    gridOptions = gridOptions, 
                    fit_columns_on_grid_load = True,
                    theme = "streamlit",
                    allow_unsafe_jscode=True,
                    )
+                   
          #indication for how many items are in the shopping list
          st.info(f"Item/items in your shopping list: {len(grid_table['data'])}")
+         
+         #Submition Button
          submitted = st.form_submit_button("Confirm 🔒")
          ''', language='python')
