@@ -226,4 +226,34 @@ cellRenderer_addButton = JsCode(
     };
     )         
  ''', language='python')
-                                  
+
+st.code(
+'''
+gd.configure_selection(selection_mode= 'single')
+
+gd.configure_column( field = 'Click to Remove', 
+                     #adding Java code function for deleting selected row into the button
+                     onCellClicked = js_del_row,      
+                     
+                     pre_selected_rows=[],
+                     
+                     #adding the button desgin
+                     cellRenderer = cellRenderer_addButton,
+                     lockPosition='left')
+gridOptions = gd.build()
+
+
+#Add AG grid table in to a form format
+with st.form('Shopping List') as f:
+         st.header('Shopping List 🔖')
+         st.markdown('If items are removed, Click "Confirm 🔒" to finalize the list below')
+         grid_table = AgGrid(df, 
+                   gridOptions = gridOptions, 
+                   fit_columns_on_grid_load = True,
+                   theme = "streamlit",
+                   allow_unsafe_jscode=True,
+                   )
+         #indication for how many items are in the shopping list
+         st.info(f"Item/items in your shopping list: {len(grid_table['data'])}")
+         submitted = st.form_submit_button("Confirm 🔒")
+         ''', language='python')
