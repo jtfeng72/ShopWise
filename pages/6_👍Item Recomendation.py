@@ -20,7 +20,7 @@ import plotly.express as px
 
 # ----- Page setup ----- #
 st.set_page_config(page_title='ShopWise', page_icon=':bar_chart:', layout='wide')
-st.title('👍 Item Recomendation.py')
+st.title('👍 Item Recomendation')
 
 
 # ----- Disable certificate verification (Not necessary always) ----- #
