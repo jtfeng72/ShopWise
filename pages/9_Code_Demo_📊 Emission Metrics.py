@@ -24,7 +24,7 @@ def load_the_spreadsheet(tabname):
     worksheet = sh.worksheet(tabname)
     df = pd.DataFrame(worksheet.get_all_records())
     return df
-df=load_the_spreadsheet("Code Explanation for 📊 Emission Metrics")
+df=load_the_spreadsheet("Pantry Demo")
 
 # if the there is no completed items in the pantry promp error message
 if df.empty:
