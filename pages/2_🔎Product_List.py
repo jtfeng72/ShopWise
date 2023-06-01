@@ -45,4 +45,50 @@ df_selection = df.query(
     "Category == @Category & Name ==@Name"
 )
 
+grid_options = {
+    "columnDefs": [
+        {
+            "headerName": "Item Number",
+            "field": "Item Number",
+            "hide": True,
+        },
+        {
+            "headerName": "Name",
+            "field": "Name",
+            "editable": True,
+        },
+        {
+            "headerName": "CO2_Per_g",
+            "field": "CO2_Per_g",
+            "editable": True,
+        },
+        {
+            "headerName": "Category",
+            "field": "Category",
+            "editable": True,
+        },
+                {
+            "headerName": "Pantry",
+            "field": "Pantry",
+            "editable": True,
+        },
+        {
+            "headerName": "Fridge",
+            "field": "Fridge",
+            "editable": True,
+        },
+        {
+            "headerName": "Freezer",
+            "field": "Freezer",
+            "editable": True,
+        },        
+    ],
+}
+
+grid_return = AgGrid(df_selection, grid_options)
+new_df = grid_return["data"]
+
+st.write(new_df)
+
+
 st.dataframe(df_selection, use_container_width=True)
