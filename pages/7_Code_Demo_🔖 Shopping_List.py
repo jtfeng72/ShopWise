@@ -9,7 +9,7 @@ import gspread                                                 #pip install gspr
 from st_aggrid import AgGrid, GridUpdateMode, JsCode           #pip install streamlit-aggrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
-st.title('Code Explain')
+st.title('Code Explanation for 🔖 Shopping List')
 
 # Disable certificate verification (Not necessary always)
 import ssl
