@@ -89,6 +89,3 @@ grid_return = AgGrid(df_selection, grid_options)
 new_df = grid_return["data"]
 
 st.write(new_df)
-
-
-st.dataframe(df_selection, use_container_width=True)
