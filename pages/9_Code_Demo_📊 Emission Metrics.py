@@ -170,7 +170,7 @@ else:
                
                
  ###----Code Explain---###
-st.title('Code Explain')
+st.title('Code Explanation for 📊 Emission Metrics')
 st.markdown("""---""")
 st.header('Filter sidebar')
 st.multiselect(
