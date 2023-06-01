@@ -84,7 +84,7 @@ m2 = df["Category"].str.contains(text_search)
 df_search = df[m1 | m2]
 
 if text_search:
-    st.write(df_search, grid_options)
+    grid_return =(df_search, grid_options)
 
 
 grid_return = AgGrid(df_selection, grid_options)
