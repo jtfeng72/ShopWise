@@ -86,6 +86,6 @@ grid_options = {
 }
 
 grid_return = AgGrid(df_selection, grid_options)
-new_df = grid_return["data"]
+#new_df = grid_return["data"]
 
-st.write(new_df)
+#st.write(new_df)
