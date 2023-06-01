@@ -17,15 +17,6 @@ sheet_name = "Food_List_Master"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 df = pd.read_csv(url, dtype=str).fillna("")
 
-# ---- Build a user interface and search functionality ---- 
-text_search = st.text_input("Search items by item description", value="")
-
-m1 = df["Name"].str.contains(text_search)
-m2 = df["Category"].str.contains(text_search)
-df_search = df[m1 | m2]
-
-if text_search:
-    st.write(df_search)
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
@@ -84,6 +75,17 @@ grid_options = {
         },        
     ],
 }
+
+# ---- Build a user interface and search functionality ---- 
+text_search = st.text_input("Search items by item description", value="")
+
+m1 = df["Name"].str.contains(text_search)
+m2 = df["Category"].str.contains(text_search)
+df_search = df[m1 | m2]
+
+if text_search:
+    st.write(df_search, grid_options)
+
 
 grid_return = AgGrid(df_selection, grid_options)
 #new_df = grid_return["data"]
