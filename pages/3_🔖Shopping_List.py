@@ -25,10 +25,6 @@ client = Client(scope=scope,creds=credentials)
 spreadsheetname = "ShopWise Food List"                #spreadsheet name
 spread = Spread(spreadsheetname,client = client)      #load ShopWise Food List google sheet
 
-#---gc update---#
-#gc = gspread.authorize(credentials)
-#s = gc.open("ShopWise Food List")                     # load ShopWise Food List google sheet
-#w = s.worksheet("Shopping_List2")                     # get data from "Shopping_List2" tab <Worksheet 'Shopping_List2' id:986753546>
 
 # --- Call the spreadshet --- #
 sh = client.open(spreadsheetname)                     #load ShopWise Food List google sheet
@@ -60,10 +56,6 @@ df = load_the_spreadsheet("Shopping_List2")
 
 with st.form("form"):
     st.header('Add items below')
-    #food_item_cat = st.selectbox('Food Categories',set(list(fd_list['Category'])))
-    #fd_list_filt = (fd_list['Category'] == food_item_cat)
-    #item = st.selectbox('Food Item (Type to search/use the dropdown->)',list(filt_fd_list['Name'])) 
-    #item = st.selectbox('Food Item',list(fd_list.loc[fd_list_filt,'Name'])) 
     item = st.selectbox('Food Item (type to search/use dropdown)',list(fd_list['Name'])) 
     weight = st.number_input("Weight(g)", min_value=0)
     add_submitted = st.form_submit_button("Add Item")
@@ -121,7 +113,6 @@ cellRenderer_addButton = JsCode('''
     ''')         
     
 gd.configure_selection(selection_mode= 'single')
-#gd.configure_grid_options(onRowSelected = js_del_row,pre_selected_rows=[])
 gd.configure_column( field = 'Click to Remove', 
                      onCellClicked = js_del_row,      #adding delete function into the button
                      pre_selected_rows=[],
