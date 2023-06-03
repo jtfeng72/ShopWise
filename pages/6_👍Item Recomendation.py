@@ -60,7 +60,7 @@ def update_the_status_cell():
     dashboard.update('T4', option)
     dashboard.update('V4', str(str_date))
     dashboard.update('W4', str(end_date))
-    st.sidebar.info('Updated to GoogleSheet')
+    st.sidebar.info('Updated')
 
 
 # ----- Rec Dashboard ----- #
