@@ -62,7 +62,7 @@ def load_the_spreadsheet(spreadsheetname):
 
 def update_the_status_cell():
     dashboard.update('I4', selstatus)
-    st.sidebar.info('Updated to GoogleSheet')
+    st.sidebar.info('Updated')
 
 # ----- Shopping List Dashboard ----- #
 st.subheader('Shopping List')
