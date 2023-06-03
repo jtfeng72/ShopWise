@@ -1,0 +1,560 @@
+Item,Weight,Storage,Purchase_Date,Consumed,Status,Wasted,Expiration,Expiration_Date
+Hazelnut,274,Pantry,1/1/2023,268,Completed,6,365,1/1/2024
+Stracchino,108,Freezer,1/1/2023,101,Completed,7,180,6/30/2023
+Pomegranate,188,Fridge,1/1/2023,181,Completed,7,7,1/8/2023
+Beeraaa,114,Pantry,1/2/2023,108,Completed,6,,1/2/2023
+Vegetables,92,Fridge,1/2/2023,86,Completed,6,7,1/9/2023
+Soy Yogurt,62,Freezer,1/2/2023,59,Completed,3,60,3/3/2023
+Sugar,116,Fridge,1/2/2023,110,Completed,6,730,1/1/2025
+Vegetables,30,Pantry,1/3/2023,30,Completed,0,3,1/6/2023
+Bread,64,Pantry,1/3/2023,58,Completed,6,5,1/8/2023
+Rye,172,Freezer,1/3/2023,165,Completed,7,90,4/3/2023
+Plaice,130,Fridge,1/3/2023,123,Completed,7,3,1/6/2023
+Tofu,126,Fridge,1/4/2023,119,Completed,7,7,1/11/2023
+Strawberry,122,Fridge,1/4/2023,115,Completed,7,7,1/11/2023
+Fennel,6,Freezer,1/4/2023,6,Completed,0,30,2/3/2023
+Mango,74,Freezer,1/4/2023,68,Completed,6,30,2/3/2023
+Grapes,168,Pantry,1/5/2023,161,Completed,7,3,1/8/2023
+Octopus,152,Fridge,1/5/2023,145,Completed,7,3,1/8/2023
+Sugar,40,Pantry,1/5/2023,37,Completed,3,730,1/4/2025
+Carrot,34,Fridge,1/5/2023,34,Completed,0,7,1/12/2023
+Asparagus,112,Freezer,1/6/2023,106,Completed,6,30,2/5/2023
+Corn Canned,286,Pantry,1/6/2023,279,Completed,7,730,1/5/2025
+Chickpea,76,Fridge,1/6/2023,69,Completed,7,7,1/13/2023
+Milk Soy,252,Pantry,1/6/2023,246,Completed,6,365,1/6/2024
+Cashew,138,Pantry,1/7/2023,131,Completed,7,3,1/10/2023
+Carrob,272,Pantry,1/7/2023,266,Completed,6,3,1/10/2023
+Juice Apple,60,Fridge,1/7/2023,57,Completed,3,60,3/8/2023
+Tempeh,166,Fridge,1/7/2023,160,Completed,6,90,4/7/2023
+Water,108,Pantry,1/8/2023,102,Completed,6,1825,1/7/2028
+Cowpea,156,Fridge,1/8/2023,149,Completed,7,7,1/15/2023
+Raspberry,84,Pantry,1/8/2023,77,Completed,7,3,1/11/2023
+Starchy,242,Freezer,1/8/2023,235,Completed,7,30,2/7/2023
+Clementine,138,Freezer,1/9/2023,132,Completed,6,30,2/8/2023
+Oil Sunflower,230,Pantry,1/9/2023,224,Completed,6,730,1/8/2025
+Ice Cream,130,Freezer,1/9/2023,124,Completed,6,180,7/8/2023
+Ginger,226,Pantry,1/9/2023,220,Completed,6,3,1/12/2023
+Melon,134,Pantry,1/10/2023,128,Completed,6,3,1/13/2023
+Artichoke,102,Freezer,1/10/2023,96,Completed,6,30,2/9/2023
+Cabagge,88,Pantry,1/10/2023,81,Completed,7,3,1/13/2023
+Oat Meal,250,Pantry,1/11/2023,244,Completed,6,90,4/11/2023
+Apple,200,Fridge,1/11/2023,194,Completed,6,7,1/18/2023
+Cucumber,26,Freezer,1/11/2023,26,Completed,0,30,2/10/2023
+Pineapple,218,Freezer,1/11/2023,211,Completed,7,30,2/10/2023
+Blackberry,68,Fridge,1/12/2023,61,Completed,7,7,1/19/2023
+Artichoke,204,Pantry,1/12/2023,198,Completed,6,3,1/15/2023
+Coffee,136,Pantry,1/12/2023,129,Completed,7,365,1/12/2024
+Melon,70,Freezer,1/12/2023,63,Completed,7,30,2/11/2023
+Plum,140,Freezer,1/13/2023,134,Completed,6,30,2/12/2023
+Pepper,102,Pantry,1/13/2023,95,Completed,7,3,1/16/2023
+Pilchard,94,Fridge,1/13/2023,87,Completed,7,3,1/16/2023
+Hazelnut,78,Fridge,1/13/2023,72,Completed,6,365,1/13/2024
+Milk Almond,192,Pantry,1/14/2023,185,Completed,7,,1/14/2023
+Sweet,158,Fridge,1/14/2023,152,Completed,6,7,1/21/2023
+Tangerin,206,Freezer,1/14/2023,199,Completed,7,30,2/13/2023
+Sunflower,216,Freezer,1/14/2023,209,Completed,7,30,2/13/2023
+Tangerin,162,Fridge,1/15/2023,155,Completed,7,7,1/22/2023
+Oil Palm,154,Pantry,1/15/2023,147,Completed,7,730,1/14/2025
+Walnut,34,Pantry,1/15/2023,34,Completed,0,3,1/18/2023
+Currant,172,Pantry,1/15/2023,166,Completed,6,3,1/18/2023
+Millet,12,Pantry,1/16/2023,12,Completed,0,30,2/15/2023
+Juice Orange,6,Pantry,1/16/2023,6,Completed,0,7,1/23/2023
+Soybean,78,Freezer,1/16/2023,71,Completed,7,30,2/15/2023
+Pineapple,80,Pantry,1/17/2023,74,Completed,6,3,1/20/2023
+Peach,106,Pantry,1/17/2023,100,Completed,6,3,1/20/2023
+Pomelo,158,Pantry,1/17/2023,151,Completed,7,3,1/20/2023
+Watermelon,16,Pantry,1/17/2023,16,Completed,0,3,1/20/2023
+Tofu,148,Freezer,1/18/2023,141,Completed,7,150,6/17/2023
+Cranberry,106,Fridge,1/18/2023,99,Completed,7,7,1/25/2023
+Gooseberry,196,Fridge,1/18/2023,189,Completed,7,7,1/25/2023
+Exotic Fruit,26,Pantry,1/18/2023,26,Completed,0,3,1/21/2023
+Crispbread,102,Freezer,1/19/2023,96,Completed,6,90,4/19/2023
+Barnacle,10,Fridge,1/19/2023,10,Completed,0,3,1/22/2023
+Camembert,168,Fridge,1/19/2023,162,Completed,6,180,7/18/2023
+Tomato Peeled,36,Pantry,1/19/2023,36,Completed,0,730,1/18/2025
+Chickpea,98,Freezer,1/20/2023,91,Completed,7,30,2/19/2023
+Mussels,132,Fridge,1/20/2023,126,Completed,6,3,1/23/2023
+Pasta,234,Pantry,1/20/2023,227,Completed,7,730,1/19/2025
+Juice Kiwi,100,Fridge,1/20/2023,93,Completed,7,60,3/21/2023
+Squid,4,Fridge,1/21/2023,4,Completed,0,3,1/24/2023
+Ketchup,32,Pantry,1/21/2023,32,Completed,0,180,7/20/2023
+Cranberry,218,Pantry,1/21/2023,212,Completed,6,3,1/24/2023
+Onion,182,Freezer,1/21/2023,176,Completed,6,30,2/20/2023
+Watermelon,150,Freezer,1/22/2023,144,Completed,6,30,2/21/2023
+Pistachio,152,Pantry,1/22/2023,146,Completed,6,3,1/25/2023
+Pepper,30,Freezer,1/22/2023,30,Completed,0,30,2/21/2023
+Mixed,238,Pantry,1/22/2023,231,Completed,7,3,1/25/2023
+Ginger,192,Freezer,1/23/2023,186,Completed,6,30,2/22/2023
+Juice Mango,270,Pantry,1/23/2023,264,Completed,6,7,1/30/2023
+Tangerin,194,Pantry,1/23/2023,188,Completed,6,3,1/26/2023
+Fig,18,Freezer,1/23/2023,18,Completed,0,30,2/22/2023
+Goat Cheese,54,Freezer,1/24/2023,51,Completed,3,180,7/23/2023
+Pomelo,10,Freezer,1/24/2023,10,Completed,0,30,2/23/2023
+Turbot,150,Fridge,1/24/2023,143,Completed,7,3,1/27/2023
+Croissant,166,Freezer,1/24/2023,159,Completed,7,120,5/24/2023
+Blueberry,258,Pantry,1/25/2023,252,Completed,6,3,1/28/2023
+Chestnut,284,Pantry,1/25/2023,278,Completed,6,3,1/28/2023
+Lime,246,Pantry,1/25/2023,240,Completed,6,3,1/28/2023
+Guava,38,Freezer,1/25/2023,38,Completed,0,30,2/24/2023
+Croissant,196,Pantry,1/26/2023,190,Completed,6,5,1/31/2023
+Rhombus,102,Fridge,1/26/2023,95,Completed,7,3,1/29/2023
+Oat,288,Pantry,1/26/2023,282,Completed,6,1095,1/25/2026
+Tomato Arrabbiata,126,Pantry,1/27/2023,120,Completed,6,730,1/26/2025
+Turnip,62,Fridge,1/27/2023,59,Completed,3,7,2/3/2023
+Swede,150,Pantry,1/27/2023,144,Completed,6,3,1/30/2023
+Quorne,38,Pantry,1/27/2023,38,Completed,0,1095,1/26/2026
+Apricot,126,Freezer,1/28/2023,119,Completed,7,30,2/27/2023
+Avocado,110,Fridge,1/28/2023,103,Completed,7,7,2/4/2023
+Honey,52,Fridge,1/28/2023,49,Completed,3,730,1/27/2025
+Juice Blueberry,82,Pantry,1/28/2023,75,Completed,7,7,2/4/2023
+Mayonnaise,10,Pantry,1/29/2023,10,Completed,0,180,7/28/2023
+Orange,56,Pantry,1/29/2023,53,Completed,3,3,2/1/2023
+Pomegranate,122,Freezer,1/29/2023,116,Completed,6,30,2/28/2023
+Lentil,214,Pantry,1/30/2023,208,Completed,6,3,2/2/2023
+Spinach,70,Pantry,1/30/2023,64,Completed,6,3,2/2/2023
+Sesam,280,Freezer,1/30/2023,273,Completed,7,30,3/1/2023
+Mayonnaise,170,Fridge,1/30/2023,163,Completed,7,365,1/30/2024
+Apple,62,Pantry,1/31/2023,59,Completed,3,3,2/3/2023
+Juice Pineapple,208,Pantry,1/31/2023,201,Completed,7,7,2/7/2023
+Bread,76,Freezer,1/31/2023,70,Completed,6,120,5/31/2023
+Cornflakes,250,Freezer,1/31/2023,243,Completed,7,90,5/1/2023
+Mandarin,222,Pantry,2/1/2023,216,Completed,6,3,2/4/2023
+Radish,86,Freezer,2/1/2023,80,Completed,6,30,3/3/2023
+Chocolate,140,Pantry,2/1/2023,133,Completed,7,730,1/31/2025
+Cookies,52,Pantry,2/1/2023,49,Completed,3,90,5/2/2023
+Ceddar,270,Freezer,2/2/2023,263,Completed,7,180,8/1/2023
+Palm,50,Pantry,2/2/2023,47,Completed,3,3,2/5/2023
+Peanut,162,Pantry,2/2/2023,156,Completed,6,365,2/2/2024
+Beetroot,198,Fridge,2/2/2023,192,Completed,6,7,2/9/2023
+Soy Meal,192,Fridge,2/3/2023,185,Completed,7,90,5/4/2023
+Raspberry,136,Fridge,2/3/2023,130,Completed,6,7,2/10/2023
+Gerkin,202,Pantry,2/3/2023,196,Completed,6,3,2/6/2023
+Orange,200,Freezer,2/3/2023,193,Completed,7,30,3/5/2023
+Cucumber,54,Fridge,2/4/2023,51,Completed,3,7,2/11/2023
+Milk Rice,176,Pantry,2/4/2023,170,Completed,6,365,2/4/2024
+Chestnut,32,Freezer,2/4/2023,32,Completed,0,30,3/6/2023
+Crispbread,148,Pantry,2/4/2023,142,Completed,6,5,2/9/2023
+Camembert,190,Freezer,2/5/2023,184,Completed,6,180,8/4/2023
+Plum,104,Fridge,2/5/2023,98,Completed,6,7,2/12/2023
+Guava,184,Fridge,2/5/2023,178,Completed,6,7,2/12/2023
+Beans,66,Pantry,2/5/2023,60,Completed,6,730,2/4/2025
+Tempeh,236,Pantry,2/6/2023,230,Completed,6,5,2/11/2023
+Crispbread,164,Fridge,2/6/2023,157,Completed,7,90,5/7/2023
+Sweet,70,Freezer,2/6/2023,63,Completed,7,30,3/8/2023
+Flour,86,Pantry,2/6/2023,79,Completed,7,180,8/5/2023
+Fork,22,Fridge,2/7/2023,22,Completed,0,3,2/10/2023
+Oil Rapeseed,58,Pantry,2/7/2023,55,Completed,3,730,2/6/2025
+Crackers,210,Pantry,2/7/2023,204,Completed,6,240,10/5/2023
+Bean,72,Freezer,2/7/2023,65,Completed,7,30,3/9/2023
+Makerel,154,Fridge,2/8/2023,148,Completed,6,3,2/11/2023
+Chilly,82,Fridge,2/8/2023,76,Completed,6,7,2/15/2023
+Oil Peanut,144,Fridge,2/8/2023,138,Completed,6,730,2/7/2025
+Blackberry,96,Pantry,2/8/2023,89,Completed,7,3,2/11/2023
+Garlic,112,Pantry,2/9/2023,105,Completed,7,30,3/11/2023
+Durum,240,Pantry,2/9/2023,234,Completed,6,180,8/8/2023
+Tomato Chopped,142,Fridge,2/9/2023,135,Completed,7,730,2/8/2025
+Potato,216,Pantry,2/10/2023,210,Completed,6,3,2/13/2023
+Green Bean (Fresh),2,Freezer,2/10/2023,2,Completed,0,30,3/12/2023
+Maize,92,Pantry,2/10/2023,85,Completed,7,5,2/15/2023
+Yogurt,106,Freezer,2/10/2023,100,Completed,6,60,4/11/2023
+Grapes,26,Freezer,2/11/2023,26,Completed,0,30,3/13/2023
+Orange,98,Fridge,2/11/2023,92,Completed,6,7,2/18/2023
+Sorghum,156,Pantry,2/11/2023,150,Completed,6,60,4/12/2023
+Blueberry,66,Fridge,2/11/2023,59,Completed,7,7,2/18/2023
+Tempeh,196,Freezer,2/12/2023,189,Completed,7,120,6/12/2023
+Lemon,178,Pantry,2/12/2023,171,Completed,7,3,2/15/2023
+Cranberry,274,Freezer,2/12/2023,267,Completed,7,30,3/14/2023
+Yeast,90,Pantry,2/12/2023,84,Completed,6,730,2/11/2025
+Rice,178,Fridge,2/13/2023,172,Completed,6,1825,2/12/2028
+Cornflakes,54,Pantry,2/13/2023,51,Completed,3,90,5/14/2023
+Yeast,118,Fridge,2/13/2023,112,Completed,6,730,2/12/2025
+Hake,24,Fridge,2/13/2023,24,Completed,0,3,2/16/2023
+Juice Cranberry,170,Pantry,2/14/2023,164,Completed,6,7,2/21/2023
+Oil Olive,180,Pantry,2/14/2023,173,Completed,7,730,2/13/2025
+Currant,164,Freezer,2/14/2023,158,Completed,6,30,3/16/2023
+Salmon,108,Fridge,2/14/2023,101,Completed,7,3,2/17/2023
+Carrots Canned,50,Fridge,2/15/2023,47,Completed,3,730,2/14/2025
+Starchy,86,Fridge,2/15/2023,80,Completed,6,7,2/22/2023
+Fennel,56,Fridge,2/15/2023,53,Completed,3,7,2/22/2023
+Mushroom,98,Pantry,2/15/2023,91,Completed,7,3,2/18/2023
+Lentil,6,Fridge,2/16/2023,6,Completed,0,7,2/23/2023
+Cowpea,118,Pantry,2/16/2023,111,Completed,7,3,2/19/2023
+Lime,158,Freezer,2/16/2023,152,Completed,6,30,3/18/2023
+Rockmelon,180,Freezer,2/16/2023,174,Completed,6,30,3/18/2023
+Millet,84,Fridge,2/17/2023,78,Completed,6,60,4/18/2023
+Bread,20,Fridge,2/17/2023,20,Completed,0,90,5/18/2023
+Almond Paste,160,Pantry,2/17/2023,153,Completed,7,365,2/17/2024
+Exotic Fruit,96,Fridge,2/17/2023,90,Completed,6,7,2/24/2023
+Sesam,122,Pantry,2/18/2023,115,Completed,7,3,2/21/2023
+Apple,44,Freezer,2/18/2023,41,Completed,3,30,3/20/2023
+Green Bean (Fresh),100,Pantry,2/18/2023,94,Completed,6,3,2/21/2023
+Almond,164,Pantry,2/18/2023,157,Completed,7,3,2/21/2023
+Kiwi,88,Freezer,2/19/2023,82,Completed,6,30,3/21/2023
+Cherry,264,Freezer,2/19/2023,257,Completed,7,30,3/21/2023
+Beetroot,262,Pantry,2/19/2023,256,Completed,6,3,2/22/2023
+Pumpkin,130,Pantry,2/19/2023,123,Completed,7,3,2/22/2023
+Coconut,14,Pantry,2/20/2023,14,Completed,0,3,2/23/2023
+Soy Cream,112,Fridge,2/20/2023,106,Completed,6,1825,2/19/2028
+Peach,144,Freezer,2/20/2023,137,Completed,7,30,3/22/2023
+Pasta,72,Fridge,2/21/2023,66,Completed,6,730,2/20/2025
+Vanilla Extract,166,Pantry,2/21/2023,160,Completed,6,180,8/20/2023
+Lemon,66,Freezer,2/21/2023,60,Completed,6,30,3/23/2023
+Exotic Fruit,142,Freezer,2/22/2023,136,Completed,6,30,3/24/2023
+Broccoli,42,Pantry,2/22/2023,39,Completed,3,3,2/25/2023
+Tomato Chopped,256,Pantry,2/22/2023,249,Completed,7,730,2/21/2025
+Strawberry,290,Pantry,2/22/2023,283,Completed,7,3,2/25/2023
+Tomato,212,Pantry,2/23/2023,205,Completed,7,3,2/26/2023
+Mandarin,124,Fridge,2/23/2023,118,Completed,6,7,3/2/2023
+Tomato & Basil,78,Pantry,2/23/2023,72,Completed,6,730,2/22/2025
+Ginger,16,Fridge,2/23/2023,16,Completed,0,7,3/2/2023
+Rice,242,Pantry,2/24/2023,236,Completed,6,365,2/24/2024
+Mixed,20,Freezer,2/24/2023,20,Completed,0,30,3/26/2023
+Chicken,2,Fridge,2/24/2023,2,Completed,0,2,2/26/2023
+Turnip,32,Freezer,2/25/2023,32,Completed,0,30,3/27/2023
+Potato,202,Freezer,2/25/2023,195,Completed,7,30,3/27/2023
+Juice Kiwi,104,Pantry,2/25/2023,97,Completed,7,7,3/4/2023
+Pistachio,252,Freezer,2/25/2023,245,Completed,7,30,3/27/2023
+Stracchino,46,Fridge,2/26/2023,43,Completed,3,180,8/25/2023
+Rape,224,Pantry,2/26/2023,218,Completed,6,3,3/1/2023
+Cherry,260,Pantry,2/26/2023,253,Completed,7,3,3/1/2023
+Cashew,182,Freezer,2/26/2023,175,Completed,7,30,3/28/2023
+Bean,184,Pantry,2/27/2023,177,Completed,7,3,3/2/2023
+Raspberry,34,Freezer,2/27/2023,34,Completed,0,30,3/29/2023
+Mixed Fish,176,Fridge,2/27/2023,169,Completed,7,3,3/2/2023
+Chilly,278,Freezer,2/27/2023,271,Completed,7,30,3/29/2023
+Emmental,134,Fridge,2/28/2023,127,Completed,7,180,8/27/2023
+Tomato Puree,186,Pantry,2/28/2023,179,Completed,7,730,2/27/2025
+Asiago,26,Fridge,2/28/2023,26,Completed,0,180,8/27/2023
+Pomelo,58,Fridge,2/28/2023,55,Completed,3,7,3/7/2023
+Wine,278,Pantry,3/1/2023,272,Completed,6,1095,2/28/2026
+Palm,160,Fridge,3/1/2023,154,Completed,6,7,3/8/2023
+Turnip,232,Pantry,3/1/2023,225,Completed,7,3,3/4/2023
+Coffee,120,Fridge,3/1/2023,113,Completed,7,365,2/29/2024
+Pesto,120,Pantry,3/2/2023,114,Completed,6,545,8/28/2024
+Durum,28,Fridge,3/2/2023,28,Completed,0,180,8/29/2023
+Trout,186,Fridge,3/2/2023,180,Completed,6,3,3/5/2023
+Juice Apple,190,Pantry,3/2/2023,183,Completed,7,7,3/9/2023
+Avocado,48,Freezer,3/3/2023,45,Completed,3,30,4/2/2023
+Vegetables,272,Freezer,3/3/2023,265,Completed,7,30,4/2/2023
+Palm,80,Freezer,3/3/2023,73,Completed,7,30,4/2/2023
+Carrot,264,Pantry,3/3/2023,258,Completed,6,3,3/6/2023
+Blueberry,46,Freezer,3/4/2023,43,Completed,3,30,4/3/2023
+Fig,18,Pantry,3/4/2023,18,Completed,0,3,3/7/2023
+Bean,90,Fridge,3/4/2023,83,Completed,7,7,3/11/2023
+Sorghum,98,Freezer,3/4/2023,92,Completed,6,60,5/3/2023
+Lettuce,12,Fridge,3/5/2023,12,Completed,0,14,3/19/2023
+Cucumber,2,Pantry,3/5/2023,2,Completed,0,3,3/8/2023
+Pear,2,Freezer,3/5/2023,2,Completed,0,30,4/4/2023
+Sunflower,38,Fridge,3/5/2023,38,Completed,0,7,3/12/2023
+Cowpea,112,Freezer,3/6/2023,105,Completed,7,30,4/5/2023
+Sunflower,28,Pantry,3/6/2023,28,Completed,0,3,3/9/2023
+Walnut,136,Freezer,3/6/2023,129,Completed,7,30,4/5/2023
+Garlic,194,Freezer,3/7/2023,187,Completed,7,30,4/6/2023
+Carrot,124,Freezer,3/7/2023,117,Completed,7,30,4/6/2023
+Turkey,80,Fridge,3/7/2023,74,Completed,6,2,3/9/2023
+Eggplant,198,Pantry,3/7/2023,191,Completed,7,1,3/8/2023
+Milk Coconut,132,Pantry,3/8/2023,125,Completed,7,365,3/7/2024
+Gooseberry,38,Freezer,3/8/2023,35,Completed,3,30,4/7/2023
+Onion,174,Pantry,3/8/2023,168,Completed,6,3,3/11/2023
+Mealworms,30,Fridge,3/8/2023,30,Completed,0,5,3/13/2023
+Oat Meal,232,Freezer,3/9/2023,226,Completed,6,90,6/7/2023
+Pumpkin,134,Freezer,3/9/2023,128,Completed,6,30,4/8/2023
+Chickpea,248,Pantry,3/9/2023,241,Completed,7,3,3/12/2023
+Pollock,8,Fridge,3/9/2023,8,Completed,0,3,3/12/2023
+Pea,56,Freezer,3/10/2023,53,Completed,3,30,4/9/2023
+Rape,188,Freezer,3/10/2023,182,Completed,6,30,4/9/2023
+Soy Meal,266,Pantry,3/10/2023,259,Completed,7,90,6/8/2023
+Cabagge,22,Freezer,3/10/2023,22,Completed,0,30,4/9/2023
+Pecorino,184,Freezer,3/11/2023,178,Completed,6,180,9/7/2023
+Pomfret,172,Fridge,3/11/2023,165,Completed,7,3,3/14/2023
+Lentil,128,Freezer,3/11/2023,122,Completed,6,30,4/10/2023
+Plum,24,Pantry,3/11/2023,24,Completed,0,3,3/14/2023
+Carrob,156,Freezer,3/12/2023,149,Completed,7,30,4/11/2023
+Onion,48,Fridge,3/12/2023,45,Completed,3,7,3/19/2023
+Barley,44,Pantry,3/12/2023,41,Completed,3,90,6/10/2023
+Tomato,14,Fridge,3/12/2023,14,Completed,0,7,3/19/2023
+Tomato,42,Freezer,3/13/2023,39,Completed,3,30,4/12/2023
+Soy Yogurt,174,Fridge,3/13/2023,167,Completed,7,14,3/27/2023
+Tomato Peeled,32,Fridge,3/13/2023,32,Completed,0,730,3/12/2025
+Shrimps,10,Fridge,3/13/2023,0,Completed,10,3,3/16/2023
+Honey,142,Pantry,3/14/2023,135,Completed,7,730,3/13/2025
+Mixed,42,Fridge,3/14/2023,39,Completed,3,7,3/21/2023
+Herring,36,Fridge,3/14/2023,36,Completed,0,3,3/17/2023
+Avocado,110,Pantry,3/14/2023,104,Completed,6,3,3/17/2023
+Broccoli,34,Freezer,3/15/2023,34,Completed,0,30,4/14/2023
+Flour,194,Fridge,3/15/2023,188,Completed,6,180,9/11/2023
+Pesto,58,Freezer,3/15/2023,55,Completed,3,30,4/14/2023
+Mozzarella,78,Freezer,3/15/2023,71,Completed,7,180,9/11/2023
+Oil Soybean,138,Fridge,3/16/2023,131,Completed,7,730,3/15/2025
+Fennel,144,Pantry,3/16/2023,138,Completed,6,3,3/19/2023
+Wheat,182,Pantry,3/16/2023,176,Completed,6,1095,3/15/2026
+Rabbit,182,Fridge,3/17/2023,175,Completed,7,2,3/19/2023
+Sole,146,Fridge,3/17/2023,139,Completed,7,3,3/20/2023
+Asparagus,22,Pantry,3/17/2023,22,Completed,0,3,3/20/2023
+Gerkin,180,Fridge,3/17/2023,173,Completed,7,7,3/24/2023
+Rockmelon,48,Pantry,3/18/2023,45,Completed,3,3,3/21/2023
+Pepper,18,Fridge,3/18/2023,18,Completed,0,7,3/25/2023
+Clementine,74,Pantry,3/18/2023,67,Completed,7,3,3/21/2023
+Kiwi,94,Pantry,3/18/2023,88,Completed,6,3,3/21/2023
+Pea,116,Pantry,3/19/2023,109,Completed,7,3,3/22/2023
+Almond,16,Freezer,3/19/2023,16,Completed,0,30,4/18/2023
+Tomato Puree,148,Fridge,3/19/2023,141,Completed,7,730,3/18/2025
+Mandarin,200,Freezer,3/19/2023,194,Completed,6,30,4/18/2023
+Swede,176,Freezer,3/20/2023,170,Completed,6,30,4/19/2023
+Pomegranate,60,Pantry,3/20/2023,57,Completed,3,3,3/23/2023
+Guava,276,Pantry,3/20/2023,270,Completed,6,3,3/23/2023
+Grana Padano,100,Freezer,3/20/2023,93,Completed,7,180,9/16/2023
+Gooseberry,188,Pantry,3/21/2023,181,Completed,7,3,3/24/2023
+Bacon,118,Freezer,3/21/2023,112,Completed,6,60,5/20/2023
+Carrots Canned,282,Pantry,3/21/2023,275,Completed,7,730,3/20/2025
+Rockmelon,44,Fridge,3/22/2023,41,Completed,3,7,3/29/2023
+Juice Fig,4,Pantry,3/22/2023,4,Completed,0,7,3/29/2023
+Sea-Bass,140,Fridge,3/22/2023,134,Completed,6,3,3/25/2023
+Buffalo,40,Fridge,3/22/2023,37,Completed,3,5,3/27/2023
+Soy Meal,84,Freezer,3/23/2023,77,Completed,7,90,6/21/2023
+Potato,88,Fridge,3/23/2023,81,Completed,7,7,3/30/2023
+Oil Soybean,220,Pantry,3/23/2023,213,Completed,7,730,3/22/2025
+Blackberry,136,Freezer,3/24/2023,130,Completed,6,30,4/23/2023
+Starchy,124,Pantry,3/24/2023,118,Completed,6,3,3/27/2023
+Mushroom,110,Freezer,3/24/2023,103,Completed,7,30,4/23/2023
+Ling,128,Fridge,3/24/2023,121,Completed,7,3,3/27/2023
+Rock,114,Fridge,3/25/2023,107,Completed,7,3,3/28/2023
+Strawberry,222,Freezer,3/25/2023,215,Completed,7,30,4/24/2023
+Raspberries,224,Freezer,3/25/2023,217,Completed,7,30,4/24/2023
+Chilly,244,Pantry,3/25/2023,237,Completed,7,3,3/28/2023
+Green Beans,254,Pantry,3/26/2023,248,Completed,6,730,3/25/2025
+Rye,146,Pantry,3/26/2023,140,Completed,6,90,6/24/2023
+Banana,10,Freezer,3/26/2023,10,Completed,0,30,4/25/2023
+Radish,206,Pantry,3/26/2023,200,Completed,6,3,3/29/2023
+Mango,46,Pantry,3/27/2023,43,Completed,3,3,3/30/2023
+Spinach,92,Freezer,3/27/2023,86,Completed,6,30,4/26/2023
+Millet,266,Freezer,3/27/2023,260,Completed,6,60,5/26/2023
+Soybean,72,Pantry,3/28/2023,65,Completed,7,3,3/31/2023
+Sweet,20,Pantry,3/28/2023,20,Completed,0,3,3/31/2023
+Lamb,190,Fridge,3/28/2023,184,Completed,6,5,4/2/2023
+Duck,74,Fridge,3/28/2023,68,Completed,6,5,4/2/2023
+Juice Strawberry,128,Pantry,3/29/2023,122,Completed,6,7,4/5/2023
+Juice Pear,200,Pantry,3/29/2023,193,Completed,7,7,4/5/2023
+Banana,76,Pantry,3/29/2023,69,Completed,7,3,4/1/2023
+Gerkin,40,Freezer,3/29/2023,37,Completed,3,30,4/28/2023
+Quinoa,280,Pantry,3/30/2023,274,Completed,6,1095,3/29/2026
+Beetroot,108,Freezer,3/30/2023,102,Completed,6,30,4/29/2023
+Pumpkin,70,Fridge,3/30/2023,64,Completed,6,7,4/6/2023
+Pear,228,Pantry,3/30/2023,221,Completed,7,3,4/2/2023
+Soy Cream,68,Pantry,3/31/2023,62,Completed,6,365,3/30/2024
+Soy Burger,64,Fridge,3/31/2023,57,Completed,7,5,4/5/2023
+Oil Peanut,268,Pantry,3/31/2023,261,Completed,7,730,3/30/2025
+Apricot,8,Pantry,3/31/2023,8,Completed,0,3,4/3/2023
+Tomato & Basil,415,Pantry,4/1/2023,166,In Progress,,730,3/31/2025
+Emu,45,Fridge,4/1/2023,18,Completed,27,5,4/6/2023
+Stracchino,95,Fridge,4/1/2023,38,Completed,57,180,9/28/2023
+Milk Coconut,455,Pantry,4/1/2023,182,In Progress,,365,3/31/2024
+Juice Strawberry,280,Fridge,4/1/2023,112,In Progress,,60,5/31/2023
+Bread,195,Pantry,4/1/2023,78,Completed,117,5,4/6/2023
+Raspberry,715,Fridge,4/1/2023,286,Completed,429,7,4/8/2023
+Spinach,895,Pantry,4/1/2023,358,In Progress,,3,4/4/2023
+Grapes,615,Fridge,4/1/2023,246,Completed,369,7,4/8/2023
+Zucchini,440,Fridge,4/1/2023,176,Completed,264,7,4/8/2023
+Yogurt,170,Fridge,4/3/2023,68,Completed,102,14,4/17/2023
+Pear,645,Pantry,4/3/2023,258,Completed,387,3,4/6/2023
+Porbeagle,1030,Fridge,4/3/2023,412,In Progress,,3,4/6/2023
+Snails,65,Freezer,4/3/2023,26,Completed,39,360,3/28/2024
+Rockmelon,665,Fridge,4/3/2023,266,Completed,399,7,4/10/2023
+Coffee,205,Pantry,4/3/2023,82,In Progress,,365,4/2/2024
+Avocado,590,Fridge,4/3/2023,236,Completed,354,7,4/10/2023
+Sea-Bass,1055,Fridge,4/3/2023,422,Completed,633,3,4/6/2023
+Mayonnaise,225,Fridge,4/3/2023,90,In Progress,,365,4/2/2024
+Shark,1060,Freezer,4/3/2023,424,In Progress,,360,3/28/2024
+Apple,580,Fridge,4/5/2023,232,In Progress,,7,4/12/2023
+Rape,800,Pantry,4/5/2023,320,Completed,480,3,4/8/2023
+Milk Soy,465,Fridge,4/5/2023,186,Completed,279,1825,4/3/2028
+Oil Peanut,365,Pantry,4/5/2023,146,Completed,219,730,4/4/2025
+Oil Rapeseed,370,Pantry,4/5/2023,148,Completed,222,730,4/4/2025
+Palm,785,Fridge,4/5/2023,314,Completed,471,7,4/12/2023
+Juice Cranberry,255,Fridge,4/5/2023,102,Completed,153,60,6/4/2023
+Shrimps,1150,Fridge,4/5/2023,460,In Progress,,3,4/8/2023
+Blackberry,925,Fridge,4/5/2023,370,Completed,555,7,4/12/2023
+Cranberry,935,Fridge,4/5/2023,374,Completed,561,7,4/12/2023
+Barnacle,85,Fridge,4/5/2023,34,In Progress,,3,4/8/2023
+Mixed,90,Fridge,4/5/2023,36,In Progress,,7,4/12/2023
+Cabagge,195,Fridge,4/5/2023,78,Completed,117,7,4/12/2023
+Vegetables,200,Fridge,4/5/2023,80,Completed,120,7,4/12/2023
+Juice Pear,290,Fridge,4/7/2023,116,Completed,174,60,6/6/2023
+Water,190,Pantry,4/7/2023,76,In Progress,,1825,4/5/2028
+Kangaroo,20,Fridge,4/7/2023,8,In Progress,,5,4/12/2023
+Krill,1120,Fridge,4/7/2023,448,Completed,672,3,4/10/2023
+Chicken,40,Freezer,4/7/2023,16,Completed,24,360,4/1/2024
+Mascarpone,80,Fridge,4/7/2023,32,In Progress,,180,10/4/2023
+Pineapple,650,Pantry,4/7/2023,260,Completed,390,3,4/10/2023
+Sorghum,535,Fridge,4/7/2023,214,Completed,321,60,6/6/2023
+Sweet,910,Fridge,4/7/2023,364,Completed,546,7,4/14/2023
+Gerkin,695,Fridge,4/7/2023,278,In Progress,,7,4/14/2023
+Soy Cream,95,Pantry,4/7/2023,38,Completed,57,365,4/6/2024
+Tomato Chopped,100,Pantry,4/7/2023,40,Completed,60,730,4/6/2025
+Guava,205,Fridge,4/7/2023,82,In Progress,,7,4/14/2023
+Tomato,210,Fridge,4/7/2023,84,In Progress,,7,4/14/2023
+Wheat,540,Fridge,4/9/2023,216,Completed,324,1095,4/8/2026
+Beans,325,Fridge,4/9/2023,130,Completed,195,730,4/8/2025
+Ricotta,90,Fridge,4/9/2023,36,Completed,54,14,4/23/2023
+Oil Palm,360,Fridge,4/9/2023,144,Completed,216,730,4/8/2025
+Fig,610,Fridge,4/9/2023,244,In Progress,,7,4/16/2023
+Pistachio,790,Pantry,4/9/2023,316,Completed,474,3,4/12/2023
+Carrob,600,Fridge,4/9/2023,240,In Progress,,7,4/16/2023
+Mandarin,560,Pantry,4/9/2023,224,Completed,336,3,4/12/2023
+Tomato Arrabbiata,420,Pantry,4/9/2023,168,Completed,252,730,4/8/2025
+Potato,880,Fridge,4/9/2023,352,Completed,528,7,4/16/2023
+Cheese,105,Fridge,4/9/2023,42,Completed,63,180,10/6/2023
+Parmigiano,110,Fridge,4/9/2023,44,In Progress,,180,10/6/2023
+Cranberry,215,Fridge,4/9/2023,86,Completed,129,7,4/16/2023
+Pomfret,220,Fridge,4/9/2023,88,Completed,132,3,4/12/2023
+Milk Buffalo,5,Freezer,4/11/2023,2,Completed,3,7,4/18/2023
+Juice Fig,10,Fridge,4/11/2023,4,In Progress,,60,6/10/2023
+Flour,115,Fridge,4/11/2023,46,Completed,69,180,10/8/2023
+Mango,120,Fridge,4/11/2023,48,Completed,72,7,4/18/2023
+Vanilla Extract,225,Fridge,4/11/2023,90,Completed,135,180,10/8/2023
+Ginger,230,Fridge,4/11/2023,92,In Progress,,7,4/18/2023
+Ice Cream,5,Freezer,4/11/2023,2,Completed,3,180,10/8/2023
+Oat,10,Fridge,4/11/2023,4,Completed,6,1095,4/10/2026
+Coconut,15,Pantry,4/13/2023,6,Completed,9,3,4/16/2023
+Crackers,20,Fridge,4/13/2023,8,Completed,12,240,12/9/2023
+Pork,125,Fridge,4/13/2023,50,Completed,75,5,4/18/2023
+Tuna,130,Fridge,4/13/2023,52,In Progress,,3,4/16/2023
+Milk Cow,235,Fridge,4/13/2023,94,Completed,141,7,4/20/2023
+Cuttlefish,240,Fridge,4/13/2023,96,Completed,144,3,4/16/2023
+Mayonnaise,15,Fridge,4/13/2023,6,In Progress,,365,4/12/2024
+Milk Rice,20,Pantry,4/13/2023,8,In Progress,,365,4/12/2024
+Margarine,25,Fridge,4/15/2023,10,In Progress,,180,10/12/2023
+Rhombus,30,Fridge,4/15/2023,12,In Progress,,3,4/18/2023
+Sorghum,135,Pantry,4/15/2023,54,Completed,81,60,6/14/2023
+Lentil,140,Fridge,4/15/2023,56,Completed,84,7,4/22/2023
+Snails,245,Fridge,4/15/2023,98,Completed,147,5,4/20/2023
+Mixed Fish,250,Fridge,4/15/2023,100,In Progress,,3,4/18/2023
+Beer,25,Fridge,4/15/2023,10,Completed,15,240,12/11/2023
+Pear,30,Fridge,4/15/2023,12,Completed,18,7,4/22/2023
+Pistachio,35,Fridge,4/15/2023,14,Completed,21,7,4/22/2023
+Soy Yogurt,40,Fridge,4/17/2023,16,Completed,24,14,5/1/2023
+Fig,145,Fridge,4/17/2023,58,In Progress,,7,4/24/2023
+Tangerin,150,Fridge,4/17/2023,60,In Progress,,7,4/24/2023
+Octopus,35,Freezer,4/17/2023,14,Completed,21,360,4/11/2024
+Barnacle,40,Fridge,4/17/2023,16,In Progress,,3,4/20/2023
+Pollock,45,Fridge,4/19/2023,18,Completed,27,3,4/22/2023
+Cornflakes,50,Pantry,4/19/2023,20,In Progress,,90,7/18/2023
+Eel,155,Freezer,4/19/2023,62,Completed,93,360,4/13/2024
+Rape,160,Fridge,4/19/2023,64,Completed,96,7,4/26/2023
+Kiwi,45,Fridge,4/19/2023,18,Completed,27,7,4/26/2023
+Pecorino,50,Fridge,4/19/2023,20,Completed,30,180,10/16/2023
+Milk Goat,55,Fridge,4/21/2023,22,Completed,33,7,4/28/2023
+Whiting,60,Fridge,4/21/2023,24,Completed,36,3,4/24/2023
+Crispbread,165,Fridge,4/21/2023,66,Completed,99,90,7/20/2023
+Sea-Bass,170,Fridge,4/21/2023,68,In Progress,,3,4/24/2023
+Fennel,55,Fridge,4/21/2023,22,Completed,33,7,4/28/2023
+Rye,60,Fridge,4/21/2023,24,In Progress,,90,7/20/2023
+Green Beans,125,Fridge,4/21/2023,50,Completed,75,730,4/20/2025
+Sugar,130,Fridge,4/21/2023,52,Completed,78,730,4/20/2025
+Swede,195,Fridge,4/21/2023,78,In Progress,,7,4/28/2023
+Pomfret,200,Fridge,4/21/2023,80,In Progress,,3,4/24/2023
+Rhombus,265,Fridge,4/21/2023,106,Completed,159,3,4/24/2023
+Fish,270,Fridge,4/21/2023,108,Completed,162,3,4/24/2023
+Cookies,335,Pantry,4/21/2023,134,Completed,201,90,7/20/2023
+Chocolate,340,Fridge,4/21/2023,136,In Progress,,1825,4/19/2028
+Turbot,405,Fridge,4/21/2023,162,Completed,243,3,4/24/2023
+Oil Soybean,410,Fridge,4/21/2023,164,Completed,246,730,4/20/2025
+Mussels,475,Fridge,4/21/2023,190,Completed,285,3,4/24/2023
+Orange,480,Fridge,4/21/2023,192,In Progress,,7,4/28/2023
+Haddock,65,Fridge,4/23/2023,26,Completed,39,3,4/26/2023
+Lettuce,70,Fridge,4/23/2023,28,In Progress,,14,5/7/2023
+Eggplant,175,Fridge,4/23/2023,70,Completed,105,7,4/30/2023
+Gerkin,180,Pantry,4/23/2023,72,Completed,108,3,4/26/2023
+Butter,65,Fridge,4/23/2023,26,Completed,39,60,6/22/2023
+Mealworms,70,Fridge,4/23/2023,28,Completed,42,5,4/28/2023
+Almond Paste,135,Pantry,4/23/2023,54,In Progress,,365,4/22/2024
+Juice Pineapple,140,Fridge,4/23/2023,56,In Progress,,60,6/22/2023
+Juice Pear,205,Fridge,4/23/2023,82,Completed,123,60,6/22/2023
+Eel,210,Fridge,4/23/2023,84,Completed,126,3,4/26/2023
+Milk Coconut,275,Fridge,4/23/2023,110,Completed,165,1825,4/21/2028
+Zucchini,280,Fridge,4/23/2023,112,In Progress,,7,4/30/2023
+Fig,345,Fridge,4/23/2023,138,Completed,207,7,4/30/2023
+Ketchup,350,Fridge,4/23/2023,140,Completed,210,365,4/22/2024
+Kangaroo,415,Fridge,4/23/2023,166,Completed,249,5,4/28/2023
+Carrots Canned,420,Fridge,4/23/2023,168,In Progress,,730,4/22/2025
+Pollock,485,Fridge,4/23/2023,194,Completed,291,3,4/26/2023
+Juice Fig,490,Fridge,4/23/2023,196,Completed,294,60,6/22/2023
+Flathead,75,Fridge,4/25/2023,30,Completed,45,3,4/28/2023
+Soy Meal,80,Fridge,4/25/2023,32,Completed,48,90,7/24/2023
+Croissant,185,Pantry,4/25/2023,74,Completed,111,5,4/30/2023
+Turnip,190,Fridge,4/25/2023,76,In Progress,,7,5/2/2023
+Pesto,75,Fridge,4/25/2023,30,In Progress,,180,10/22/2023
+Pasta,80,Fridge,4/25/2023,32,In Progress,,730,4/24/2025
+Soy Burger,145,Fridge,4/25/2023,58,Completed,87,5,4/30/2023
+Pineapple,150,Fridge,4/25/2023,60,Completed,90,7,5/2/2023
+Plaice,215,Fridge,4/25/2023,86,Completed,129,3,4/28/2023
+Raspberry,220,Fridge,4/25/2023,88,In Progress,,7,5/2/2023
+Eggs,285,Pantry,4/25/2023,114,Completed,171,0,4/25/2023
+Ceddar,290,Fridge,4/25/2023,116,Completed,174,180,10/22/2023
+Bacon,355,Fridge,4/25/2023,142,Completed,213,30,5/25/2023
+Corn Canned,360,Fridge,4/25/2023,144,In Progress,,730,4/24/2025
+Gooseberry,425,Fridge,4/25/2023,170,Completed,255,7,5/2/2023
+Pork,430,Fridge,4/25/2023,172,Completed,258,5,4/30/2023
+Chicken,495,Fridge,4/25/2023,198,In Progress,,2,4/27/2023
+Makerel,85,Fridge,4/27/2023,34,Completed,51,3,4/30/2023
+Squid,90,Fridge,4/27/2023,36,Completed,54,3,4/30/2023
+Megrim,155,Fridge,4/27/2023,62,Completed,93,3,4/30/2023
+Rock,160,Fridge,4/27/2023,64,In Progress,,3,4/30/2023
+Soy Yogurt,225,Fridge,4/27/2023,90,Completed,135,14,5/11/2023
+Makerel,230,Fridge,4/27/2023,92,Completed,138,3,4/30/2023
+Garlic,295,Fridge,4/27/2023,118,Completed,177,14,5/11/2023
+Blueberry,300,Fridge,4/27/2023,120,In Progress,,7,5/4/2023
+Ricotta,365,Fridge,4/27/2023,146,Completed,219,14,5/11/2023
+Tuna,370,Fridge,4/27/2023,148,Completed,222,3,4/30/2023
+Walnut,435,Fridge,4/27/2023,174,In Progress,,7,5/4/2023
+Barley,440,Fridge,4/27/2023,176,In Progress,,365,4/26/2024
+Swardfish,95,Fridge,4/29/2023,38,Completed,57,3,5/2/2023
+Artichoke,100,Fridge,4/29/2023,40,In Progress,,7,5/6/2023
+Yogurt,165,Fridge,4/29/2023,66,Completed,99,14,5/13/2023
+Celery,170,Fridge,4/29/2023,68,Completed,102,14,5/13/2023
+Can Tuna,235,Fridge,4/29/2023,94,Completed,141,3,5/2/2023
+Grana Padano,240,Fridge,4/29/2023,96,In Progress,,180,10/26/2023
+Sunflower,305,Fridge,4/29/2023,122,Completed,183,7,5/6/2023
+Ling,310,Fridge,4/29/2023,124,Completed,186,3,5/2/2023
+Blackberry,375,Fridge,4/29/2023,150,In Progress,,7,5/6/2023
+Cowpea,380,Fridge,4/29/2023,152,In Progress,,7,5/6/2023
+Gerkin,445,Fridge,4/29/2023,178,Completed,267,7,5/6/2023
+Mixed,450,Fridge,4/29/2023,180,Completed,270,7,5/6/2023
+Oil Sunflower,105,Fridge,5/1/2023,42,Completed,63,730,4/30/2025
+Soy Meal,110,Fridge,5/1/2023,44,Completed,66,90,7/30/2023
+Sole,175,Fridge,5/1/2023,70,Completed,105,3,5/4/2023
+Apple,180,Fridge,5/1/2023,72,In Progress,,7,5/8/2023
+Guava,245,Fridge,5/1/2023,98,Completed,147,7,5/8/2023
+Juice Blueberry,250,Fridge,5/1/2023,100,Completed,150,60,6/30/2023
+Peach,315,Fridge,5/1/2023,126,In Progress,,7,5/8/2023
+Hazelnut,320,Fridge,5/1/2023,128,In Progress,,365,4/30/2024
+Bean,385,Fridge,5/1/2023,154,Completed,231,7,5/8/2023
+Camembert,390,Fridge,5/1/2023,156,Completed,234,180,10/28/2023
+Tomato & Basil,455,Pantry,5/1/2023,182,Completed,273,730,4/30/2025
+Stracchino,460,Fridge,5/1/2023,184,In Progress,,180,10/28/2023
+Coffee,115,Pantry,5/3/2023,46,Completed,69,365,5/2/2024
+Carrob,120,Fridge,5/3/2023,48,In Progress,,7,5/10/2023
+Pistachio,185,Pantry,5/3/2023,74,Completed,111,3,5/6/2023
+Mackerel,190,Fridge,5/3/2023,76,Completed,114,3,5/6/2023
+Pomegranate,255,Fridge,5/3/2023,102,In Progress,,7,5/10/2023
+Tomato Arrabbiata,260,Pantry,5/3/2023,104,In Progress,,730,5/2/2025
+Cuttlefish,325,Fridge,5/3/2023,130,Completed,195,3,5/6/2023
+Fork,330,Fridge,5/3/2023,132,Completed,198,3,5/6/2023
+Quinoa,395,Pantry,5/3/2023,158,Completed,237,1095,5/2/2026
+Chickpea,400,Fridge,5/3/2023,160,Completed,240,7,5/10/2023
+Milk Soy,465,Fridge,5/3/2023,186,Completed,279,1825,5/1/2028
+Croissant,470,Fridge,5/3/2023,188,Completed,282,90,8/1/2023
+Beef,200,Pantry,5/3/2023,0,In Progress,,0,5/3/2023
+Cuttlefish,200,Fridge,5/3/2023,10,Completed,190,3,5/6/2023
+Beef,50,Fridge,5/17/2023,30,In Progress,,5,5/22/2023
+Shrimps,10,Fridge,5/25/2023,5,Completed,5,3,5/28/2023
+Mealworms,24,Freezer,6/1/2023,0,In Progress,,360,5/26/2024
+Beef,0,Pantry,6/1/2023,0,In Progress,,0,6/1/2023
+Beef,10,Pantry,6/1/2023,4,Completed,6,0,6/1/2023
+Whiting,12,Fridge,6/2/2023,10,Completed,2,3,6/5/2023
+Shrimps,12,Fridge,6/2/2023,2,Completed,10,3,6/5/2023
+Shrimps,200,Fridge,6/2/2023,20,Completed,180,3,6/5/2023
+Beef,0,Pantry,6/2/2023,0,Completed,0,0,6/2/2023
+Beef,0,Pantry,6/2/2023,0,In Progress,,0,6/2/2023
+Buffalo,0,Fridge,6/2/2023,0,In Progress,,5,6/7/2023
+Shrimps,200,Fridge,6/3/2023,20,Completed,180,3,6/6/2023

@@ -1,0 +1,231 @@
+Item Number,Name,CO2_Per_g,Category,Pantry,Fridge,Freezer
+F001,Beef,25.75,Meat,0,5,360
+F002,Buffalo,78.8,Meat,0,5,360
+F003,Mealworms,2.84,Meat,0,5,360
+F004,Kangaroo,4.1,Meat,0,5,360
+F005,Lamb,25.23,Meat,0,5,360
+F006,Pork,5.72,Meat,0,5,360
+F007,Bacon,4.03,Meat,0,30,60
+F008,Chicken,3.68,Meat,0,2,360
+F009,Emu,1.5,Meat,0,5,360
+F010,Duck,4.1,Meat,0,5,360
+F011,Turkey,4.08,Meat,0,2,360
+F012,Rabbit,4.31,Meat,0,2,360
+F013,Snails,0.73,Meat,0,5,360
+F014,Butter,8.48,Dairy,0,60,270
+F015,Cream,5.45,Dairy,0,30,0
+F016,Mascarpone,5.7,Dairy,0,180,180
+F017,Mozzarella,8.2,Dairy,0,180,180
+F018,Ricotta,3.4,Dairy,0,14,0
+F019,Stracchino,4.92,Dairy,0,180,180
+F020,Asiago,10.24,Dairy,0,180,180
+F021,Camembert,7.55,Dairy,0,180,180
+F022,Ceddar,11.21,Dairy,0,180,180
+F023,Cheese,8.93,Dairy,0,180,180
+F024,Emmental,8.2,Dairy,0,180,180
+F025,Goat Cheese,8.35,Dairy,0,180,180
+F026,Grana Padano,15.34,Dairy,0,180,180
+F027,Parmigiano,12.54,Dairy,0,180,180
+F028,Pecorino,17.15,Dairy,0,180,180
+F029,Eggs,3.2,Dairy,0,35,0
+F030,Honey,1.74,Dairy,730,730,730
+F031,Milk Buffalo,3.57,Dairy,0,7,7
+F032,Milk Cow,1.31,Dairy,0,7,7
+F033,Milk Goat,1.44,Dairy,0,7,7
+F034,Yogurt,2.85,Dairy,0,14,60
+F035,Beer,0.69,Processed Agricultural Products,180,240,0
+F036,Chocolate,1.53,Processed Agricultural Products,730,"1,825","1,825"
+F037,Cookies,1.39,Processed Agricultural Products,90,180,360
+F038,Water,0.49,Processed Agricultural Products,"1,825","1,825","1,825"
+F039,Bread,0.7,Processed Agricultural Products,5,90,120
+F040,Cornflakes,2.64,Processed Agricultural Products,90,90,90
+F041,Coffee,5.13,Processed Agricultural Products,365,365,365
+F042,Crackers,0.93,Processed Agricultural Products,240,240,240
+F043,Crispbread,1.35,Processed Agricultural Products,5,90,90
+F044,Ketchup,1.46,Processed Agricultural Products,180,365,365
+F045,Mayonnaise,2.04,Processed Agricultural Products,180,365,365
+F046,Tempeh,1.1,Processed Agricultural Products,5,90,120
+F047,Pasta,3.15,Processed Agricultural Products,730,730,730
+F048,Raspberries,1.18,Processed Agricultural Products,0,3,30
+F049,Juice Apple,2.84,Processed Agricultural Products,7,60,365
+F050,Juice Blueberry,3,Processed Agricultural Products,7,60,365
+F051,Juice Cranberry,2.88,Processed Agricultural Products,7,60,365
+F052,Juice Fig,3.2,Processed Agricultural Products,7,60,365
+F053,Juice Kiwi,2.84,Processed Agricultural Products,7,60,365
+F054,Juice Mango,2.96,Processed Agricultural Products,7,60,365
+F055,Juice Pineapple,2.78,Processed Agricultural Products,7,60,365
+F056,Juice Strawberry,2.68,Processed Agricultural Products,7,60,365
+F057,Juice Orange,0.46,Processed Agricultural Products,7,60,365
+F058,Juice Pear,0.49,Processed Agricultural Products,7,60,365
+F059,Durum,0.47,Processed Agricultural Products,180,180,730
+F060,Oat Meal,0.87,Processed Agricultural Products,90,90,90
+F061,Flour,0.52,Processed Agricultural Products,180,180,730
+F062,Ice Cream,1.02,Processed Agricultural Products,0,180,180
+F063,Vanilla Extract,4.3,Processed Agricultural Products,180,180,730
+F064,Soy Meal,0.62,Processed Agricultural Products,90,90,90
+F065,Beans,0.11,Processed Agricultural Products,730,730,730
+F066,Green Beans,1.45,Processed Agricultural Products,730,730,730
+F067,Margarine,1.39,Processed Agricultural Products,0,180,360
+F068,Almond Paste,2.98,Processed Agricultural Products,365,365,365
+F069,Hazelnut,2.71,Processed Agricultural Products,365,365,365
+F070,Peanut,1.15,Processed Agricultural Products,365,365,365
+F071,Oil Olive,3.27,Processed Agricultural Products,730,730,730
+F072,Oil Palm,2.43,Processed Agricultural Products,730,730,730
+F073,Oil Peanut,2.9,Processed Agricultural Products,730,730,730
+F074,Oil Rapeseed,1.79,Processed Agricultural Products,730,730,730
+F075,Oil Soybean,1.79,Processed Agricultural Products,730,730,730
+F076,Oil Sunflower,0.98,Processed Agricultural Products,730,730,730
+F077,Pesto,2.71,Processed Agricultural Products,545,180,30
+F078,Sugar,0.94,Processed Agricultural Products,730,730,730
+F079,Croissant,2.14,Processed Agricultural Products,5,90,120
+F080,Tomato Chopped,1.47,Processed Agricultural Products,730,730,730
+F081,Tomato Peeled,1.3,Processed Agricultural Products,730,730,730
+F082,Tomato Puree,1.03,Processed Agricultural Products,730,730,730
+F083,Tomato & Basil,1.14,Processed Agricultural Products,730,730,730
+F084,Tomato Arrabbiata,1.24,Processed Agricultural Products,730,730,730
+F085,Carrots Canned,1.6,Processed Agricultural Products,730,730,730
+F086,Corn Canned,1.36,Processed Agricultural Products,730,730,730
+F087,Carrots,0.27,Processed Agricultural Products,0,7,0
+F088,Zucchini,1.35,Processed Agricultural Products,0,7,0
+F089,Soy Cream,1.62,Processed Agricultural Products,365,"1,825","1,825"
+F090,Milk Almond ,0.42,Processed Agricultural Products,365,"1,825","1,825"
+F091,Milk Coconut,0.41,Processed Agricultural Products,365,"1,825","1,825"
+F092,Milk Rice,0.66,Processed Agricultural Products,365,"1,825","1,825"
+F093,Milk Soy,0.78,Processed Agricultural Products,365,"1,825","1,825"
+F094,Quorne,2.5,Processed Agricultural Products,"1,095","1,095","1,095"
+F095,Soy Burger,1.48,Processed Agricultural Products,0,5,360
+F096,Tofu,2.27,Processed Agricultural Products,0,7,150
+F097,Soy Yogurt,1.36,Processed Agricultural Products,0,14,60
+F098,Wine,0.87,Processed Agricultural Products,"1,095","1,095","1,095"
+F099,Yeast,0.82,Processed Agricultural Products,730,730,0
+F100,Barley,0.48,Non-Processed Agricultural Products,90,365,365
+F101,Maize,0.48,Non-Processed Agricultural Products,5,7,7
+F102,Millet,0.86,Non-Processed Agricultural Products,30,60,60
+F103,Oat,0.67,Non-Processed Agricultural Products,"1,095","1,095","1,095"
+F104,Quinoa,0.97,Non-Processed Agricultural Products,"1,095","1,095","1,095"
+F105,Rice,2.19,Non-Processed Agricultural Products,365,"1,825","1,825"
+F106,Rye,0.38,Non-Processed Agricultural Products,90,90,90
+F107,Sorghum,0.88,Non-Processed Agricultural Products,60,60,60
+F108,Wheat,0.57,Non-Processed Agricultural Products,"1,095","1,095","1,095"
+F109,Clementine,0.41,Non-Processed Agricultural Products,3,7,30
+F110,Lemon,0.22,Non-Processed Agricultural Products,3,7,30
+F111,Lime,0.22,Non-Processed Agricultural Products,3,7,30
+F112,Mandarin,0.45,Non-Processed Agricultural Products,3,7,30
+F113,Orange,0.3,Non-Processed Agricultural Products,3,7,30
+F114,Pomelo,0.51,Non-Processed Agricultural Products,3,7,30
+F115,Tangerin,0.38,Non-Processed Agricultural Products,3,7,30
+F116,Apple,0.25,Non-Processed Agricultural Products,3,7,30
+F117,Apricot,0.3,Non-Processed Agricultural Products,3,7,30
+F118,Avocado,0.54,Non-Processed Agricultural Products,3,7,30
+F119,Banana,0.34,Non-Processed Agricultural Products,3,7,30
+F120,Carrob,1.1,Non-Processed Agricultural Products,3,7,30
+F121,Cherry,0.46,Non-Processed Agricultural Products,3,7,30
+F122,Fig,0.26,Non-Processed Agricultural Products,3,7,30
+F123,Grapes,0.31,Non-Processed Agricultural Products,3,7,30
+F124,Guava,0.28,Non-Processed Agricultural Products,3,7,30
+F125,Kiwi,0.49,Non-Processed Agricultural Products,3,7,30
+F126,Mango,0.31,Non-Processed Agricultural Products,3,7,30
+F127,Melon,0.61,Non-Processed Agricultural Products,3,7,30
+F128,Peach,0.39,Non-Processed Agricultural Products,3,7,30
+F129,Pear,0.27,Non-Processed Agricultural Products,3,7,30
+F130,Pineapple,0.28,Non-Processed Agricultural Products,3,7,30
+F131,Plum,0.26,Non-Processed Agricultural Products,3,7,30
+F132,Pomegranate,0.32,Non-Processed Agricultural Products,3,7,30
+F133,Rockmelon,0.39,Non-Processed Agricultural Products,3,7,30
+F134,Watermelon,0.52,Non-Processed Agricultural Products,3,7,30
+F135,Mushroom,2.06,Non-Processed Agricultural Products,3,7,30
+F136,Cucumber,2.55,Non-Processed Agricultural Products,3,7,30
+F137,Eggplant,2.9,Non-Processed Agricultural Products,1,7,240
+F138,Exotic Fruit,2.43,Non-Processed Agricultural Products,3,7,30
+F139,Gerkin,2.12,Non-Processed Agricultural Products,3,7,30
+F140,Green Bean (Fresh),0.28,Non-Processed Agricultural Products,3,7,30
+F141,Lettuce,2.67,Non-Processed Agricultural Products,0,14,0
+F142,Pepper,3.73,Non-Processed Agricultural Products,3,7,30
+F143,Raspberry,7.35,Non-Processed Agricultural Products,3,7,30
+F144,Strawberry,2.88,Non-Processed Agricultural Products,3,7,30
+F145,Tomato,2.43,Non-Processed Agricultural Products,3,7,30
+F146,Coconut,1.78,Non-Processed Agricultural Products,3,7,365
+F147,Bean,0.43,Non-Processed Agricultural Products,3,7,30
+F148,Chickpea,0.77,Non-Processed Agricultural Products,3,7,30
+F149,Cowpea,0.49,Non-Processed Agricultural Products,3,7,30
+F150,Lentil,1.03,Non-Processed Agricultural Products,3,7,30
+F151,Pea,0.45,Non-Processed Agricultural Products,3,7,30
+F152,Soybean,0.56,Non-Processed Agricultural Products,3,7,30
+F153,Almond,1.88,Non-Processed Agricultural Products,3,7,30
+F154,Cashew,1.38,Non-Processed Agricultural Products,3,7,30
+F155,Chestnut,0.44,Non-Processed Agricultural Products,3,7,30
+F156,Mixed,0.47,Non-Processed Agricultural Products,3,7,30
+F157,Palm,0.8,Non-Processed Agricultural Products,3,7,30
+F158,Pistachio,1.6,Non-Processed Agricultural Products,3,7,30
+F159,Walnut,2.06,Non-Processed Agricultural Products,3,7,30
+F160,Rape,0.78,Non-Processed Agricultural Products,3,7,30
+F161,Sesam,0.88,Non-Processed Agricultural Products,3,7,30
+F162,Sunflower,1.16,Non-Processed Agricultural Products,3,7,30
+F163,Artichoke,0.33,Non-Processed Agricultural Products,3,7,30
+F164,Asparagus,0.83,Non-Processed Agricultural Products,3,7,30
+F165,Beetroot,0.25,Non-Processed Agricultural Products,3,7,30
+F166,Broccoli,0.57,Non-Processed Agricultural Products,3,7,30
+F167,Cabagge,0.23,Non-Processed Agricultural Products,3,7,30
+F168,Carrot,0.24,Non-Processed Agricultural Products,3,7,30
+F169,Cauliflower,0.31,Non-Processed Agricultural Products,0,5,360
+F170,Celery,0.32,Non-Processed Agricultural Products,0,14,360
+F171,Chilly,0.8,Non-Processed Agricultural Products,3,7,30
+F172,Fennel,0.48,Non-Processed Agricultural Products,3,7,30
+F173,Garlic,0.71,Non-Processed Agricultural Products,30,14,30
+F174,Ginger,0.88,Non-Processed Agricultural Products,3,7,30
+F175,Onion,0.22,Non-Processed Agricultural Products,3,7,30
+F176,Potato,0.24,Non-Processed Agricultural Products,3,7,30
+F177,Pumpkin,0.24,Non-Processed Agricultural Products,3,7,30
+F178,Radish,0.15,Non-Processed Agricultural Products,3,7,30
+F179,Spinach,0.34,Non-Processed Agricultural Products,3,7,30
+F180,Starchy,0.29,Non-Processed Agricultural Products,3,7,30
+F181,Swede,0.29,Non-Processed Agricultural Products,3,7,30
+F182,Sweet,0.27,Non-Processed Agricultural Products,3,7,30
+F183,Turnip,0.35,Non-Processed Agricultural Products,3,7,30
+F184,Vegetables,0.54,Non-Processed Agricultural Products,3,7,30
+F185,Blackberry,0.42,Non-Processed Agricultural Products,3,7,30
+F186,Blueberry,0.78,Non-Processed Agricultural Products,3,7,30
+F187,Cranberry,0.87,Non-Processed Agricultural Products,3,7,30
+F188,Currant,0.64,Non-Processed Agricultural Products,3,7,30
+F189,Gooseberry,0.84,Non-Processed Agricultural Products,3,7,30
+F190,Diamond Fish,6.02,Seafood,0,3,360
+F191,Eel,3.88,Seafood,0,3,360
+F192,Fish,4.99,Seafood,0,3,360
+F193,Flatfish,6.41,Seafood,0,3,360
+F194,Flathead,2.56,Seafood,0,3,360
+F195,Fork,8.01,Seafood,0,3,360
+F196,Haddock,3.1,Seafood,0,3,360
+F197,Hake,10.4,Seafood,0,3,360
+F198,Herring,1.24,Seafood,0,3,360
+F199,Ling,6.45,Seafood,0,3,360
+F200,Mackerel,1.8,Seafood,0,3,360
+F201,Megrim,14.15,Seafood,0,3,360
+F202,Pilchard,1.1,Seafood,0,3,360
+F203,Plaice,6.13,Seafood,0,3,360
+F204,Pollock,1.4,Seafood,0,3,360
+F205,Pomfret,6.63,Seafood,0,3,360
+F206,Porbeagle,11.44,Seafood,0,3,360
+F207,Rhombus,8.41,Seafood,0,3,360
+F208,Rock,6.94,Seafood,0,3,360
+F209,Salmon,3.37,Seafood,0,3,360
+F210,Sardine,0.9,Seafood,0,3,360
+F211,Sea-Bass,3.6,Seafood,0,3,360
+F212,Shark,11.44,Seafood,0,3,360
+F213,Sole,5.4,Seafood,0,3,360
+F214,Swardfish,12.84,Seafood,0,3,360
+F215,Trout,4.2,Seafood,0,3,360
+F216,Tuna,3.68,Seafood,0,3,360
+F217,Turbot,14.51,Seafood,0,3,360
+F218,Whiting,2.66,Seafood,0,3,360
+F219,Cod,3.03,Seafood,0,3,360
+F220,Mixed Fish,1.04,Seafood,0,3,360
+F221,Makerel,1.02,Seafood,0,3,360
+F222,Can Tuna,2.1,Seafood,0,3,360
+F223,Barnacle,2.3,Seafood,0,3,360
+F224,Krill,5.54,Seafood,0,3,360
+F225,Lobster,20.25,Seafood,0,3,360
+F226,Mussels,0.46,Seafood,0,3,360
+F227,Cuttlefish,5.05,Seafood,0,3,360
+F228,Octopus,5.8,Seafood,0,3,360
+F229,Squid,6.91,Seafood,0,3,360
+F230,Shrimps,7.04,Seafood,0,3,360
