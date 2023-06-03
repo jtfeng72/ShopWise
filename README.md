@@ -3,6 +3,10 @@
 Streamlit App Link: https://jtfeng72-shopwise-shopwise-home-ixje56.streamlit.app/Shopping_List
 
 Curretly this version has 
-  ## 1. Item Search Box - Search items by item description
-  ## 2. Inventory List with Add function and update in the inventory list
-  ## 3. Visualize Inventory
+  ## 1. Variety of Foods
+  ## 2. Shopping list
+  ## 3. Waste Not
+  ## 4. Sustainable Amount
+  ## 5. Recommends Food
+  ## 6. CO2 Tracking
+  ## 7. Convenience
