@@ -1,3 +1,4 @@
+# Northwestern Spring 2023 Capstone Project
 # ShopWise
 
 Streamlit App Link: https://jtfeng72-shopwise-shopwise-home-ixje56.streamlit.app/Shopping_List
